@@ -15,7 +15,7 @@ enum AddCardErrorType: Error {
     case shortCardNumber
 }
 
-class AddCardViewModel: ObservableObject {
+class AddCardViewModel: ViewModelProtocol {
     @Published var selectedColor: Color?
     @Published var appManager: AppManager
     

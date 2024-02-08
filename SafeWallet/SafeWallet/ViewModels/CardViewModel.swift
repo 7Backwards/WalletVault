@@ -7,7 +7,7 @@
 
 import SwiftUI
 
-class CardViewModel: ObservableObject {
+class CardViewModel: ViewModelProtocol {
     var card: Card
     @Published var appManager: AppManager
     @Published var shouldShowDeleteConfirmation: Bool = false
