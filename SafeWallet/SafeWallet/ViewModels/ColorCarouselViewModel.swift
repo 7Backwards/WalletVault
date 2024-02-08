@@ -7,7 +7,7 @@
 
 import SwiftUI
 
-class ColorCarouselViewModel: ObservableObject {
+class ColorCarouselViewModel: ViewModelProtocol {
     @Published var appManager: AppManager
     
     init(appManager: AppManager) {

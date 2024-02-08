@@ -9,7 +9,7 @@ import Foundation
 import CoreData
 import SwiftUI
 
-class CardListViewModel: ObservableObject {
+class CardListViewModel: ViewModelProtocol {
     @Published var searchText = ""
     @Published var showingAddCardView = false
     @Published var appManager: AppManager

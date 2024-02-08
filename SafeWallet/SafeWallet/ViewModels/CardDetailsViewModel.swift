@@ -8,7 +8,7 @@
 import Foundation
 import SwiftUI
 
-class CardDetailsViewModel: ObservableObject {
+class CardDetailsViewModel: ViewModelProtocol {
     @Published var appManager: AppManager
     
     init(appManager: AppManager) {
