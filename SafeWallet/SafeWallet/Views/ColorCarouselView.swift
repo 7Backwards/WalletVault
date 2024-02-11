@@ -16,7 +16,7 @@ struct ColorCarouselView: View {
             ScrollView(.horizontal, showsIndicators: false) {
                 HStack(spacing: 15) {
                     ForEach(viewModel.appManager.constants.colors, id: \.self) { colorName in
-                        let color = Color(wordName: colorName)?.opacity(viewModel.getCardBackgroundOpacity()) ?? .clear
+                        let color = Color(colorName).opacity(viewModel.getCardBackgroundOpacity())
                         Circle()
                             .fill(color)
                             .frame(width: viewModel.appManager.constants.colorCircleSize, height: viewModel.appManager.constants.colorCircleSize)
@@ -24,11 +24,11 @@ struct ColorCarouselView: View {
                                 Circle()
                                     .stroke(Color.clear)
                             )
-                            .scaleEffect(cardColor == colorName ? 1.2 : 1.0)
+                            .scaleEffect(cardColor == colorName.rawValue ? 1.2 : 1.0)
                             .shadow(color: Color(uiColor: .inverseSystemBackground), radius: 0)
                             .onTapGesture {
                                 withAnimation {
-                                    self.cardColor = colorName
+                                    self.cardColor = colorName.rawValue
                                 }
                             }
                     }

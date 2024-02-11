@@ -80,20 +80,20 @@ struct CardListView: View {
 
 struct NoContentView: View {
     var body: some View {
-        VStack(spacing: 20) { // Add spacing between elements
-            Spacer() // Push content to center
-            Image(systemName: "creditcard.fill") // Use a system image
+        VStack(spacing: 20) {
+            Spacer()
+            Image(systemName: "creditcard.fill")
                 .resizable()
                 .scaledToFit()
-                .frame(width: 100, height: 60) // Set image size
-                .foregroundColor(.secondary) // Set image color to secondary text color
+                .frame(width: 100, height: 60)
+                .foregroundColor(.secondary)
             Text("You currently have no cards")
-                .font(.title) // Make the font larger
-                .fontWeight(.semibold) // Make the text bold
-                .foregroundColor(.secondary) // Set text color to secondary
-            Spacer() // Push content to center
+                .font(.title)
+                .fontWeight(.semibold)
+                .foregroundColor(.secondary)
+            Spacer()
         }
-        .padding() // Add padding around the VStack
+        .padding()
     }
 }
 
@@ -180,7 +180,6 @@ struct CardRow: View {
                     )
                 }
             
-            // Swipe to delete overlay
             if gestureDragOffset.width < -10 {
                 HStack {
                     Spacer()
