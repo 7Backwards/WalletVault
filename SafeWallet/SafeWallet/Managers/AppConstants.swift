@@ -9,6 +9,6 @@ import SwiftUI
 
 class AppConstants: ObservableObject {
     @Published var cardBackgroundOpacity = 0.35
-    @Published var colors: [String] = ["red", "orange", "systemBackground", "blue","green"]
+    @Published var colors: [Color.ColorName] = [.red, .orange, .systemBackground, .blue, .green]
     @Published var colorCircleSize: CGFloat = 40
 }

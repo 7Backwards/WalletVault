@@ -56,96 +56,17 @@ struct CardDetailsView: View {
     var body: some View {
         ZStack(alignment: .topTrailing) {
             VStack(alignment: .leading, spacing: 15) {
-                if isEditable {
-                    TextField("Name", text: $cardName)
-                        .onChange(of: cardName, initial: true) { _, newValue in
-                            self.cardName = String(cardName.prefix(20)).uppercased()
-                        }
-                } else {
-                    Text(cardName.uppercased())
-                        .font(.headline)
-                        .fontWeight(.bold)
-                        .textSelection(.enabled)
-                }
-                
-                
-                VStack(alignment: .leading) {
-                    if isEditable {
-                        TextField("Number", text: $cardNumber)
-                            .font(cardNumber.isEmpty ? .body : .title3)
-                            .fontWeight(cardNumber.isEmpty ? .none : .bold)
-                            .keyboardType(.numberPad)
-                            .frame(width: UIScreen.main.bounds.width * 0.58)
-                            .onChange(of: cardNumber, initial: true) { _, newValue in
-                                self.cardNumber = self.viewModel.formatCardNumber(newValue)
-                            }
-                    } else {
-                        HStack(spacing: 0) {
-                            if !isUnlocked {
-                                Text(String(repeating: "•", count: max(0, cardNumber.count - 4)))
-                                    .redacted(reason: .placeholder)
-                                Text(" " + cardNumber.suffix(4))
-                            } else {
-                                Text(cardNumber)
-                            }
-                            
-                        }
-                        .font(.title3)
-                        .fontWeight(.bold)
-                        .lineLimit(1)
-                        .layoutPriority(1)
-                        .textSelection(.enabled)
-                        
-                    }
-                }
+                CardDetailsNameAndNumberView(cardName: $cardName, cardNumber: $cardNumber, isEditable: isEditable, isUnlocked: isUnlocked, viewModel: viewModel)
                 
                 HStack {
-                    if isEditable {
-                        TextField("CVV", text: $cvvCode)
-                            .keyboardType(.numberPad)
-                            .frame(width: UIScreen.main.bounds.width * 0.55)
-                            .onChange(of: cvvCode, initial: true) { _, newValue in
-                                self.cvvCode = String(newValue.prefix(3))
-                            }
-                        
-                    } else {
-                        if !cardName.isEmpty {
-                            VStack {
-                                Text("CVV")
-                                    .font(.caption)
-                                    .fontWeight(.semibold)
-                                Text(cvvCode)
-                                    .font(.headline)
-                                    .fontWeight(.bold)
-                                    .redacted(reason: isUnlocked ? [] : .placeholder)
-                                    .textSelection(.enabled)
-                            }
-                        }
-                    }
-                    
+                    CardDetailsCVVView(cvvCode: $cvvCode, isEditable: isEditable, isUnlocked: isUnlocked, viewModel: viewModel)
                     Spacer()
                     Spacer()
-                    
-                    VStack(alignment: .trailing) {
-                        if isEditable {
-                            ExpiryDateTextField(expiryDate: $expiryDate)
-                                .font(.headline)
-                                .multilineTextAlignment(.trailing)
-                        } else {
-                            Text("Expires on")
-                                .font(.caption)
-                                .fontWeight(.semibold)
-                            Text(expiryDate)
-                                .font(.headline)
-                                .fontWeight(.bold)
-                                .redacted(reason: isUnlocked ? [] : .placeholder)
-                                .textSelection(.enabled)
-                        }
-                    }
+                    CardDetailsExpiryDateView(expiryDate: $expiryDate, isEditable: isEditable, viewModel: viewModel, isUnlocked: isUnlocked)
                 }
             }
             .padding()
-            .background(Color(wordName: cardColor).opacity(viewModel.getCardBackgroundOpacity()))
+            .background(Color(Color.ColorName(rawValue: cardColor) ?? .clear).opacity(viewModel.getCardBackgroundOpacity()))
             .cornerRadius(10)
             .overlay(
                 RoundedRectangle(cornerRadius: 10)
@@ -165,10 +86,121 @@ struct CardDetailsView: View {
     }
 }
 
+fileprivate struct CardDetailsNameAndNumberView: View {
+    @Binding var cardName: String
+    @Binding var cardNumber: String
+    var isEditable: Bool
+    var isUnlocked: Bool
+    var viewModel: CardDetailsViewModel
+    
+    var body: some View {
+        VStack(alignment: .leading, spacing: 15) {
+            if isEditable {
+                TextField("Name", text: $cardName)
+                    .onChange(of: cardName) { _, newValue in
+                        self.cardName = String(cardName.prefix(20)).uppercased()
+                    }
+            } else {
+                MenuTextView(content: cardName.uppercased(), view: Text(cardName.uppercased()))
+                    .font(.headline)
+                    .fontWeight(.bold)
+                    .foregroundStyle(Color(.inversedSystemBackground))
+                
+            }
+            if isEditable {
+                TextField("Number", text: $cardNumber)
+                    .font(cardNumber.isEmpty ? .body : .title3)
+                    .fontWeight(cardNumber.isEmpty ? .none : .bold)
+                    .keyboardType(.numberPad)
+                    .frame(width: UIScreen.main.bounds.width * 0.58)
+                    .onChange(of: cardNumber, initial: true) { _, newValue in
+                        self.cardNumber = self.viewModel.formatCardNumber(newValue)
+                    }
+            } else {
+                HStack(spacing: 0) {
+                    if !isUnlocked {
+                        Text(String(repeating: "•", count: max(0, cardNumber.count - 4)))
+                            .redacted(reason: .placeholder)
+                        Text(" " + cardNumber.suffix(4))
+                    } else {
+                        MenuTextView(content: cardNumber, view: Text(cardNumber))
+                            .foregroundStyle(Color(.inversedSystemBackground))
+                    }
+                }
+                .font(.title3)
+                .fontWeight(.bold)
+                .lineLimit(1)
+                .layoutPriority(1)
+                .textSelection(.enabled)
+            }
+        }
+    }
+}
+
+fileprivate struct CardDetailsCVVView: View {
+    @Binding var cvvCode: String
+    var isEditable: Bool
+    var isUnlocked: Bool
+    var viewModel: CardDetailsViewModel
+    
+    var body: some View {
+        if isEditable {
+            TextField("CVV", text: $cvvCode)
+                .keyboardType(.numberPad)
+                .frame(width: UIScreen.main.bounds.width * 0.55)
+                .onChange(of: cvvCode, initial: true) { _, newValue in
+                    self.cvvCode = String(newValue.prefix(3))
+                }
+            
+        } else {
+            if !cvvCode.isEmpty {
+                VStack {
+                    Text("CVV")
+                        .font(.caption)
+                        .fontWeight(.semibold)
+                    MenuTextView(content: cvvCode, view: Text(cvvCode))
+                        .font(.headline)
+                        .fontWeight(.bold)
+                        .redacted(reason: isUnlocked ? [] : .placeholder)
+                        .foregroundStyle(Color(.inversedSystemBackground))
+                }
+                
+            }
+        }
+    }
+}
+
+
+fileprivate struct CardDetailsExpiryDateView: View {
+    @Binding var expiryDate: String
+    var isEditable: Bool
+    var viewModel: CardDetailsViewModel
+    var isUnlocked: Bool
+    
+    var body: some View {
+        VStack(alignment: .trailing) {
+            if isEditable {
+                ExpiryDateTextField(expiryDate: $expiryDate)
+                    .font(.headline)
+                    .multilineTextAlignment(.trailing)
+            } else {
+                Text("Expires on")
+                    .font(.caption)
+                    .fontWeight(.semibold)
+                MenuTextView(content: expiryDate, view: Text(expiryDate))
+                    .font(.headline)
+                    .fontWeight(.bold)
+                    .redacted(reason: isUnlocked ? [] : .placeholder)
+                    .foregroundStyle(Color(.inversedSystemBackground))
+            }
+        }
+    }
+}
+
 struct ExpiryDateTextField: View {
     @Binding var expiryDate: String
     let maxDigits: Int = 4
-
+    
     var body: some View {
         TextField("MM/YY", text: $expiryDate)
             .keyboardType(.numberPad)
