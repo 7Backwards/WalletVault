@@ -9,6 +9,7 @@ import CoreData
 
 enum AppAction {
     case addCard(cardName: String, cardNumber: String, expiryDate: String, cvvCode: String, cardColor: String)
+    case editCard(id: NSManagedObjectID, cardName: String, cardNumber: String, expiryDate: String, cvvCode: String, cardColor: String)
     case removeCard(Card)
     case removeCards([Card])
     case changeCardColor(Card, String)
@@ -40,6 +41,15 @@ class AppActionManager {
             card.cardName = cardName
             card.cardColor = cardColor
             saveWithCompletion()
+        case .editCard(let id, let cardName, let cardNumber, let expiryDate, let cvvCode, let cardColor):
+            if let card = context.fetchCard(withID: id) {
+                card.cardName = cardName
+                card.cardNumber = cardNumber
+                card.expiryDate = expiryDate
+                card.cvvCode = cvvCode
+                card.cardColor = cardColor
+            }
+            saveWithCompletion()
         case .removeCard(let card):
             context.delete(card)
             saveWithCompletion()
@@ -52,6 +62,5 @@ class AppActionManager {
             card.cardColor = newCardColor
             saveWithCompletion()
         }
-        
     }
 }

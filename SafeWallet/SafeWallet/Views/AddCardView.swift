@@ -13,23 +13,26 @@ struct AddCardView: View {
     @State private var cardNumber: String = ""
     @State private var expiryDate: String = ""
     @State private var cvvCode: String = ""
-    @State private var cardColor: String = "systemBackground"
+    @State private var cardColor: String = Color.ColorName.systemBackground.rawValue
     @State private var showAlert = false
     @State private var alertMessage = ""
+    @State var isEditable: Bool = true
     @StateObject var viewModel: AddCardViewModel
     
     var body: some View {
         NavigationView {
             GeometryReader { geometry in
                 ScrollView {
-                    VStack(spacing: 20) {
+                    VStack(spacing: 30) {
                         CardDetailsView(
                                         viewModel: CardDetailsViewModel(appManager: viewModel.appManager),
                                         cardName: $cardName,
                                         cardNumber: $cardNumber,
                                         expiryDate: $expiryDate,
                                         cvvCode: $cvvCode,
-                                        cardColor: $cardColor)
+                                        cardColor: $cardColor,
+                                        isEditable: $isEditable,
+                                        isUnlocked: .constant(true))
                         .padding()
                         .frame(minWidth: 0, maxWidth: .infinity, minHeight: 100)
                         .cornerRadius(20)
@@ -38,30 +41,7 @@ struct AddCardView: View {
                         
                         ColorCarouselView(cardColor: $cardColor, viewModel: ColorCarouselViewModel(appManager: viewModel.appManager))
                         
-                        Button("Save Card") {
-                            viewModel.addCard(cardName: cardName, cardNumber: cardNumber, expiryDate: expiryDate, cvvCode: cvvCode, cardColor: cardColor) { result in
-                                switch result {
-                                case .success:
-                                    presentationMode.wrappedValue.dismiss()
-                                case .failure(let error):
-                                    // Handle the specific error, e.g., show an alert with the error description
-                                    switch error {
-                                    case .invalidDate:
-                                        alertMessage = "Invalid expiration date, please update it."
-                                    case .savingError:
-                                        alertMessage = "Something went wrong, please try again."
-                                    case .shortCardNumber:
-                                        alertMessage = "Card number is not invalid, please update it."
-                                    }
-                                    showAlert = true
-                                }
-                            }
-                            
-                        }
-                        .frame(width: geometry.size.width - 60, height: 50)
-                        .background(Color.blue)
-                        .foregroundColor(.white)
-                        .cornerRadius(10)
+                        AddButton(viewModel: viewModel, cardName: $cardName, cardNumber: $cardNumber, expiryDate: $expiryDate, cvvCode: $cvvCode, cardColor: $cardColor, alertMessage: $alertMessage, showAlert: $showAlert, isEditable: $isEditable, presentationMode: presentationMode)
                     }
                 }
             }
