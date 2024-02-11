@@ -7,15 +7,14 @@
 
 import SwiftUI
 
-class CardViewModel: ViewModelProtocol {
+class CardViewModel: AddOrEditCardViewModel, ViewModelProtocol {
     var card: Card
-    @Published var appManager: AppManager
     @Published var shouldShowDeleteConfirmation: Bool = false
     
     init(card: Card, appManager: AppManager) {
         self.card = card
-        self.appManager = appManager
         appManager.utils.protectScreen()
+        super.init(appManager: appManager)
     }
     
     deinit {

@@ -9,11 +9,12 @@ import SwiftUI
 
 struct MenuTextView<V: View>: View {
     let content: String
+    @Binding var isEditable: Bool
+    @State private var showingShareSheet = false
     var view: V
     let showCopy: Bool = true
     let showShare: Bool = true
-    let showEdit: Bool = false
-    @State private var showingShareSheet = false
+    let showEdit: Bool = true
     
     var body: some View {
         Menu {
@@ -33,7 +34,7 @@ struct MenuTextView<V: View>: View {
             }
             if showEdit {
                 Button(action: {
-                    // TODO
+                    isEditable = true
                 }) {
                     Label("Edit", systemImage: "pencil")
                 }

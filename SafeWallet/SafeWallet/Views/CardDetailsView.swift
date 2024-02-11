@@ -18,51 +18,40 @@ struct CardDetailsView: View {
     @Binding var isUnlocked: Bool
     @StateObject var viewModel: CardDetailsViewModel
     
-    var isEditable: Bool
+    @Binding var isEditable: Bool
     
-    init(viewModel: CardDetailsViewModel, cardName: Binding<String>, cardNumber: Binding<String>, expiryDate: Binding<String>, cvvCode: Binding<String>, cardColor: Binding<String>, isEditable: Bool = true) {
+    init(viewModel: CardDetailsViewModel, cardName: Binding<String>, cardNumber: Binding<String>, expiryDate: Binding<String>, cvvCode: Binding<String>, cardColor: Binding<String>, isEditable: Binding<Bool>, isUnlocked: Binding<Bool>) {
         self._cardName = cardName
         self._cardNumber = cardNumber
         self._expiryDate = expiryDate
         self._cvvCode = cvvCode
         self._cardColor = cardColor
+        self._isEditable = isEditable
+        self._isUnlocked = isUnlocked
         self._viewModel = StateObject(wrappedValue: viewModel)
-        self._isUnlocked = .constant(true)
-        self.isEditable = isEditable
     }
-    
-    init(viewModel: CardDetailsViewModel, card: Card, isUnlocked: Binding<Bool>) {
+
+    init(viewModel: CardDetailsViewModel, card: Card, isEditable: Binding<Bool>, isUnlocked: Binding<Bool>) {
         self._cardName = .constant(card.cardName)
         self._cardNumber = .constant(card.cardNumber)
         self._expiryDate = .constant(card.expiryDate)
         self._cvvCode = .constant(card.cvvCode)
         self._cardColor = .constant(card.cardColor)
+        self._isEditable = isEditable
         self._isUnlocked = isUnlocked
         self._viewModel = StateObject(wrappedValue: viewModel)
-        self.isEditable = false
-    }
-    
-    init(viewModel: CardDetailsViewModel, card: Card, isUnlocked: Binding<Bool>, cardColor: Binding<String>) {
-        self._cardName = .constant(card.cardName)
-        self._cardNumber = .constant(card.cardNumber)
-        self._expiryDate = .constant(card.expiryDate)
-        self._cvvCode = .constant(card.cvvCode)
-        self._cardColor = cardColor
-        self._isUnlocked = isUnlocked
-        self._viewModel = StateObject(wrappedValue: viewModel)
-        self.isEditable = false
     }
     
     var body: some View {
         ZStack(alignment: .topTrailing) {
             VStack(alignment: .leading, spacing: 15) {
-                CardDetailsNameAndNumberView(cardName: $cardName, cardNumber: $cardNumber, isEditable: isEditable, isUnlocked: isUnlocked, viewModel: viewModel)
+                CardDetailsNameAndNumberView(cardName: $cardName, cardNumber: $cardNumber, isEditable: $isEditable, isUnlocked: isUnlocked, viewModel: viewModel)
                 
                 HStack {
-                    CardDetailsCVVView(cvvCode: $cvvCode, isEditable: isEditable, isUnlocked: isUnlocked, viewModel: viewModel)
+                    CardDetailsCVVView(cvvCode: $cvvCode, isEditable: $isEditable, isUnlocked: isUnlocked, viewModel: viewModel)
                     Spacer()
                     Spacer()
-                    CardDetailsExpiryDateView(expiryDate: $expiryDate, isEditable: isEditable, viewModel: viewModel, isUnlocked: isUnlocked)
+                    CardDetailsExpiryDateView(expiryDate: $expiryDate, isEditable: $isEditable, viewModel: viewModel, isUnlocked: isUnlocked)
                 }
             }
             .padding()
@@ -89,7 +78,7 @@ struct CardDetailsView: View {
 fileprivate struct CardDetailsNameAndNumberView: View {
     @Binding var cardName: String
     @Binding var cardNumber: String
-    var isEditable: Bool
+    @Binding var isEditable: Bool
     var isUnlocked: Bool
     var viewModel: CardDetailsViewModel
     
@@ -101,7 +90,7 @@ fileprivate struct CardDetailsNameAndNumberView: View {
                         self.cardName = String(cardName.prefix(20)).uppercased()
                     }
             } else {
-                MenuTextView(content: cardName.uppercased(), view: Text(cardName.uppercased()))
+                MenuTextView(content: cardName.uppercased(), isEditable: $isEditable, view: Text(cardName.uppercased()))
                     .font(.headline)
                     .fontWeight(.bold)
                     .foregroundStyle(Color(.inversedSystemBackground))
@@ -123,7 +112,7 @@ fileprivate struct CardDetailsNameAndNumberView: View {
                             .redacted(reason: .placeholder)
                         Text(" " + cardNumber.suffix(4))
                     } else {
-                        MenuTextView(content: cardNumber, view: Text(cardNumber))
+                        MenuTextView(content: cardNumber, isEditable: $isEditable, view: Text(cardNumber))
                             .foregroundStyle(Color(.inversedSystemBackground))
                     }
                 }
@@ -139,7 +128,7 @@ fileprivate struct CardDetailsNameAndNumberView: View {
 
 fileprivate struct CardDetailsCVVView: View {
     @Binding var cvvCode: String
-    var isEditable: Bool
+    @Binding var isEditable: Bool
     var isUnlocked: Bool
     var viewModel: CardDetailsViewModel
     
@@ -158,7 +147,7 @@ fileprivate struct CardDetailsCVVView: View {
                     Text("CVV")
                         .font(.caption)
                         .fontWeight(.semibold)
-                    MenuTextView(content: cvvCode, view: Text(cvvCode))
+                    MenuTextView(content: cvvCode, isEditable: $isEditable, view: Text(cvvCode))
                         .font(.headline)
                         .fontWeight(.bold)
                         .redacted(reason: isUnlocked ? [] : .placeholder)
@@ -173,7 +162,7 @@ fileprivate struct CardDetailsCVVView: View {
 
 fileprivate struct CardDetailsExpiryDateView: View {
     @Binding var expiryDate: String
-    var isEditable: Bool
+    @Binding var isEditable: Bool
     var viewModel: CardDetailsViewModel
     var isUnlocked: Bool
     
@@ -187,7 +176,7 @@ fileprivate struct CardDetailsExpiryDateView: View {
                 Text("Expires on")
                     .font(.caption)
                     .fontWeight(.semibold)
-                MenuTextView(content: expiryDate, view: Text(expiryDate))
+                MenuTextView(content: expiryDate, isEditable: $isEditable, view: Text(expiryDate))
                     .font(.headline)
                     .fontWeight(.bold)
                     .redacted(reason: isUnlocked ? [] : .placeholder)
@@ -229,21 +218,21 @@ struct CardDetailsView_Previews: PreviewProvider {
         
         let viewModel = CardDetailsViewModel(appManager: AppManager(context: context))
         
-        // Binding variables for the preview
         let bindingCardName = Binding.constant("Visa")
         let bindingCardNumber = Binding.constant("4234 5678 0000 1111")
         let bindingExpiryDate = Binding.constant("12/25")
         let bindingCvvCode = Binding.constant("123")
         let bindingCardColor = Binding.constant("systemBackground")
+        let isEditable: Binding<Bool> = Binding.constant(false)
         
-        // Return the preview of CardDetailsView
         CardDetailsView(viewModel: viewModel,
                         cardName: bindingCardName,
                         cardNumber: bindingCardNumber,
                         expiryDate: bindingExpiryDate,
                         cvvCode: bindingCvvCode,
                         cardColor: bindingCardColor,
-                        isEditable: false)
+                        isEditable: isEditable,
+                        isUnlocked: .constant(true))
         .previewLayout(.sizeThatFits)
         .padding()
     }

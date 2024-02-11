@@ -40,14 +40,14 @@ struct CardListView: View {
                                     }
                                 }
                             } label: {
-                                CardRow(card: card, onDelete: {
+                                CardRow(onDelete: {
                                     if let index = cards.firstIndex(where: { $0.id == card.id }) {
                                         print("Deleting card at index: \(index)")
                                         viewModel.deleteCards(at: IndexSet(integer: index), from: cards)
                                     } else {
                                         print("Failed to find index for card")
                                     }
-                                }, appManager: viewModel.appManager)
+                                }, card: card, appManager: viewModel.appManager)
                                 .padding([.vertical], 10)
                                 .listRowInsets(EdgeInsets())
                             }
@@ -131,17 +131,18 @@ struct SearchBar: View {
 }
 
 struct CardRow: View {
-    var card: Card
     var onDelete: () -> Void
     
     @GestureState private var gestureDragOffset = CGSize.zero
+    @ObservedObject var card: Card
     @State private var dragOffset = CGSize.zero
     @State private var shouldShowDeleteConfirmation = false
+    @State var isEditable = false
     @StateObject var appManager: AppManager
     
     var body: some View {
         ZStack {
-            CardDetailsView(viewModel: CardDetailsViewModel(appManager: appManager), card: card, isUnlocked: .constant(false))
+            CardDetailsView(viewModel: CardDetailsViewModel(appManager: appManager), card: card, isEditable: $isEditable, isUnlocked: .constant(false))
                 .frame(minWidth: 0, maxWidth: .infinity, minHeight: 100)
                 .cornerRadius(10)
                 .shadow(radius: 5)

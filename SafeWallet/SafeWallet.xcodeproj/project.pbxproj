@@ -33,6 +33,8 @@
 		598D18C32B4C8E8000D88C08 /* CardViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 598D18C22B4C8E8000D88C08 /* CardViewModel.swift */; };
 		59BD328A2B752F9C00DC8F08 /* ViewModelProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 59BD32892B752F9C00DC8F08 /* ViewModelProtocol.swift */; };
 		59BD328C2B79495700DC8F08 /* MenuTextView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 59BD328B2B79495700DC8F08 /* MenuTextView.swift */; };
+		59BD328E2B797A9200DC8F08 /* AddCardViewModelProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 59BD328D2B797A9200DC8F08 /* AddCardViewModelProtocol.swift */; };
+		59BD32902B797DC500DC8F08 /* AddCardButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 59BD328F2B797DC500DC8F08 /* AddCardButton.swift */; };
 		59DFA19F2B3B6FD000EFD403 /* CardDetailsViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 59DFA19E2B3B6FD000EFD403 /* CardDetailsViewModel.swift */; };
 		59DFA1A12B3DCD5000EFD403 /* BiometricAuth.swift in Sources */ = {isa = PBXBuildFile; fileRef = 59DFA1A02B3DCD5000EFD403 /* BiometricAuth.swift */; };
 /* End PBXBuildFile section */
@@ -85,6 +87,8 @@
 		598D18C22B4C8E8000D88C08 /* CardViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardViewModel.swift; sourceTree = "<group>"; };
 		59BD32892B752F9C00DC8F08 /* ViewModelProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewModelProtocol.swift; sourceTree = "<group>"; };
 		59BD328B2B79495700DC8F08 /* MenuTextView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MenuTextView.swift; sourceTree = "<group>"; };
+		59BD328D2B797A9200DC8F08 /* AddCardViewModelProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddCardViewModelProtocol.swift; sourceTree = "<group>"; };
+		59BD328F2B797DC500DC8F08 /* AddCardButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddCardButton.swift; sourceTree = "<group>"; };
 		59DFA19E2B3B6FD000EFD403 /* CardDetailsViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardDetailsViewModel.swift; sourceTree = "<group>"; };
 		59DFA1A02B3DCD5000EFD403 /* BiometricAuth.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BiometricAuth.swift; sourceTree = "<group>"; };
 		59DFA1A22B3DCDB500EFD403 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = Info.plist; sourceTree = "<group>"; };
@@ -217,6 +221,7 @@
 				598D18C02B4C72B900D88C08 /* CardView.swift */,
 				5926C5BC2B5C44910065030E /* ColorCarouselView.swift */,
 				59BD328B2B79495700DC8F08 /* MenuTextView.swift */,
+				59BD328F2B797DC500DC8F08 /* AddCardButton.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -230,6 +235,7 @@
 				598D18C22B4C8E8000D88C08 /* CardViewModel.swift */,
 				5926C5BE2B5C8E8B0065030E /* ColorCarouselViewModel.swift */,
 				59BD32892B752F9C00DC8F08 /* ViewModelProtocol.swift */,
+				59BD328D2B797A9200DC8F08 /* AddCardViewModelProtocol.swift */,
 			);
 			path = ViewModels;
 			sourceTree = "<group>";
@@ -368,12 +374,14 @@
 				598C2F432B37421A00C291C3 /* CardListViewModel.swift in Sources */,
 				598C2F002B34C66200C291C3 /* SafeWalletApp.swift in Sources */,
 				598C2F3A2B34D44000C291C3 /* Card+CoreDataClass.swift in Sources */,
+				59BD32902B797DC500DC8F08 /* AddCardButton.swift in Sources */,
 				5926C5C32B5C96FE0065030E /* AppConstants.swift in Sources */,
 				598C2F052B34C66200C291C3 /* SafeWallet.xcdatamodeld in Sources */,
 				598C2F3B2B34D44000C291C3 /* Card+CoreDataProperties.swift in Sources */,
 				5926C5B42B59BBE30065030E /* AppManager.swift in Sources */,
 				598D18C32B4C8E8000D88C08 /* CardViewModel.swift in Sources */,
 				59DFA1A12B3DCD5000EFD403 /* BiometricAuth.swift in Sources */,
+				59BD328E2B797A9200DC8F08 /* AddCardViewModelProtocol.swift in Sources */,
 				5926C5BF2B5C8E8B0065030E /* ColorCarouselViewModel.swift in Sources */,
 				598D18C12B4C72B900D88C08 /* CardView.swift in Sources */,
 				59BD328C2B79495700DC8F08 /* MenuTextView.swift in Sources */,

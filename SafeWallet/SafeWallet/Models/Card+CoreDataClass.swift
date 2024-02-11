@@ -11,3 +11,9 @@ import CoreData
 
 @objc(Card)
 public class Card: NSManagedObject {}
+
+extension NSManagedObjectContext {
+    func fetchCard(withID id: NSManagedObjectID) -> Card? {
+        return self.object(with: id) as? Card
+    }
+}

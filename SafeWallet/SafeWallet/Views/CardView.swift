@@ -11,17 +11,28 @@ struct CardView: View {
     @Environment(\.presentationMode) var presentationMode
     @StateObject var viewModel: CardViewModel
     @State private var autoLockTimer: Timer?
-    @State private var cardColor: String
+    @State var cardColor: String
+    @State var cardName: String
+    @State var cardNumber: String
+    @State var expiryDate: String
+    @State var cvvCode: String
+    @State private var isEditable = false
+    @State private var showAlert = false
+    @State private var alertMessage = ""
 
     init(viewModel: CardViewModel) {
         _viewModel = StateObject(wrappedValue: viewModel)
         _cardColor = State(wrappedValue: viewModel.card.cardColor)
+        _cardName = State(wrappedValue: viewModel.card.cardName)
+        _cardNumber = State(wrappedValue: viewModel.card.cardNumber)
+        _cvvCode = State(wrappedValue: viewModel.card.cvvCode)
+        _expiryDate = State(wrappedValue: viewModel.card.expiryDate)
     }
 
     var body: some View {
         ZStack {
             VStack {
-                CardDetailsView(viewModel: CardDetailsViewModel(appManager: viewModel.appManager), card: viewModel.card, isUnlocked: .constant(true), cardColor: $cardColor)
+                CardDetailsView(viewModel: CardDetailsViewModel(appManager: viewModel.appManager), cardName: $cardName, cardNumber: $cardNumber, expiryDate: $expiryDate, cvvCode: $cvvCode, cardColor: $cardColor, isEditable: $isEditable, isUnlocked: .constant(true))
                     .padding(.horizontal, 20)
                     .padding(.vertical, 20)
                     .onTapGesture {
@@ -30,6 +41,10 @@ struct CardView: View {
                     }
                 
                 ColorCarouselView(cardColor: $cardColor, viewModel: ColorCarouselViewModel(appManager: viewModel.appManager))
+                
+                if isEditable {
+                    AddButton(viewModel: viewModel, id: viewModel.card.objectID, cardName: $cardName, cardNumber: $cardNumber, expiryDate: $expiryDate, cvvCode: $cvvCode, cardColor: $cardColor, alertMessage: $alertMessage, showAlert: $showAlert, isEditable: $isEditable, presentationMode: nil)
+                }
                 
                 Spacer()
                 
@@ -42,6 +57,18 @@ struct CardView: View {
                             .resizable()
                             .aspectRatio(contentMode: .fit)
                             .frame(width: 50, height: 50)
+                    }
+                    .buttonStyle(RoundedButtonStyle())
+                    
+                    Button(action: {
+                        isEditable.toggle()
+                    }) {
+                        if !isEditable {
+                            Image(systemName: "pencil.circle.fill")
+                                .resizable()
+                                .aspectRatio(contentMode: .fit)
+                                .frame(width: 50, height: 50)
+                        }
                     }
                     .buttonStyle(RoundedButtonStyle())
                     
