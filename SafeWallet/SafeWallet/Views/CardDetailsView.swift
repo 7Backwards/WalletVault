@@ -55,7 +55,7 @@ struct CardDetailsView: View {
                 }
             }
             .padding()
-            .background(Color(Color.ColorName(rawValue: cardColor) ?? .clear).opacity(viewModel.getCardBackgroundOpacity()))
+            .background(Color(cardColor).opacity(viewModel.getCardBackgroundOpacity()))
             .cornerRadius(10)
             .overlay(
                 RoundedRectangle(cornerRadius: 10)
@@ -93,7 +93,7 @@ fileprivate struct CardDetailsNameAndNumberView: View {
                 MenuTextView(content: cardName.uppercased(), isEditable: $isEditable, view: Text(cardName.uppercased()))
                     .font(.headline)
                     .fontWeight(.bold)
-                    .foregroundStyle(Color(.inversedSystemBackground))
+                    .foregroundStyle(Color.inverseSystemBackground)
                 
             }
             if isEditable {
@@ -113,7 +113,7 @@ fileprivate struct CardDetailsNameAndNumberView: View {
                         Text(" " + cardNumber.suffix(4))
                     } else {
                         MenuTextView(content: cardNumber, isEditable: $isEditable, view: Text(cardNumber))
-                            .foregroundStyle(Color(.inversedSystemBackground))
+                            .foregroundStyle(Color.inverseSystemBackground)
                     }
                 }
                 .font(.title3)
@@ -151,7 +151,7 @@ fileprivate struct CardDetailsCVVView: View {
                         .font(.headline)
                         .fontWeight(.bold)
                         .redacted(reason: isUnlocked ? [] : .placeholder)
-                        .foregroundStyle(Color(.inversedSystemBackground))
+                        .foregroundStyle(Color.inverseSystemBackground)
                 }
                 
             }
@@ -180,7 +180,7 @@ fileprivate struct CardDetailsExpiryDateView: View {
                     .font(.headline)
                     .fontWeight(.bold)
                     .redacted(reason: isUnlocked ? [] : .placeholder)
-                    .foregroundStyle(Color(.inversedSystemBackground))
+                    .foregroundStyle(Color.inverseSystemBackground)
             }
         }
     }

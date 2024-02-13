@@ -15,20 +15,20 @@ struct ColorCarouselView: View {
         GeometryReader { geometry in
             ScrollView(.horizontal, showsIndicators: false) {
                 HStack(spacing: 15) {
-                    ForEach(viewModel.appManager.constants.colors, id: \.self) { colorName in
-                        let color = Color(colorName).opacity(viewModel.getCardBackgroundOpacity())
+                    ForEach(viewModel.appManager.constants.colors, id: \.self) { color in
+                        let colorWithOpacity = color.opacity(viewModel.getCardBackgroundOpacity())
                         Circle()
-                            .fill(color)
+                            .fill(colorWithOpacity)
                             .frame(width: viewModel.appManager.constants.colorCircleSize, height: viewModel.appManager.constants.colorCircleSize)
                             .overlay(
                                 Circle()
                                     .stroke(Color.clear)
                             )
-                            .scaleEffect(cardColor == colorName.rawValue ? 1.2 : 1.0)
-                            .shadow(color: Color(uiColor: .inverseSystemBackground), radius: 0)
+                            .scaleEffect(cardColor == color.name ? 1.2 : 1.0)
+                            .shadow(color: Color.inverseSystemBackground, radius: 0)
                             .onTapGesture {
                                 withAnimation {
-                                    self.cardColor = colorName.rawValue
+                                    self.cardColor = color.name
                                 }
                             }
                     }
