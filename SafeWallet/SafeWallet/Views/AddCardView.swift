@@ -13,7 +13,7 @@ struct AddCardView: View {
     @State private var cardNumber: String = ""
     @State private var expiryDate: String = ""
     @State private var cvvCode: String = ""
-    @State private var cardColor: String = Color.ColorName.systemBackground.rawValue
+    @State private var cardColor: String = Color.systemBackground.name ?? "systemBackground"
     @State private var showAlert = false
     @State private var alertMessage = ""
     @State var isEditable: Bool = true
