@@ -10,13 +10,8 @@ import SwiftUI
 import CoreData
 
 struct AddButton: View {
-    let viewModel: AddOrEditCardViewModelProtocol
-    var id: NSManagedObjectID?
-    @Binding var cardName: String
-    @Binding var cardNumber: String
-    @Binding var expiryDate: String
-    @Binding var cvvCode: String
-    @Binding var cardColor: String
+    let viewModel: AddOrEditMyCardViewModelProtocol
+    @ObservedObject var cardViewModel: CardViewModel
     @Binding var alertMessage: String
     @Binding var showAlert: Bool
     @Binding var isEditable: Bool
@@ -25,7 +20,7 @@ struct AddButton: View {
     var body: some View {
         GeometryReader { geometry in
             Button("Save Card") {
-                viewModel.addOrEdit(id: id, cardName: cardName, cardNumber: cardNumber, expiryDate: expiryDate, cvvCode: cvvCode, cardColor: cardColor) { result in
+                viewModel.addOrEdit(cardViewModel: cardViewModel) { result in
                     switch result {
                     case .success:
                         if let presentationMode {

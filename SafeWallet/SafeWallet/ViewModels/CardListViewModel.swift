@@ -13,6 +13,7 @@ class CardListViewModel: ViewModelProtocol {
     @Published var searchText = ""
     @Published var showingAddCardView = false
     @Published var appManager: AppManager
+    private var cardsViewModels = [NSManagedObjectID : CardViewModel]()
     
     init(appManager: AppManager) {
         self.appManager = appManager
@@ -32,6 +33,16 @@ class CardListViewModel: ViewModelProtocol {
             } else {
                 completion(false)
             }
+        }
+    }
+    
+    func getCardViewModel(for card: Card) -> CardViewModel {
+        if let viewModel = cardsViewModels[card.objectID] {
+            return viewModel
+        } else {
+            let viewModel = CardViewModel(card: card)
+            cardsViewModels[card.objectID] = viewModel
+            return viewModel
         }
     }
 }

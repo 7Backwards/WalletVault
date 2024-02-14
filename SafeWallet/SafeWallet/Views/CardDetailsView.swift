@@ -10,52 +10,25 @@ import SwiftUI
 import Combine
 
 struct CardDetailsView: View {
-    @Binding var cardName: String
-    @Binding var cardNumber: String
-    @Binding var expiryDate: String
-    @Binding var cvvCode: String
-    @Binding var cardColor: String
-    @Binding var isUnlocked: Bool
     @StateObject var viewModel: CardDetailsViewModel
-    
+    @ObservedObject var cardViewModel: CardViewModel
     @Binding var isEditable: Bool
-    
-    init(viewModel: CardDetailsViewModel, cardName: Binding<String>, cardNumber: Binding<String>, expiryDate: Binding<String>, cvvCode: Binding<String>, cardColor: Binding<String>, isEditable: Binding<Bool>, isUnlocked: Binding<Bool>) {
-        self._cardName = cardName
-        self._cardNumber = cardNumber
-        self._expiryDate = expiryDate
-        self._cvvCode = cvvCode
-        self._cardColor = cardColor
-        self._isEditable = isEditable
-        self._isUnlocked = isUnlocked
-        self._viewModel = StateObject(wrappedValue: viewModel)
-    }
-
-    init(viewModel: CardDetailsViewModel, card: Card, isEditable: Binding<Bool>, isUnlocked: Binding<Bool>) {
-        self._cardName = .constant(card.cardName)
-        self._cardNumber = .constant(card.cardNumber)
-        self._expiryDate = .constant(card.expiryDate)
-        self._cvvCode = .constant(card.cvvCode)
-        self._cardColor = .constant(card.cardColor)
-        self._isEditable = isEditable
-        self._isUnlocked = isUnlocked
-        self._viewModel = StateObject(wrappedValue: viewModel)
-    }
+    var isUnlocked: Bool
     
     var body: some View {
         ZStack(alignment: .topTrailing) {
             VStack(alignment: .leading, spacing: 15) {
-                CardDetailsNameAndNumberView(cardName: $cardName, cardNumber: $cardNumber, isEditable: $isEditable, isUnlocked: isUnlocked, viewModel: viewModel)
+                CardDetailsNameAndNumberView(cardName: $cardViewModel.cardName, cardNumber: $cardViewModel.cardNumber, isEditable: $isEditable, isUnlocked: isUnlocked,viewModel: viewModel)
                 
                 HStack {
-                    CardDetailsCVVView(cvvCode: $cvvCode, isEditable: $isEditable, isUnlocked: isUnlocked, viewModel: viewModel)
+                    CardDetailsCVVView(cvvCode: $cardViewModel.cvvCode, isEditable: $isEditable, isUnlocked: isUnlocked, viewModel: viewModel)
                     Spacer()
                     Spacer()
-                    CardDetailsExpiryDateView(expiryDate: $expiryDate, isEditable: $isEditable, viewModel: viewModel, isUnlocked: isUnlocked)
+                    CardDetailsExpiryDateView(expiryDate: $cardViewModel.expiryDate, isEditable: $isEditable, viewModel: viewModel, isUnlocked: isUnlocked)
                 }
             }
             .padding()
-            .background(Color(cardColor).opacity(viewModel.getCardBackgroundOpacity()))
+            .background(Color(cardViewModel.cardColor).opacity(viewModel.getCardBackgroundOpacity()))
             .cornerRadius(10)
             .overlay(
                 RoundedRectangle(cornerRadius: 10)
@@ -63,7 +36,7 @@ struct CardDetailsView: View {
             )
             .shadow(radius: 3)
             
-            if let cardIssuerImage = viewModel.getCardIssuerImage(cardNumber: cardNumber) {
+            if let cardIssuerImage = viewModel.getCardIssuerImage(cardNumber: cardViewModel.cardNumber) {
                 cardIssuerImage
                     .resizable()
                     .aspectRatio(contentMode: .fit)
@@ -71,7 +44,34 @@ struct CardDetailsView: View {
                     .padding(.trailing, 15)
                     .padding(.top, 8)
             }
+            
+            Group {
+                Circle()
+                    .fill(Color.systemBackground)
+                Image(systemName: "star.fill")
+                    .resizable()
+                    .frame(width: 20, height: 20)
+                    .foregroundColor(.yellow)
+                    .padding(.top, 0)
+                    .padding(.trailing, 0)
+                    .transition(.scale)
+                    .opacity(cardViewModel.isFavorited ? 1 : 0.3)
+            }
+            .offset(x: 10, y: -10)
+            .frame(width: 28, height: 28)
+            .onTapGesture {
+                if let id = cardViewModel.id {
+                    viewModel.setCardIsFavorited(cardId: id, isFavorited: !cardViewModel.isFavorited) { result in
+                        if result {
+                            cardViewModel.isFavorited.toggle()
+                        }
+                    }
+                } else {
+                    cardViewModel.isFavorited.toggle()
+                }
+            }
         }
+        .padding([.top, .leading, .trailing], 10)
     }
 }
 
@@ -212,28 +212,22 @@ struct ExpiryDateTextField: View {
 }
 
 
-struct CardDetailsView_Previews: PreviewProvider {
-    static var previews: some View {
-        let context = PersistenceController.preview.container.viewContext
-        
-        let viewModel = CardDetailsViewModel(appManager: AppManager(context: context))
-        
-        let bindingCardName = Binding.constant("Visa")
-        let bindingCardNumber = Binding.constant("4234 5678 0000 1111")
-        let bindingExpiryDate = Binding.constant("12/25")
-        let bindingCvvCode = Binding.constant("123")
-        let bindingCardColor = Binding.constant("systemBackground")
-        let isEditable: Binding<Bool> = Binding.constant(false)
-        
-        CardDetailsView(viewModel: viewModel,
-                        cardName: bindingCardName,
-                        cardNumber: bindingCardNumber,
-                        expiryDate: bindingExpiryDate,
-                        cvvCode: bindingCvvCode,
-                        cardColor: bindingCardColor,
-                        isEditable: isEditable,
-                        isUnlocked: .constant(true))
-        .previewLayout(.sizeThatFits)
-        .padding()
-    }
-}
+//struct CardDetailsView_Previews: PreviewProvider {
+//    static var previews: some View {
+//        let context = PersistenceController.preview.container.viewContext
+//        
+//        let viewModel = CardDetailsViewModel(appManager: AppManager(context: context))
+//        
+//        let mockCard = Card(context: PersistenceController.preview.container.viewContext)
+//        mockCard.cardName = "Visa"
+//        mockCard.cardNumber = "4234 5678 9012 3456"
+//        mockCard.expiryDate = "12/25"
+//        mockCard.cvvCode = "123"
+//        
+//        CardDetailsView(viewModel: viewModel,
+//                        cardViewModel: CardViewModel(card: mockCard),
+//                        isUnlocked: .constant(true))
+//        .previewLayout(.sizeThatFits)
+//        .padding()
+//    }
+//}

@@ -9,11 +9,7 @@ import SwiftUI
 
 struct AddCardView: View {
     @Environment(\.presentationMode) var presentationMode
-    @State private var cardName: String = ""
-    @State private var cardNumber: String = ""
-    @State private var expiryDate: String = ""
-    @State private var cvvCode: String = ""
-    @State private var cardColor: String = Color.systemBackground.name ?? "systemBackground"
+    @ObservedObject private var cardViewModel = CardViewModel(card: nil)
     @State private var showAlert = false
     @State private var alertMessage = ""
     @State var isEditable: Bool = true
@@ -26,22 +22,18 @@ struct AddCardView: View {
                     VStack(spacing: 30) {
                         CardDetailsView(
                                         viewModel: CardDetailsViewModel(appManager: viewModel.appManager),
-                                        cardName: $cardName,
-                                        cardNumber: $cardNumber,
-                                        expiryDate: $expiryDate,
-                                        cvvCode: $cvvCode,
-                                        cardColor: $cardColor,
+                                        cardViewModel: cardViewModel,
                                         isEditable: $isEditable,
-                                        isUnlocked: .constant(true))
+                                        isUnlocked: true)
                         .padding()
                         .frame(minWidth: 0, maxWidth: .infinity, minHeight: 100)
                         .cornerRadius(20)
                         .shadow(radius: 5)
                         .padding(.horizontal)
                         
-                        ColorCarouselView(cardColor: $cardColor, viewModel: ColorCarouselViewModel(appManager: viewModel.appManager))
+                        ColorCarouselView(cardColor: $cardViewModel.cardColor, viewModel: ColorCarouselViewModel(appManager: viewModel.appManager))
                         
-                        AddButton(viewModel: viewModel, cardName: $cardName, cardNumber: $cardNumber, expiryDate: $expiryDate, cvvCode: $cvvCode, cardColor: $cardColor, alertMessage: $alertMessage, showAlert: $showAlert, isEditable: $isEditable, presentationMode: presentationMode)
+                        AddButton(viewModel: viewModel, cardViewModel: cardViewModel, alertMessage: $alertMessage, showAlert: $showAlert, isEditable: $isEditable, presentationMode: presentationMode)
                     }
                 }
             }

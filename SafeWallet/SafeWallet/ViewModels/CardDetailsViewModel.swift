@@ -7,6 +7,7 @@
 
 import Foundation
 import SwiftUI
+import CoreData
 
 class CardDetailsViewModel: ViewModelProtocol {
     @Published var appManager: AppManager
@@ -25,5 +26,9 @@ class CardDetailsViewModel: ViewModelProtocol {
     
     func getCardBackgroundOpacity() -> Double {
         appManager.constants.cardBackgroundOpacity
+    }
+    
+    func setCardIsFavorited(cardId: NSManagedObjectID, isFavorited: Bool, completion: ((Bool) -> Void)? = nil) {
+        appManager.actionManager.doAction(action: .setIsFavorited(id: cardId, isFavorited), completion: completion)
     }
 }

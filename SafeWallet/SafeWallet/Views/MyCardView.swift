@@ -1,5 +1,5 @@
 //
-//  CardView.swift
+//  MyCardView.swift
 //  SafeWallet
 //
 //  Created by Gonçalo on 08/01/2024.
@@ -7,32 +7,26 @@
 
 import SwiftUI
 
-struct CardView: View {
+struct MyCardView: View {
     @Environment(\.presentationMode) var presentationMode
-    @StateObject var viewModel: CardViewModel
-    @State private var autoLockTimer: Timer?
-    @State var cardColor: String
-    @State var cardName: String
-    @State var cardNumber: String
-    @State var expiryDate: String
-    @State var cvvCode: String
+    @StateObject var viewModel: MyCardViewModel
+    @ObservedObject var cardViewModel: CardViewModel
     @State private var isEditable = false
     @State private var showAlert = false
     @State private var alertMessage = ""
+    @State private var autoLockTimer: Timer?
+    
 
-    init(viewModel: CardViewModel) {
+    init(viewModel: MyCardViewModel, cardViewModel: CardViewModel) {
         _viewModel = StateObject(wrappedValue: viewModel)
-        _cardColor = State(wrappedValue: viewModel.card.cardColor)
-        _cardName = State(wrappedValue: viewModel.card.cardName)
-        _cardNumber = State(wrappedValue: viewModel.card.cardNumber)
-        _cvvCode = State(wrappedValue: viewModel.card.cvvCode)
-        _expiryDate = State(wrappedValue: viewModel.card.expiryDate)
+        self.cardViewModel = cardViewModel
+        print("Info1: MycardView init")
     }
 
     var body: some View {
         ZStack {
             VStack {
-                CardDetailsView(viewModel: CardDetailsViewModel(appManager: viewModel.appManager), cardName: $cardName, cardNumber: $cardNumber, expiryDate: $expiryDate, cvvCode: $cvvCode, cardColor: $cardColor, isEditable: $isEditable, isUnlocked: .constant(true))
+                CardDetailsView(viewModel: CardDetailsViewModel(appManager: viewModel.appManager), cardViewModel: cardViewModel, isEditable: $isEditable, isUnlocked: true)
                     .padding(.horizontal, 20)
                     .padding(.vertical, 20)
                     .onTapGesture {
@@ -40,10 +34,10 @@ struct CardView: View {
                         self.startAutoLockTimer()
                     }
                 
-                ColorCarouselView(cardColor: $cardColor, viewModel: ColorCarouselViewModel(appManager: viewModel.appManager))
+                ColorCarouselView(cardColor: $cardViewModel.cardColor, viewModel: ColorCarouselViewModel(appManager: viewModel.appManager))
                 
                 if isEditable {
-                    AddButton(viewModel: viewModel, id: viewModel.card.objectID, cardName: $cardName, cardNumber: $cardNumber, expiryDate: $expiryDate, cvvCode: $cvvCode, cardColor: $cardColor, alertMessage: $alertMessage, showAlert: $showAlert, isEditable: $isEditable, presentationMode: nil)
+                    AddButton(viewModel: viewModel, cardViewModel: cardViewModel, alertMessage: $alertMessage, showAlert: $showAlert, isEditable: $isEditable)
                 }
                 
                 Spacer()
@@ -91,7 +85,7 @@ struct CardView: View {
         }
         .onDisappear {
             resetAutoLockTimer()
-            viewModel.updateCardColor(cardColor: cardColor)
+            viewModel.updateCardColor(cardColor: cardViewModel.cardColor)
         }
         .navigationBarTitle(viewModel.card.cardName, displayMode: .inline)
         .alert(isPresented: $viewModel.shouldShowDeleteConfirmation) {
@@ -116,6 +110,13 @@ struct CardView: View {
                 })
             )
         }
+        .alert(isPresented: $showAlert) {
+            Alert(
+                title: Text("Error"),
+                message: Text(alertMessage),
+                dismissButton: .default(Text("OK"))
+            )
+        }
         .padding(.bottom, 20)
     }
 }
@@ -128,25 +129,8 @@ struct RoundedButtonStyle: ButtonStyle {
     }
 }
 
-struct CardView_Previews: PreviewProvider {
-    static var previews: some View {
-        // Create a mock Card object for the preview
-        let mockCard = Card(context: PersistenceController.preview.container.viewContext)
-        mockCard.cardName = "Visa"
-        mockCard.cardNumber = "4234 5678 9012 3456"
-        mockCard.expiryDate = "12/25"
-        mockCard.cvvCode = "123"
-        
-        let cardViewModel = CardViewModel(card: mockCard, appManager: AppManager(context: PersistenceController.preview.container.viewContext))
-        return CardView(viewModel: cardViewModel)
-            .environment(\.managedObjectContext, PersistenceController.preview.container.viewContext)
-            .previewLayout(.sizeThatFits)
-            .padding()
-    }
-}
-
 // Auto-lock Funcionality
-extension CardView {
+extension MyCardView {
     private func startAutoLockTimer() {
         resetAutoLockTimer()
         self.autoLockTimer = Timer.scheduledTimer(withTimeInterval: 30, repeats: false) { _ in
@@ -158,3 +142,22 @@ extension CardView {
         autoLockTimer?.invalidate()
     }
 }
+
+
+//struct CardView_Previews: PreviewProvider {
+//    static var previews: some View {
+//        // Create a mock Card object for the preview
+//        let mockCard = Card(context: PersistenceController.preview.container.viewContext)
+//        mockCard.cardName = "Visa"
+//        mockCard.cardNumber = "4234 5678 9012 3456"
+//        mockCard.expiryDate = "12/25"
+//        mockCard.cvvCode = "123"
+//        
+//        let cardViewModel = CardViewModel(card: mockCard, appManager: AppManager(context: PersistenceController.preview.container.viewContext))
+//        return CardView(viewModel: cardViewModel)
+//            .environment(\.managedObjectContext, PersistenceController.preview.container.viewContext)
+//            .previewLayout(.sizeThatFits)
+//            .padding()
+//    }
+//}
+
