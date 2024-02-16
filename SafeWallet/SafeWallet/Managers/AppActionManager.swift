@@ -8,11 +8,12 @@
 import CoreData
 
 enum AppAction {
-    case addCard(cardName: String, cardNumber: String, expiryDate: String, cvvCode: String, cardColor: String)
-    case editCard(id: NSManagedObjectID, cardName: String, cardNumber: String, expiryDate: String, cvvCode: String, cardColor: String)
+    case addCard(cardName: String, cardNumber: String, expiryDate: String, cvvCode: String, cardColor: String, isFavorited: Bool)
+    case editCard(id: NSManagedObjectID, cardName: String, cardNumber: String, expiryDate: String, cvvCode: String, cardColor: String, isFavorited: Bool)
     case removeCard(Card)
     case removeCards([Card])
     case changeCardColor(Card, String)
+    case setIsFavorited(id: NSManagedObjectID, Bool)
 }
 
 class AppActionManager {
@@ -33,21 +34,23 @@ class AppActionManager {
         }
 
         switch action {
-        case .addCard(let cardName, let cardNumber, let expiryDate, let cvvCode, let cardColor):
+        case .addCard(let cardName, let cardNumber, let expiryDate, let cvvCode, let cardColor, let isFavorited):
             let card = Card(context: context)
             card.cardNumber = cardNumber
             card.expiryDate = expiryDate
             card.cvvCode = cvvCode
             card.cardName = cardName
             card.cardColor = cardColor
+            card.isFavorited = isFavorited
             saveWithCompletion()
-        case .editCard(let id, let cardName, let cardNumber, let expiryDate, let cvvCode, let cardColor):
+        case .editCard(let id, let cardName, let cardNumber, let expiryDate, let cvvCode, let cardColor, let isFavorited):
             if let card = context.fetchCard(withID: id) {
                 card.cardName = cardName
                 card.cardNumber = cardNumber
                 card.expiryDate = expiryDate
                 card.cvvCode = cvvCode
                 card.cardColor = cardColor
+                card.isFavorited = isFavorited
             }
             saveWithCompletion()
         case .removeCard(let card):
@@ -60,6 +63,13 @@ class AppActionManager {
             saveWithCompletion()
         case .changeCardColor(let card, let newCardColor):
             card.cardColor = newCardColor
+            saveWithCompletion()
+        case .setIsFavorited(let cardId, let isFavorited):
+            guard let card = context.fetchCard(withID: cardId) else {
+                completion?(false)
+                return
+            }
+            card.isFavorited = isFavorited
             saveWithCompletion()
         }
     }

@@ -2,30 +2,28 @@
 //  CardViewModel.swift
 //  SafeWallet
 //
-//  Created by Gonçalo on 08/01/2024.
+//  Created by Gonçalo on 14/02/2024.
 //
 
-import SwiftUI
+import Foundation
+import CoreData
 
-class CardViewModel: AddOrEditCardViewModel, ViewModelProtocol {
-    var card: Card
-    @Published var shouldShowDeleteConfirmation: Bool = false
+class CardViewModel: ObservableObject {
+    @Published var cardName: String = ""
+    @Published var cardNumber: String = ""
+    @Published var expiryDate: String = ""
+    @Published var cvvCode: String = ""
+    @Published var cardColor: String = ""
+    @Published var isFavorited: Bool = false
+    @Published var id: NSManagedObjectID?
     
-    init(card: Card, appManager: AppManager) {
-        self.card = card
-        appManager.utils.protectScreen()
-        super.init(appManager: appManager)
-    }
-    
-    deinit {
-        appManager.utils.unprotectScreen()
-    }
-
-    func delete(completion: @escaping (Bool) -> Void ) {
-        appManager.actionManager.doAction(action: .removeCard(card), completion: completion)
-    }
-    
-    func updateCardColor(cardColor: String) {
-        appManager.actionManager.doAction(action: .changeCardColor(card, cardColor))
+    init(card: Card?) {
+        cardName = card?.cardName ?? ""
+        cardNumber = card?.cardNumber ?? ""
+        expiryDate = card?.expiryDate ?? ""
+        cvvCode = card?.cvvCode ?? ""
+        cardColor = card?.cardColor ?? "systemBackground"
+        isFavorited = card?.isFavorited ?? false
+        id = card?.objectID
     }
 }

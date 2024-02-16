@@ -13,7 +13,7 @@ struct CardListView: View {
     @StateObject var viewModel: CardListViewModel
     @State private var path = NavigationPath()
     @FetchRequest(
-        sortDescriptors: [NSSortDescriptor(keyPath: \Card.cardName, ascending: true)],
+        sortDescriptors: [NSSortDescriptor(keyPath: \Card.isFavorited, ascending: false)],
         animation: .default)
     var cards: FetchedResults<Card>
     
@@ -26,9 +26,6 @@ struct CardListView: View {
                     if cards.isEmpty {
                         NoContentView()
                     } else {
-                        if !cards.isEmpty {
-                            
-                        }
                         ForEach(cards.filter {
                             viewModel.searchText.isEmpty ||
                             $0.cardNumber.contains(viewModel.searchText) || $0.cardName.contains(viewModel.searchText)
@@ -40,14 +37,14 @@ struct CardListView: View {
                                     }
                                 }
                             } label: {
-                                CardRow(onDelete: {
+                                CardRow(cardViewModel: viewModel.getCardViewModel(for: card), appManager: viewModel.appManager) {
                                     if let index = cards.firstIndex(where: { $0.id == card.id }) {
                                         print("Deleting card at index: \(index)")
                                         viewModel.deleteCards(at: IndexSet(integer: index), from: cards)
                                     } else {
                                         print("Failed to find index for card")
                                     }
-                                }, card: card, appManager: viewModel.appManager)
+                                }
                                 .padding([.vertical], 10)
                                 .listRowInsets(EdgeInsets())
                             }
@@ -58,7 +55,7 @@ struct CardListView: View {
                 .padding()
             }
             .navigationDestination(for: Card.self, destination: { card in
-                CardView(viewModel: CardViewModel(card: card, appManager: viewModel.appManager))
+                MyCardView(viewModel: MyCardViewModel(card: card, appManager: viewModel.appManager), cardViewModel: viewModel.getCardViewModel(for: card))
             })
             .scrollIndicators(.hidden)
             .listStyle(.plain)
@@ -71,7 +68,7 @@ struct CardListView: View {
             })
             .sheet(isPresented: $viewModel.showingAddCardView) {
                 AddCardView(viewModel: AddCardViewModel(appManager: viewModel.appManager))
-                    .presentationDetents([.height(UIScreen.main.bounds.height * 0.4)])
+                    .presentationDetents([.medium, .large])
             }
             .background(Color(UIColor.systemBackground).edgesIgnoringSafeArea(.all))
         }
@@ -126,70 +123,6 @@ struct SearchBar: View {
                         }
                     }
                 )
-        }
-    }
-}
-
-struct CardRow: View {
-    var onDelete: () -> Void
-    
-    @GestureState private var gestureDragOffset = CGSize.zero
-    @ObservedObject var card: Card
-    @State private var dragOffset = CGSize.zero
-    @State private var shouldShowDeleteConfirmation = false
-    @State var isEditable = false
-    @StateObject var appManager: AppManager
-    
-    var body: some View {
-        ZStack {
-            CardDetailsView(viewModel: CardDetailsViewModel(appManager: appManager), card: card, isEditable: $isEditable, isUnlocked: .constant(false))
-                .frame(minWidth: 0, maxWidth: .infinity, minHeight: 100)
-                .cornerRadius(10)
-                .shadow(radius: 5)
-                .offset(x: dragOffset.width + gestureDragOffset.width)
-                .gesture(
-                    DragGesture(minimumDistance: 30)
-                        .updating($gestureDragOffset, body: { (value, state, _) in
-                            let translationX = value.translation.width
-                            if translationX < 0, translationX > -70 {
-                                state = CGSize(width: translationX, height: 0)
-                            }
-                        })
-                        .onEnded { value in
-                            if value.translation.width < 0 {
-                                if value.translation.width <= -50 {
-                                    withAnimation {
-                                        dragOffset = .zero
-                                        shouldShowDeleteConfirmation = true
-                                    }
-                                }
-                            }
-                        }
-                )
-            
-                .alert(isPresented: $shouldShowDeleteConfirmation) {
-                    Alert(
-                        title: Text("Delete Card"),
-                        message: Text("Are you sure you want to delete this card?"),
-                        primaryButton: .default(Text("Cancel"), action: { shouldShowDeleteConfirmation = false }),
-                        secondaryButton: .destructive(Text("Delete"), action: {
-                            withAnimation {
-                                onDelete()
-                            }
-                            shouldShowDeleteConfirmation = false
-                        })
-                    )
-                }
-            
-            if gestureDragOffset.width < -10 {
-                HStack {
-                    Spacer()
-                    Image(systemName: "trash")
-                        .foregroundColor(.red)
-                        .padding()
-                        .frame(width: abs(gestureDragOffset.width))
-                }
-            }
         }
     }
 }
