@@ -20,7 +20,6 @@ struct MyCardView: View {
     init(viewModel: MyCardViewModel, cardViewModel: CardViewModel) {
         _viewModel = StateObject(wrappedValue: viewModel)
         self.cardViewModel = cardViewModel
-        print("Info1: MycardView init")
     }
 
     var body: some View {

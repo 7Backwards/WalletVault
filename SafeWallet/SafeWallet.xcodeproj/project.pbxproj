@@ -37,6 +37,8 @@
 		59BD32902B797DC500DC8F08 /* AddCardButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 59BD328F2B797DC500DC8F08 /* AddCardButton.swift */; };
 		59BD32942B7C149100DC8F08 /* CardRow.swift in Sources */ = {isa = PBXBuildFile; fileRef = 59BD32932B7C149100DC8F08 /* CardRow.swift */; };
 		59BD32962B7D2C9000DC8F08 /* CardViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 59BD32952B7D2C9000DC8F08 /* CardViewModel.swift */; };
+		59BD32A32B80FCE400DC8F08 /* ProtectScreenViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 59BD32A22B80FCE400DC8F08 /* ProtectScreenViewController.swift */; };
+		59BD32A52B80FE5B00DC8F08 /* UIColor+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 59BD32A42B80FE5B00DC8F08 /* UIColor+Extension.swift */; };
 		59DFA19F2B3B6FD000EFD403 /* CardDetailsViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 59DFA19E2B3B6FD000EFD403 /* CardDetailsViewModel.swift */; };
 		59DFA1A12B3DCD5000EFD403 /* BiometricAuth.swift in Sources */ = {isa = PBXBuildFile; fileRef = 59DFA1A02B3DCD5000EFD403 /* BiometricAuth.swift */; };
 /* End PBXBuildFile section */
@@ -93,6 +95,8 @@
 		59BD328F2B797DC500DC8F08 /* AddCardButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddCardButton.swift; sourceTree = "<group>"; };
 		59BD32932B7C149100DC8F08 /* CardRow.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardRow.swift; sourceTree = "<group>"; };
 		59BD32952B7D2C9000DC8F08 /* CardViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardViewModel.swift; sourceTree = "<group>"; };
+		59BD32A22B80FCE400DC8F08 /* ProtectScreenViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProtectScreenViewController.swift; sourceTree = "<group>"; };
+		59BD32A42B80FE5B00DC8F08 /* UIColor+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIColor+Extension.swift"; sourceTree = "<group>"; };
 		59DFA19E2B3B6FD000EFD403 /* CardDetailsViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardDetailsViewModel.swift; sourceTree = "<group>"; };
 		59DFA1A02B3DCD5000EFD403 /* BiometricAuth.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BiometricAuth.swift; sourceTree = "<group>"; };
 		59DFA1A22B3DCDB500EFD403 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = Info.plist; sourceTree = "<group>"; };
@@ -138,6 +142,7 @@
 			isa = PBXGroup;
 			children = (
 				5926C5BA2B5C2FE60065030E /* Color+Extension.swift */,
+				59BD32A42B80FE5B00DC8F08 /* UIColor+Extension.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -165,6 +170,7 @@
 		598C2EFE2B34C66200C291C3 /* SafeWallet */ = {
 			isa = PBXGroup;
 			children = (
+				59BD32A12B80FCD600DC8F08 /* ViewControllers */,
 				5926C5B92B5C2FDC0065030E /* Extensions */,
 				5926C5B22B59BBD90065030E /* Managers */,
 				59DFA1A22B3DCDB500EFD403 /* Info.plist */,
@@ -244,6 +250,14 @@
 				59BD32952B7D2C9000DC8F08 /* CardViewModel.swift */,
 			);
 			path = ViewModels;
+			sourceTree = "<group>";
+		};
+		59BD32A12B80FCD600DC8F08 /* ViewControllers */ = {
+			isa = PBXGroup;
+			children = (
+				59BD32A22B80FCE400DC8F08 /* ProtectScreenViewController.swift */,
+			);
+			path = ViewControllers;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -388,12 +402,14 @@
 				598C2F3B2B34D44000C291C3 /* Card+CoreDataProperties.swift in Sources */,
 				5926C5B42B59BBE30065030E /* AppManager.swift in Sources */,
 				598D18C32B4C8E8000D88C08 /* MyCardViewModel.swift in Sources */,
+				59BD32A32B80FCE400DC8F08 /* ProtectScreenViewController.swift in Sources */,
 				59DFA1A12B3DCD5000EFD403 /* BiometricAuth.swift in Sources */,
 				59BD328E2B797A9200DC8F08 /* AddCardViewModelProtocol.swift in Sources */,
 				5926C5BF2B5C8E8B0065030E /* ColorCarouselViewModel.swift in Sources */,
 				598D18C12B4C72B900D88C08 /* MyCardView.swift in Sources */,
 				59BD328C2B79495700DC8F08 /* MenuTextView.swift in Sources */,
 				5926C5BD2B5C44910065030E /* ColorCarouselView.swift in Sources */,
+				59BD32A52B80FE5B00DC8F08 /* UIColor+Extension.swift in Sources */,
 				598C2F072B34C66200C291C3 /* CardListView.swift in Sources */,
 				5926C5B62B59BCFB0065030E /* AppActionManager.swift in Sources */,
 				59DFA19F2B3B6FD000EFD403 /* CardDetailsViewModel.swift in Sources */,

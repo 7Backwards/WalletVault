@@ -60,18 +60,23 @@ class PrivacyProtectionWindow {
     @objc func protect() {
         guard let windowScene = UIApplication.shared.connectedScenes.first as? UIWindowScene else { return }
         window = UIWindow(windowScene: windowScene)
-        window?.rootViewController = UIViewController()
+        window?.rootViewController = ProtectScreenViewController()
         window?.windowLevel = .alert + 1
         window?.backgroundColor = .systemBackground
-        window?.makeKeyAndVisible()
+        DispatchQueue.main.asyncAfter(deadline: .now() + 0.1) {
+            print("Info1: makeKeyAndVisible()")
+            self.window?.makeKeyAndVisible()
+        }
     }
 
     @objc func unprotect() {
         window?.isHidden = true
+        window?.resignKey()
         window = nil
     }
 
     func stopProtection() {
+        unprotect()
         NotificationCenter.default.removeObserver(self)
     }
 }

@@ -25,6 +25,7 @@ extension Color {
         "primary": .primary,
         "secondary": .secondary,
         "systemBackground": Color(uiColor: .systemBackground),
+        "appIconBackgroundColor": Color(uiColor: .appIconBackgroundColor),
         "inversedSystemBackground": Color(uiColor: .inverseSystemBackground)
     ]
 
