@@ -54,9 +54,9 @@ struct CardListView: View {
                 }
                 .padding()
             }
-            .navigationDestination(for: Card.self, destination: { card in
+            .navigationDestination(for: Card.self) { card in
                 MyCardView(viewModel: MyCardViewModel(card: card, appManager: viewModel.appManager), cardViewModel: viewModel.getCardViewModel(for: card))
-            })
+            }
             .scrollIndicators(.hidden)
             .listStyle(.plain)
             .scrollContentBackground(.hidden)
