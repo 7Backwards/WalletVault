@@ -27,6 +27,7 @@ class AddOrEditMyCardViewModel: AddOrEditMyCardViewModelProtocol {
         let isFavorited = cardViewModel.isFavorited
         let expiryDate = cardViewModel.expiryDate
         let id = cardViewModel.id
+        let pin = cardViewModel.pin
 
         guard !cardName.isEmpty, !cardNumber.isEmpty, !expiryDate.isEmpty, !cvvCode.isEmpty, !cardColor.isEmpty else { return }
         
@@ -43,11 +44,11 @@ class AddOrEditMyCardViewModel: AddOrEditMyCardViewModelProtocol {
         if let date = dateFormatter.date(from: expiryDate) {
             if Calendar.current.compare(date, to: Date(), toGranularity: .month) == .orderedDescending {
                 if let id {
-                    appManager.actionManager.doAction(action: .editCard(id: id, cardName: cardName, cardNumber: cardNumber, expiryDate: expiryDate, cvvCode: cvvCode, cardColor: cardColor, isFavorited: isFavorited)) { result in
+                    appManager.actionManager.doAction(action: .editCard(id: id, cardName: cardName, cardNumber: cardNumber, expiryDate: expiryDate, cvvCode: cvvCode, cardColor: cardColor, isFavorited: isFavorited, pin: pin)) { result in
                         completion(result ? .success(()) : .failure(.savingError))
                     }
                 } else {
-                    appManager.actionManager.doAction(action: .addCard(cardName: cardName, cardNumber: cardNumber, expiryDate: expiryDate, cvvCode: cvvCode, cardColor: cardColor, isFavorited: isFavorited)) { result in
+                    appManager.actionManager.doAction(action: .addCard(cardName: cardName, cardNumber: cardNumber, expiryDate: expiryDate, cvvCode: cvvCode, cardColor: cardColor, isFavorited: isFavorited, pin: pin)) { result in
                         completion(result ? .success(()) : .failure(.savingError))
                     }
                 }

@@ -14,64 +14,64 @@ struct CardDetailsView: View {
     @ObservedObject var cardViewModel: CardViewModel
     @Binding var isEditable: Bool
     var isUnlocked: Bool
+    let setIsFavorited: (Bool) -> Void
     
     var body: some View {
-        ZStack(alignment: .topTrailing) {
-            VStack(alignment: .leading, spacing: 15) {
-                CardDetailsNameAndNumberView(cardName: $cardViewModel.cardName, cardNumber: $cardViewModel.cardNumber, isEditable: $isEditable, isUnlocked: isUnlocked,viewModel: viewModel)
-                
-                HStack {
-                    CardDetailsCVVView(cvvCode: $cardViewModel.cvvCode, isEditable: $isEditable, isUnlocked: isUnlocked, viewModel: viewModel)
-                    Spacer()
-                    Spacer()
-                    CardDetailsExpiryDateView(expiryDate: $cardViewModel.expiryDate, isEditable: $isEditable, viewModel: viewModel, isUnlocked: isUnlocked)
-                }
-            }
-            .padding()
-            .background(Color(cardViewModel.cardColor).opacity(viewModel.getCardBackgroundOpacity()))
-            .cornerRadius(10)
-            .overlay(
-                RoundedRectangle(cornerRadius: 10)
-                    .stroke(Color.secondary, lineWidth: 1)
-            )
-            .shadow(radius: 3)
-            
-            if let cardIssuerImage = viewModel.getCardIssuerImage(cardNumber: cardViewModel.cardNumber) {
-                cardIssuerImage
-                    .resizable()
-                    .aspectRatio(contentMode: .fit)
-                    .frame(width: 40, height: 40)
-                    .padding(.trailing, 15)
-                    .padding(.top, 8)
-            }
-            
-            Group {
-                Circle()
-                    .fill(Color.systemBackground)
-                Image(systemName: "star.fill")
-                    .resizable()
-                    .frame(width: 20, height: 20)
-                    .foregroundColor(.yellow)
-                    .padding(.top, 0)
-                    .padding(.trailing, 0)
-                    .transition(.scale)
-                    .opacity(cardViewModel.isFavorited ? 1 : 0.3)
-            }
-            .offset(x: 10, y: -10)
-            .frame(width: 28, height: 28)
-            .onTapGesture {
-                if let id = cardViewModel.id {
-                    viewModel.setCardIsFavorited(cardId: id, isFavorited: !cardViewModel.isFavorited) { result in
-                        if result {
-                            cardViewModel.isFavorited.toggle()
-                        }
+        GeometryReader { geometry in
+            ZStack(alignment: .topTrailing) {
+                VStack(alignment: .leading, spacing: 15) {
+                    CardDetailsNameAndNumberView(cardName: $cardViewModel.cardName, cardNumber: $cardViewModel.cardNumber, isEditable: $isEditable, isUnlocked: isUnlocked,viewModel: viewModel)
+                    
+                    HStack() {
+                        CardDetailsCVVView(cvvCode: $cardViewModel.cvvCode, isEditable: $isEditable, isUnlocked: isUnlocked, viewModel: viewModel)
+                        
+                        CardDetailsPinView(pin: $cardViewModel.pin, isEditable: $isEditable, isUnlocked: isUnlocked, viewModel: viewModel)
+                        CardDetailsExpiryDateView(expiryDate: $cardViewModel.expiryDate, isEditable: $isEditable, viewModel: viewModel, isUnlocked: isUnlocked)
                     }
-                } else {
-                    cardViewModel.isFavorited.toggle()
+                }
+                .padding()
+                .background(Color(cardViewModel.cardColor).opacity(viewModel.getCardBackgroundOpacity()))
+                .cornerRadius(10)
+                .overlay(
+                    RoundedRectangle(cornerRadius: 10)
+                        .stroke(Color.secondary, lineWidth: 1)
+                )
+                .shadow(radius: 3)
+                
+                if let cardIssuerImage = viewModel.getCardIssuerImage(cardNumber: cardViewModel.cardNumber) {
+                    cardIssuerImage
+                        .resizable()
+                        .aspectRatio(contentMode: .fit)
+                        .frame(width: 40, height: 40)
+                        .padding(.trailing, 15)
+                        .padding(.top, 8)
+                }
+                
+                Group {
+                    Circle()
+                        .fill(Color.systemBackground)
+                    Image(systemName: "star.fill")
+                        .resizable()
+                        .frame(width: 20, height: 20)
+                        .foregroundColor(.yellow)
+                        .padding(.top, 0)
+                        .padding(.trailing, 0)
+                        .transition(.scale)
+                        .opacity(cardViewModel.isFavorited ? 1 : 0.3)
+                }
+                .offset(x: 10, y: -10)
+                .frame(width: 28, height: 28)
+                .onTapGesture {
+                    if let id = cardViewModel.id {
+                        setIsFavorited(!cardViewModel.isFavorited)
+                    } else {
+                        cardViewModel.isFavorited.toggle()
+                    }
                 }
             }
+            .padding(.horizontal, viewModel.appManager.constants.cardHorizontalMarginSpacing)
+            .frame(width: geometry.size.width, height: viewModel.appManager.constants.cardHeight)
         }
-        .padding([.top, .leading, .trailing], 10)
     }
 }
 
@@ -133,32 +133,60 @@ fileprivate struct CardDetailsCVVView: View {
     var viewModel: CardDetailsViewModel
     
     var body: some View {
-        if isEditable {
-            TextField("CVV", text: $cvvCode)
-                .keyboardType(.numberPad)
-                .frame(width: UIScreen.main.bounds.width * 0.55)
-                .onChange(of: cvvCode, initial: true) { _, newValue in
-                    self.cvvCode = String(newValue.prefix(3))
-                }
-            
-        } else {
-            if !cvvCode.isEmpty {
-                VStack {
-                    Text("CVV")
-                        .font(.caption)
-                        .fontWeight(.semibold)
-                    MenuTextView(content: cvvCode, isEditable: $isEditable, view: Text(cvvCode))
-                        .font(.headline)
-                        .fontWeight(.bold)
-                        .redacted(reason: isUnlocked ? [] : .placeholder)
-                        .foregroundStyle(Color.inverseSystemBackground)
-                }
+        VStack(alignment: .leading) {
+            if isEditable {
+                TextField("CVV", text: $cvvCode)
+                    .keyboardType(.numberPad)
+                    .onChange(of: cvvCode, initial: true) { _, newValue in
+                        self.cvvCode = String(newValue.prefix(3))
+                    }
                 
+            } else if !cvvCode.isEmpty {
+                Text("CVV")
+                    .font(.caption)
+                    .fontWeight(.semibold)
+                MenuTextView(content: cvvCode, isEditable: $isEditable, view: Text(cvvCode))
+                    .font(.headline)
+                    .fontWeight(.bold)
+                    .redacted(reason: isUnlocked ? [] : .placeholder)
+                    .foregroundStyle(Color.inverseSystemBackground)
             }
         }
+        .frame(maxWidth: .infinity, alignment: .leading)
     }
 }
 
+fileprivate struct CardDetailsPinView: View {
+    @Binding var pin: String
+    @Binding var isEditable: Bool
+    var isUnlocked: Bool
+    var viewModel: CardDetailsViewModel
+    
+    var body: some View {
+        VStack(alignment: .center) {
+            if isEditable {
+                TextField("Pin", text: $pin)
+                    .multilineTextAlignment(.center)
+                    .keyboardType(.numberPad)
+                    .onChange(of: pin, initial: true) { _, newValue in
+                        self.pin = String(newValue.prefix(4))
+                    }
+                
+            } else if !pin.isEmpty {
+                
+                Text("Pin")
+                    .font(.caption)
+                    .fontWeight(.semibold)
+                MenuTextView(content: pin, isEditable: $isEditable, view: Text(pin))
+                    .font(.headline)
+                    .fontWeight(.bold)
+                    .redacted(reason: isUnlocked ? [] : .placeholder)
+                    .foregroundStyle(Color.inverseSystemBackground)
+            }
+        }
+        .frame(maxWidth: 50, alignment: .center)
+    }
+}
 
 fileprivate struct CardDetailsExpiryDateView: View {
     @Binding var expiryDate: String
@@ -183,6 +211,7 @@ fileprivate struct CardDetailsExpiryDateView: View {
                     .foregroundStyle(Color.inverseSystemBackground)
             }
         }
+        .frame(maxWidth: .infinity, alignment: .trailing)
     }
 }
 
@@ -215,15 +244,15 @@ struct ExpiryDateTextField: View {
 //struct CardDetailsView_Previews: PreviewProvider {
 //    static var previews: some View {
 //        let context = PersistenceController.preview.container.viewContext
-//        
+//
 //        let viewModel = CardDetailsViewModel(appManager: AppManager(context: context))
-//        
+//
 //        let mockCard = Card(context: PersistenceController.preview.container.viewContext)
 //        mockCard.cardName = "Visa"
 //        mockCard.cardNumber = "4234 5678 9012 3456"
 //        mockCard.expiryDate = "12/25"
 //        mockCard.cvvCode = "123"
-//        
+//
 //        CardDetailsView(viewModel: viewModel,
 //                        cardViewModel: CardViewModel(card: mockCard),
 //                        isUnlocked: .constant(true))

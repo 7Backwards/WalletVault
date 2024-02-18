@@ -26,7 +26,14 @@ struct CardRow: View {
     
     var body: some View {
         ZStack {
-            CardDetailsView(viewModel: CardDetailsViewModel(appManager: appManager), cardViewModel: cardViewModel, isEditable: $isEditable, isUnlocked: false)
+            CardDetailsView(viewModel: CardDetailsViewModel(appManager: appManager), cardViewModel: cardViewModel, isEditable: $isEditable, isUnlocked: false) { isFavorited in
+                guard let id = cardViewModel.id else { return }
+                appManager.actionManager.doAction(action: .setIsFavorited(id: id, isFavorited)) { result in
+                    if result {
+                        cardViewModel.isFavorited.toggle()
+                    }
+                }
+            }
                 .frame(minWidth: 0, maxWidth: .infinity, minHeight: 100)
                 .cornerRadius(10)
                 .shadow(radius: 5)

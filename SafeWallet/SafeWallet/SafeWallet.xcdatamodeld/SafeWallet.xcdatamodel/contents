@@ -7,6 +7,7 @@
         <attribute name="cvvCode" attributeType="String"/>
         <attribute name="expiryDate" attributeType="String"/>
         <attribute name="isFavorited" attributeType="Boolean" defaultValueString="NO" usesScalarValueType="YES"/>
+        <attribute name="pin" attributeType="String" defaultValueString=""/>
     </entity>
     <entity name="Item" representedClassName="Item" syncable="YES" codeGenerationType="class">
         <attribute name="timestamp" optional="YES" attributeType="Date" usesScalarValueType="NO"/>

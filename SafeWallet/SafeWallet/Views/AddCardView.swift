@@ -17,39 +17,38 @@ struct AddCardView: View {
     
     var body: some View {
         NavigationView {
-            GeometryReader { geometry in
-                ScrollView {
-                    VStack(spacing: 30) {
-                        CardDetailsView(
-                                        viewModel: CardDetailsViewModel(appManager: viewModel.appManager),
-                                        cardViewModel: cardViewModel,
-                                        isEditable: $isEditable,
-                                        isUnlocked: true)
-                        .padding()
-                        .frame(minWidth: 0, maxWidth: .infinity, minHeight: 100)
-                        .cornerRadius(20)
-                        .shadow(radius: 5)
-                        .padding(.horizontal)
-                        
-                        ColorCarouselView(cardColor: $cardViewModel.cardColor, viewModel: ColorCarouselViewModel(appManager: viewModel.appManager))
-                        
-                        AddButton(viewModel: viewModel, cardViewModel: cardViewModel, alertMessage: $alertMessage, showAlert: $showAlert, isEditable: $isEditable, presentationMode: presentationMode)
+            VStack(spacing: 10) {
+                CardDetailsView(
+                    viewModel: CardDetailsViewModel(appManager: viewModel.appManager),
+                    cardViewModel: cardViewModel,
+                    isEditable: $isEditable,
+                    isUnlocked: true) { isFavorited in
+                        guard let id = cardViewModel.id else { return }
+                        viewModel.appManager.actionManager.doAction(action: .setIsFavorited(id: id, isFavorited)) { result in
+                            if result {
+                                cardViewModel.isFavorited.toggle()
+                            }
+                        }
                     }
-                }
+                .frame(height: viewModel.appManager.constants.cardHeight)
+                
+                ColorCarouselView(cardColor: $cardViewModel.cardColor, viewModel: ColorCarouselViewModel(appManager: viewModel.appManager))
+
+                AddButton(viewModel: viewModel, cardViewModel: cardViewModel, alertMessage: $alertMessage, showAlert: $showAlert, isEditable: $isEditable, presentationMode: presentationMode)
             }
-            .navigationBarTitle("Add Card", displayMode: .inline)
-            .navigationBarItems(leading: Button(action: {
-                presentationMode.wrappedValue.dismiss()
-            }) {
-                Image(systemName: "xmark")
-            })
-            .alert(isPresented: $showAlert) {
-                Alert(
-                    title: Text("Error"),
-                    message: Text(alertMessage),
-                    dismissButton: .default(Text("OK"))
-                )
-            }
+        }
+        .navigationBarTitle("Add Card", displayMode: .inline)
+        .navigationBarItems(leading: Button(action: {
+            presentationMode.wrappedValue.dismiss()
+        }) {
+            Image(systemName: "xmark")
+        })
+        .alert(isPresented: $showAlert) {
+            Alert(
+                title: Text("Error"),
+                message: Text(alertMessage),
+                dismissButton: .default(Text("OK"))
+            )
         }
     }
 }
