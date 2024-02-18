@@ -15,6 +15,7 @@ class CardViewModel: ObservableObject {
     @Published var cvvCode: String = ""
     @Published var cardColor: String = ""
     @Published var isFavorited: Bool = false
+    @Published var pin: String = ""
     @Published var id: NSManagedObjectID?
     
     init(card: Card?) {
@@ -24,6 +25,7 @@ class CardViewModel: ObservableObject {
         cvvCode = card?.cvvCode ?? ""
         cardColor = card?.cardColor ?? "systemBackground"
         isFavorited = card?.isFavorited ?? false
+        pin = card?.pin ?? ""
         id = card?.objectID
     }
 }

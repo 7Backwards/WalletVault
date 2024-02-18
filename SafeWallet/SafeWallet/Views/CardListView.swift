@@ -23,6 +23,7 @@ struct CardListView: View {
                 VStack {
                     SearchBar(text: $viewModel.searchText)
                         .background(Color(UIColor.systemBackground))
+                        .padding()
                     if cards.isEmpty {
                         NoContentView()
                     } else {
@@ -45,14 +46,14 @@ struct CardListView: View {
                                         print("Failed to find index for card")
                                     }
                                 }
-                                .padding([.vertical], 10)
+                                .padding(.bottom, 10)
+                                .frame(height: viewModel.appManager.constants.cardHeight)
                                 .listRowInsets(EdgeInsets())
                             }
                             .foregroundColor(.inverseSystemBackground)
                         }
                     }
                 }
-                .padding()
             }
             .navigationDestination(for: Card.self) { card in
                 MyCardView(viewModel: MyCardViewModel(card: card, appManager: viewModel.appManager), cardViewModel: viewModel.getCardViewModel(for: card))
@@ -68,7 +69,7 @@ struct CardListView: View {
             })
             .sheet(isPresented: $viewModel.showingAddCardView) {
                 AddCardView(viewModel: AddCardViewModel(appManager: viewModel.appManager))
-                    .presentationDetents([.medium, .large])
+                    .presentationDetents([.height(300)])
             }
             .background(Color(UIColor.systemBackground).edgesIgnoringSafeArea(.all))
         }

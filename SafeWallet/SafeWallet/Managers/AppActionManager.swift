@@ -8,8 +8,8 @@
 import CoreData
 
 enum AppAction {
-    case addCard(cardName: String, cardNumber: String, expiryDate: String, cvvCode: String, cardColor: String, isFavorited: Bool)
-    case editCard(id: NSManagedObjectID, cardName: String, cardNumber: String, expiryDate: String, cvvCode: String, cardColor: String, isFavorited: Bool)
+    case addCard(cardName: String, cardNumber: String, expiryDate: String, cvvCode: String, cardColor: String, isFavorited: Bool, pin: String)
+    case editCard(id: NSManagedObjectID, cardName: String, cardNumber: String, expiryDate: String, cvvCode: String, cardColor: String, isFavorited: Bool, pin: String)
     case removeCard(Card)
     case removeCards([Card])
     case changeCardColor(Card, String)
@@ -34,7 +34,7 @@ class AppActionManager {
         }
 
         switch action {
-        case .addCard(let cardName, let cardNumber, let expiryDate, let cvvCode, let cardColor, let isFavorited):
+        case .addCard(let cardName, let cardNumber, let expiryDate, let cvvCode, let cardColor, let isFavorited, let pin):
             let card = Card(context: context)
             card.cardNumber = cardNumber
             card.expiryDate = expiryDate
@@ -42,8 +42,9 @@ class AppActionManager {
             card.cardName = cardName
             card.cardColor = cardColor
             card.isFavorited = isFavorited
+            card.pin = pin
             saveWithCompletion()
-        case .editCard(let id, let cardName, let cardNumber, let expiryDate, let cvvCode, let cardColor, let isFavorited):
+        case .editCard(let id, let cardName, let cardNumber, let expiryDate, let cvvCode, let cardColor, let isFavorited, let pin):
             if let card = context.fetchCard(withID: id) {
                 card.cardName = cardName
                 card.cardNumber = cardNumber
@@ -51,6 +52,7 @@ class AppActionManager {
                 card.cvvCode = cvvCode
                 card.cardColor = cardColor
                 card.isFavorited = isFavorited
+                card.pin = pin
             }
             saveWithCompletion()
         case .removeCard(let card):
