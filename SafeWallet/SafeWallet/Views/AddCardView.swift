@@ -10,8 +10,7 @@ import SwiftUI
 struct AddCardView: View {
     @Environment(\.presentationMode) var presentationMode
     @ObservedObject private var cardViewModel = CardViewModel(card: nil)
-    @State private var showAlert = false
-    @State private var alertMessage = ""
+    @State private var activeAlert: AppUtils.ActiveAlert?
     @State var isEditable: Bool = true
     @StateObject var viewModel: AddCardViewModel
     
@@ -34,7 +33,7 @@ struct AddCardView: View {
                 
                 ColorCarouselView(cardColor: $cardViewModel.cardColor, viewModel: ColorCarouselViewModel(appManager: viewModel.appManager))
 
-                AddButton(viewModel: viewModel, cardViewModel: cardViewModel, alertMessage: $alertMessage, showAlert: $showAlert, isEditable: $isEditable, presentationMode: presentationMode)
+                AddButton(viewModel: viewModel, cardViewModel: cardViewModel, isEditable: $isEditable, showAlert: { alertMessage in activeAlert = .error(alertMessage) }, presentationMode: presentationMode)
             }
         }
         .navigationBarTitle("Add Card", displayMode: .inline)
@@ -43,12 +42,17 @@ struct AddCardView: View {
         }) {
             Image(systemName: "xmark")
         })
-        .alert(isPresented: $showAlert) {
-            Alert(
-                title: Text("Error"),
-                message: Text(alertMessage),
-                dismissButton: .default(Text("OK"))
-            )
+        .alert(item: $activeAlert) { alert in
+            switch alert {
+            case .error(let errorMessage) :
+                return Alert(
+                    title: Text("Error"),
+                    message: Text(errorMessage),
+                    dismissButton: .default(Text("OK"))
+                )
+            default:
+                return Alert(title: Text(""))
+            }
         }
     }
 }

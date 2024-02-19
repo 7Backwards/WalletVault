@@ -12,14 +12,14 @@ import CoreData
 struct AddButton: View {
     let viewModel: AddOrEditMyCardViewModelProtocol
     @ObservedObject var cardViewModel: CardViewModel
-    @Binding var alertMessage: String
-    @Binding var showAlert: Bool
     @Binding var isEditable: Bool
+    var showAlert: (String) -> Void
     var presentationMode: Binding<PresentationMode>?
     
     var body: some View {
         GeometryReader { geometry in
             Button("Save Card") {
+                var alertMessage = ""
                 viewModel.addOrEdit(cardViewModel: cardViewModel) { result in
                     switch result {
                     case .success:
@@ -37,7 +37,7 @@ struct AddButton: View {
                         case .shortCardNumber:
                             alertMessage = "Card number is not invalid, please update it."
                         }
-                        showAlert = true
+                        showAlert(alertMessage)
                     }
                 }
             }

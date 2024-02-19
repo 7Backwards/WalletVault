@@ -12,11 +12,9 @@ struct MyCardView: View {
     @StateObject var viewModel: MyCardViewModel
     @ObservedObject var cardViewModel: CardViewModel
     @State private var isEditable = false
-    @State private var showAlert = false
-    @State private var alertMessage = ""
     @State private var autoLockTimer: Timer?
+    @State private var activeAlert: AppUtils.ActiveAlert?
     @State var undoCardInfo = CardInfo()
-    
     
     init(viewModel: MyCardViewModel, cardViewModel: CardViewModel) {
         _viewModel = StateObject(wrappedValue: viewModel)
@@ -38,7 +36,7 @@ struct MyCardView: View {
                 
                 if isEditable {
                     ColorCarouselView(cardColor: $cardViewModel.cardColor, viewModel: ColorCarouselViewModel(appManager: viewModel.appManager))
-                    AddButton(viewModel: viewModel, cardViewModel: cardViewModel, alertMessage: $alertMessage, showAlert: $showAlert, isEditable: $isEditable)
+                    AddButton(viewModel: viewModel, cardViewModel: cardViewModel, isEditable: $isEditable, showAlert: { errorMessage in self.activeAlert = .error(errorMessage) })
                 }
                 
                 Spacer()
@@ -74,7 +72,7 @@ struct MyCardView: View {
                     
                     Button(action: {
                         self.resetAutoLockTimer()
-                        viewModel.shouldShowDeleteConfirmation = true
+                        self.activeAlert = .deleteConfirmation
                     }) {
                         Image(systemName: "trash.circle.fill")
                             .resizable()
@@ -97,34 +95,37 @@ struct MyCardView: View {
             viewModel.updateCardColor(cardColor: cardViewModel.cardColor)
         }
         .navigationBarTitle(viewModel.card.cardName, displayMode: .inline)
-        .alert(isPresented: $viewModel.shouldShowDeleteConfirmation) {
-            Alert(
-                title: Text("Delete Card"),
-                message: Text("Are you sure you want to delete this card?"),
-                primaryButton: .default(Text("Cancel"), action: {
-                    self.startAutoLockTimer()
-                    viewModel.shouldShowDeleteConfirmation = false }),
-                secondaryButton: .destructive(Text("Delete"), action: {
-                    withAnimation {
-                        viewModel.delete { result in
-                            if result {
-                                presentationMode.wrappedValue.dismiss()
-                            } else {
-                                self.startAutoLockTimer()
-                                print("Error deleting the card")
+        .alert(item: $activeAlert) { activeAlert in
+            switch activeAlert {
+            case .deleteConfirmation:
+                return Alert(
+                    title: Text("Delete Card"),
+                    message: Text("Are you sure you want to delete this card?"),
+                    primaryButton: .default(Text("Cancel"), action: {
+                        self.startAutoLockTimer()
+                        self.activeAlert = nil
+                    }),
+                    secondaryButton: .destructive(Text("Delete"), action: {
+                        withAnimation {
+                            viewModel.delete { result in
+                                if result {
+                                    presentationMode.wrappedValue.dismiss()
+                                } else {
+                                    self.startAutoLockTimer()
+                                    print("Error deleting the card")
+                                }
                             }
                         }
-                    }
-                    viewModel.shouldShowDeleteConfirmation = false
-                })
-            )
-        }
-        .alert(isPresented: $showAlert) {
-            Alert(
-                title: Text("Error"),
-                message: Text(alertMessage),
-                dismissButton: .default(Text("OK"))
-            )
+                        self.activeAlert = nil
+                    })
+                )
+            case .error(let errorMessage):
+                return Alert(
+                    title: Text("Error"),
+                    message: Text(errorMessage),
+                    dismissButton: .default(Text("OK"))
+                )
+            }
         }
         .padding(.bottom, 20)
     }

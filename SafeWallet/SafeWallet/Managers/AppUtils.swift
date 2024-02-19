@@ -9,6 +9,20 @@ import SwiftUI
 
 class AppUtils {
     private var protectWindow = PrivacyProtectionWindow()
+    
+    enum ActiveAlert: Identifiable {
+        case deleteConfirmation
+        case error(String)
+        
+        var id: String {
+            switch self {
+            case .deleteConfirmation:
+                return "deleteConfirmation"
+            case .error(let errorMessage):
+                return errorMessage
+            }
+        }
+    }
 
     func protectScreen() {
         protectWindow.startProtection()
