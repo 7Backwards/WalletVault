@@ -1,5 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
 <plist version="1.0">
-<dict/>
+<dict>
+	<key>NSPhotoLibraryAddUsageDescription</key>
+	<string>&quot;App uses photo library to save the qr code so that card sharing works&quot;</string>
+	<key>NSCameraUsageDescription</key>
+	<string>&quot;App uses camera access to scan qr code, it needs it for the share card funcionality to work&quot;</string>
+</dict>
 </plist>

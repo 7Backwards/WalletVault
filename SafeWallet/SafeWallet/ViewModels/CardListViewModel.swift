@@ -9,14 +9,39 @@ import Foundation
 import CoreData
 import SwiftUI
 
-class CardListViewModel: ViewModelProtocol {
+class CardListViewModel: AddOrEditMyCardViewModel, ViewModelProtocol {
     @Published var searchText = ""
-    @Published var showingAddCardView = false
-    @Published var appManager: AppManager
+    @Published var activeShareSheet: ActiveShareSheet?
+    @Published var activeAlert: ActiveAlert?
+    @Published var isShowingErrorMessage: Bool = false
     private var cardsViewModels = [NSManagedObjectID : CardViewModel]()
     
-    init(appManager: AppManager) {
-        self.appManager = appManager
+    enum ActiveShareSheet: Identifiable {
+        case addCard
+        case scanQRCode
+        
+        var id: String {
+            switch self {
+            case .addCard:
+                return "addCard"
+            case .scanQRCode:
+                return "scanQRCode"
+            }
+        }
+    }
+    
+    enum ActiveAlert: Identifiable {
+        case cardAdded
+        case error
+        
+        var id: String {
+            switch self {
+            case .cardAdded:
+                return "cardAdded"
+            case .error:
+                return "error"
+            }
+        }
     }
     
     func deleteCards(at offsets: IndexSet, from cards: FetchedResults<Card>) {

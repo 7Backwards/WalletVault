@@ -62,16 +62,57 @@ struct CardListView: View {
             .listStyle(.plain)
             .scrollContentBackground(.hidden)
             .navigationBarTitle("SafeWallet", displayMode: .automatic)
-            .navigationBarItems(trailing: Button(action: {
-                viewModel.showingAddCardView = true
-            }) {
-                Image(.addCard)
-            })
-            .sheet(isPresented: $viewModel.showingAddCardView) {
-                AddCardView(viewModel: AddCardViewModel(appManager: viewModel.appManager))
-                    .presentationDetents([.height(300)])
+            .navigationBarItems(trailing: TrailingNavigationItems(viewModel: viewModel))
+            .alert(item: $viewModel.activeAlert) { activeAlert in
+                switch activeAlert {
+                case .cardAdded:
+                    return Alert(
+                        title: Text("Success"),
+                        message: Text("Card imported successfully."),
+                        dismissButton: .default(Text("OK"))
+                    )
+                case .error:
+                    return Alert(
+                        title: Text("Error"),
+                        message: Text("An error has occurred, please try again."),
+                        dismissButton: .default(Text("OK"))
+                    )
+                }
             }
-            .background(Color(UIColor.systemBackground).edgesIgnoringSafeArea(.all))
+            .sheet(item: $viewModel.activeShareSheet) { activeSheet in
+                switch activeSheet {
+                case .addCard:
+                    AddCardView(viewModel: AddCardViewModel(appManager: viewModel.appManager))
+                        .presentationDetents([.height(300)])
+                        .presentationDragIndicator(.visible)
+                case .scanQRCode:
+                    QRCodeScannerView(viewModel: viewModel)
+                    .presentationDetents([.height(300)])
+                    .presentationDragIndicator(.visible)
+                }
+            }
+            .background(Color.systemBackground.edgesIgnoringSafeArea(.all))
+        }
+    }
+}
+
+struct TrailingNavigationItems: View {
+    @StateObject var viewModel: CardListViewModel
+    var body: some View {
+        HStack {
+            Button(action: {
+                viewModel.activeShareSheet = .scanQRCode
+            }) {
+                Image(systemName: "qrcode.viewfinder")
+                    .foregroundStyle(.inverseSystemBackground)
+            }
+            
+            Button(action: {
+                viewModel.activeShareSheet = .addCard
+            }) {
+                Image(systemName: "plus")
+                    .foregroundStyle(.inverseSystemBackground)
+            }
         }
     }
 }

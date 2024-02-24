@@ -28,4 +28,18 @@ class CardViewModel: ObservableObject {
         pin = card?.pin ?? ""
         id = card?.objectID
     }
+    
+    init(cardInfo: CardInfo) {
+        cardName = cardInfo.cardName
+        cardNumber = cardInfo.cardNumber
+        expiryDate = cardInfo.expiryDate
+        cvvCode = cardInfo.cvvCode
+        cardColor = cardInfo.cardColor
+        isFavorited = cardInfo.isFavorited
+        pin = cardInfo.pin
+    }
+    
+    func getCardInfo() -> CardInfo {
+        CardInfo(cardName: cardName, cardNumber: cardNumber, expiryDate: expiryDate, cvvCode: cvvCode, cardColor: cardColor, isFavorited: isFavorited, pin: pin)
+    }
 }

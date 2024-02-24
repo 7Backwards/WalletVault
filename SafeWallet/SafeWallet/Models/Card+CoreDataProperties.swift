@@ -36,4 +36,14 @@ public class CardInfo {
     public var cardColor: String = ""
     public var isFavorited: Bool = false
     public var pin: String = ""
+    
+    init(cardName: String = "", cardNumber: String = "", expiryDate: String = "", cvvCode: String = "", cardColor: String = "systemBackground", isFavorited: Bool = false, pin: String = "") {
+        self.cardName = cardName
+        self.cardNumber = cardNumber
+        self.expiryDate = expiryDate
+        self.cvvCode = cvvCode
+        self.cardColor = cardColor
+        self.isFavorited = isFavorited
+        self.pin = pin
+    }
 }

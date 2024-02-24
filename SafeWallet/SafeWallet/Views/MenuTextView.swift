@@ -43,19 +43,7 @@ struct MenuTextView<V: View>: View {
             view
         }
         .sheet(isPresented: $showingShareSheet, onDismiss: nil) {
-            ShareView(shareItems: [content], applicationActivities: nil)
+            ShareUIActivityController(shareItems: [content], applicationActivities: nil)
         }
     }
-}
-
-struct ShareView: UIViewControllerRepresentable {
-    var shareItems: [Any]
-    var applicationActivities: [UIActivity]?
-    
-    func makeUIViewController(context: Context) -> UIActivityViewController {
-        let controller = UIActivityViewController(activityItems: shareItems, applicationActivities: applicationActivities)
-        return controller
-    }
-    
-    func updateUIViewController(_ uiViewController: UIActivityViewController, context: Context) {}
 }

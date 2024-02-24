@@ -13,7 +13,9 @@ struct MyCardView: View {
     @ObservedObject var cardViewModel: CardViewModel
     @State private var isEditable = false
     @State private var autoLockTimer: Timer?
-    @State private var activeAlert: AppUtils.ActiveAlert?
+    @State private var activeAlert: MyCardViewModel.ActiveAlert?
+    @State private var activeShareSheet: MyCardViewModel.ActiveShareSheet?
+    @State private var showingShareSheet = false
     @State var undoCardInfo = CardInfo()
     
     init(viewModel: MyCardViewModel, cardViewModel: CardViewModel) {
@@ -44,7 +46,7 @@ struct MyCardView: View {
                 HStack(spacing: 30) {
                     
                     Button(action: {
-                        // Perform share action
+                        self.showingShareSheet = true
                     }) {
                         Image(systemName: "square.and.arrow.up.circle.fill")
                             .resizable()
@@ -127,9 +129,45 @@ struct MyCardView: View {
                 )
             }
         }
+        .actionSheet(isPresented: $showingShareSheet) {
+            ActionSheet(
+                title: Text("Share Card"),
+                message: Text("Choose how you would like to share the card"),
+                buttons: [
+                    .default(Text("Share Inside App")) {
+                        activeShareSheet = .insideShare
+                        resetAutoLockTimer()
+                    },
+                    .default(Text("Share Outside App")) {
+                        activeShareSheet = .outsideShare
+                        resetAutoLockTimer()
+                    },
+                    .cancel()
+                ]
+            )
+        }
+        .sheet(item: $activeShareSheet, onDismiss: { startAutoLockTimer() }) { activeShareSheet in
+            switch activeShareSheet {
+            case .insideShare:
+                VStack {
+                    Text("Scan this QR Code when adding a new card")
+                    QRCodeView(qrCodeImage: viewModel.appManager.utils.generateCardQRCode(from:cardViewModel.getCardInfo()))
+                        .frame(height: viewModel.appManager.constants.qrCodeHeight)
+                        .padding()
+                }
+                .padding()
+                .presentationDetents([.height(300)])
+                .presentationDragIndicator(.visible)
+            case .outsideShare:
+                ShareUIActivityController(shareItems: [viewModel.appManager.utils.getFormattedShareCardInfo(card: cardViewModel.getCardInfo())])
+                    .presentationDetents([.medium, .large])
+                
+            }
+        }
         .padding(.bottom, 20)
     }
 }
+
 
 // MARK: - Undo funcionality
 
@@ -138,14 +176,7 @@ extension MyCardView {
     // Copy by value instead of reference
     func saveCurrentCard() {
         let currentCard = viewModel.card
-        undoCardInfo = CardInfo()
-        undoCardInfo.cardName = currentCard.cardName
-        undoCardInfo.cardNumber = currentCard.cardNumber
-        undoCardInfo.cardColor = currentCard.cardColor
-        undoCardInfo.cvvCode = currentCard.cvvCode
-        undoCardInfo.expiryDate = currentCard.expiryDate
-        undoCardInfo.pin = currentCard.pin
-        undoCardInfo.isFavorited = currentCard.isFavorited
+        undoCardInfo = CardInfo(cardName: currentCard.cardName, cardNumber: currentCard.cardNumber, expiryDate: currentCard.expiryDate, cvvCode: currentCard.cvvCode, cardColor: currentCard.cardColor, isFavorited: currentCard.isFavorited, pin: currentCard.pin)
     }
     
     func undo() {

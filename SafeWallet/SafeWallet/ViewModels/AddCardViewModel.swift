@@ -9,12 +9,20 @@ import Foundation
 import CoreData
 import SwiftUI
 
-enum AddCardErrorType: Error {
-    case invalidDate
-    case savingError
-    case shortCardNumber
-}
-
 class AddCardViewModel: AddOrEditMyCardViewModel, ViewModelProtocol {
     @Published var selectedColor: Color?
+    
+    enum ActiveAlert: Identifiable {
+        case deleteConfirmation
+        case error(String)
+        
+        var id: String {
+            switch self {
+            case .deleteConfirmation:
+                return "deleteConfirmation"
+            case .error(let errorMessage):
+                return errorMessage
+            }
+        }
+    }
 }

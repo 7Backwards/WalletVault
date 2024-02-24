@@ -11,6 +11,34 @@ class MyCardViewModel: AddOrEditMyCardViewModel, ViewModelProtocol {
     var card: Card
     @Published var shouldShowDeleteConfirmation: Bool = false
     
+    enum ActiveAlert: Identifiable {
+        case deleteConfirmation
+        case error(String)
+        
+        var id: String {
+            switch self {
+            case .deleteConfirmation:
+                return "deleteConfirmation"
+            case .error(let errorMessage):
+                return errorMessage
+            }
+        }
+    }
+    
+    enum ActiveShareSheet: Identifiable {
+        case outsideShare
+        case insideShare
+        
+        var id: String {
+            switch self {
+            case .outsideShare:
+                return "outsideShare"
+            case .insideShare:
+                return "insideShare"
+            }
+        }
+    }
+    
     init(card: Card, appManager: AppManager) {
         self.card = card
         appManager.utils.protectScreen()
