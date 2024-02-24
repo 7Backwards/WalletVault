@@ -10,19 +10,39 @@ import SwiftUI
 class AppUtils {
     private var protectWindow = PrivacyProtectionWindow()
     
-    enum ActiveAlert: Identifiable {
-        case deleteConfirmation
-        case error(String)
+    func getFormattedShareCardInfo(card: CardInfo) -> String {
+        var info = "Card Name: \(card.cardName) \nCard Number: \(card.cardNumber) \nExpiry Date \(card.expiryDate) \nCVV \(card.cvvCode) \n"
         
-        var id: String {
-            switch self {
-            case .deleteConfirmation:
-                return "deleteConfirmation"
-            case .error(let errorMessage):
-                return errorMessage
-            }
+        if !card.pin.isEmpty {
+            info.append("Card Pin \(card.pin)")
         }
+        
+        return info
     }
+    
+    func getNonFormattedShareCardInfo(card: CardInfo) -> String {
+        "\(card.cardName),\(card.cardNumber),\(card.expiryDate), \(card.cvvCode), \(card.pin)"
+    }
+    
+    func parseCardInfo(from shareableString: String) -> CardInfo? {
+        let components = shareableString.components(separatedBy: ",")
+        guard components.count >= 5 else { return nil }
+        
+        let cardName = components[0].trimmingCharacters(in: .whitespacesAndNewlines)
+        let cardNumber = components[1].trimmingCharacters(in: .whitespacesAndNewlines)
+        let expiryDate = components[2].trimmingCharacters(in: .whitespacesAndNewlines)
+        let cvvCode = components[3].trimmingCharacters(in: .whitespacesAndNewlines)
+        let pin = components[4].trimmingCharacters(in: .whitespacesAndNewlines)
+
+        return CardInfo(
+            cardName: cardName,
+            cardNumber: cardNumber,
+            expiryDate: expiryDate,
+            cvvCode: cvvCode,
+            pin: pin
+        )
+    }
+
 
     func protectScreen() {
         protectWindow.startProtection()

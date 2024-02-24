@@ -10,7 +10,7 @@ import SwiftUI
 struct AddCardView: View {
     @Environment(\.presentationMode) var presentationMode
     @ObservedObject private var cardViewModel = CardViewModel(card: nil)
-    @State private var activeAlert: AppUtils.ActiveAlert?
+    @State private var activeAlert: AddCardViewModel.ActiveAlert?
     @State var isEditable: Bool = true
     @StateObject var viewModel: AddCardViewModel
     
