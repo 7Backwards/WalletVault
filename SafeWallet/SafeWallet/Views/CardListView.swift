@@ -38,14 +38,7 @@ struct CardListView: View {
                                     }
                                 }
                             } label: {
-                                CardRow(cardViewModel: viewModel.getCardViewModel(for: card), appManager: viewModel.appManager) {
-                                    if let index = cards.firstIndex(where: { $0.id == card.id }) {
-                                        print("Deleting card at index: \(index)")
-                                        viewModel.deleteCards(at: IndexSet(integer: index), from: cards)
-                                    } else {
-                                        print("Failed to find index for card")
-                                    }
-                                }
+                                CardRow(cardViewModel: viewModel.getCardViewModel(for: card), appManager: viewModel.appManager, activeAlert: $viewModel.activeAlert)
                                 .padding(.bottom, 10)
                                 .frame(height: viewModel.appManager.constants.cardHeight)
                                 .listRowInsets(EdgeInsets())
@@ -70,6 +63,18 @@ struct CardListView: View {
                         title: Text("Success"),
                         message: Text("Card imported successfully."),
                         dismissButton: .default(Text("OK"))
+                    )
+                case .removeCard(let id):
+                    return  Alert(
+                        title: Text("Delete Card"),
+                        message: Text("Are you sure you want to delete this card?"),
+                        primaryButton: .default(Text("Cancel"), action: { viewModel.activeAlert = nil }),
+                        secondaryButton: .destructive(Text("Delete"), action: {
+                            withAnimation {
+                                viewModel.deleteCards(id: id, from: cards)
+                            }
+                            viewModel.activeAlert = nil
+                        })
                     )
                 case .error:
                     return Alert(

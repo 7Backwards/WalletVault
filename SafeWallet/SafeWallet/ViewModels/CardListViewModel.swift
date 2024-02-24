@@ -33,21 +33,30 @@ class CardListViewModel: AddOrEditMyCardViewModel, ViewModelProtocol {
     enum ActiveAlert: Identifiable {
         case cardAdded
         case error
+        case removeCard(NSManagedObjectID)
         
         var id: String {
             switch self {
             case .cardAdded:
                 return "cardAdded"
+            case .removeCard:
+                return "removeCard"
             case .error:
                 return "error"
             }
         }
     }
     
-    func deleteCards(at offsets: IndexSet, from cards: FetchedResults<Card>) {
-        withAnimation {
-            let cardsToDelete = offsets.map { cards[$0] }
-            appManager.actionManager.doAction(action: .removeCards(cardsToDelete))
+    func deleteCards(id: NSManagedObjectID, from cards: FetchedResults<Card>) {
+        if let index = cards.firstIndex(where: { $0.objectID == id }) {
+            print("Deleting card")
+
+            withAnimation {
+                let cardsToDelete = IndexSet(integer: index).map { cards[$0] }
+                appManager.actionManager.doAction(action: .removeCards(cardsToDelete))
+            }
+        } else {
+            print("Failed to find index for card")
         }
     }
     

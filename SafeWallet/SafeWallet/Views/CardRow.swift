@@ -9,19 +9,18 @@ import Foundation
 import SwiftUI
 
 struct CardRow: View {
-    var onDelete: () -> Void
     
     @GestureState private var gestureDragOffset = CGSize.zero
     @State private var dragOffset = CGSize.zero
-    @State private var shouldShowDeleteConfirmation = false
     @State var isEditable = false
     @ObservedObject var appManager: AppManager
     @ObservedObject var cardViewModel: CardViewModel
+    @Binding var activeAlert: CardListViewModel.ActiveAlert?
     
-    init(cardViewModel: CardViewModel, appManager: AppManager, onDelete: @escaping () -> Void) {
+    init(cardViewModel: CardViewModel, appManager: AppManager, activeAlert: Binding<CardListViewModel.ActiveAlert?>) {
         self.cardViewModel = cardViewModel
         self.appManager = appManager
-        self.onDelete = onDelete
+        self._activeAlert = activeAlert
     }
     
     var body: some View {
@@ -51,26 +50,16 @@ struct CardRow: View {
                                 if value.translation.width <= -50 {
                                     withAnimation {
                                         dragOffset = .zero
-                                        shouldShowDeleteConfirmation = true
+                                        guard let id = cardViewModel.id else {
+                                            // TODO: Add log
+                                            return
+                                        }
+                                        activeAlert = .removeCard(id)
                                     }
                                 }
                             }
                         }
                 )
-            
-                .alert(isPresented: $shouldShowDeleteConfirmation) {
-                    Alert(
-                        title: Text("Delete Card"),
-                        message: Text("Are you sure you want to delete this card?"),
-                        primaryButton: .default(Text("Cancel"), action: { shouldShowDeleteConfirmation = false }),
-                        secondaryButton: .destructive(Text("Delete"), action: {
-                            withAnimation {
-                                onDelete()
-                            }
-                            shouldShowDeleteConfirmation = false
-                        })
-                    )
-                }
             
             if gestureDragOffset.width < -10 {
                 HStack {

@@ -35,15 +35,32 @@ class AppActionManager {
 
         switch action {
         case .addCard(let cardName, let cardNumber, let expiryDate, let cvvCode, let cardColor, let isFavorited, let pin):
-            let card = Card(context: context)
-            card.cardNumber = cardNumber
-            card.expiryDate = expiryDate
-            card.cvvCode = cvvCode
-            card.cardName = cardName
-            card.cardColor = cardColor
-            card.isFavorited = isFavorited
-            card.pin = pin
-            saveWithCompletion()
+
+            let fetchRequest: NSFetchRequest<Card> = Card.fetchRequest()
+            fetchRequest.predicate = NSPredicate(format: "cardNumber == %@", cardNumber)
+            
+            do {
+                let existingCards = try context.fetch(fetchRequest)
+                
+                if existingCards.isEmpty {
+                    let card = Card(context: context)
+                    card.cardNumber = cardNumber
+                    card.expiryDate = expiryDate
+                    card.cvvCode = cvvCode
+                    card.cardName = cardName
+                    card.cardColor = cardColor
+                    card.isFavorited = isFavorited
+                    card.pin = pin
+                    
+                    saveWithCompletion()
+                } else {
+                    print("A card with the same number already exists.")
+                    completion?(false)
+                }
+            } catch {
+                print("Failed to fetch cards: \(error)")
+                completion?(false)
+            }
         case .editCard(let id, let cardName, let cardNumber, let expiryDate, let cvvCode, let cardColor, let isFavorited, let pin):
             if let card = context.fetchCard(withID: id) {
                 card.cardName = cardName
