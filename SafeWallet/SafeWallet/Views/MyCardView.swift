@@ -142,6 +142,7 @@ struct MyCardViewActionButtons: View {
                     .resizable()
                     .aspectRatio(contentMode: .fit)
                     .frame(width: 50, height: 50)
+                    .foregroundStyle(Color.inverseSystemBackground)
             }
             .buttonStyle(RoundedButtonStyle())
             
@@ -158,6 +159,7 @@ struct MyCardViewActionButtons: View {
                     .resizable()
                     .aspectRatio(contentMode: .fit)
                     .frame(width: 50, height: 50)
+                    .foregroundStyle(Color.inverseSystemBackground)
                 
             }
             .buttonStyle(RoundedButtonStyle())
@@ -170,6 +172,7 @@ struct MyCardViewActionButtons: View {
                     .resizable()
                     .aspectRatio(contentMode: .fit)
                     .frame(width: 50, height: 50)
+                    .foregroundStyle(Color.inverseSystemBackground)
             }
             .buttonStyle(RoundedButtonStyle())
         }
