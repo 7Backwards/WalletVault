@@ -8,8 +8,15 @@
 import SwiftUI
 
 class MyCardViewModel: AddOrEditMyCardViewModel, ViewModelProtocol {
-    var card: Card
     @Published var shouldShowDeleteConfirmation: Bool = false
+    @Published var undoCardInfo = CardInfo()
+    @Published private var autoLockTimer: Timer?
+    @Published var activeAlert: ActiveAlert?
+    @Published var activeShareSheet: ActiveShareSheet?
+    @Published var isEditable = false
+    @Published var showingShareSheet = false
+    @Published var cardObject: CardObservableObject
+    var presentationMode: PresentationMode?
     
     enum ActiveAlert: Identifiable {
         case deleteConfirmation
@@ -39,9 +46,9 @@ class MyCardViewModel: AddOrEditMyCardViewModel, ViewModelProtocol {
         }
     }
     
-    init(card: Card, appManager: AppManager) {
-        self.card = card
+    init(cardObject: CardObservableObject, appManager: AppManager) {
         appManager.utils.protectScreen()
+        self.cardObject = cardObject
         super.init(appManager: appManager)
     }
     
@@ -50,10 +57,43 @@ class MyCardViewModel: AddOrEditMyCardViewModel, ViewModelProtocol {
     }
 
     func delete(completion: @escaping (Bool) -> Void ) {
-        appManager.actionManager.doAction(action: .removeCard(card), completion: completion)
+        guard let id = cardObject.id else {
+            // TODO: Log
+            return
+        }
+        appManager.actionManager.doAction(action: .removeCard(id), completion: completion)
     }
     
     func updateCardColor(cardColor: String) {
-        appManager.actionManager.doAction(action: .changeCardColor(card, cardColor))
+        guard let id = cardObject.id else {
+            // TODO: Log
+            return
+        }
+        appManager.actionManager.doAction(action: .changeCardColor(id, cardColor))
+    }
+    
+    func saveCurrentCard() {
+        undoCardInfo = CardInfo(cardName: cardObject.cardName, cardNumber: cardObject.cardNumber, expiryDate: cardObject.expiryDate, cvvCode: cardObject.cvvCode, cardColor: cardObject.cardColor, isFavorited: cardObject.isFavorited, pin: cardObject.pin)
+    }
+    
+    func undo() {
+        cardObject.cardName = undoCardInfo.cardName
+        cardObject.cardNumber = undoCardInfo.cardNumber
+        cardObject.cardColor = undoCardInfo.cardColor
+        cardObject.cvvCode = undoCardInfo.cvvCode
+        cardObject.expiryDate = undoCardInfo.expiryDate
+        cardObject.isFavorited = undoCardInfo.isFavorited
+        cardObject.pin = undoCardInfo.pin
+    }
+    
+    func startAutoLockTimer() {
+        resetAutoLockTimer()
+        self.autoLockTimer = Timer.scheduledTimer(withTimeInterval: 30, repeats: false) { _ in
+            self.presentationMode?.dismiss()
+        }
+    }
+    
+    func resetAutoLockTimer() {
+        autoLockTimer?.invalidate()
     }
 }

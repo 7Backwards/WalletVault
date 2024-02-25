@@ -10,27 +10,27 @@ import SwiftUI
 import Combine
 
 struct CardDetailsView: View {
-    @StateObject var viewModel: CardDetailsViewModel
-    @ObservedObject var cardViewModel: CardViewModel
-    @Binding var isEditable: Bool
-    var isUnlocked: Bool
-    let setIsFavorited: (Bool) -> Void
+    @ObservedObject var viewModel: CardDetailsViewModel
+    
+    init(appManager: AppManager, cardObject: CardObservableObject, isEditing: Binding<Bool>, isUnlocked: Bool, setIsFavorited: @escaping (Bool) -> Void) {
+        self.viewModel = CardDetailsViewModel(appManager: appManager, cardObject: cardObject, isEditing: isEditing, isUnlocked: isUnlocked, setIsFavorited: setIsFavorited)
+    }
     
     var body: some View {
         GeometryReader { geometry in
             ZStack(alignment: .topTrailing) {
                 VStack(alignment: .leading, spacing: 15) {
-                    CardDetailsNameAndNumberView(cardName: $cardViewModel.cardName, cardNumber: $cardViewModel.cardNumber, isEditable: $isEditable, isUnlocked: isUnlocked,viewModel: viewModel)
+                    CardDetailsNameAndNumberView(cardName: $viewModel.cardObject.cardName, cardNumber: $viewModel.cardObject.cardNumber, isEditable: $viewModel.isEditable, isUnlocked: viewModel.isUnlocked,viewModel: viewModel)
                     
                     HStack() {
-                        CardDetailsCVVView(cvvCode: $cardViewModel.cvvCode, isEditable: $isEditable, isUnlocked: isUnlocked, viewModel: viewModel)
+                        CardDetailsCVVView(cvvCode: $viewModel.cardObject.cvvCode, isEditable: $viewModel.isEditable, isUnlocked: viewModel.isUnlocked, viewModel: viewModel)
                         
-                        CardDetailsPinView(pin: $cardViewModel.pin, isEditable: $isEditable, isUnlocked: isUnlocked, viewModel: viewModel)
-                        CardDetailsExpiryDateView(expiryDate: $cardViewModel.expiryDate, isEditable: $isEditable, viewModel: viewModel, isUnlocked: isUnlocked)
+                        CardDetailsPinView(pin: $viewModel.cardObject.pin, isEditable: $viewModel.isEditable, isUnlocked: viewModel.isUnlocked, viewModel: viewModel)
+                        CardDetailsExpiryDateView(expiryDate: $viewModel.cardObject.expiryDate, isEditable: $viewModel.isEditable, viewModel: viewModel, isUnlocked: viewModel.isUnlocked)
                     }
                 }
                 .padding()
-                .background(Color(cardViewModel.cardColor).opacity(viewModel.getCardBackgroundOpacity()))
+                .background(Color(viewModel.cardObject.cardColor).opacity(viewModel.getCardBackgroundOpacity()))
                 .cornerRadius(10)
                 .overlay(
                     RoundedRectangle(cornerRadius: 10)
@@ -38,7 +38,7 @@ struct CardDetailsView: View {
                 )
                 .shadow(radius: 3)
                 
-                if let cardIssuerImage = viewModel.getCardIssuerImage(cardNumber: cardViewModel.cardNumber) {
+                if let cardIssuerImage = viewModel.getCardIssuerImage(cardNumber: viewModel.cardObject.cardNumber) {
                     cardIssuerImage
                         .resizable()
                         .aspectRatio(contentMode: .fit)
@@ -57,15 +57,15 @@ struct CardDetailsView: View {
                         .padding(.top, 0)
                         .padding(.trailing, 0)
                         .transition(.scale)
-                        .opacity(cardViewModel.isFavorited ? 1 : 0.3)
+                        .opacity(viewModel.cardObject.isFavorited ? 1 : 0.3)
                 }
                 .offset(x: 10, y: -10)
                 .frame(width: 28, height: 28)
                 .onTapGesture {
-                    if let id = cardViewModel.id {
-                        setIsFavorited(!cardViewModel.isFavorited)
+                    if let id = viewModel.cardObject.id {
+                        viewModel.setIsFavorited(!viewModel.cardObject.isFavorited)
                     } else {
-                        cardViewModel.isFavorited.toggle()
+                        viewModel.cardObject.isFavorited.toggle()
                     }
                 }
             }
@@ -254,7 +254,7 @@ struct ExpiryDateTextField: View {
 //        mockCard.cvvCode = "123"
 //
 //        CardDetailsView(viewModel: viewModel,
-//                        cardViewModel: CardViewModel(card: mockCard),
+//                        viewModel.cardObject: viewModel.cardObject(card: mockCard),
 //                        isUnlocked: .constant(true))
 //        .previewLayout(.sizeThatFits)
 //        .padding()

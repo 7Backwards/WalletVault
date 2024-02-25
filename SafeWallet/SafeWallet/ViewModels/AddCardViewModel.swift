@@ -11,6 +11,9 @@ import SwiftUI
 
 class AddCardViewModel: AddOrEditMyCardViewModel, ViewModelProtocol {
     @Published var selectedColor: Color?
+    @Published var cardObject = CardObservableObject(card: nil)
+    @Published var isEditable: Bool = true
+    @Published var activeAlert: ActiveAlert?
     
     enum ActiveAlert: Identifiable {
         case deleteConfirmation

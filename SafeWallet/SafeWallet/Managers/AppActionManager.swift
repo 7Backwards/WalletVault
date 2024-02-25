@@ -10,9 +10,9 @@ import CoreData
 enum AppAction {
     case addCard(cardName: String, cardNumber: String, expiryDate: String, cvvCode: String, cardColor: String, isFavorited: Bool, pin: String)
     case editCard(id: NSManagedObjectID, cardName: String, cardNumber: String, expiryDate: String, cvvCode: String, cardColor: String, isFavorited: Bool, pin: String)
-    case removeCard(Card)
-    case removeCards([Card])
-    case changeCardColor(Card, String)
+    case removeCard(NSManagedObjectID)
+    case removeCards([NSManagedObjectID])
+    case changeCardColor(NSManagedObjectID, String)
     case setIsFavorited(id: NSManagedObjectID, Bool)
 }
 
@@ -35,7 +35,7 @@ class AppActionManager {
 
         switch action {
         case .addCard(let cardName, let cardNumber, let expiryDate, let cvvCode, let cardColor, let isFavorited, let pin):
-
+            
             let fetchRequest: NSFetchRequest<Card> = Card.fetchRequest()
             fetchRequest.predicate = NSPredicate(format: "cardNumber == %@", cardNumber)
             
@@ -62,7 +62,7 @@ class AppActionManager {
                 completion?(false)
             }
         case .editCard(let id, let cardName, let cardNumber, let expiryDate, let cvvCode, let cardColor, let isFavorited, let pin):
-            if let card = context.fetchCard(withID: id) {
+            if let card = getCard(id) {
                 card.cardName = cardName
                 card.cardNumber = cardNumber
                 card.expiryDate = expiryDate
@@ -72,16 +72,22 @@ class AppActionManager {
                 card.pin = pin
             }
             saveWithCompletion()
-        case .removeCard(let card):
-            context.delete(card)
-            saveWithCompletion()
-        case .removeCards(let cards):
-            cards.forEach {
-                context.delete($0)
+        case .removeCard(let id):
+            if let card = getCard(id) {
+                context.delete(card)
             }
             saveWithCompletion()
-        case .changeCardColor(let card, let newCardColor):
-            card.cardColor = newCardColor
+        case .removeCards(let ids):
+            ids.forEach {
+                if let card = getCard($0) {
+                    context.delete(card)
+                }
+            }
+            saveWithCompletion()
+        case .changeCardColor(let id, let newCardColor):
+            if let card = getCard(id) {
+                card.cardColor = newCardColor
+            }
             saveWithCompletion()
         case .setIsFavorited(let cardId, let isFavorited):
             guard let card = context.fetchCard(withID: cardId) else {
@@ -91,5 +97,9 @@ class AppActionManager {
             card.isFavorited = isFavorited
             saveWithCompletion()
         }
+    }
+    
+    private func getCard(_ id: NSManagedObjectID) -> Card? {
+        context.fetchCard(withID: id)
     }
 }

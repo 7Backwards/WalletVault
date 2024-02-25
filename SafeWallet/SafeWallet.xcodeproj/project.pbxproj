@@ -35,6 +35,8 @@
 		598C2F452B37BB1C00C291C3 /* CardDetailsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 598C2F442B37BB1C00C291C3 /* CardDetailsView.swift */; };
 		598D18C12B4C72B900D88C08 /* MyCardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 598D18C02B4C72B900D88C08 /* MyCardView.swift */; };
 		598D18C32B4C8E8000D88C08 /* MyCardViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 598D18C22B4C8E8000D88C08 /* MyCardViewModel.swift */; };
+		599B57DF2B8BBEC7002CE497 /* AddCardButtonViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 599B57DE2B8BBEC7002CE497 /* AddCardButtonViewModel.swift */; };
+		599B57E12B8BC54F002CE497 /* CardRowViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 599B57E02B8BC54F002CE497 /* CardRowViewModel.swift */; };
 		59BD328A2B752F9C00DC8F08 /* ViewModelProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 59BD32892B752F9C00DC8F08 /* ViewModelProtocol.swift */; };
 		59BD328C2B79495700DC8F08 /* MenuTextView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 59BD328B2B79495700DC8F08 /* MenuTextView.swift */; };
 		59BD328E2B797A9200DC8F08 /* AddCardViewModelProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 59BD328D2B797A9200DC8F08 /* AddCardViewModelProtocol.swift */; };
@@ -97,6 +99,8 @@
 		598C2F442B37BB1C00C291C3 /* CardDetailsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardDetailsView.swift; sourceTree = "<group>"; };
 		598D18C02B4C72B900D88C08 /* MyCardView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyCardView.swift; sourceTree = "<group>"; };
 		598D18C22B4C8E8000D88C08 /* MyCardViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyCardViewModel.swift; sourceTree = "<group>"; };
+		599B57DE2B8BBEC7002CE497 /* AddCardButtonViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddCardButtonViewModel.swift; sourceTree = "<group>"; };
+		599B57E02B8BC54F002CE497 /* CardRowViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardRowViewModel.swift; sourceTree = "<group>"; };
 		59BD32892B752F9C00DC8F08 /* ViewModelProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewModelProtocol.swift; sourceTree = "<group>"; };
 		59BD328B2B79495700DC8F08 /* MenuTextView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MenuTextView.swift; sourceTree = "<group>"; };
 		59BD328D2B797A9200DC8F08 /* AddCardViewModelProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddCardViewModelProtocol.swift; sourceTree = "<group>"; };
@@ -268,6 +272,8 @@
 				59BD32892B752F9C00DC8F08 /* ViewModelProtocol.swift */,
 				59BD328D2B797A9200DC8F08 /* AddCardViewModelProtocol.swift */,
 				59BD32952B7D2C9000DC8F08 /* CardViewModel.swift */,
+				599B57DE2B8BBEC7002CE497 /* AddCardButtonViewModel.swift */,
+				599B57E02B8BC54F002CE497 /* CardRowViewModel.swift */,
 			);
 			path = ViewModels;
 			sourceTree = "<group>";
@@ -416,9 +422,11 @@
 				598C2F432B37421A00C291C3 /* CardListViewModel.swift in Sources */,
 				59716AA42B8A7C3500DDD820 /* QRCodeView.swift in Sources */,
 				598C2F002B34C66200C291C3 /* SafeWalletApp.swift in Sources */,
+				599B57DF2B8BBEC7002CE497 /* AddCardButtonViewModel.swift in Sources */,
 				598C2F3A2B34D44000C291C3 /* Card+CoreDataClass.swift in Sources */,
 				59BD32902B797DC500DC8F08 /* AddCardButton.swift in Sources */,
 				5926C5C32B5C96FE0065030E /* AppConstants.swift in Sources */,
+				599B57E12B8BC54F002CE497 /* CardRowViewModel.swift in Sources */,
 				598C2F052B34C66200C291C3 /* SafeWallet.xcdatamodeld in Sources */,
 				59BD32962B7D2C9000DC8F08 /* CardViewModel.swift in Sources */,
 				598C2F3B2B34D44000C291C3 /* Card+CoreDataProperties.swift in Sources */,

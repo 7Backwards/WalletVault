@@ -1,5 +1,5 @@
 //
-//  CardViewModel.swift
+//  CardObservableObject.swift
 //  SafeWallet
 //
 //  Created by Gonçalo on 14/02/2024.
@@ -8,7 +8,7 @@
 import Foundation
 import CoreData
 
-class CardViewModel: ObservableObject {
+class CardObservableObject: ObservableObject {
     @Published var cardName: String = ""
     @Published var cardNumber: String = ""
     @Published var expiryDate: String = ""
