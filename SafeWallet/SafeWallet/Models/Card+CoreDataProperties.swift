@@ -37,7 +37,7 @@ public class CardInfo {
     public var isFavorited: Bool = false
     public var pin: String = ""
     
-    init(cardName: String = "", cardNumber: String = "", expiryDate: String = "", cvvCode: String = "", cardColor: String = "systemBackground", isFavorited: Bool = false, pin: String = "") {
+    init(cardName: String = "", cardNumber: String = "", expiryDate: String = "", cvvCode: String = "", cardColor: String = "black", isFavorited: Bool = false, pin: String = "") {
         self.cardName = cardName
         self.cardNumber = cardNumber
         self.expiryDate = expiryDate

@@ -23,7 +23,7 @@ class CardObservableObject: ObservableObject {
         cardNumber = card?.cardNumber ?? ""
         expiryDate = card?.expiryDate ?? ""
         cvvCode = card?.cvvCode ?? ""
-        cardColor = card?.cardColor ?? "systemBackground"
+        cardColor = card?.cardColor ?? "black"
         isFavorited = card?.isFavorited ?? false
         pin = card?.pin ?? ""
         id = card?.objectID

@@ -133,7 +133,7 @@ fileprivate struct CardDetailsCVVView: View {
     
     var body: some View {
         VStack(alignment: .leading) {
-            Text("CVV")
+            Text(cvvCode.count == 3 ? "CVV" : "")
                 .font(.caption)
                 .fontWeight(.semibold)
             if isEditable {
@@ -163,7 +163,7 @@ fileprivate struct CardDetailsPinView: View {
     
     var body: some View {
         VStack(alignment: .center) {
-            Text("Pin")
+            Text(pin.count == 4 ? "Pin" : "")
                 .font(.caption)
                 .fontWeight(.semibold)
             if isEditable {
@@ -194,7 +194,7 @@ fileprivate struct CardDetailsExpiryDateView: View {
     
     var body: some View {
         VStack(alignment: .trailing) {
-            Text("Expires on")
+            Text(expiryDate.count == 5 ? "Expires on" : "")
                 .font(.caption)
                 .fontWeight(.semibold)
             if isEditable {
