@@ -62,7 +62,7 @@ struct CardDetailsView: View {
                 .offset(x: 10, y: -10)
                 .frame(width: 28, height: 28)
                 .onTapGesture {
-                    if let id = viewModel.cardObject.id {
+                    if viewModel.cardObject.id != nil {
                         viewModel.setIsFavorited(!viewModel.cardObject.isFavorited)
                     } else {
                         viewModel.cardObject.isFavorited.toggle()
@@ -90,7 +90,7 @@ fileprivate struct CardDetailsNameAndNumberView: View {
                         self.cardName = String(cardName.prefix(20)).uppercased()
                     }
             } else {
-                MenuTextView(content: cardName.uppercased(), isEditable: $isEditable, view: Text(cardName.uppercased()))
+                MenuTextView(content: cardName.uppercased(), isEditable: $isEditable, isUnlocked: isUnlocked, view: Text(cardName.uppercased()))
                     .font(.headline)
                     .fontWeight(.bold)
                     .foregroundStyle(Color.inverseSystemBackground)
@@ -112,7 +112,7 @@ fileprivate struct CardDetailsNameAndNumberView: View {
                             .redacted(reason: .placeholder)
                         Text(" " + cardNumber.suffix(4))
                     } else {
-                        MenuTextView(content: cardNumber, isEditable: $isEditable, view: Text(cardNumber))
+                        MenuTextView(content: cardNumber, isEditable: $isEditable, isUnlocked: isUnlocked, view: Text(cardNumber))
                             .foregroundStyle(Color.inverseSystemBackground)
                     }
                 }
@@ -145,7 +145,7 @@ fileprivate struct CardDetailsCVVView: View {
                 Text("CVV")
                     .font(.caption)
                     .fontWeight(.semibold)
-                MenuTextView(content: cvvCode, isEditable: $isEditable, view: Text(cvvCode))
+                MenuTextView(content: cvvCode, isEditable: $isEditable, isUnlocked: isUnlocked, view: Text(cvvCode))
                     .font(.headline)
                     .fontWeight(.bold)
                     .redacted(reason: isUnlocked ? [] : .placeholder)
@@ -177,7 +177,7 @@ fileprivate struct CardDetailsPinView: View {
                 Text("Pin")
                     .font(.caption)
                     .fontWeight(.semibold)
-                MenuTextView(content: pin, isEditable: $isEditable, view: Text(pin))
+                MenuTextView(content: pin, isEditable: $isEditable, isUnlocked: isUnlocked, view: Text(pin))
                     .font(.headline)
                     .fontWeight(.bold)
                     .redacted(reason: isUnlocked ? [] : .placeholder)
@@ -204,7 +204,7 @@ fileprivate struct CardDetailsExpiryDateView: View {
                 Text("Expires on")
                     .font(.caption)
                     .fontWeight(.semibold)
-                MenuTextView(content: expiryDate, isEditable: $isEditable, view: Text(expiryDate))
+                MenuTextView(content: expiryDate, isEditable: $isEditable, isUnlocked: isUnlocked, view: Text(expiryDate))
                     .font(.headline)
                     .fontWeight(.bold)
                     .redacted(reason: isUnlocked ? [] : .placeholder)
