@@ -99,7 +99,6 @@ fileprivate struct CardDetailsNameAndNumberView: View {
             if isEditable {
                 TextField("Number", text: $cardNumber)
                     .font(cardNumber.isEmpty ? .body : .title3)
-                    .fontWeight(cardNumber.isEmpty ? .none : .bold)
                     .keyboardType(.numberPad)
                     .frame(width: UIScreen.main.bounds.width * 0.58)
                     .onChange(of: cardNumber, initial: true) { _, newValue in
@@ -134,6 +133,9 @@ fileprivate struct CardDetailsCVVView: View {
     
     var body: some View {
         VStack(alignment: .leading) {
+            Text("CVV")
+                .font(.caption)
+                .fontWeight(.semibold)
             if isEditable {
                 TextField("CVV", text: $cvvCode)
                     .keyboardType(.numberPad)
@@ -142,9 +144,6 @@ fileprivate struct CardDetailsCVVView: View {
                     }
                 
             } else if !cvvCode.isEmpty {
-                Text("CVV")
-                    .font(.caption)
-                    .fontWeight(.semibold)
                 MenuTextView(content: cvvCode, isEditable: $isEditable, isUnlocked: isUnlocked, view: Text(cvvCode))
                     .font(.headline)
                     .fontWeight(.bold)
@@ -164,6 +163,9 @@ fileprivate struct CardDetailsPinView: View {
     
     var body: some View {
         VStack(alignment: .center) {
+            Text("Pin")
+                .font(.caption)
+                .fontWeight(.semibold)
             if isEditable {
                 TextField("Pin", text: $pin)
                     .multilineTextAlignment(.center)
@@ -173,10 +175,6 @@ fileprivate struct CardDetailsPinView: View {
                     }
                 
             } else if !pin.isEmpty {
-                
-                Text("Pin")
-                    .font(.caption)
-                    .fontWeight(.semibold)
                 MenuTextView(content: pin, isEditable: $isEditable, isUnlocked: isUnlocked, view: Text(pin))
                     .font(.headline)
                     .fontWeight(.bold)
@@ -196,14 +194,15 @@ fileprivate struct CardDetailsExpiryDateView: View {
     
     var body: some View {
         VStack(alignment: .trailing) {
+            Text("Expires on")
+                .font(.caption)
+                .fontWeight(.semibold)
             if isEditable {
                 ExpiryDateTextField(expiryDate: $expiryDate)
                     .font(.headline)
+                    .fontWeight(.regular)
                     .multilineTextAlignment(.trailing)
             } else {
-                Text("Expires on")
-                    .font(.caption)
-                    .fontWeight(.semibold)
                 MenuTextView(content: expiryDate, isEditable: $isEditable, isUnlocked: isUnlocked, view: Text(expiryDate))
                     .font(.headline)
                     .fontWeight(.bold)
