@@ -14,7 +14,7 @@ class CardListViewModel: AddOrEditMyCardViewModel, ViewModelProtocol {
     @Published var activeShareSheet: ActiveShareSheet?
     @Published var activeAlert: ActiveAlert?
     @Published var isShowingErrorMessage: Bool = false
-    private var cardsViewModels = [NSManagedObjectID : CardViewModel]()
+    private var cardsViewModels = [NSManagedObjectID : CardObservableObject]()
     
     enum ActiveShareSheet: Identifiable {
         case addCard
@@ -47,16 +47,9 @@ class CardListViewModel: AddOrEditMyCardViewModel, ViewModelProtocol {
         }
     }
     
-    func deleteCards(id: NSManagedObjectID, from cards: FetchedResults<Card>) {
-        if let index = cards.firstIndex(where: { $0.objectID == id }) {
-            print("Deleting card")
-
-            withAnimation {
-                let cardsToDelete = IndexSet(integer: index).map { cards[$0] }
-                appManager.actionManager.doAction(action: .removeCards(cardsToDelete))
-            }
-        } else {
-            print("Failed to find index for card")
+    func deleteCard(id: NSManagedObjectID, from cards: FetchedResults<Card>) {
+        withAnimation {
+            appManager.actionManager.doAction(action: .removeCard(id))
         }
     }
     
@@ -70,11 +63,11 @@ class CardListViewModel: AddOrEditMyCardViewModel, ViewModelProtocol {
         }
     }
     
-    func getCardViewModel(for card: Card) -> CardViewModel {
+    func getCardObservableObject(for card: Card) -> CardObservableObject {
         if let viewModel = cardsViewModels[card.objectID] {
             return viewModel
         } else {
-            let viewModel = CardViewModel(card: card)
+            let viewModel = CardObservableObject(card: card)
             cardsViewModels[card.objectID] = viewModel
             return viewModel
         }

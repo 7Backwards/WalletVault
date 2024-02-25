@@ -17,8 +17,8 @@ struct QRCodeScannerView: View {
                 // TODO: Add logging
                 return
             }
-            let cardViewModel = CardViewModel(cardInfo: cardInfo)
-            viewModel.addOrEdit(cardViewModel: cardViewModel) { result in
+            let cardObject = CardObservableObject(cardInfo: cardInfo)
+            viewModel.addOrEdit(cardObject: cardObject) { result in
                 switch result {
                 case .success:
                     DispatchQueue.main.asyncAfter(deadline: .now() + 0.1) {

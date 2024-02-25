@@ -8,8 +8,11 @@
 import SwiftUI
 
 struct ColorCarouselView: View {
-    @Binding var cardColor: String
-    @StateObject var viewModel: ColorCarouselViewModel
+    @ObservedObject var viewModel: ColorCarouselViewModel
+    
+    init(cardColor: Binding<String>, appManager: AppManager) {
+        self.viewModel = ColorCarouselViewModel(appManager: appManager, cardColor: cardColor)
+    }
     
     var body: some View {
         GeometryReader { geometry in
@@ -24,11 +27,11 @@ struct ColorCarouselView: View {
                                 Circle()
                                     .stroke(Color.clear)
                             )
-                            .scaleEffect(cardColor == color.name ? 1.2 : 1.0)
+                            .scaleEffect(viewModel.cardColor == color.name ? 1.2 : 1.0)
                             .shadow(color: Color.inverseSystemBackground, radius: 0)
                             .onTapGesture {
                                 withAnimation {
-                                    self.cardColor = color.name
+                                    self.viewModel.cardColor = color.name
                                 }
                             }
                     }

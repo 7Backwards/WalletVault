@@ -10,23 +10,25 @@ import SwiftUI
 import CoreData
 
 struct AddButton: View {
-    let viewModel: AddOrEditMyCardViewModelProtocol
-    @ObservedObject var cardViewModel: CardViewModel
-    @Binding var isEditable: Bool
-    var showAlert: (String) -> Void
+    let viewModel: AddCardButtonViewModel
     var presentationMode: Binding<PresentationMode>?
+    
+    init(appManager: AppManager, cardObject: CardObservableObject, showAlert: @escaping (String) -> Void, presentationMode: Binding<PresentationMode>? = nil, isEditable: Binding<Bool>) {
+        self.viewModel = AddCardButtonViewModel(appManager: appManager, cardObject: cardObject, isEditable: isEditable, showAlert: showAlert)
+        self.presentationMode = presentationMode
+    }
     
     var body: some View {
         GeometryReader { geometry in
             Button("Save Card") {
                 var alertMessage = ""
-                viewModel.addOrEdit(cardViewModel: cardViewModel) { result in
+                viewModel.addOrEdit(cardObject: viewModel.cardObject) { result in
                     switch result {
                     case .success:
                         if let presentationMode {
                             presentationMode.wrappedValue.dismiss()
                         } else {
-                            isEditable = false
+                            viewModel.isEditable = false
                         }
                     case .failure(let error):
                         switch error {
@@ -37,7 +39,7 @@ struct AddButton: View {
                         case .shortCardNumber:
                             alertMessage = "Card number is not invalid, please update it."
                         }
-                        showAlert(alertMessage)
+                        viewModel.showAlert(alertMessage)
                     }
                 }
             }

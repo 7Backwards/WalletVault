@@ -11,9 +11,17 @@ import CoreData
 
 class CardDetailsViewModel: ViewModelProtocol {
     @Published var appManager: AppManager
+    @Published var cardObject: CardObservableObject
+    @Binding var isEditable: Bool
+    @Published var isUnlocked: Bool
+    let setIsFavorited: (Bool) -> Void
     
-    init(appManager: AppManager) {
+    init(appManager: AppManager, cardObject: CardObservableObject, isEditing: Binding<Bool>, isUnlocked: Bool, setIsFavorited: @escaping (Bool) -> Void) {
         self.appManager = appManager
+        self.cardObject = cardObject
+        self._isEditable = isEditing
+        self.isUnlocked = isUnlocked
+        self.setIsFavorited = setIsFavorited
     }
 
     func formatCardNumber(_ number: String) -> String {

@@ -6,10 +6,11 @@
 //
 
 import Foundation
+import Combine
 import CoreData
 
 protocol AddOrEditMyCardViewModelProtocol {
-    func addOrEdit(cardViewModel: CardViewModel, completion: @escaping (Result<Void, AddCardErrorType>) -> Void)
+    func addOrEdit(cardObject: CardObservableObject, completion: @escaping (Result<Void, AddCardErrorType>) -> Void)
 }
 
 class AddOrEditMyCardViewModel: AddOrEditMyCardViewModelProtocol {
@@ -19,15 +20,15 @@ class AddOrEditMyCardViewModel: AddOrEditMyCardViewModelProtocol {
         self.appManager = appManager
     }
 
-    func addOrEdit(cardViewModel: CardViewModel, completion: @escaping (Result<Void, AddCardErrorType>) -> Void) {
-        let cardName = cardViewModel.cardName
-        let cardNumber = cardViewModel.cardNumber
-        let cardColor = cardViewModel.cardColor
-        let cvvCode = cardViewModel.cvvCode
-        let isFavorited = cardViewModel.isFavorited
-        let expiryDate = cardViewModel.expiryDate
-        let id = cardViewModel.id
-        let pin = cardViewModel.pin
+    func addOrEdit(cardObject: CardObservableObject, completion: @escaping (Result<Void, AddCardErrorType>) -> Void) {
+        let cardName = cardObject.cardName
+        let cardNumber = cardObject.cardNumber
+        let cardColor = cardObject.cardColor
+        let cvvCode = cardObject.cvvCode
+        let isFavorited = cardObject.isFavorited
+        let expiryDate = cardObject.expiryDate
+        let id = cardObject.id
+        let pin = cardObject.pin
 
         guard !cardName.isEmpty, !cardNumber.isEmpty, !expiryDate.isEmpty, !cvvCode.isEmpty, !cardColor.isEmpty else { return }
         

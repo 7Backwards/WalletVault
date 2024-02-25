@@ -9,31 +9,28 @@ import SwiftUI
 
 struct AddCardView: View {
     @Environment(\.presentationMode) var presentationMode
-    @ObservedObject private var cardViewModel = CardViewModel(card: nil)
-    @State private var activeAlert: AddCardViewModel.ActiveAlert?
-    @State var isEditable: Bool = true
-    @StateObject var viewModel: AddCardViewModel
+    @ObservedObject var viewModel: AddCardViewModel
+    
+    init(appManager: AppManager) {
+        self.viewModel = AddCardViewModel(appManager: appManager)
+    }
     
     var body: some View {
         NavigationView {
             VStack(spacing: 10) {
-                CardDetailsView(
-                    viewModel: CardDetailsViewModel(appManager: viewModel.appManager),
-                    cardViewModel: cardViewModel,
-                    isEditable: $isEditable,
-                    isUnlocked: true) { isFavorited in
-                        guard let id = cardViewModel.id else { return }
+                CardDetailsView(appManager: viewModel.appManager, cardObject: viewModel.cardObject, isEditing: $viewModel.isEditable, isUnlocked: true) { isFavorited in
+                        guard let id = viewModel.cardObject.id else { return }
                         viewModel.appManager.actionManager.doAction(action: .setIsFavorited(id: id, isFavorited)) { result in
                             if result {
-                                cardViewModel.isFavorited.toggle()
+                                viewModel.cardObject.isFavorited.toggle()
                             }
                         }
                     }
                 .frame(height: viewModel.appManager.constants.cardHeight)
                 
-                ColorCarouselView(cardColor: $cardViewModel.cardColor, viewModel: ColorCarouselViewModel(appManager: viewModel.appManager))
+                ColorCarouselView(cardColor: $viewModel.cardObject.cardColor, appManager: viewModel.appManager)
 
-                AddButton(viewModel: viewModel, cardViewModel: cardViewModel, isEditable: $isEditable, showAlert: { alertMessage in activeAlert = .error(alertMessage) }, presentationMode: presentationMode)
+                AddButton(appManager: viewModel.appManager, cardObject: viewModel.cardObject, showAlert: { alertMessage in viewModel.activeAlert = .error(alertMessage) }, presentationMode: presentationMode, isEditable: $viewModel.isEditable)
             }
         }
         .navigationBarTitle("Add Card", displayMode: .inline)
@@ -42,7 +39,7 @@ struct AddCardView: View {
         }) {
             Image(systemName: "xmark")
         })
-        .alert(item: $activeAlert) { alert in
+        .alert(item: $viewModel.activeAlert) { alert in
             switch alert {
             case .error(let errorMessage) :
                 return Alert(
@@ -56,8 +53,6 @@ struct AddCardView: View {
         }
     }
 }
-
-
 
 // A placeholder Card object for preview purposes
 extension Card {
@@ -74,6 +69,6 @@ extension Card {
 struct AddCardView_Previews: PreviewProvider {
     static var previews: some View {
         let context = PersistenceController.preview.container.viewContext
-        AddCardView(viewModel: AddCardViewModel(appManager: AppManager(context: context)))
+        AddCardView(appManager: AppManager(context: context))
     }
 }

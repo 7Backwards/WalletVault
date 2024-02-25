@@ -12,24 +12,19 @@ struct CardRow: View {
     
     @GestureState private var gestureDragOffset = CGSize.zero
     @State private var dragOffset = CGSize.zero
-    @State var isEditable = false
-    @ObservedObject var appManager: AppManager
-    @ObservedObject var cardViewModel: CardViewModel
-    @Binding var activeAlert: CardListViewModel.ActiveAlert?
+    @ObservedObject var viewModel: CardRowViewModel
     
-    init(cardViewModel: CardViewModel, appManager: AppManager, activeAlert: Binding<CardListViewModel.ActiveAlert?>) {
-        self.cardViewModel = cardViewModel
-        self.appManager = appManager
-        self._activeAlert = activeAlert
+    init(cardObject: CardObservableObject, appManager: AppManager, activeAlert: Binding<CardListViewModel.ActiveAlert?>) {
+        self.viewModel = CardRowViewModel(appManager: appManager, cardObject: cardObject, activeAlert: activeAlert)
     }
     
     var body: some View {
         ZStack {
-            CardDetailsView(viewModel: CardDetailsViewModel(appManager: appManager), cardViewModel: cardViewModel, isEditable: $isEditable, isUnlocked: false) { isFavorited in
-                guard let id = cardViewModel.id else { return }
-                appManager.actionManager.doAction(action: .setIsFavorited(id: id, isFavorited)) { result in
+            CardDetailsView(appManager: viewModel.appManager, cardObject: viewModel.cardObject, isEditing: $viewModel.isEditable, isUnlocked: false) { isFavorited in
+                guard let id = viewModel.cardObject.id else { return }
+                viewModel.appManager.actionManager.doAction(action: .setIsFavorited(id: id, isFavorited)) { result in
                     if result {
-                        cardViewModel.isFavorited.toggle()
+                        viewModel.cardObject.isFavorited.toggle()
                     }
                 }
             }
@@ -50,11 +45,11 @@ struct CardRow: View {
                                 if value.translation.width <= -50 {
                                     withAnimation {
                                         dragOffset = .zero
-                                        guard let id = cardViewModel.id else {
+                                        guard let id = viewModel.cardObject.id else {
                                             // TODO: Add log
                                             return
                                         }
-                                        activeAlert = .removeCard(id)
+                                        viewModel.activeAlert = .removeCard(id)
                                     }
                                 }
                             }

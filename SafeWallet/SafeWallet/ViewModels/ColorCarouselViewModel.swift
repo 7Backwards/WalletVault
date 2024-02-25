@@ -9,9 +9,11 @@ import SwiftUI
 
 class ColorCarouselViewModel: ViewModelProtocol {
     @Published var appManager: AppManager
+    @Binding var cardColor: String
     
-    init(appManager: AppManager) {
+    init(appManager: AppManager, cardColor: Binding<String>) {
         self.appManager = appManager
+        self._cardColor = cardColor
     }
     
     func getCardBackgroundOpacity() -> Double {

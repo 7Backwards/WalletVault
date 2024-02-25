@@ -38,10 +38,10 @@ struct CardListView: View {
                                     }
                                 }
                             } label: {
-                                CardRow(cardViewModel: viewModel.getCardViewModel(for: card), appManager: viewModel.appManager, activeAlert: $viewModel.activeAlert)
-                                .padding(.bottom, 10)
-                                .frame(height: viewModel.appManager.constants.cardHeight)
-                                .listRowInsets(EdgeInsets())
+                                CardRow(cardObject: viewModel.getCardObservableObject(for: card), appManager: viewModel.appManager, activeAlert: $viewModel.activeAlert)
+                                    .padding(.bottom, 10)
+                                    .frame(height: viewModel.appManager.constants.cardHeight)
+                                    .listRowInsets(EdgeInsets())
                             }
                             .foregroundColor(.inverseSystemBackground)
                         }
@@ -49,7 +49,7 @@ struct CardListView: View {
                 }
             }
             .navigationDestination(for: Card.self) { card in
-                MyCardView(viewModel: MyCardViewModel(card: card, appManager: viewModel.appManager), cardViewModel: viewModel.getCardViewModel(for: card))
+                MyCardView(appManager: viewModel.appManager, cardObject: viewModel.getCardObservableObject(for: card))
             }
             .scrollIndicators(.hidden)
             .listStyle(.plain)
@@ -71,7 +71,7 @@ struct CardListView: View {
                         primaryButton: .default(Text("Cancel"), action: { viewModel.activeAlert = nil }),
                         secondaryButton: .destructive(Text("Delete"), action: {
                             withAnimation {
-                                viewModel.deleteCards(id: id, from: cards)
+                                viewModel.deleteCard(id: id, from: cards)
                             }
                             viewModel.activeAlert = nil
                         })
@@ -87,13 +87,13 @@ struct CardListView: View {
             .sheet(item: $viewModel.activeShareSheet) { activeSheet in
                 switch activeSheet {
                 case .addCard:
-                    AddCardView(viewModel: AddCardViewModel(appManager: viewModel.appManager))
+                    AddCardView(appManager: viewModel.appManager)
                         .presentationDetents([.height(300)])
                         .presentationDragIndicator(.visible)
                 case .scanQRCode:
                     QRCodeScannerView(viewModel: viewModel)
-                    .presentationDetents([.height(300)])
-                    .presentationDragIndicator(.visible)
+                        .presentationDetents([.height(300)])
+                        .presentationDragIndicator(.visible)
                 }
             }
             .background(Color.systemBackground.edgesIgnoringSafeArea(.all))
