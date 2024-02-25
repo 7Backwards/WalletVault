@@ -131,9 +131,10 @@ struct NoContentView: View {
                 .scaledToFit()
                 .frame(width: 100, height: 60)
                 .foregroundColor(.secondary)
-            Text("You currently have no cards")
-                .font(.title)
-                .fontWeight(.semibold)
+            Text("Tap + to add your first card!")
+                .font(.largeTitle)
+                .fontWeight(.thin)
+                .multilineTextAlignment(.center)
                 .foregroundColor(.secondary)
             Spacer()
         }
