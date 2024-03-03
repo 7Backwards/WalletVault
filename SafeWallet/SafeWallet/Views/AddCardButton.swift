@@ -43,6 +43,7 @@ struct AddButton: View {
                     }
                 }
             }
+            .dynamicTypeSize(.xSmall ... .xxxLarge)
             .frame(width: geometry.size.width - 60, height: 50)
             .background(.blue)
             .foregroundColor(Color(.systemBackground))

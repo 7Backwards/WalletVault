@@ -32,7 +32,7 @@ struct AddCardView: View {
 
                 AddButton(appManager: viewModel.appManager, cardObject: viewModel.cardObject, showAlert: { alertMessage in viewModel.activeAlert = .error(alertMessage) }, presentationMode: presentationMode, isEditable: $viewModel.isEditable)
             }
-            .padding(.top, 5)
+            .padding(.vertical, 5)
         }
         .navigationBarTitle("Add Card", displayMode: .inline)
         .navigationBarItems(leading: Button(action: {

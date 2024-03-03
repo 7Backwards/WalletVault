@@ -70,7 +70,7 @@ struct CardDetailsView: View {
                 }
             }
             .padding(.horizontal, viewModel.appManager.constants.cardHorizontalMarginSpacing)
-            .frame(width: geometry.size.width, height: viewModel.appManager.constants.cardHeight)
+            .frame(maxWidth: .infinity, maxHeight: .infinity)
         }
     }
 }
@@ -89,9 +89,11 @@ fileprivate struct CardDetailsNameAndNumberView: View {
                     .onChange(of: cardName) { _, newValue in
                         self.cardName = String(cardName.prefix(20)).uppercased()
                     }
+                    .dynamicTypeSize(.xSmall ... .xxxLarge)
             } else {
                 MenuTextView(content: cardName.uppercased(), isEditable: $isEditable, isUnlocked: isUnlocked, view: Text(cardName.uppercased()))
                     .font(.headline)
+                    .dynamicTypeSize(.xSmall ... .xxxLarge)
                     .fontWeight(.bold)
                     .foregroundStyle(Color.inverseSystemBackground)
                 
@@ -100,7 +102,7 @@ fileprivate struct CardDetailsNameAndNumberView: View {
                 TextField("Number", text: $cardNumber)
                     .font(cardNumber.isEmpty ? .body : .title3)
                     .keyboardType(.numberPad)
-                    .frame(width: UIScreen.main.bounds.width * 0.58)
+                    .dynamicTypeSize(.xSmall ... .xxxLarge)
                     .onChange(of: cardNumber, initial: true) { _, newValue in
                         self.cardNumber = self.viewModel.formatCardNumber(newValue)
                     }
@@ -109,9 +111,12 @@ fileprivate struct CardDetailsNameAndNumberView: View {
                     if !isUnlocked {
                         Text(String(repeating: "•", count: max(0, cardNumber.count - 4)))
                             .redacted(reason: .placeholder)
+                            .dynamicTypeSize(.xSmall ... .xxxLarge)
                         Text(" " + cardNumber.suffix(4))
+                            .dynamicTypeSize(.xSmall ... .xxxLarge)
                     } else {
                         MenuTextView(content: cardNumber, isEditable: $isEditable, isUnlocked: isUnlocked, view: Text(cardNumber))
+                            .dynamicTypeSize(.xSmall ... .xxxLarge)
                             .foregroundStyle(Color.inverseSystemBackground)
                     }
                 }
@@ -135,10 +140,12 @@ fileprivate struct CardDetailsCVVView: View {
         VStack(alignment: .leading) {
             Text(cvvCode.count == 3 ? "CVV" : "")
                 .font(.caption)
+                .dynamicTypeSize(.xSmall ... .xxxLarge)
                 .fontWeight(.semibold)
             if isEditable {
                 TextField("CVV", text: $cvvCode)
                     .keyboardType(.numberPad)
+                    .dynamicTypeSize(.xSmall ... .xxxLarge)
                     .onChange(of: cvvCode, initial: true) { _, newValue in
                         self.cvvCode = String(newValue.prefix(3))
                     }
@@ -146,6 +153,7 @@ fileprivate struct CardDetailsCVVView: View {
             } else if !cvvCode.isEmpty {
                 MenuTextView(content: cvvCode, isEditable: $isEditable, isUnlocked: isUnlocked, view: Text(cvvCode))
                     .font(.headline)
+                    .dynamicTypeSize(.xSmall ... .xxxLarge)
                     .fontWeight(.bold)
                     .redacted(reason: isUnlocked ? [] : .placeholder)
                     .foregroundStyle(Color.inverseSystemBackground)
@@ -165,11 +173,13 @@ fileprivate struct CardDetailsPinView: View {
         VStack(alignment: .center) {
             Text(pin.count == 4 ? "Pin" : "")
                 .font(.caption)
+                .dynamicTypeSize(.xSmall ... .xxxLarge)
                 .fontWeight(.semibold)
             if isEditable {
                 TextField("Pin", text: $pin)
                     .multilineTextAlignment(.center)
                     .keyboardType(.numberPad)
+                    .dynamicTypeSize(.xSmall ... .xxxLarge)
                     .onChange(of: pin, initial: true) { _, newValue in
                         self.pin = String(newValue.prefix(4))
                     }
@@ -178,11 +188,11 @@ fileprivate struct CardDetailsPinView: View {
                 MenuTextView(content: pin, isEditable: $isEditable, isUnlocked: isUnlocked, view: Text(pin))
                     .font(.headline)
                     .fontWeight(.bold)
+                    .dynamicTypeSize(.xSmall ... .xxxLarge)
                     .redacted(reason: isUnlocked ? [] : .placeholder)
                     .foregroundStyle(Color.inverseSystemBackground)
             }
         }
-        .frame(maxWidth: 50, alignment: .center)
     }
 }
 
@@ -196,15 +206,19 @@ fileprivate struct CardDetailsExpiryDateView: View {
         VStack(alignment: .trailing) {
             Text(expiryDate.count == 5 ? "Expires on" : "")
                 .font(.caption)
+                .lineLimit(1)
+                .dynamicTypeSize(.xSmall ... .xxxLarge)
                 .fontWeight(.semibold)
             if isEditable {
                 ExpiryDateTextField(expiryDate: $expiryDate)
                     .font(.headline)
+                    .dynamicTypeSize(.xSmall ... .xxxLarge)
                     .fontWeight(.regular)
                     .multilineTextAlignment(.trailing)
             } else {
                 MenuTextView(content: expiryDate, isEditable: $isEditable, isUnlocked: isUnlocked, view: Text(expiryDate))
                     .font(.headline)
+                    .dynamicTypeSize(.xSmall ... .xxxLarge)
                     .fontWeight(.bold)
                     .redacted(reason: isUnlocked ? [] : .placeholder)
                     .foregroundStyle(Color.inverseSystemBackground)
@@ -240,22 +254,38 @@ struct ExpiryDateTextField: View {
 }
 
 
-//struct CardDetailsView_Previews: PreviewProvider {
-//    static var previews: some View {
-//        let context = PersistenceController.preview.container.viewContext
-//
-//        let viewModel = CardDetailsViewModel(appManager: AppManager(context: context))
-//
-//        let mockCard = Card(context: PersistenceController.preview.container.viewContext)
-//        mockCard.cardName = "Visa"
-//        mockCard.cardNumber = "4234 5678 9012 3456"
-//        mockCard.expiryDate = "12/25"
-//        mockCard.cvvCode = "123"
-//
-//        CardDetailsView(viewModel: viewModel,
-//                        viewModel.cardObject: viewModel.cardObject(card: mockCard),
-//                        isUnlocked: .constant(true))
-//        .previewLayout(.sizeThatFits)
-//        .padding()
-//    }
-//}
+struct CardDetailsView_Previews: PreviewProvider {
+    static var previews: some View {
+        let context = PersistenceController.preview.container.viewContext
+
+        let mockCard = Card(context: context)
+        mockCard.cardName = "Visa"
+        mockCard.cardNumber = "1234 5678 9012 3456"
+        mockCard.expiryDate = "12/25"
+        mockCard.cvvCode = "123"
+
+        let mockCardObservableObject = CardObservableObject(card: mockCard)
+
+        // Make sure you're using a binding to a boolean for isEditing
+        // If this is a view that doesn't change the editing state, you can use .constant(false)
+        let isEditing = Binding.constant(true)
+
+        // Create a closure that matches the expected type for setIsFavorited
+        let setIsFavorited: (Bool) -> Void = { isFavorited in
+            // Perform the action to set the card as a favorite
+        }
+
+        // Replace `isUnlocked` with a static value if it doesn't change in the preview
+        let isUnlocked = true
+
+        return CardDetailsView(
+            appManager: AppManager(context: context),
+            cardObject: mockCardObservableObject,
+            isEditing: isEditing,
+            isUnlocked: isUnlocked,
+            setIsFavorited: setIsFavorited
+        )
+        .previewLayout(.sizeThatFits)
+        .padding()
+    }
+}
