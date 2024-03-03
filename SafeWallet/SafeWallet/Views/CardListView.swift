@@ -10,7 +10,7 @@ import CoreData
 
 struct CardListView: View {
     @Environment(\.managedObjectContext) private var viewContext
-    @StateObject var viewModel: CardListViewModel
+    @ObservedObject var viewModel: CardListViewModel
     @State private var path = NavigationPath()
     @FetchRequest(
         sortDescriptors: [NSSortDescriptor(keyPath: \Card.isFavorited, ascending: false)],
@@ -50,6 +50,9 @@ struct CardListView: View {
             }
             .navigationDestination(for: Card.self) { card in
                 MyCardView(appManager: viewModel.appManager, cardObject: viewModel.getCardObservableObject(for: card))
+            }
+            .onAppear {
+                viewModel.appManager.utils.requestNotificationPermission()
             }
             .scrollIndicators(.hidden)
             .listStyle(.plain)
@@ -97,6 +100,11 @@ struct CardListView: View {
                 }
             }
             .background(Color.systemBackground.edgesIgnoringSafeArea(.all))
+        }
+        .onReceive(viewModel.appManager.notificationHandler.$selectedCardID) { selectedCardID in
+            if let selectedId = selectedCardID, let selectedCard = cards.first(where: { $0.objectID == selectedId}) {
+                path.append(selectedCard)
+            }
         }
     }
 }

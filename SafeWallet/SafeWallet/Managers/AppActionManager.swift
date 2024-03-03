@@ -24,12 +24,20 @@ class AppActionManager {
     }
     
     func doAction(action: AppAction, completion: ((Bool) -> Void)? = nil) {
-        func saveWithCompletion() {
+        func saveWithCompletion(saveCompletion: ((Bool) -> Void)? = nil ) {
             do {
                 try context.save()
-                completion?(true)
+                if let saveCompletion {
+                    saveCompletion(true)
+                } else {
+                    completion?(true)
+                }
             } catch {
-                completion?(false)
+                if let saveCompletion {
+                    saveCompletion(false)
+                } else {
+                    completion?(false)
+                }
             }
         }
 
@@ -51,8 +59,11 @@ class AppActionManager {
                     card.cardColor = cardColor
                     card.isFavorited = isFavorited
                     card.pin = pin
-                    
-                    saveWithCompletion()
+
+                    saveWithCompletion() {
+                        scheduleCardNotifications(cardID: card.objectID, cardName: cardName, expiryDate: expiryDate)
+                        completion?($0)
+                    }
                 } else {
                     print("A card with the same number already exists.")
                     completion?(false)
@@ -63,23 +74,28 @@ class AppActionManager {
             }
         case .editCard(let id, let cardName, let cardNumber, let expiryDate, let cvvCode, let cardColor, let isFavorited, let pin):
             if let card = getCard(id) {
+                if card.expiryDate != expiryDate || card.cardName != cardName {
+                    scheduleCardNotifications(cardID: id, cardName: cardName, expiryDate: expiryDate)
+                }
                 card.cardName = cardName
                 card.cardNumber = cardNumber
                 card.expiryDate = expiryDate
                 card.cvvCode = cvvCode
                 card.cardColor = cardColor
                 card.isFavorited = isFavorited
-                card.pin = pin
+                card.pin = pin 
             }
             saveWithCompletion()
         case .removeCard(let id):
             if let card = getCard(id) {
+                removeCardNotifications(cardID: id)
                 context.delete(card)
             }
             saveWithCompletion()
         case .removeCards(let ids):
             ids.forEach {
                 if let card = getCard($0) {
+                    removeCardNotifications(cardID: $0)
                     context.delete(card)
                 }
             }
