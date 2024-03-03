@@ -14,6 +14,8 @@
 		5926C5BF2B5C8E8B0065030E /* ColorCarouselViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5926C5BE2B5C8E8B0065030E /* ColorCarouselViewModel.swift */; };
 		5926C5C12B5C921F0065030E /* AppUtils.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5926C5C02B5C921F0065030E /* AppUtils.swift */; };
 		5926C5C32B5C96FE0065030E /* AppConstants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5926C5C22B5C96FE0065030E /* AppConstants.swift */; };
+		5955A8532B94F04700AECF1D /* AppActionManager+Notifications.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5955A8522B94F04700AECF1D /* AppActionManager+Notifications.swift */; };
+		5955A8552B94F8A400AECF1D /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5955A8542B94F8A400AECF1D /* AppDelegate.swift */; };
 		59716AA02B8A46C100DDD820 /* ShareUIActivityController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 59716A9F2B8A46C100DDD820 /* ShareUIActivityController.swift */; };
 		59716AA22B8A51A400DDD820 /* AppUtils+QrCode.swift in Sources */ = {isa = PBXBuildFile; fileRef = 59716AA12B8A51A400DDD820 /* AppUtils+QrCode.swift */; };
 		59716AA42B8A7C3500DDD820 /* QRCodeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 59716AA32B8A7C3500DDD820 /* QRCodeView.swift */; };
@@ -74,6 +76,8 @@
 		5926C5BE2B5C8E8B0065030E /* ColorCarouselViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ColorCarouselViewModel.swift; sourceTree = "<group>"; };
 		5926C5C02B5C921F0065030E /* AppUtils.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppUtils.swift; sourceTree = "<group>"; };
 		5926C5C22B5C96FE0065030E /* AppConstants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppConstants.swift; sourceTree = "<group>"; };
+		5955A8522B94F04700AECF1D /* AppActionManager+Notifications.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "AppActionManager+Notifications.swift"; sourceTree = "<group>"; };
+		5955A8542B94F8A400AECF1D /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		59716A9F2B8A46C100DDD820 /* ShareUIActivityController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShareUIActivityController.swift; sourceTree = "<group>"; };
 		59716AA12B8A51A400DDD820 /* AppUtils+QrCode.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "AppUtils+QrCode.swift"; sourceTree = "<group>"; };
 		59716AA32B8A7C3500DDD820 /* QRCodeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QRCodeView.swift; sourceTree = "<group>"; };
@@ -147,6 +151,7 @@
 				5926C5C02B5C921F0065030E /* AppUtils.swift */,
 				59716AA12B8A51A400DDD820 /* AppUtils+QrCode.swift */,
 				5926C5C22B5C96FE0065030E /* AppConstants.swift */,
+				5955A8522B94F04700AECF1D /* AppActionManager+Notifications.swift */,
 			);
 			path = Managers;
 			sourceTree = "<group>";
@@ -202,6 +207,7 @@
 				598C2EFF2B34C66200C291C3 /* SafeWalletApp.swift */,
 				598C2F012B34C66200C291C3 /* Persistence.swift */,
 				59DFA1A02B3DCD5000EFD403 /* BiometricAuth.swift */,
+				5955A8542B94F8A400AECF1D /* AppDelegate.swift */,
 				598C2F082B34C66300C291C3 /* Assets.xcassets */,
 				598C2F0A2B34C66300C291C3 /* SafeWallet.entitlements */,
 				598C2F032B34C66200C291C3 /* SafeWallet.xcdatamodeld */,
@@ -426,8 +432,10 @@
 				598C2F3A2B34D44000C291C3 /* Card+CoreDataClass.swift in Sources */,
 				59BD32902B797DC500DC8F08 /* AddCardButton.swift in Sources */,
 				5926C5C32B5C96FE0065030E /* AppConstants.swift in Sources */,
+				5955A8532B94F04700AECF1D /* AppActionManager+Notifications.swift in Sources */,
 				599B57E12B8BC54F002CE497 /* CardRowViewModel.swift in Sources */,
 				598C2F052B34C66200C291C3 /* SafeWallet.xcdatamodeld in Sources */,
+				5955A8552B94F8A400AECF1D /* AppDelegate.swift in Sources */,
 				59BD32962B7D2C9000DC8F08 /* CardViewModel.swift in Sources */,
 				598C2F3B2B34D44000C291C3 /* Card+CoreDataProperties.swift in Sources */,
 				5926C5B42B59BBE30065030E /* AppManager.swift in Sources */,

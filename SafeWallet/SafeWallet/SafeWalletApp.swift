@@ -6,14 +6,22 @@
 //
 
 import SwiftUI
+import CoreData
 
 @main
 struct SafeWalletApp: App {
-    let viewContext = PersistenceController.shared.container.viewContext
+    @UIApplicationDelegateAdaptor(AppDelegate.self) var appDelegate
+    
+    let appManager: AppManager
+    let viewContext: NSManagedObjectContext
+
+    init() {
+        self.viewContext = PersistenceController.shared.container.viewContext
+        self.appManager = AppManager(context: viewContext)
+    }
 
     var body: some Scene {
         WindowGroup {
-            let appManager = AppManager(context: viewContext)
             CardListView(viewModel: CardListViewModel(appManager: appManager))
                 .environment(\.managedObjectContext, viewContext)
         }
