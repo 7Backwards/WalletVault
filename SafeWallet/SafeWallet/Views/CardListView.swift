@@ -23,6 +23,7 @@ struct CardListView: View {
                 VStack {
                     SearchBar(text: $viewModel.searchText)
                         .background(Color(UIColor.systemBackground))
+                        .dynamicTypeSize(.xSmall ... .xxxLarge)
                         .padding()
                     if cards.isEmpty {
                         NoContentView()
@@ -39,7 +40,6 @@ struct CardListView: View {
                                 }
                             } label: {
                                 CardRow(cardObject: viewModel.getCardObservableObject(for: card), appManager: viewModel.appManager, activeAlert: $viewModel.activeAlert)
-                                    .padding(.bottom, 10)
                                     .frame(height: viewModel.appManager.constants.cardHeight)
                                     .listRowInsets(EdgeInsets())
                             }
@@ -91,11 +91,11 @@ struct CardListView: View {
                 switch activeSheet {
                 case .addCard:
                     AddCardView(appManager: viewModel.appManager)
-                        .presentationDetents([.height(300)])
+                        .presentationDetents([.height(325)])
                         .presentationDragIndicator(.visible)
                 case .scanQRCode:
                     QRCodeScannerView(viewModel: viewModel)
-                        .presentationDetents([.height(300)])
+                        .presentationDetents([.height(325)])
                         .presentationDragIndicator(.visible)
                 }
             }
