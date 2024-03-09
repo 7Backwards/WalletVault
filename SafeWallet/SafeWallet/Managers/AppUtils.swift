@@ -85,9 +85,9 @@ class AppUtils {
     func requestNotificationPermission() {
         UNUserNotificationCenter.current().requestAuthorization(options: [.alert, .badge, .sound]) { granted, error in
             if granted {
-                print("Notification permission granted.")
+                Logger.log("Notification permission granted.")
             } else if let error = error {
-                print("Notification permission denied because: \(error.localizedDescription).")
+                Logger.log("Notification permission denied because: \(error.localizedDescription).", level: .error)
             }
         }
     }
@@ -109,12 +109,13 @@ class PrivacyProtectionWindow {
         window?.windowLevel = .alert + 1
         window?.backgroundColor = .systemBackground
         DispatchQueue.main.asyncAfter(deadline: .now() + 0.1) {
-            print("Info1: makeKeyAndVisible()")
+            Logger.log("Protecting screen on app switcher")
             self.window?.makeKeyAndVisible()
         }
     }
 
     @objc func unprotect() {
+        Logger.log("Unprotecting screen on app switcher")
         window?.isHidden = true
         window?.resignKey()
         window = nil

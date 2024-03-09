@@ -21,18 +21,23 @@ class AppActionManager {
     
     init(context: NSManagedObjectContext) {
         self.context = context
+        Logger.log("AppActionManager initialized with context: \(context)")
     }
     
     func doAction(action: AppAction, completion: ((Bool) -> Void)? = nil) {
+        Logger.log("Performing action: \(action)")
+        
         func saveWithCompletion(saveCompletion: ((Bool) -> Void)? = nil ) {
             do {
                 try context.save()
+                Logger.log("Context saved successfully")
                 if let saveCompletion {
                     saveCompletion(true)
                 } else {
                     completion?(true)
                 }
             } catch {
+                Logger.log("Failed to save context: \(error)", level: .error)
                 if let saveCompletion {
                     saveCompletion(false)
                 } else {
@@ -51,6 +56,7 @@ class AppActionManager {
                 let existingCards = try context.fetch(fetchRequest)
                 
                 if existingCards.isEmpty {
+                    Logger.log("Adding new card with number: \(cardNumber)")
                     let card = Card(context: context)
                     card.cardNumber = cardNumber
                     card.expiryDate = expiryDate
@@ -65,14 +71,15 @@ class AppActionManager {
                         completion?($0)
                     }
                 } else {
-                    print("A card with the same number already exists.")
+                    Logger.log("A card with the same number already exists.")
                     completion?(false)
                 }
             } catch {
-                print("Failed to fetch cards: \(error)")
+                Logger.log("Failed to fetch cards: \(error)", level: .error)
                 completion?(false)
             }
         case .editCard(let id, let cardName, let cardNumber, let expiryDate, let cvvCode, let cardColor, let isFavorited, let pin):
+            Logger.log("Editing card with id: \(id)")
             if let card = getCard(id) {
                 if card.expiryDate != expiryDate || card.cardName != cardName {
                     scheduleCardNotifications(cardID: id, cardName: cardName, expiryDate: expiryDate)
@@ -87,12 +94,14 @@ class AppActionManager {
             }
             saveWithCompletion()
         case .removeCard(let id):
+            Logger.log("Removing card with id: \(id)")
             if let card = getCard(id) {
                 removeCardNotifications(cardID: id)
                 context.delete(card)
             }
             saveWithCompletion()
         case .removeCards(let ids):
+            Logger.log("Removing cards with ids: \(ids)")
             ids.forEach {
                 if let card = getCard($0) {
                     removeCardNotifications(cardID: $0)
@@ -101,11 +110,13 @@ class AppActionManager {
             }
             saveWithCompletion()
         case .changeCardColor(let id, let newCardColor):
+            Logger.log("Changing card color for id: \(id) to color: \(newCardColor)")
             if let card = getCard(id) {
                 card.cardColor = newCardColor
             }
             saveWithCompletion()
         case .setIsFavorited(let cardId, let isFavorited):
+            Logger.log("Setting isFavorited for card id: \(cardId) to \(isFavorited)")
             guard let card = context.fetchCard(withID: cardId) else {
                 completion?(false)
                 return
@@ -116,6 +127,7 @@ class AppActionManager {
     }
     
     private func getCard(_ id: NSManagedObjectID) -> Card? {
-        context.fetchCard(withID: id)
+        Logger.log("Fetching card with id: \(id)")
+        return context.fetchCard(withID: id)
     }
 }

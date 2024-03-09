@@ -67,7 +67,7 @@ struct MyCardView: View {
                                     presentationMode.wrappedValue.dismiss()
                                 } else {
                                     self.viewModel.startAutoLockTimer()
-                                    print("Error deleting the card")
+                                    Logger.log("Error deleting the card", level: .error)
                                 }
                             }
                         }

@@ -14,7 +14,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate, UNUserNotificationCenterD
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey : Any]? = nil) -> Bool {
         // Request notification permission
         UNUserNotificationCenter.current().requestAuthorization(options: [.alert, .badge, .sound]) { granted, error in
-            print("Permission granted: \(granted)")
+            Logger.log("Permission granted: \(granted)")
         }
         
         UNUserNotificationCenter.current().delegate = self

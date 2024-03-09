@@ -35,6 +35,7 @@ struct CardListView: View {
                             Button {
                                 viewModel.authenticate { result in
                                     if result {
+                                        Logger.log("User did tap on card \(card)")
                                         path.append(card)
                                     }
                                 }
@@ -103,6 +104,7 @@ struct CardListView: View {
         }
         .onReceive(viewModel.appManager.notificationHandler.$selectedCardID) { selectedCardID in
             if let selectedId = selectedCardID, let selectedCard = cards.first(where: { $0.objectID == selectedId}) {
+                Logger.log("Showing card details by force selection of card \(selectedCard)")
                 path.append(selectedCard)
             }
         }
@@ -220,7 +222,7 @@ struct CardListView_Previews: PreviewProvider {
                 try context.save()
             }
         } catch {
-            print("Error fetching or saving mock cards: \(error)")
+            Logger.log("Error fetching or saving mock cards: \(error)", level: .error)
         }
         
         return CardListView(viewModel: CardListViewModel(appManager: AppManager(context: context)))
