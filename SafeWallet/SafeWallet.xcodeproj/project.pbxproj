@@ -37,6 +37,7 @@
 		598C2F452B37BB1C00C291C3 /* CardDetailsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 598C2F442B37BB1C00C291C3 /* CardDetailsView.swift */; };
 		598D18C12B4C72B900D88C08 /* MyCardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 598D18C02B4C72B900D88C08 /* MyCardView.swift */; };
 		598D18C32B4C8E8000D88C08 /* MyCardViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 598D18C22B4C8E8000D88C08 /* MyCardViewModel.swift */; };
+		599178912B9A5D9A00CCB102 /* LogManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 599178902B9A5D9A00CCB102 /* LogManager.swift */; };
 		599B57DF2B8BBEC7002CE497 /* AddCardButtonViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 599B57DE2B8BBEC7002CE497 /* AddCardButtonViewModel.swift */; };
 		599B57E12B8BC54F002CE497 /* CardRowViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 599B57E02B8BC54F002CE497 /* CardRowViewModel.swift */; };
 		59BD328A2B752F9C00DC8F08 /* ViewModelProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 59BD32892B752F9C00DC8F08 /* ViewModelProtocol.swift */; };
@@ -103,6 +104,7 @@
 		598C2F442B37BB1C00C291C3 /* CardDetailsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardDetailsView.swift; sourceTree = "<group>"; };
 		598D18C02B4C72B900D88C08 /* MyCardView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyCardView.swift; sourceTree = "<group>"; };
 		598D18C22B4C8E8000D88C08 /* MyCardViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyCardViewModel.swift; sourceTree = "<group>"; };
+		599178902B9A5D9A00CCB102 /* LogManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LogManager.swift; sourceTree = "<group>"; };
 		599B57DE2B8BBEC7002CE497 /* AddCardButtonViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddCardButtonViewModel.swift; sourceTree = "<group>"; };
 		599B57E02B8BC54F002CE497 /* CardRowViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardRowViewModel.swift; sourceTree = "<group>"; };
 		59BD32892B752F9C00DC8F08 /* ViewModelProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewModelProtocol.swift; sourceTree = "<group>"; };
@@ -152,6 +154,7 @@
 				59716AA12B8A51A400DDD820 /* AppUtils+QrCode.swift */,
 				5926C5C22B5C96FE0065030E /* AppConstants.swift */,
 				5955A8522B94F04700AECF1D /* AppActionManager+Notifications.swift */,
+				599178902B9A5D9A00CCB102 /* LogManager.swift */,
 			);
 			path = Managers;
 			sourceTree = "<group>";
@@ -448,6 +451,7 @@
 				598D18C12B4C72B900D88C08 /* MyCardView.swift in Sources */,
 				59BD328C2B79495700DC8F08 /* MenuTextView.swift in Sources */,
 				5926C5BD2B5C44910065030E /* ColorCarouselView.swift in Sources */,
+				599178912B9A5D9A00CCB102 /* LogManager.swift in Sources */,
 				59BD32A52B80FE5B00DC8F08 /* UIColor+Extension.swift in Sources */,
 				598C2F072B34C66200C291C3 /* CardListView.swift in Sources */,
 				5926C5B62B59BCFB0065030E /* AppActionManager.swift in Sources */,

@@ -16,8 +16,8 @@ class BiometricAuth {
     }
     
     func authenticateUser(completion: @escaping (Result<Bool, AuthenticationError>) -> Void) {
-        // Check if the device supports biometrics (Face ID or Touch ID)
         guard context.canEvaluatePolicy(.deviceOwnerAuthentication, error: nil) else {
+            Logger.log("Biometrics unavailable", level: .error)
             completion(.failure(.biometricUnavailable))
             return
         }
@@ -25,10 +25,10 @@ class BiometricAuth {
         context.evaluatePolicy(.deviceOwnerAuthentication, localizedReason: loginReason) { success, evaluateError in
             DispatchQueue.main.async {
                 if success {
-                    // User authenticated successfully, take appropriate action
+                    Logger.log("Biometric authentication successfull")
                     completion(.success(true))
                 } else {
-                    // User did not authenticate successfully, look at error and take appropriate action
+                    Logger.log("Biometric authentication error \(String(describing: evaluateError))", level: .error)
                     if let error = evaluateError as NSError? {
                         switch error.code {
                         case LAError.authenticationFailed.rawValue:

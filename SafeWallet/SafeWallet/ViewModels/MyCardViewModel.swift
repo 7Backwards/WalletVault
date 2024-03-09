@@ -58,7 +58,7 @@ class MyCardViewModel: AddOrEditMyCardViewModel, ViewModelProtocol {
 
     func delete(completion: @escaping (Bool) -> Void ) {
         guard let id = cardObject.id else {
-            // TODO: Log
+            Logger.log("Error getting card on method \(#function)", level: .error)
             return
         }
         appManager.actionManager.doAction(action: .removeCard(id), completion: completion)
@@ -66,7 +66,7 @@ class MyCardViewModel: AddOrEditMyCardViewModel, ViewModelProtocol {
     
     func updateCardColor(cardColor: String) {
         guard let id = cardObject.id else {
-            // TODO: Log
+            Logger.log("Error getting card on method \(#function)", level: .error)
             return
         }
         appManager.actionManager.doAction(action: .changeCardColor(id, cardColor))
@@ -77,6 +77,7 @@ class MyCardViewModel: AddOrEditMyCardViewModel, ViewModelProtocol {
     }
     
     func undo() {
+        Logger.log("Undo card changes")
         cardObject.cardName = undoCardInfo.cardName
         cardObject.cardNumber = undoCardInfo.cardNumber
         cardObject.cardColor = undoCardInfo.cardColor
@@ -89,6 +90,7 @@ class MyCardViewModel: AddOrEditMyCardViewModel, ViewModelProtocol {
     func startAutoLockTimer() {
         resetAutoLockTimer()
         self.autoLockTimer = Timer.scheduledTimer(withTimeInterval: 30, repeats: false) { _ in
+            Logger.log("AutoLock expired, dismissing view")
             self.presentationMode?.dismiss()
         }
     }

@@ -17,7 +17,7 @@ func scheduleCardNotifications(cardID: NSManagedObjectID, cardName: String, expi
     
     // Convert expiryDateStr to Date
     guard let expiryDate = dateFormatter.date(from: expiryDate) else {
-        print("Invalid expiry date format")
+        Logger.log("Invalid expiry date format", level: .error)
         return
     }
     
@@ -70,7 +70,7 @@ private func scheduleNotification(notificationCenter: UNUserNotificationCenter, 
     
     notificationCenter.add(request) { error in
         if let error = error {
-            print("Error scheduling \(identifierSuffix.lowercased()) notification: \(error.localizedDescription)")
+            Logger.log("Error scheduling \(identifierSuffix.lowercased()) notification: \(error.localizedDescription)", level: .error)
         }
     }
 }

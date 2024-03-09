@@ -55,11 +55,11 @@ class AddOrEditMyCardViewModel: AddOrEditMyCardViewModelProtocol {
                 }
             } else {
                 completion(.failure(.invalidDate))
-                print("The expiry date must be later than the current date.")
+                Logger.log("The expiry date must be later than the current date.", level: .error)
             }
         } else {
             completion(.failure(.invalidDate))
-            print("Invalid date format. Please enter the expiry date in mm/yy format.")
+            Logger.log("Invalid date format. Please enter the expiry date in mm/yy format.", level: .error)
         }
     }
 }
