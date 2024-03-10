@@ -1,0 +1,93 @@
+{
+  "sourceLanguage" : "en",
+  "strings" : {
+    "" : {
+
+    },
+    "Add Card" : {
+
+    },
+    "An error has occurred, please try again." : {
+
+    },
+    "Are you sure you want to delete this card?" : {
+
+    },
+    "Cancel" : {
+
+    },
+    "Card imported successfully." : {
+
+    },
+    "Choose how you would like to share the card" : {
+
+    },
+    "Copy" : {
+
+    },
+    "CVV" : {
+
+    },
+    "Delete" : {
+
+    },
+    "Delete Card" : {
+
+    },
+    "Edit" : {
+
+    },
+    "Error" : {
+
+    },
+    "Expires on" : {
+
+    },
+    "MM/YY" : {
+
+    },
+    "Name" : {
+
+    },
+    "Number" : {
+
+    },
+    "OK" : {
+
+    },
+    "Pin" : {
+
+    },
+    "SafeWallet" : {
+
+    },
+    "Save Card" : {
+
+    },
+    "Scan this QR Code when adding a new card" : {
+
+    },
+    "Search" : {
+
+    },
+    "Share" : {
+
+    },
+    "Share Card" : {
+
+    },
+    "Share Inside App" : {
+
+    },
+    "Share Outside App" : {
+
+    },
+    "Success" : {
+
+    },
+    "Tap + to add your first card!" : {
+
+    }
+  },
+  "version" : "1.0"
+}
