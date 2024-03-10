@@ -10,6 +10,7 @@ import CoreData
 
 struct CardListView: View {
     @Environment(\.managedObjectContext) private var viewContext
+    @Environment(\.sizeCategory) var sizeCategory
     @ObservedObject var viewModel: CardListViewModel
     @State private var path = NavigationPath()
     @FetchRequest(
@@ -41,7 +42,7 @@ struct CardListView: View {
                                 }
                             } label: {
                                 CardRow(cardObject: viewModel.getCardObservableObject(for: card), appManager: viewModel.appManager, activeAlert: $viewModel.activeAlert)
-                                    .frame(height: viewModel.appManager.constants.cardHeight)
+                                    .frame(height: viewModel.appManager.constants.getCardHeight(sizeCategory: sizeCategory))
                                     .listRowInsets(EdgeInsets())
                             }
                             .foregroundColor(.inverseSystemBackground)

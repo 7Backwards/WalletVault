@@ -9,6 +9,7 @@ import SwiftUI
 
 struct MyCardView: View {
     @Environment(\.presentationMode) var presentationMode
+    @Environment(\.sizeCategory) var sizeCategory
     @ObservedObject var viewModel: MyCardViewModel
     
     init(appManager: AppManager, cardObject: CardObservableObject) {
@@ -26,7 +27,7 @@ struct MyCardView: View {
                         }
                     }
                 }
-                .frame(height: viewModel.appManager.constants.cardHeight)
+                .frame(height: viewModel.appManager.constants.getCardHeight(sizeCategory: sizeCategory))
                 
                 if viewModel.isEditable {
                     ColorCarouselView(cardColor: $viewModel.cardObject.cardColor, appManager: viewModel.appManager)
@@ -102,19 +103,20 @@ struct MyCardView: View {
         .sheet(item: $viewModel.activeShareSheet, onDismiss: { viewModel.startAutoLockTimer() }) { activeShareSheet in
             switch activeShareSheet {
             case .insideShare:
-                VStack {
+                VStack(spacing: 5) {
                     Text("Scan this QR Code when adding a new card")
+                        .multilineTextAlignment(.center)
+                        .lineLimit(2)
+                        .dynamicTypeSize(.xSmall ... .xxxLarge)
                     QRCodeView(qrCodeImage: viewModel.appManager.utils.generateCardQRCode(from: viewModel.cardObject.getCardInfo()))
                         .frame(height: viewModel.appManager.constants.qrCodeHeight)
                         .padding()
                 }
+                .presentationDetents([.medium, .large])
                 .padding()
-                .presentationDetents([.height(300)])
-                .presentationDragIndicator(.visible)
             case .outsideShare:
                 ShareUIActivityController(shareItems: [viewModel.appManager.utils.getFormattedShareCardInfo(card: viewModel.cardObject.getCardInfo())])
                     .presentationDetents([.medium, .large])
-                
             }
         }
         .padding(.bottom, 20)
