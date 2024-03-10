@@ -10,6 +10,7 @@ import SwiftUI
 struct AddCardView: View {
     @Environment(\.presentationMode) var presentationMode
     @ObservedObject var viewModel: AddCardViewModel
+    @Environment(\.sizeCategory) var sizeCategory
     
     init(appManager: AppManager) {
         self.viewModel = AddCardViewModel(appManager: appManager)
@@ -26,7 +27,7 @@ struct AddCardView: View {
                             }
                         }
                     }
-                .frame(height: viewModel.appManager.constants.cardHeight)
+                .frame(height: viewModel.appManager.constants.getCardHeight(sizeCategory: sizeCategory))
                 
                 ColorCarouselView(cardColor: $viewModel.cardObject.cardColor, appManager: viewModel.appManager)
 
