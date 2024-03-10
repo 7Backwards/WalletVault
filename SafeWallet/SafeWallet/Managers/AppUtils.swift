@@ -12,10 +12,10 @@ class AppUtils {
     private var protectWindow = PrivacyProtectionWindow()
     
     func getFormattedShareCardInfo(card: CardInfo) -> String {
-        var info = "Card Name: \(card.cardName) \nCard Number: \(card.cardNumber) \nExpiry Date \(card.expiryDate) \nCVV \(card.cvvCode) \n"
+        var info = "\(NSLocalizedString("Card Name", comment: "")): \(card.cardName) \n\(NSLocalizedString("Card Number", comment: "")): \(card.cardNumber) \n\(NSLocalizedString("Expiry Date", comment: "")): \(card.expiryDate) \n\(NSLocalizedString("CVV", comment: "")): \(card.cvvCode) \n"
         
         if !card.pin.isEmpty {
-            info.append("Card Pin \(card.pin)")
+            info.append("\(NSLocalizedString("Card Pin", comment: "")): \(card.pin)")
         }
         
         return info

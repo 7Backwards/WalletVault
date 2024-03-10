@@ -14,6 +14,7 @@
 		5926C5BF2B5C8E8B0065030E /* ColorCarouselViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5926C5BE2B5C8E8B0065030E /* ColorCarouselViewModel.swift */; };
 		5926C5C12B5C921F0065030E /* AppUtils.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5926C5C02B5C921F0065030E /* AppUtils.swift */; };
 		5926C5C32B5C96FE0065030E /* AppConstants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5926C5C22B5C96FE0065030E /* AppConstants.swift */; };
+		593A58FB2B9DF02E00B222FD /* Localizable.xcstrings in Resources */ = {isa = PBXBuildFile; fileRef = 593A58FA2B9DF02E00B222FD /* Localizable.xcstrings */; };
 		5955A8532B94F04700AECF1D /* AppActionManager+Notifications.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5955A8522B94F04700AECF1D /* AppActionManager+Notifications.swift */; };
 		5955A8552B94F8A400AECF1D /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5955A8542B94F8A400AECF1D /* AppDelegate.swift */; };
 		59716AA02B8A46C100DDD820 /* ShareUIActivityController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 59716A9F2B8A46C100DDD820 /* ShareUIActivityController.swift */; };
@@ -77,6 +78,7 @@
 		5926C5BE2B5C8E8B0065030E /* ColorCarouselViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ColorCarouselViewModel.swift; sourceTree = "<group>"; };
 		5926C5C02B5C921F0065030E /* AppUtils.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppUtils.swift; sourceTree = "<group>"; };
 		5926C5C22B5C96FE0065030E /* AppConstants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppConstants.swift; sourceTree = "<group>"; };
+		593A58FA2B9DF02E00B222FD /* Localizable.xcstrings */ = {isa = PBXFileReference; lastKnownFileType = text.json.xcstrings; path = Localizable.xcstrings; sourceTree = "<group>"; };
 		5955A8522B94F04700AECF1D /* AppActionManager+Notifications.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "AppActionManager+Notifications.swift"; sourceTree = "<group>"; };
 		5955A8542B94F8A400AECF1D /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		59716A9F2B8A46C100DDD820 /* ShareUIActivityController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShareUIActivityController.swift; sourceTree = "<group>"; };
@@ -168,6 +170,14 @@
 			path = Extensions;
 			sourceTree = "<group>";
 		};
+		593A58F92B9DF01800B222FD /* Localization */ = {
+			isa = PBXGroup;
+			children = (
+				593A58FA2B9DF02E00B222FD /* Localizable.xcstrings */,
+			);
+			path = Localization;
+			sourceTree = "<group>";
+		};
 		59716A9E2B8A46A800DDD820 /* UIViewControllerRepresentables */ = {
 			isa = PBXGroup;
 			children = (
@@ -199,6 +209,7 @@
 		598C2EFE2B34C66200C291C3 /* SafeWallet */ = {
 			isa = PBXGroup;
 			children = (
+				593A58F92B9DF01800B222FD /* Localization */,
 				59716A9E2B8A46A800DDD820 /* UIViewControllerRepresentables */,
 				59BD32A12B80FCD600DC8F08 /* ViewControllers */,
 				5926C5B92B5C2FDC0065030E /* Extensions */,
@@ -381,6 +392,11 @@
 			knownRegions = (
 				en,
 				Base,
+				"pt-PT",
+				es,
+				fr,
+				de,
+				"pt-BR",
 			);
 			mainGroup = 598C2EF32B34C66200C291C3;
 			productRefGroup = 598C2EFD2B34C66200C291C3 /* Products */;
@@ -401,6 +417,7 @@
 			files = (
 				598C2F0D2B34C66300C291C3 /* Preview Assets.xcassets in Resources */,
 				598C2F092B34C66300C291C3 /* Assets.xcassets in Resources */,
+				593A58FB2B9DF02E00B222FD /* Localizable.xcstrings in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
