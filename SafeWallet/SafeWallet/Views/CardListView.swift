@@ -116,11 +116,13 @@ struct TrailingNavigationItems: View {
     @StateObject var viewModel: CardListViewModel
     var body: some View {
         HStack {
-            Button(action: {
-                viewModel.activeShareSheet = .scanQRCode
-            }) {
-                Image(systemName: "qrcode.viewfinder")
-                    .foregroundStyle(.inverseSystemBackground)
+            if !ProcessInfo.processInfo.isiOSAppOnMac {
+                Button(action: {
+                    viewModel.activeShareSheet = .scanQRCode
+                }) {
+                    Image(systemName: "qrcode.viewfinder")
+                        .foregroundStyle(.inverseSystemBackground)
+                }
             }
             
             Button(action: {
