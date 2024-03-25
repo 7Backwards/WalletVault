@@ -54,7 +54,7 @@ class CardListViewModel: AddOrEditMyCardViewModel, ViewModelProtocol {
     }
     
     func authenticate(completion: @escaping (Bool) -> Void) {
-        BiometricAuth().authenticateUser { result in
+        BiometricManager().authenticateUser { result in
             if let result = try? result.get(), result {
                 completion(true)
             } else {

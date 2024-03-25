@@ -15,8 +15,14 @@
 		5926C5C12B5C921F0065030E /* AppUtils.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5926C5C02B5C921F0065030E /* AppUtils.swift */; };
 		5926C5C32B5C96FE0065030E /* AppConstants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5926C5C22B5C96FE0065030E /* AppConstants.swift */; };
 		593A58FB2B9DF02E00B222FD /* Localizable.xcstrings in Resources */ = {isa = PBXBuildFile; fileRef = 593A58FA2B9DF02E00B222FD /* Localizable.xcstrings */; };
+		593A58FE2B9E1E9F00B222FD /* AppActionManagerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 593A58FD2B9E1E9F00B222FD /* AppActionManagerTests.swift */; };
+		593A59002B9E260500B222FD /* AppUtilsTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 593A58FF2B9E260500B222FD /* AppUtilsTests.swift */; };
+		593A59032B9E26FD00B222FD /* AddOrEditMyCardViewModelTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 593A59022B9E26FD00B222FD /* AddOrEditMyCardViewModelTests.swift */; };
+		593A59092B9E298700B222FD /* TestUtils.swift in Sources */ = {isa = PBXBuildFile; fileRef = 593A59082B9E298700B222FD /* TestUtils.swift */; };
 		5955A8532B94F04700AECF1D /* AppActionManager+Notifications.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5955A8522B94F04700AECF1D /* AppActionManager+Notifications.swift */; };
 		5955A8552B94F8A400AECF1D /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5955A8542B94F8A400AECF1D /* AppDelegate.swift */; };
+		595EFA222BB0970E000D0F6F /* BiometricManagerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 595EFA212BB0970E000D0F6F /* BiometricManagerTests.swift */; };
+		595EFA252BB0975B000D0F6F /* MockBiometricAuth.swift in Sources */ = {isa = PBXBuildFile; fileRef = 595EFA242BB0975B000D0F6F /* MockBiometricAuth.swift */; };
 		59716AA02B8A46C100DDD820 /* ShareUIActivityController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 59716A9F2B8A46C100DDD820 /* ShareUIActivityController.swift */; };
 		59716AA22B8A51A400DDD820 /* AppUtils+QrCode.swift in Sources */ = {isa = PBXBuildFile; fileRef = 59716AA12B8A51A400DDD820 /* AppUtils+QrCode.swift */; };
 		59716AA42B8A7C3500DDD820 /* QRCodeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 59716AA32B8A7C3500DDD820 /* QRCodeView.swift */; };
@@ -43,14 +49,14 @@
 		599B57E12B8BC54F002CE497 /* CardRowViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 599B57E02B8BC54F002CE497 /* CardRowViewModel.swift */; };
 		59BD328A2B752F9C00DC8F08 /* ViewModelProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 59BD32892B752F9C00DC8F08 /* ViewModelProtocol.swift */; };
 		59BD328C2B79495700DC8F08 /* MenuTextView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 59BD328B2B79495700DC8F08 /* MenuTextView.swift */; };
-		59BD328E2B797A9200DC8F08 /* AddCardViewModelProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 59BD328D2B797A9200DC8F08 /* AddCardViewModelProtocol.swift */; };
+		59BD328E2B797A9200DC8F08 /* AddOrEditMyCardViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 59BD328D2B797A9200DC8F08 /* AddOrEditMyCardViewModel.swift */; };
 		59BD32902B797DC500DC8F08 /* AddCardButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 59BD328F2B797DC500DC8F08 /* AddCardButton.swift */; };
 		59BD32942B7C149100DC8F08 /* CardRow.swift in Sources */ = {isa = PBXBuildFile; fileRef = 59BD32932B7C149100DC8F08 /* CardRow.swift */; };
 		59BD32962B7D2C9000DC8F08 /* CardViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 59BD32952B7D2C9000DC8F08 /* CardViewModel.swift */; };
 		59BD32A32B80FCE400DC8F08 /* ProtectScreenViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 59BD32A22B80FCE400DC8F08 /* ProtectScreenViewController.swift */; };
 		59BD32A52B80FE5B00DC8F08 /* UIColor+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 59BD32A42B80FE5B00DC8F08 /* UIColor+Extension.swift */; };
 		59DFA19F2B3B6FD000EFD403 /* CardDetailsViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 59DFA19E2B3B6FD000EFD403 /* CardDetailsViewModel.swift */; };
-		59DFA1A12B3DCD5000EFD403 /* BiometricAuth.swift in Sources */ = {isa = PBXBuildFile; fileRef = 59DFA1A02B3DCD5000EFD403 /* BiometricAuth.swift */; };
+		59DFA1A12B3DCD5000EFD403 /* BiometricManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 59DFA1A02B3DCD5000EFD403 /* BiometricManager.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -79,8 +85,14 @@
 		5926C5C02B5C921F0065030E /* AppUtils.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppUtils.swift; sourceTree = "<group>"; };
 		5926C5C22B5C96FE0065030E /* AppConstants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppConstants.swift; sourceTree = "<group>"; };
 		593A58FA2B9DF02E00B222FD /* Localizable.xcstrings */ = {isa = PBXFileReference; lastKnownFileType = text.json.xcstrings; path = Localizable.xcstrings; sourceTree = "<group>"; };
+		593A58FD2B9E1E9F00B222FD /* AppActionManagerTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppActionManagerTests.swift; sourceTree = "<group>"; };
+		593A58FF2B9E260500B222FD /* AppUtilsTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppUtilsTests.swift; sourceTree = "<group>"; };
+		593A59022B9E26FD00B222FD /* AddOrEditMyCardViewModelTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddOrEditMyCardViewModelTests.swift; sourceTree = "<group>"; };
+		593A59082B9E298700B222FD /* TestUtils.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TestUtils.swift; sourceTree = "<group>"; };
 		5955A8522B94F04700AECF1D /* AppActionManager+Notifications.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "AppActionManager+Notifications.swift"; sourceTree = "<group>"; };
 		5955A8542B94F8A400AECF1D /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
+		595EFA212BB0970E000D0F6F /* BiometricManagerTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BiometricManagerTests.swift; sourceTree = "<group>"; };
+		595EFA242BB0975B000D0F6F /* MockBiometricAuth.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MockBiometricAuth.swift; sourceTree = "<group>"; };
 		59716A9F2B8A46C100DDD820 /* ShareUIActivityController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShareUIActivityController.swift; sourceTree = "<group>"; };
 		59716AA12B8A51A400DDD820 /* AppUtils+QrCode.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "AppUtils+QrCode.swift"; sourceTree = "<group>"; };
 		59716AA32B8A7C3500DDD820 /* QRCodeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QRCodeView.swift; sourceTree = "<group>"; };
@@ -111,14 +123,14 @@
 		599B57E02B8BC54F002CE497 /* CardRowViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardRowViewModel.swift; sourceTree = "<group>"; };
 		59BD32892B752F9C00DC8F08 /* ViewModelProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewModelProtocol.swift; sourceTree = "<group>"; };
 		59BD328B2B79495700DC8F08 /* MenuTextView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MenuTextView.swift; sourceTree = "<group>"; };
-		59BD328D2B797A9200DC8F08 /* AddCardViewModelProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddCardViewModelProtocol.swift; sourceTree = "<group>"; };
+		59BD328D2B797A9200DC8F08 /* AddOrEditMyCardViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddOrEditMyCardViewModel.swift; sourceTree = "<group>"; };
 		59BD328F2B797DC500DC8F08 /* AddCardButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddCardButton.swift; sourceTree = "<group>"; };
 		59BD32932B7C149100DC8F08 /* CardRow.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardRow.swift; sourceTree = "<group>"; };
 		59BD32952B7D2C9000DC8F08 /* CardViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardViewModel.swift; sourceTree = "<group>"; };
 		59BD32A22B80FCE400DC8F08 /* ProtectScreenViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProtectScreenViewController.swift; sourceTree = "<group>"; };
 		59BD32A42B80FE5B00DC8F08 /* UIColor+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIColor+Extension.swift"; sourceTree = "<group>"; };
 		59DFA19E2B3B6FD000EFD403 /* CardDetailsViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardDetailsViewModel.swift; sourceTree = "<group>"; };
-		59DFA1A02B3DCD5000EFD403 /* BiometricAuth.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BiometricAuth.swift; sourceTree = "<group>"; };
+		59DFA1A02B3DCD5000EFD403 /* BiometricManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BiometricManager.swift; sourceTree = "<group>"; };
 		59DFA1A22B3DCDB500EFD403 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = Info.plist; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -157,6 +169,7 @@
 				5926C5C22B5C96FE0065030E /* AppConstants.swift */,
 				5955A8522B94F04700AECF1D /* AppActionManager+Notifications.swift */,
 				599178902B9A5D9A00CCB102 /* LogManager.swift */,
+				59DFA1A02B3DCD5000EFD403 /* BiometricManager.swift */,
 			);
 			path = Managers;
 			sourceTree = "<group>";
@@ -176,6 +189,40 @@
 				593A58FA2B9DF02E00B222FD /* Localizable.xcstrings */,
 			);
 			path = Localization;
+			sourceTree = "<group>";
+		};
+		593A59012B9E26F200B222FD /* ViewModels */ = {
+			isa = PBXGroup;
+			children = (
+				593A59022B9E26FD00B222FD /* AddOrEditMyCardViewModelTests.swift */,
+			);
+			path = ViewModels;
+			sourceTree = "<group>";
+		};
+		593A59072B9E298100B222FD /* Utils */ = {
+			isa = PBXGroup;
+			children = (
+				593A59082B9E298700B222FD /* TestUtils.swift */,
+			);
+			path = Utils;
+			sourceTree = "<group>";
+		};
+		595EFA232BB09753000D0F6F /* Mocks */ = {
+			isa = PBXGroup;
+			children = (
+				595EFA242BB0975B000D0F6F /* MockBiometricAuth.swift */,
+			);
+			path = Mocks;
+			sourceTree = "<group>";
+		};
+		595EFA262BB09B29000D0F6F /* Managers */ = {
+			isa = PBXGroup;
+			children = (
+				593A58FD2B9E1E9F00B222FD /* AppActionManagerTests.swift */,
+				593A58FF2B9E260500B222FD /* AppUtilsTests.swift */,
+				595EFA212BB0970E000D0F6F /* BiometricManagerTests.swift */,
+			);
+			path = Managers;
 			sourceTree = "<group>";
 		};
 		59716A9E2B8A46A800DDD820 /* UIViewControllerRepresentables */ = {
@@ -220,7 +267,6 @@
 				598C2F2F2B34C70700C291C3 /* Models */,
 				598C2EFF2B34C66200C291C3 /* SafeWalletApp.swift */,
 				598C2F012B34C66200C291C3 /* Persistence.swift */,
-				59DFA1A02B3DCD5000EFD403 /* BiometricAuth.swift */,
 				5955A8542B94F8A400AECF1D /* AppDelegate.swift */,
 				598C2F082B34C66300C291C3 /* Assets.xcassets */,
 				598C2F0A2B34C66300C291C3 /* SafeWallet.entitlements */,
@@ -241,6 +287,10 @@
 		598C2F152B34C66300C291C3 /* SafeWalletTests */ = {
 			isa = PBXGroup;
 			children = (
+				595EFA262BB09B29000D0F6F /* Managers */,
+				595EFA232BB09753000D0F6F /* Mocks */,
+				593A59072B9E298100B222FD /* Utils */,
+				593A59012B9E26F200B222FD /* ViewModels */,
 				598C2F162B34C66300C291C3 /* SafeWalletTests.swift */,
 			);
 			path = SafeWalletTests;
@@ -290,7 +340,7 @@
 				598D18C22B4C8E8000D88C08 /* MyCardViewModel.swift */,
 				5926C5BE2B5C8E8B0065030E /* ColorCarouselViewModel.swift */,
 				59BD32892B752F9C00DC8F08 /* ViewModelProtocol.swift */,
-				59BD328D2B797A9200DC8F08 /* AddCardViewModelProtocol.swift */,
+				59BD328D2B797A9200DC8F08 /* AddOrEditMyCardViewModel.swift */,
 				59BD32952B7D2C9000DC8F08 /* CardViewModel.swift */,
 				599B57DE2B8BBEC7002CE497 /* AddCardButtonViewModel.swift */,
 				599B57E02B8BC54F002CE497 /* CardRowViewModel.swift */,
@@ -462,8 +512,8 @@
 				598D18C32B4C8E8000D88C08 /* MyCardViewModel.swift in Sources */,
 				59716AA22B8A51A400DDD820 /* AppUtils+QrCode.swift in Sources */,
 				59BD32A32B80FCE400DC8F08 /* ProtectScreenViewController.swift in Sources */,
-				59DFA1A12B3DCD5000EFD403 /* BiometricAuth.swift in Sources */,
-				59BD328E2B797A9200DC8F08 /* AddCardViewModelProtocol.swift in Sources */,
+				59DFA1A12B3DCD5000EFD403 /* BiometricManager.swift in Sources */,
+				59BD328E2B797A9200DC8F08 /* AddOrEditMyCardViewModel.swift in Sources */,
 				5926C5BF2B5C8E8B0065030E /* ColorCarouselViewModel.swift in Sources */,
 				598D18C12B4C72B900D88C08 /* MyCardView.swift in Sources */,
 				59BD328C2B79495700DC8F08 /* MenuTextView.swift in Sources */,
@@ -487,7 +537,13 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				595EFA252BB0975B000D0F6F /* MockBiometricAuth.swift in Sources */,
+				595EFA222BB0970E000D0F6F /* BiometricManagerTests.swift in Sources */,
 				598C2F172B34C66300C291C3 /* SafeWalletTests.swift in Sources */,
+				593A59032B9E26FD00B222FD /* AddOrEditMyCardViewModelTests.swift in Sources */,
+				593A58FE2B9E1E9F00B222FD /* AppActionManagerTests.swift in Sources */,
+				593A59002B9E260500B222FD /* AppUtilsTests.swift in Sources */,
+				593A59092B9E298700B222FD /* TestUtils.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -644,7 +700,11 @@
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = SafeWallet/Info.plist;
+				INFOPLIST_KEY_CFBundleDisplayName = SafeWallet;
+				INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.utilities";
+				INFOPLIST_KEY_NSCameraUsageDescription = "\"App uses camera access to scan qr code, it needs it for the share card funcionality to work\"";
 				INFOPLIST_KEY_NSFaceIDUsageDescription = "Protect users card's with authentication";
+				INFOPLIST_KEY_NSPhotoLibraryAddUsageDescription = "\"App uses photo library to save the qr code so that card sharing works\"";
 				"INFOPLIST_KEY_UIApplicationSceneManifest_Generation[sdk=iphoneos*]" = YES;
 				"INFOPLIST_KEY_UIApplicationSceneManifest_Generation[sdk=iphonesimulator*]" = YES;
 				"INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents[sdk=iphoneos*]" = YES;
@@ -653,8 +713,7 @@
 				"INFOPLIST_KEY_UILaunchScreen_Generation[sdk=iphonesimulator*]" = YES;
 				"INFOPLIST_KEY_UIStatusBarStyle[sdk=iphoneos*]" = UIStatusBarStyleDefault;
 				"INFOPLIST_KEY_UIStatusBarStyle[sdk=iphonesimulator*]" = UIStatusBarStyleDefault;
-				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
-				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				INFOPLIST_KEY_UISupportedInterfaceOrientations = UIInterfaceOrientationPortrait;
 				IPHONEOS_DEPLOYMENT_TARGET = 17.0;
 				LD_RUNPATH_SEARCH_PATHS = "@executable_path/Frameworks";
 				"LD_RUNPATH_SEARCH_PATHS[sdk=macosx*]" = "@executable_path/../Frameworks";
@@ -665,6 +724,7 @@
 				SDKROOT = auto;
 				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";
 				SUPPORTS_MACCATALYST = NO;
+				SUPPORTS_MAC_DESIGNED_FOR_IPHONE_IPAD = YES;
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
@@ -685,7 +745,11 @@
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = SafeWallet/Info.plist;
+				INFOPLIST_KEY_CFBundleDisplayName = SafeWallet;
+				INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.utilities";
+				INFOPLIST_KEY_NSCameraUsageDescription = "\"App uses camera access to scan qr code, it needs it for the share card funcionality to work\"";
 				INFOPLIST_KEY_NSFaceIDUsageDescription = "Protect users card's with authentication";
+				INFOPLIST_KEY_NSPhotoLibraryAddUsageDescription = "\"App uses photo library to save the qr code so that card sharing works\"";
 				"INFOPLIST_KEY_UIApplicationSceneManifest_Generation[sdk=iphoneos*]" = YES;
 				"INFOPLIST_KEY_UIApplicationSceneManifest_Generation[sdk=iphonesimulator*]" = YES;
 				"INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents[sdk=iphoneos*]" = YES;
@@ -694,8 +758,7 @@
 				"INFOPLIST_KEY_UILaunchScreen_Generation[sdk=iphonesimulator*]" = YES;
 				"INFOPLIST_KEY_UIStatusBarStyle[sdk=iphoneos*]" = UIStatusBarStyleDefault;
 				"INFOPLIST_KEY_UIStatusBarStyle[sdk=iphonesimulator*]" = UIStatusBarStyleDefault;
-				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
-				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				INFOPLIST_KEY_UISupportedInterfaceOrientations = UIInterfaceOrientationPortrait;
 				IPHONEOS_DEPLOYMENT_TARGET = 17.0;
 				LD_RUNPATH_SEARCH_PATHS = "@executable_path/Frameworks";
 				"LD_RUNPATH_SEARCH_PATHS[sdk=macosx*]" = "@executable_path/../Frameworks";
@@ -706,6 +769,7 @@
 				SDKROOT = auto;
 				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";
 				SUPPORTS_MACCATALYST = NO;
+				SUPPORTS_MAC_DESIGNED_FOR_IPHONE_IPAD = YES;
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
