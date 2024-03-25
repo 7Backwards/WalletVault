@@ -9,11 +9,7 @@ import Foundation
 import Combine
 import CoreData
 
-protocol AddOrEditMyCardViewModelProtocol {
-    func addOrEdit(cardObject: CardObservableObject, completion: @escaping (Result<Void, AddCardErrorType>) -> Void)
-}
-
-class AddOrEditMyCardViewModel: AddOrEditMyCardViewModelProtocol {
+class AddOrEditMyCardViewModel {
     @Published var appManager: AppManager
 
     init(appManager: AppManager) {

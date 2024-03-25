@@ -1,5 +1,5 @@
 //
-//  BiometricAuth.swift
+//  BiometricManager.swift
 //  SafeWallet
 //
 //  Created by Gonçalo on 28/12/2023.
@@ -7,9 +7,20 @@
 
 import LocalAuthentication
 
-class BiometricAuth {
-    let context = LAContext()
-    var loginReason = "Protection with Face ID"
+protocol BiometricAuthenticating {
+    func canEvaluatePolicy(_ policy: LAPolicy, error: NSErrorPointer) -> Bool
+    func evaluatePolicy(_ policy: LAPolicy, localizedReason: String, reply: @escaping (Bool, Error?) -> Void)
+}
+
+extension LAContext: BiometricAuthenticating {}
+
+class BiometricManager {
+    let context: BiometricAuthenticating
+    var loginReason = NSLocalizedString("Protection with Face ID", comment: "")
+    
+    init(context: BiometricAuthenticating = LAContext()) {
+        self.context = context
+    }
     
     enum AuthenticationError: Error {
         case biometricUnavailable, biometricLockout, biometricNotEnrolled, fallback, other

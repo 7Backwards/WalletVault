@@ -7,6 +7,10 @@
 
 import CoreData
 
+protocol AppActionManagerProtocol {
+    func doAction(action: AppAction, completion: ((Bool) -> Void)?)
+}
+
 enum AppAction {
     case addCard(cardName: String, cardNumber: String, expiryDate: String, cvvCode: String, cardColor: String, isFavorited: Bool, pin: String)
     case editCard(id: NSManagedObjectID, cardName: String, cardNumber: String, expiryDate: String, cvvCode: String, cardColor: String, isFavorited: Bool, pin: String)
@@ -16,7 +20,7 @@ enum AppAction {
     case setIsFavorited(id: NSManagedObjectID, Bool)
 }
 
-class AppActionManager {
+class AppActionManager: AppActionManagerProtocol {
     private let context: NSManagedObjectContext
     
     init(context: NSManagedObjectContext) {
@@ -98,17 +102,23 @@ class AppActionManager {
             if let card = getCard(id) {
                 removeCardNotifications(cardID: id)
                 context.delete(card)
+                saveWithCompletion()
+            } else {
+                Logger.log("Failed to remove card with id \(id), no card is present", level: .error)
+                completion?(false)
             }
-            saveWithCompletion()
         case .removeCards(let ids):
             Logger.log("Removing cards with ids: \(ids)")
             ids.forEach {
                 if let card = getCard($0) {
                     removeCardNotifications(cardID: $0)
                     context.delete(card)
+                } else {
+                    Logger.log("Failed to remove card with id \($0), no card is present", level: .error)
                 }
             }
             saveWithCompletion()
+            
         case .changeCardColor(let id, let newCardColor):
             Logger.log("Changing card color for id: \(id) to color: \(newCardColor)")
             if let card = getCard(id) {
