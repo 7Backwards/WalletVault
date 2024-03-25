@@ -31,11 +31,10 @@ class Logger {
         #if DEBUG
         let logMessage = "[\(level.rawValue)] \(message)\n"
         print(logMessage, terminator: "")
-        #endif
-        
         queue.async {
             appendToFile(logMessage)
         }
+        #endif
     }
 
     private static func appendToFile(_ message: String) {
