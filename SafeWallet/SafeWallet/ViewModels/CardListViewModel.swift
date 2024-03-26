@@ -34,6 +34,7 @@ class CardListViewModel: AddOrEditMyCardViewModel, ViewModelProtocol {
         case cardAdded
         case error
         case removeCard(NSManagedObjectID)
+        case requestCameraPermission
         
         var id: String {
             switch self {
@@ -43,7 +44,18 @@ class CardListViewModel: AddOrEditMyCardViewModel, ViewModelProtocol {
                 return "removeCard"
             case .error:
                 return "error"
+            case .requestCameraPermission:
+                return "requestCameraPermission"
             }
+        }
+    }
+    
+    func requestCameraPermission(completion: @escaping (Bool) -> Void) {
+        appManager.utils.checkCameraPermission { isCameraPermissionsGranted, showAlert in
+            if showAlert {
+                activeAlert = .requestCameraPermission
+            }
+            completion(isCameraPermissionsGranted)
         }
     }
     

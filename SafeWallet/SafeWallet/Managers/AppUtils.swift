@@ -6,7 +6,6 @@
 //
 
 import SwiftUI
-import UserNotifications
 
 class AppUtils {
     private var protectWindow = PrivacyProtectionWindow()
@@ -79,16 +78,6 @@ class AppUtils {
             return Image("american-express")
         } else {
             return nil
-        }
-    }
-    
-    func requestNotificationPermission() {
-        UNUserNotificationCenter.current().requestAuthorization(options: [.alert, .badge, .sound]) { granted, error in
-            if granted {
-                Logger.log("Notification permission granted.")
-            } else if let error = error {
-                Logger.log("Notification permission denied because: \(error.localizedDescription).", level: .error)
-            }
         }
     }
 }
