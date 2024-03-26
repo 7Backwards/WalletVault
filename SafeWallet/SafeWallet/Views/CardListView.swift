@@ -64,29 +64,21 @@ struct CardListView: View {
             .alert(item: $viewModel.activeAlert) { activeAlert in
                 switch activeAlert {
                 case .cardAdded:
-                    return Alert(
-                        title: Text("Success"),
-                        message: Text("Card imported successfully."),
-                        dismissButton: .default(Text("OK"))
-                    )
+                    return viewModel.appManager.utils.requestCardAddedAlert()
                 case .removeCard(let id):
-                    return  Alert(
-                        title: Text("Delete Card"),
-                        message: Text("Are you sure you want to delete this card?"),
-                        primaryButton: .default(Text("Cancel"), action: { viewModel.activeAlert = nil }),
-                        secondaryButton: .destructive(Text("Delete"), action: {
-                            withAnimation {
-                                viewModel.deleteCard(id: id, from: cards)
-                            }
-                            viewModel.activeAlert = nil
-                        })
-                    )
+                    return viewModel.appManager.utils.requestRemoveCardAlert { 
+                        viewModel.activeAlert = nil
+                    } deleteAction: { 
+                        withAnimation {
+                            viewModel.deleteCard(id: id, from: cards)
+                        }
+                        viewModel.activeAlert = nil
+                    }
+
                 case .error:
-                    return Alert(
-                        title: Text("Error"),
-                        message: Text("An error has occurred, please try again."),
-                        dismissButton: .default(Text("OK"))
-                    )
+                    return viewModel.appManager.utils.requestDefaultErrorAlert()
+                case .requestCameraPermission:
+                    return viewModel.appManager.utils.requestCameraPermissionAlert()
                 }
             }
             .sheet(item: $viewModel.activeShareSheet) { activeSheet in
@@ -118,7 +110,12 @@ struct TrailingNavigationItems: View {
         HStack {
             if !ProcessInfo.processInfo.isiOSAppOnMac {
                 Button(action: {
-                    viewModel.activeShareSheet = .scanQRCode
+                    viewModel.requestCameraPermission {
+                        if $0 {
+                            viewModel.activeShareSheet = .scanQRCode
+                        }
+                    }
+                        
                 }) {
                     Image(systemName: "qrcode.viewfinder")
                         .foregroundStyle(.inverseSystemBackground)

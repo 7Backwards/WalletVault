@@ -44,11 +44,7 @@ struct AddCardView: View {
         .alert(item: $viewModel.activeAlert) { alert in
             switch alert {
             case .error(let errorMessage) :
-                return Alert(
-                    title: Text("Error"),
-                    message: Text(errorMessage),
-                    dismissButton: .default(Text("OK"))
-                )
+                return viewModel.appManager.utils.requestDefaultErrorAlert(message: errorMessage)
             default:
                 return Alert(title: Text(""))
             }

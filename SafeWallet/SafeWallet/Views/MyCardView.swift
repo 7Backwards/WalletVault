@@ -54,33 +54,24 @@ struct MyCardView: View {
         .alert(item: $viewModel.activeAlert) { activeAlert in
             switch activeAlert {
             case .deleteConfirmation:
-                return Alert(
-                    title: Text("Delete Card"),
-                    message: Text("Are you sure you want to delete this card?"),
-                    primaryButton: .default(Text("Cancel"), action: {
-                        self.viewModel.startAutoLockTimer()
-                        self.viewModel.activeAlert = nil
-                    }),
-                    secondaryButton: .destructive(Text("Delete"), action: {
-                        withAnimation {
-                            viewModel.delete { result in
-                                if result {
-                                    presentationMode.wrappedValue.dismiss()
-                                } else {
-                                    self.viewModel.startAutoLockTimer()
-                                    Logger.log("Error deleting the card", level: .error)
-                                }
+                viewModel.appManager.utils.requestRemoveCardAlert { 
+                    self.viewModel.startAutoLockTimer()
+                    self.viewModel.activeAlert = nil
+                } deleteAction: { 
+                    withAnimation {
+                        viewModel.delete { result in
+                            if result {
+                                presentationMode.wrappedValue.dismiss()
+                            } else {
+                                self.viewModel.startAutoLockTimer()
+                                Logger.log("Error deleting the card", level: .error)
                             }
                         }
-                        self.viewModel.activeAlert = nil
-                    })
-                )
+                    }
+                    self.viewModel.activeAlert = nil
+                }
             case .error(let errorMessage):
-                return Alert(
-                    title: Text("Error"),
-                    message: Text(errorMessage),
-                    dismissButton: .default(Text("OK"))
-                )
+                viewModel.appManager.utils.requestDefaultErrorAlert()
             }
         }
         .actionSheet(isPresented: $viewModel.showingShareSheet) {

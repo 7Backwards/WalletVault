@@ -23,6 +23,8 @@
 		5955A8552B94F8A400AECF1D /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5955A8542B94F8A400AECF1D /* AppDelegate.swift */; };
 		595EFA222BB0970E000D0F6F /* BiometricManagerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 595EFA212BB0970E000D0F6F /* BiometricManagerTests.swift */; };
 		595EFA252BB0975B000D0F6F /* MockBiometricAuth.swift in Sources */ = {isa = PBXBuildFile; fileRef = 595EFA242BB0975B000D0F6F /* MockBiometricAuth.swift */; };
+		595EFA2A2BB37C59000D0F6F /* AppUtils+Permissions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 595EFA292BB37C59000D0F6F /* AppUtils+Permissions.swift */; };
+		595EFA2C2BB3821E000D0F6F /* AppUtils+Alerts.swift in Sources */ = {isa = PBXBuildFile; fileRef = 595EFA2B2BB3821E000D0F6F /* AppUtils+Alerts.swift */; };
 		59716AA02B8A46C100DDD820 /* ShareUIActivityController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 59716A9F2B8A46C100DDD820 /* ShareUIActivityController.swift */; };
 		59716AA22B8A51A400DDD820 /* AppUtils+QrCode.swift in Sources */ = {isa = PBXBuildFile; fileRef = 59716AA12B8A51A400DDD820 /* AppUtils+QrCode.swift */; };
 		59716AA42B8A7C3500DDD820 /* QRCodeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 59716AA32B8A7C3500DDD820 /* QRCodeView.swift */; };
@@ -93,6 +95,8 @@
 		5955A8542B94F8A400AECF1D /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		595EFA212BB0970E000D0F6F /* BiometricManagerTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BiometricManagerTests.swift; sourceTree = "<group>"; };
 		595EFA242BB0975B000D0F6F /* MockBiometricAuth.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MockBiometricAuth.swift; sourceTree = "<group>"; };
+		595EFA292BB37C59000D0F6F /* AppUtils+Permissions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "AppUtils+Permissions.swift"; sourceTree = "<group>"; };
+		595EFA2B2BB3821E000D0F6F /* AppUtils+Alerts.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "AppUtils+Alerts.swift"; sourceTree = "<group>"; };
 		59716A9F2B8A46C100DDD820 /* ShareUIActivityController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShareUIActivityController.swift; sourceTree = "<group>"; };
 		59716AA12B8A51A400DDD820 /* AppUtils+QrCode.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "AppUtils+QrCode.swift"; sourceTree = "<group>"; };
 		59716AA32B8A7C3500DDD820 /* QRCodeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QRCodeView.swift; sourceTree = "<group>"; };
@@ -170,6 +174,8 @@
 				5955A8522B94F04700AECF1D /* AppActionManager+Notifications.swift */,
 				599178902B9A5D9A00CCB102 /* LogManager.swift */,
 				59DFA1A02B3DCD5000EFD403 /* BiometricManager.swift */,
+				595EFA292BB37C59000D0F6F /* AppUtils+Permissions.swift */,
+				595EFA2B2BB3821E000D0F6F /* AppUtils+Alerts.swift */,
 			);
 			path = Managers;
 			sourceTree = "<group>";
@@ -524,6 +530,8 @@
 				5926C5B62B59BCFB0065030E /* AppActionManager.swift in Sources */,
 				59DFA19F2B3B6FD000EFD403 /* CardDetailsViewModel.swift in Sources */,
 				59716AA62B8A8EE300DDD820 /* QRCodeScannerView.swift in Sources */,
+				595EFA2C2BB3821E000D0F6F /* AppUtils+Alerts.swift in Sources */,
+				595EFA2A2BB37C59000D0F6F /* AppUtils+Permissions.swift in Sources */,
 				5926C5C12B5C921F0065030E /* AppUtils.swift in Sources */,
 				598C2F452B37BB1C00C291C3 /* CardDetailsView.swift in Sources */,
 				59BD328A2B752F9C00DC8F08 /* ViewModelProtocol.swift in Sources */,

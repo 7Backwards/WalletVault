@@ -14,7 +14,7 @@ struct QRCodeScannerView: View {
         QRCodeScannerUIView() { string in
             viewModel.activeShareSheet = nil
             guard let cardInfo = viewModel.appManager.utils.parseCardInfo(from: string) else {
-                // TODO: Add logging
+                Logger.log("Error getting parsed card info", level: .error)
                 return
             }
             let cardObject = CardObservableObject(cardInfo: cardInfo)
