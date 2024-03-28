@@ -37,6 +37,23 @@ struct MyCardView: View {
                 Spacer()
                 
                 MyCardViewActionButtons(viewModel: viewModel)
+                    .actionSheet(isPresented: $viewModel.showingShareSheet) {
+                        ActionSheet(
+                            title: Text("Share Card"),
+                            message: Text("Choose how you would like to share the card"),
+                            buttons: [
+                                .default(Text("Share Inside App")) {
+                                    viewModel.activeShareSheet = .insideShare
+                                    viewModel.resetAutoLockTimer()
+                                },
+                                .default(Text("Share Outside App")) {
+                                    viewModel.activeShareSheet = .outsideShare
+                                    viewModel.resetAutoLockTimer()
+                                },
+                                .cancel()
+                            ]
+                        )
+                    }
             }
         }
         .onTapGesture {
@@ -73,23 +90,6 @@ struct MyCardView: View {
             case .error(let errorMessage):
                 viewModel.appManager.utils.requestDefaultErrorAlert()
             }
-        }
-        .actionSheet(isPresented: $viewModel.showingShareSheet) {
-            ActionSheet(
-                title: Text("Share Card"),
-                message: Text("Choose how you would like to share the card"),
-                buttons: [
-                    .default(Text("Share Inside App")) {
-                        viewModel.activeShareSheet = .insideShare
-                        viewModel.resetAutoLockTimer()
-                    },
-                    .default(Text("Share Outside App")) {
-                        viewModel.activeShareSheet = .outsideShare
-                        viewModel.resetAutoLockTimer()
-                    },
-                    .cancel()
-                ]
-            )
         }
         .sheet(item: $viewModel.activeShareSheet, onDismiss: { viewModel.startAutoLockTimer() }) { activeShareSheet in
             switch activeShareSheet {
