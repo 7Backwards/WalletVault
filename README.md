@@ -1,7 +1,5 @@
 # SafeWallet
 
-## About SafeWallet
-
 SafeWallet is a secure and user-friendly offline card management app that simplifies how I store, access, and share my card details. Developed using SwiftUI and CoreData, SafeWallet operates entirely offline, ensuring that all my information is securely kept on my device. It is designed for iPhone and iPad, supporting iOS 17.0 and above for an optimized experience.
 
 ### Features
