@@ -46,7 +46,8 @@ Take a look at SafeWallet in both light and dark modes:
 
 ## App Store
 
-I am currently in the process of submitting the app to the App Store, soon there will be a testflight beta link and then a link to the app on the app store.
+I am currently in the process of submitting the app to the App Store, meanwhile here is the beta testflight link: https://testflight.apple.com/join/4wsV2Y7T .
+Let me know if you have some feedback!
 
 ## Installation
 
