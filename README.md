@@ -46,7 +46,7 @@ Take a look at SafeWallet in both light and dark modes:
 
 ## App Store
 
-While I am currently unable to publish SafeWallet on the App Store due to policy restrictions regarding individual accounts handling sensitive information, I remain committed to its development and improvement. You can still be a part of SafeWallet's journey by joining the beta through TestFlight:
+While I am currently unable to publish SafeWallet on the App Store due to policy restrictions regarding individual accounts handling sensitive information, I remain committed to its development and improvement. You can still be a part of SafeWallet's journey by joining the beta through TestFlight: https://testflight.apple.com/join/4wsV2Y7T
 Let me know if you have some feedback!
 
 ## Installation
