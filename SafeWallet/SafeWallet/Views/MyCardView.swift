@@ -44,11 +44,9 @@ struct MyCardView: View {
                             buttons: [
                                 .default(Text("Share Inside App")) {
                                     viewModel.activeShareSheet = .insideShare
-                                    viewModel.resetAutoLockTimer()
                                 },
                                 .default(Text("Share Outside App")) {
                                     viewModel.activeShareSheet = .outsideShare
-                                    viewModel.resetAutoLockTimer()
                                 },
                                 .cancel()
                             ]
@@ -56,42 +54,42 @@ struct MyCardView: View {
                     }
             }
         }
-        .onTapGesture {
-            viewModel.startAutoLockTimer()
-        }
         .onAppear {
-            viewModel.presentationMode = presentationMode.wrappedValue
             viewModel.startAutoLockTimer()
         }
         .onDisappear {
-            viewModel.resetAutoLockTimer()
+            viewModel.invalidateAutoLockTimer()
             viewModel.updateCardColor(cardColor: viewModel.cardObject.cardColor)
         }
+        .onChange(of: viewModel.shouldDismissView) { _, shouldDismiss in
+            if shouldDismiss {
+                presentationMode.wrappedValue.dismiss()
+            }
+        }
+        
         .navigationBarTitle(viewModel.cardObject.cardName, displayMode: .inline)
         .alert(item: $viewModel.activeAlert) { activeAlert in
             switch activeAlert {
             case .deleteConfirmation:
                 viewModel.appManager.utils.requestRemoveCardAlert { 
-                    self.viewModel.startAutoLockTimer()
                     self.viewModel.activeAlert = nil
                 } deleteAction: { 
                     withAnimation {
                         viewModel.delete { result in
                             if result {
-                                presentationMode.wrappedValue.dismiss()
+                                viewModel.shouldDismissView = true
                             } else {
-                                self.viewModel.startAutoLockTimer()
                                 Logger.log("Error deleting the card", level: .error)
                             }
                         }
                     }
                     self.viewModel.activeAlert = nil
                 }
-            case .error(let errorMessage):
+            case .error:
                 viewModel.appManager.utils.requestDefaultErrorAlert()
             }
         }
-        .sheet(item: $viewModel.activeShareSheet, onDismiss: { viewModel.startAutoLockTimer() }) { activeShareSheet in
+        .sheet(item: $viewModel.activeShareSheet) { activeShareSheet in
             switch activeShareSheet {
             case .insideShare:
                 VStack(spacing: 5) {
@@ -158,8 +156,7 @@ struct MyCardViewActionButtons: View {
             .buttonStyle(RoundedButtonStyle())
             
             Button(action: {
-                self.viewModel.resetAutoLockTimer()
-                self.viewModel.activeAlert = .deleteConfirmation
+                viewModel.activeAlert = .deleteConfirmation
             }) {
                 Image(systemName: "trash.circle.fill")
                     .resizable()

@@ -20,14 +20,13 @@ class AppConstants: ObservableObject {
     @Published var cardHorizontalMarginSpacing: CGFloat = 20
     @Published var cardVerticalMarginSpacing: CGFloat = 20
     @Published var qrCodeHeight: CGFloat = 300
+    @Published var autoLockTimer: TimeInterval = 30 // Seconds
     
     func getCardHeight(sizeCategory: ContentSizeCategory) -> CGFloat {
         if sizeCategory >= .extraExtraLarge {
             return 200
-        } else if sizeCategory <= .small {
-            return 160
         } else {
-            return 170
+            return 180
         }
     }
 }
