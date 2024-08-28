@@ -25,7 +25,7 @@ class AppConstants: ObservableObject {
         if sizeCategory >= .extraExtraLarge {
             return 200
         } else if sizeCategory <= .small {
-            return 150
+            return 160
         } else {
             return 170
         }
