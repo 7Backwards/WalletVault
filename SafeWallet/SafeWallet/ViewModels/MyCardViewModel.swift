@@ -6,6 +6,7 @@
 //
 
 import SwiftUI
+import Combine
 
 class MyCardViewModel: AddOrEditMyCardViewModel, ViewModelProtocol {
     @Published var shouldShowDeleteConfirmation: Bool = false
@@ -13,10 +14,11 @@ class MyCardViewModel: AddOrEditMyCardViewModel, ViewModelProtocol {
     @Published private var autoLockTimer: Timer?
     @Published var activeAlert: ActiveAlert?
     @Published var activeShareSheet: ActiveShareSheet?
-    @Published var isEditable = false
+    @Published var isEditable = false 
     @Published var showingShareSheet = false
     @Published var cardObject: CardObservableObject
-    var presentationMode: PresentationMode?
+    @Published var shouldDismissView = false
+    private var cancellables = Set<AnyCancellable>()
     
     enum ActiveAlert: Identifiable {
         case deleteConfirmation
@@ -50,6 +52,8 @@ class MyCardViewModel: AddOrEditMyCardViewModel, ViewModelProtocol {
         appManager.utils.protectScreen()
         self.cardObject = cardObject
         super.init(appManager: appManager)
+        
+        setupObservers()
     }
     
     deinit {
@@ -88,14 +92,48 @@ class MyCardViewModel: AddOrEditMyCardViewModel, ViewModelProtocol {
     }
     
     func startAutoLockTimer() {
-        resetAutoLockTimer()
-        self.autoLockTimer = Timer.scheduledTimer(withTimeInterval: 30, repeats: false) { _ in
-            Logger.log("AutoLock expired, dismissing view")
-            self.presentationMode?.dismiss()
+        invalidateAutoLockTimer()
+        Logger.log("Setting up auto lock timer")
+        autoLockTimer = Timer.scheduledTimer(withTimeInterval: appManager.constants.autoLockTimer, repeats: false) { [weak self] _ in
+            Logger.log("AutoLock expired, dismissing view") 
+            self?.shouldDismissView = true
         }
     }
     
-    func resetAutoLockTimer() {
+    func invalidateAutoLockTimer() {
+        Logger.log("Invalidate auto lock timer")
         autoLockTimer?.invalidate()
+    }
+    
+    private func setupObservers() {
+        $isEditable
+            .sink { [weak self] isEditable in
+                if isEditable {
+                    self?.invalidateAutoLockTimer()
+                } else {
+                    self?.startAutoLockTimer()
+                }
+            }
+            .store(in: &cancellables)
+        
+        $activeShareSheet
+            .sink { [weak self] activeShareSheet in
+                if activeShareSheet != nil {
+                    self?.invalidateAutoLockTimer()
+                } else {
+                    self?.startAutoLockTimer()
+                }
+            }
+            .store(in: &cancellables)
+        
+        $activeAlert
+            .sink { [weak self] activeAlert in
+                if activeAlert != nil {
+                    self?.invalidateAutoLockTimer()
+                } else {
+                    self?.startAutoLockTimer()
+                }
+            }
+            .store(in: &cancellables)
     }
 }
