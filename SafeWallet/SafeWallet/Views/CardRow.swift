@@ -9,7 +9,6 @@ import Foundation
 import SwiftUI
 
 struct CardRow: View {
-    
     @GestureState private var gestureDragOffset = CGSize.zero
     @State private var dragOffset = CGSize.zero
     @ObservedObject var viewModel: CardRowViewModel
@@ -28,33 +27,31 @@ struct CardRow: View {
                     }
                 }
             }
-                .frame(minWidth: 0, maxWidth: .infinity, minHeight: 100)
-                .cornerRadius(10)
-                .shadow(radius: 5)
-                .offset(x: dragOffset.width + gestureDragOffset.width)
-                .gesture(
-                    DragGesture(minimumDistance: 30)
-                        .updating($gestureDragOffset, body: { (value, state, _) in
-                            let translationX = value.translation.width
-                            if translationX < 0, translationX > -70 {
-                                state = CGSize(width: translationX, height: 0)
-                            }
-                        })
-                        .onEnded { value in
-                            if value.translation.width < 0 {
-                                if value.translation.width <= -50 {
-                                    withAnimation {
-                                        dragOffset = .zero
-                                        guard let id = viewModel.cardObject.id else {
-                                            // TODO: Add log
-                                            return
-                                        }
-                                        viewModel.activeAlert = .removeCard(id)
+            .cornerRadius(10)
+            .shadow(radius: 5)
+            .offset(x: dragOffset.width + gestureDragOffset.width)
+            .gesture(
+                DragGesture(minimumDistance: 30)
+                    .updating($gestureDragOffset, body: { (value, state, _) in
+                        let translationX = value.translation.width
+                        if translationX < 0, translationX > -70 {
+                            state = CGSize(width: translationX, height: 0)
+                        }
+                    })
+                    .onEnded { value in
+                        if value.translation.width < 0 {
+                            if value.translation.width <= -50 {
+                                withAnimation {
+                                    dragOffset = .zero
+                                    guard let id = viewModel.cardObject.id else {
+                                        return
                                     }
+                                    viewModel.activeAlert = .removeCard(id)
                                 }
                             }
                         }
-                )
+                    }
+            )
             
             if gestureDragOffset.width < -10 {
                 HStack {

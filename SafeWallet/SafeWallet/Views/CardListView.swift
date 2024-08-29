@@ -42,13 +42,13 @@ struct CardListView: View {
                                 }
                             } label: {
                                 CardRow(cardObject: viewModel.getCardObservableObject(for: card), appManager: viewModel.appManager, activeAlert: $viewModel.activeAlert)
-                                    .frame(height: viewModel.appManager.constants.getCardHeight(sizeCategory: sizeCategory))
-                                    .listRowInsets(EdgeInsets())
+                                    .padding(.leading, 16)
                             }
                             .foregroundColor(.inverseSystemBackground)
                         }
                     }
                 }
+                .padding(.vertical)
             }
             .navigationDestination(for: Card.self) { card in
                 MyCardView(appManager: viewModel.appManager, cardObject: viewModel.getCardObservableObject(for: card))
@@ -89,7 +89,7 @@ struct CardListView: View {
                         .presentationDragIndicator(.visible)
                 case .scanQRCode:
                     QRCodeScannerView(viewModel: viewModel)
-                        .presentationDetents([.height(325)])
+                        .presentationDetents([.large])
                         .presentationDragIndicator(.visible)
                 }
             }
