@@ -27,7 +27,7 @@ struct MyCardView: View {
                         }
                     }
                 }
-                .frame(height: viewModel.appManager.constants.getCardHeight(sizeCategory: sizeCategory))
+                .padding(.leading, 16)
                 
                 if viewModel.isEditable {
                     ColorCarouselView(cardColor: $viewModel.cardObject.cardColor, appManager: viewModel.appManager)
@@ -92,17 +92,57 @@ struct MyCardView: View {
         .sheet(item: $viewModel.activeShareSheet) { activeShareSheet in
             switch activeShareSheet {
             case .insideShare:
-                VStack(spacing: 5) {
-                    Text("Scan this QR Code when adding a new card")
+                VStack(spacing: 15) {
+                    Text("Scan this QR Code to add a new card")
+                        .font(.headline)
+                        .foregroundColor(.primary)
                         .multilineTextAlignment(.center)
+                        .padding(.horizontal)
                         .lineLimit(2)
-                        .dynamicTypeSize(.xSmall ... .xxxLarge)
-                    QRCodeView(qrCodeImage: viewModel.appManager.utils.generateCardQRCode(from: viewModel.cardObject.getCardInfo()))
-                        .frame(height: viewModel.appManager.constants.qrCodeHeight)
-                        .padding()
+                    
+                    if let code = viewModel.appManager.utils.getShareCardCode(card: viewModel.cardObject.getCardInfo(), key: viewModel.appManager.constants.encryptionKey) {
+                        QRCodeView(qrCodeImage: viewModel.appManager.utils.generateCardQRCode(from: code))
+                            .frame(height: viewModel.appManager.constants.qrCodeSize.height)
+                            .padding()
+                        
+                        VStack(spacing: 10) {
+                            Text("Or use this code:")
+                                .font(.subheadline)
+                                .foregroundColor(.secondary)
+                            
+                            HStack {
+                                Text(code)
+                                    .font(.body)
+                                    .foregroundColor(.blue)
+                                    .lineLimit(1)
+                                    .truncationMode(.middle)
+                                    .padding(.trailing, 5)
+                                
+                                Button(action: {
+                                    UIPasteboard.general.string = code
+                                    print("Code copied to clipboard")
+                                }) {
+                                    Image(systemName: "doc.on.doc")
+                                        .foregroundColor(.blue)
+                                }
+                            }
+                            .padding()
+                            .background(Color(UIColor.systemGray6))
+                            .cornerRadius(8)
+                        }
+                    } else {
+                        Text("Error generating QR Code")
+                            .foregroundColor(.red)
+                            .padding()
+                    }
                 }
-                .presentationDetents([.medium, .large])
                 .padding()
+                .background(Color(UIColor.systemBackground))
+                .cornerRadius(12)
+                .shadow(radius: 10)
+                .presentationDetents([.large])
+                .presentationDragIndicator(.visible)
+                .padding(.horizontal)
             case .outsideShare:
                 ShareUIActivityController(shareItems: [viewModel.appManager.utils.getFormattedShareCardInfo(card: viewModel.cardObject.getCardInfo())])
                     .presentationDetents([.medium, .large])

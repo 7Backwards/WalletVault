@@ -8,38 +8,116 @@
 import SwiftUI
 import AVFoundation
 
+fileprivate let qrCodeMaxHeight: CGFloat = 340
+
 struct QRCodeScannerView: View {
     @ObservedObject var viewModel: CardListViewModel
+    @State private var manualCode: String = ""
+    @State private var isCodeEntryVisible: Bool = false
+    private let qrCodeAlignmentFrameCornerRadius: CGFloat = 16
+
     var body: some View {
-        QRCodeScannerUIView() { string in
-            viewModel.activeShareSheet = nil
-            guard let cardInfo = viewModel.appManager.utils.parseCardInfo(from: string) else {
-                Logger.log("Error getting parsed card info", level: .error)
-                return
+        VStack(spacing: 20) {
+            Text("Scan the QR Code or Enter the Code Manually")
+                .font(.headline)
+                .multilineTextAlignment(.center)
+                .padding()
+
+            QRCodeScannerUIView { string in
+                processScannedCode(string)
             }
-            let cardObject = CardObservableObject(cardInfo: cardInfo)
-            viewModel.addOrEdit(cardObject: cardObject) { result in
-                switch result {
-                case .success:
-                    DispatchQueue.main.asyncAfter(deadline: .now() + 0.1) {
-                        self.viewModel.activeAlert = .cardAdded
+            .frame(maxHeight: qrCodeMaxHeight)
+            .cornerRadius(12)
+            .shadow(radius: 10)
+            .overlay(
+                RoundedRectangle(cornerRadius: qrCodeAlignmentFrameCornerRadius)
+                    .strokeBorder(style: StrokeStyle(lineWidth: 4, dash: [10]))
+                    .foregroundColor(.blue)
+                    .padding(50)
+            )
+
+            if isCodeEntryVisible {
+                VStack(spacing: 20) {
+                    HStack {
+                        TextField("Enter Code", text: $manualCode)
+                            .textFieldStyle(.plain)
+
+                        Button(action: {
+                            if let clipboardContent = UIPasteboard.general.string {
+                                manualCode = clipboardContent
+                            }
+                        }) {
+                            Image(systemName: "doc.on.clipboard")
+                                .foregroundColor(.blue)
+                        }
                     }
-                case .failure:
-                    DispatchQueue.main.asyncAfter(deadline: .now() + 0.1) {
-                        self.viewModel.activeAlert = .error
+                    .padding()
+                    .background(
+                        RoundedRectangle(cornerRadius: 8)
+                            .stroke(Color.gray, lineWidth: 1)
+                    )
+
+                    Button(action: {
+                        processScannedCode(manualCode)
+                    }) {
+                        HStack {
+                            Image(systemName: "checkmark.circle.fill")
+                                .foregroundColor(.white)
+                            Text("Submit Code")
+                                .fontWeight(.semibold)
+                                .foregroundColor(.white)
+                        }
+                        .padding()
+                        .frame(maxWidth: .infinity)
+                        .background(Color.blue)
+                        .cornerRadius(8)
                     }
+                    .padding(.horizontal)
+                }
+                .frame(maxWidth: viewModel.appManager.constants.qrCodeSize.width)
+                .transition(.move(edge: .bottom))
+            } else {
+                Button(action: {
+                    withAnimation {
+                        isCodeEntryVisible.toggle()
+                    }
+                }) {
+                    Text("Enter Code Manually")
+                        .foregroundColor(.blue)
+                        .underline()
                 }
             }
         }
-        .overlay {
-            Rectangle()
-                .stroke(lineWidth: 2)
-                .foregroundColor(.black)
-                .frame(width: 200, height: 200)
-                .background(Color.clear)
+        .padding()
+        .background(Color(UIColor.systemBackground))
+        .cornerRadius(12)
+        .shadow(radius: 10)
+        .padding(.horizontal, 16)
+    }
+
+    private func processScannedCode(_ code: String) {
+        viewModel.activeShareSheet = nil
+        guard let cardInfo = viewModel.appManager.utils.parseCardInfo(from: code, using: viewModel.appManager.constants.encryptionKey) else {
+            Logger.log("Error getting parsed card info", level: .error)
+            return
+        }
+        let cardObject = CardObservableObject(cardInfo: cardInfo)
+        viewModel.addOrEdit(cardObject: cardObject) { result in
+            switch result {
+            case .success:
+                DispatchQueue.main.asyncAfter(deadline: .now() + 0.1) {
+                    self.viewModel.activeAlert = .cardAdded
+                }
+            case .failure:
+                DispatchQueue.main.asyncAfter(deadline: .now() + 0.1) {
+                    self.viewModel.activeAlert = .error
+                }
+            }
         }
     }
 }
+
+
 
 struct QRCodeScannerUIView: UIViewControllerRepresentable {
     var completion: ((String) -> Void)?
@@ -95,7 +173,7 @@ struct QRCodeScannerUIView: UIViewControllerRepresentable {
         let previewLayer = AVCaptureVideoPreviewLayer(session: captureSession)
         previewLayer.videoGravity = .resizeAspectFill
         
-        let sideLength = 340.0
+        let sideLength = qrCodeMaxHeight
         let viewBounds = viewController.view.bounds
         let previewLayerFrame = CGRect(x: 0,
                                        y: 0,

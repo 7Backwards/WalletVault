@@ -6,6 +6,7 @@
 //
 
 import SwiftUI
+import CryptoKit
 
 class AppUtils {
     private var protectWindow = PrivacyProtectionWindow()
@@ -20,20 +21,32 @@ class AppUtils {
         return info
     }
     
-    func getNonFormattedShareCardInfo(card: CardInfo) -> String {
-        "\(card.cardName),\(card.cardNumber),\(card.expiryDate), \(card.cvvCode), \(card.pin)"
+    func getShareCardCode(card: CardInfo, key: SymmetricKey) -> String? {
+        encryptString("\(card.cardName),\(card.cardNumber),\(card.expiryDate), \(card.cvvCode), \(card.pin)", using: key)
     }
     
-    func parseCardInfo(from shareableString: String) -> CardInfo? {
-        let components = shareableString.components(separatedBy: ",")
-        guard components.count >= 5 else { return nil }
+    func parseCardInfo(from shareableCode: String, using key: SymmetricKey) -> CardInfo? {
+        // Decrypt the shareable code using the provided key
+        guard let decryptedString = decryptString(shareableCode, using: key) else {
+            print("Failed to decrypt the shareable code.")
+            return nil
+        }
         
+        // Split the decrypted string into components
+        let components = decryptedString.components(separatedBy: ",")
+        guard components.count >= 5 else {
+            print("Decrypted string does not contain the correct number of components.")
+            return nil
+        }
+        
+        // Trim and assign the components to the appropriate properties
         let cardName = components[0].trimmingCharacters(in: .whitespacesAndNewlines)
         let cardNumber = components[1].trimmingCharacters(in: .whitespacesAndNewlines)
         let expiryDate = components[2].trimmingCharacters(in: .whitespacesAndNewlines)
         let cvvCode = components[3].trimmingCharacters(in: .whitespacesAndNewlines)
         let pin = components[4].trimmingCharacters(in: .whitespacesAndNewlines)
 
+        // Create and return the CardInfo object
         return CardInfo(
             cardName: cardName,
             cardNumber: cardNumber,
@@ -42,7 +55,6 @@ class AppUtils {
             pin: pin
         )
     }
-
 
     func protectScreen() {
         protectWindow.startProtection()

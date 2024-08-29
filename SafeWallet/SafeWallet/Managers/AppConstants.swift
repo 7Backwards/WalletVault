@@ -6,6 +6,7 @@
 //
 
 import SwiftUI
+import CryptoKit
 
 enum AddCardErrorType: Error {
     case invalidDate
@@ -19,14 +20,7 @@ class AppConstants: ObservableObject {
     @Published var colorCircleSize: CGFloat = 40
     @Published var cardHorizontalMarginSpacing: CGFloat = 20
     @Published var cardVerticalMarginSpacing: CGFloat = 20
-    @Published var qrCodeHeight: CGFloat = 300
+    @Published var qrCodeSize: CGSize = CGSize(width: 300, height: 300)
     @Published var autoLockTimer: TimeInterval = 30 // Seconds
-    
-    func getCardHeight(sizeCategory: ContentSizeCategory) -> CGFloat {
-        if sizeCategory >= .extraExtraLarge {
-            return 200
-        } else {
-            return 180
-        }
-    }
+    let encryptionKey = SymmetricKey(data: "SafeWalletKey123".data(using: .utf8)!)
 }
