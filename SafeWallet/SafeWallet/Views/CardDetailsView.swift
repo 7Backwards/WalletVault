@@ -11,66 +11,90 @@ import Combine
 
 struct CardDetailsView: View {
     @ObservedObject var viewModel: CardDetailsViewModel
-    
+
     init(appManager: AppManager, cardObject: CardObservableObject, isEditing: Binding<Bool>, isUnlocked: Bool, setIsFavorited: @escaping (Bool) -> Void) {
         self.viewModel = CardDetailsViewModel(appManager: appManager, cardObject: cardObject, isEditing: isEditing, isUnlocked: isUnlocked, setIsFavorited: setIsFavorited)
     }
-    
+
     var body: some View {
-        GeometryReader { geometry in
-            ZStack(alignment: .topTrailing) {
-                VStack(alignment: .leading, spacing: 15) {
-                    CardDetailsNameAndNumberView(cardName: $viewModel.cardObject.cardName, cardNumber: $viewModel.cardObject.cardNumber, isEditable: $viewModel.isEditable, isUnlocked: viewModel.isUnlocked,viewModel: viewModel)
-                    
-                    HStack() {
-                        CardDetailsCVVView(cvvCode: $viewModel.cardObject.cvvCode, isEditable: $viewModel.isEditable, isUnlocked: viewModel.isUnlocked, viewModel: viewModel)
-                        
-                        CardDetailsPinView(pin: $viewModel.cardObject.pin, isEditable: $viewModel.isEditable, isUnlocked: viewModel.isUnlocked, viewModel: viewModel)
-                        CardDetailsExpiryDateView(expiryDate: $viewModel.cardObject.expiryDate, isEditable: $viewModel.isEditable, viewModel: viewModel, isUnlocked: viewModel.isUnlocked)
-                    }
-                }
-                .padding()
-                .background(Color(viewModel.cardObject.cardColor).opacity(viewModel.getCardBackgroundOpacity()))
-                .cornerRadius(10)
-                .overlay(
-                    RoundedRectangle(cornerRadius: 10)
-                        .stroke(Color.secondary, lineWidth: 1)
+        ZStack(alignment: .topTrailing) {
+            VStack(alignment: .leading, spacing: 15) {
+                CardDetailsNameAndNumberView(
+                    cardName: $viewModel.cardObject.cardName,
+                    cardNumber: $viewModel.cardObject.cardNumber,
+                    isEditable: $viewModel.isEditable,
+                    isUnlocked: viewModel.isUnlocked,
+                    viewModel: viewModel
                 )
-                .shadow(radius: 3)
-                
-                if let cardIssuerImage = viewModel.getCardIssuerImage(cardNumber: viewModel.cardObject.cardNumber) {
-                    cardIssuerImage
-                        .resizable()
-                        .aspectRatio(contentMode: .fit)
-                        .frame(width: 40, height: 40)
-                        .padding(.trailing, 15)
-                        .padding(.top, 8)
-                }
-                
-                Group {
-                    Circle()
-                        .fill(Color.systemBackground)
-                    Image(systemName: "star.fill")
-                        .resizable()
-                        .frame(width: 20, height: 20)
-                        .foregroundColor(.yellow)
-                        .padding(.top, 0)
-                        .padding(.trailing, 0)
-                        .transition(.scale)
-                        .opacity(viewModel.cardObject.isFavorited ? 1 : 0.3)
-                }
-                .offset(x: 10, y: -10)
-                .frame(width: 28, height: 28)
-                .onTapGesture {
-                    if viewModel.cardObject.id != nil {
-                        viewModel.setIsFavorited(!viewModel.cardObject.isFavorited)
-                    } else {
-                        viewModel.cardObject.isFavorited.toggle()
-                    }
+
+                HStack(spacing: 15) {
+                    CardDetailsCVVView(
+                        cvvCode: $viewModel.cardObject.cvvCode,
+                        isEditable: $viewModel.isEditable,
+                        isUnlocked: viewModel.isUnlocked,
+                        viewModel: viewModel
+                    )
+
+                    CardDetailsPinView(
+                        pin: $viewModel.cardObject.pin,
+                        isEditable: $viewModel.isEditable,
+                        isUnlocked: viewModel.isUnlocked,
+                        viewModel: viewModel
+                    )
+
+                    CardDetailsExpiryDateView(
+                        expiryDate: $viewModel.cardObject.expiryDate,
+                        isEditable: $viewModel.isEditable,
+                        viewModel: viewModel,
+                        isUnlocked: viewModel.isUnlocked
+                    )
                 }
             }
-            .padding(.horizontal, viewModel.appManager.constants.cardHorizontalMarginSpacing)
-            .frame(maxWidth: .infinity, maxHeight: .infinity)
+            .padding()
+            .background(Color(viewModel.cardObject.cardColor).opacity(viewModel.getCardBackgroundOpacity()))
+            .cornerRadius(10)
+            .overlay(
+                RoundedRectangle(cornerRadius: 10)
+                    .stroke(Color.secondary, lineWidth: 1)
+            )
+            .shadow(radius: 3)
+
+            if let cardIssuerImage = viewModel.getCardIssuerImage(cardNumber: viewModel.cardObject.cardNumber) {
+                cardIssuerImage
+                    .resizable()
+                    .aspectRatio(contentMode: .fit)
+                    .frame(width: 40, height: 40)
+                    .padding(.trailing, 15)
+                    .padding(.top, 8)
+            }
+        }
+        .overlay(
+            starIcon,
+            alignment: .topTrailing
+        )
+        .padding(.trailing, 16)
+        .padding(.top, 10)
+    }   
+
+    private var starIcon: some View {
+        Group {
+            Circle()
+                .fill(Color.systemBackground)
+            Image(systemName: "star.fill")
+                .resizable()
+                .frame(width: 20, height: 20)
+                .foregroundColor(.yellow)
+                .transition(.scale)
+                .opacity(viewModel.cardObject.isFavorited ? 1 : 0.3)
+        }
+        .frame(width: 30, height: 30)
+        .offset(x: 10, y: -10)
+        .onTapGesture {
+            if viewModel.cardObject.id != nil {
+                viewModel.setIsFavorited(!viewModel.cardObject.isFavorited)
+            } else {
+                viewModel.cardObject.isFavorited.toggle()
+            }
         }
     }
 }

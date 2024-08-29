@@ -59,6 +59,7 @@
 		59BD32A52B80FE5B00DC8F08 /* UIColor+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 59BD32A42B80FE5B00DC8F08 /* UIColor+Extension.swift */; };
 		59DFA19F2B3B6FD000EFD403 /* CardDetailsViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 59DFA19E2B3B6FD000EFD403 /* CardDetailsViewModel.swift */; };
 		59DFA1A12B3DCD5000EFD403 /* BiometricManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 59DFA1A02B3DCD5000EFD403 /* BiometricManager.swift */; };
+		59E8799E2C808F91002BC8D9 /* AppUtils+Crypto.swift in Sources */ = {isa = PBXBuildFile; fileRef = 59E8799D2C808F91002BC8D9 /* AppUtils+Crypto.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -136,6 +137,7 @@
 		59DFA19E2B3B6FD000EFD403 /* CardDetailsViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardDetailsViewModel.swift; sourceTree = "<group>"; };
 		59DFA1A02B3DCD5000EFD403 /* BiometricManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BiometricManager.swift; sourceTree = "<group>"; };
 		59DFA1A22B3DCDB500EFD403 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = Info.plist; sourceTree = "<group>"; };
+		59E8799D2C808F91002BC8D9 /* AppUtils+Crypto.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "AppUtils+Crypto.swift"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -176,6 +178,7 @@
 				59DFA1A02B3DCD5000EFD403 /* BiometricManager.swift */,
 				595EFA292BB37C59000D0F6F /* AppUtils+Permissions.swift */,
 				595EFA2B2BB3821E000D0F6F /* AppUtils+Alerts.swift */,
+				59E8799D2C808F91002BC8D9 /* AppUtils+Crypto.swift */,
 			);
 			path = Managers;
 			sourceTree = "<group>";
@@ -536,6 +539,7 @@
 				598C2F452B37BB1C00C291C3 /* CardDetailsView.swift in Sources */,
 				59BD328A2B752F9C00DC8F08 /* ViewModelProtocol.swift in Sources */,
 				5926C5BB2B5C2FE60065030E /* Color+Extension.swift in Sources */,
+				59E8799E2C808F91002BC8D9 /* AppUtils+Crypto.swift in Sources */,
 				598C2F022B34C66200C291C3 /* Persistence.swift in Sources */,
 				598C2F3D2B360DC800C291C3 /* AddCardView.swift in Sources */,
 			);
@@ -691,6 +695,7 @@
 				MTL_ENABLE_DEBUG_INFO = NO;
 				MTL_FAST_MATH = YES;
 				SWIFT_COMPILATION_MODE = wholemodule;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 			};
 			name = Release;
 		};

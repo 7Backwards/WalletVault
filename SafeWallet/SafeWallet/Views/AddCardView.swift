@@ -27,7 +27,7 @@ struct AddCardView: View {
                             }
                         }
                     }
-                .frame(height: viewModel.appManager.constants.getCardHeight(sizeCategory: sizeCategory))
+                .padding(.leading, 16)
                 
                 ColorCarouselView(cardColor: $viewModel.cardObject.cardColor, appManager: viewModel.appManager)
 
