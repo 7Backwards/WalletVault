@@ -10,8 +10,8 @@ import CoreData
 import SwiftUI
 
 class AddCardViewModel: AddOrEditMyCardViewModel, ViewModelProtocol {
-    @Published var selectedColor: Color?
-    @Published var cardObject = CardObservableObject(card: nil)
+    @Published var selectedColor: ColorEntity?
+    @Published var cardObject = CardObservableObject()
     @Published var isEditable: Bool = true
     @Published var activeAlert: ActiveAlert?
     

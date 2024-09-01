@@ -5,6 +5,7 @@
 
     },
     "Add Card" : {
+      "extractionState" : "stale",
       "localizations" : {
         "de" : {
           "stringUnit" : {
@@ -1229,6 +1230,9 @@
           }
         }
       }
+    },
+    "Select" : {
+
     },
     "Settings" : {
       "localizations" : {

@@ -26,7 +26,7 @@ class AddOrEditMyCardViewModel {
         let id = cardObject.id
         let pin = cardObject.pin
 
-        guard !cardName.isEmpty, !cardNumber.isEmpty, !expiryDate.isEmpty, !cvvCode.isEmpty, !cardColor.isEmpty else { return }
+        guard !cardName.isEmpty, !cardNumber.isEmpty, !expiryDate.isEmpty, !cvvCode.isEmpty else { return }
         
         if cardNumber.count != 19 {
             completion(.failure(.shortCardNumber))

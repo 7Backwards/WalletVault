@@ -2,12 +2,13 @@
 //  Card+CoreDataProperties.swift
 //  SafeWallet
 //
-//  Created by Gonçalo on 21/12/2023.
+//  Created by Gonçalo on 31/08/2024.
 //
 //
 
 import Foundation
 import CoreData
+
 
 extension Card {
 
@@ -17,27 +18,28 @@ extension Card {
 
     @NSManaged public var cardName: String
     @NSManaged public var cardNumber: String
-    @NSManaged public var expiryDate: String
     @NSManaged public var cvvCode: String
-    @NSManaged public var cardColor: String
+    @NSManaged public var expiryDate: String
     @NSManaged public var isFavorited: Bool
     @NSManaged public var pin: String
+    @NSManaged public var cardColor: ColorEntity?
+
 }
 
-extension Card : Identifiable {}
+extension Card : Identifiable {
 
+}
 
-// Card representative object
 public class CardInfo {
     public var cardName: String = ""
     public var cardNumber: String = ""
     public var expiryDate: String = ""
     public var cvvCode: String = ""
-    public var cardColor: String = ""
+    public var cardColor: ColorEntity?
     public var isFavorited: Bool = false
     public var pin: String = ""
     
-    init(cardName: String = "", cardNumber: String = "", expiryDate: String = "", cvvCode: String = "", cardColor: String = "black", isFavorited: Bool = false, pin: String = "") {
+    init(cardName: String = "", cardNumber: String = "", expiryDate: String = "", cvvCode: String = "", cardColor: ColorEntity? = nil, isFavorited: Bool = false, pin: String = "") {
         self.cardName = cardName
         self.cardNumber = cardNumber
         self.expiryDate = expiryDate
