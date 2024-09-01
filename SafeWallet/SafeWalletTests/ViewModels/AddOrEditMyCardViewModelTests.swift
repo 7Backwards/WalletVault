@@ -7,6 +7,7 @@
 
 @testable import SafeWallet
 import XCTest
+import SwiftUI
 
 
 class AddOrEditMyCardViewModelTests: XCTestCase {
@@ -14,6 +15,9 @@ class AddOrEditMyCardViewModelTests: XCTestCase {
     func testAddOrEdit_WhenAdding_ShouldCallCompletionWithSuccess() {
         let mockContext = TestUtils.setUpInMemoryManagedObjectContext()
         let appManager = AppManager(context: mockContext) 
+        let cardColor = ColorEntity(context: mockContext)
+        cardColor.hexValue = Color.black.toHex()
+        cardColor.isDefault = true
         let viewModel = AddOrEditMyCardViewModel(appManager: appManager)
         
         let card = Card(context: mockContext)
@@ -21,7 +25,7 @@ class AddOrEditMyCardViewModelTests: XCTestCase {
         card.cardNumber = "1234567890123456"
         card.expiryDate = "12/25"
         card.cvvCode = "123"
-        card.cardColor = "Blue"
+        card.cardColor = cardColor
         card.isFavorited = false
         card.pin = "1234"
         

@@ -51,7 +51,7 @@ struct CardDetailsView: View {
                 }
             }
             .padding()
-            .background(Color(viewModel.cardObject.cardColor).opacity(viewModel.getCardBackgroundOpacity()))
+            .background(Color(hex: viewModel.cardObject.cardColor?.hexValue ?? "").opacity(viewModel.getCardBackgroundOpacity()))
             .cornerRadius(10)
             .overlay(
                 RoundedRectangle(cornerRadius: 10)
@@ -73,6 +73,7 @@ struct CardDetailsView: View {
             alignment: .topTrailing
         )
         .padding(.trailing, 16)
+        .padding(.leading, 16)
         .padding(.top, 10)
     }   
 

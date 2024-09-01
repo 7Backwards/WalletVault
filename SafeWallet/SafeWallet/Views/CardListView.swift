@@ -42,7 +42,6 @@ struct CardListView: View {
                                 }
                             } label: {
                                 CardRow(cardObject: viewModel.getCardObservableObject(for: card), appManager: viewModel.appManager, activeAlert: $viewModel.activeAlert)
-                                    .padding(.leading, 16)
                             }
                             .foregroundColor(.inverseSystemBackground)
                         }
@@ -85,11 +84,11 @@ struct CardListView: View {
                 switch activeSheet {
                 case .addCard:
                     AddCardView(appManager: viewModel.appManager)
-                        .presentationDetents([.height(325)])
+                        .presentationDetents([.height(380)])
                         .presentationDragIndicator(.visible)
                 case .scanQRCode:
                     QRCodeScannerView(viewModel: viewModel)
-                        .presentationDetents([.large])
+                        .presentationDetents([.height(560)])
                         .presentationDragIndicator(.visible)
                 }
             }

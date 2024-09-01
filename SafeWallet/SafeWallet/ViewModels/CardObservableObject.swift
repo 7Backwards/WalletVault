@@ -7,26 +7,27 @@
 
 import Foundation
 import CoreData
+import SwiftUI
 
 class CardObservableObject: ObservableObject {
     @Published var cardName: String = ""
     @Published var cardNumber: String = ""
     @Published var expiryDate: String = ""
     @Published var cvvCode: String = ""
-    @Published var cardColor: String = ""
+    @Published var cardColor: ColorEntity? = nil
     @Published var isFavorited: Bool = false
     @Published var pin: String = ""
-    @Published var id: NSManagedObjectID?
+    @Published var id: NSManagedObjectID? = nil
     
-    init(card: Card?) {
-        cardName = card?.cardName ?? ""
-        cardNumber = card?.cardNumber ?? ""
-        expiryDate = card?.expiryDate ?? ""
-        cvvCode = card?.cvvCode ?? ""
-        cardColor = card?.cardColor ?? "black"
-        isFavorited = card?.isFavorited ?? false
-        pin = card?.pin ?? ""
-        id = card?.objectID
+    init(card: Card) {
+        cardName = card.cardName
+        cardNumber = card.cardNumber
+        expiryDate = card.expiryDate
+        cvvCode = card.cvvCode
+        cardColor = card.cardColor
+        isFavorited = card.isFavorited
+        pin = card.pin
+        id = card.objectID
     }
     
     init(cardInfo: CardInfo) {
@@ -38,6 +39,8 @@ class CardObservableObject: ObservableObject {
         isFavorited = cardInfo.isFavorited
         pin = cardInfo.pin
     }
+    
+    init() {}
     
     func getCardInfo() -> CardInfo {
         CardInfo(cardName: cardName, cardNumber: cardNumber, expiryDate: expiryDate, cvvCode: cvvCode, cardColor: cardColor, isFavorited: isFavorited, pin: pin)

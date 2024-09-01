@@ -7,6 +7,7 @@
 
 @testable import SafeWallet
 import CoreData
+import SwiftUI
 import XCTest
 
 class AppActionManagerTests: XCTestCase {
@@ -27,7 +28,7 @@ class AppActionManagerTests: XCTestCase {
 
     func testAddCard_ShouldSaveCard() {
         let expectation = self.expectation(description: "Card saved")
-        sut.doAction(action: .addCard(cardName: "Test Card", cardNumber: "1234567890123456", expiryDate: "12/25", cvvCode: "123", cardColor: "Blue", isFavorited: false, pin: "1234")) { success in
+        sut.doAction(action: .addCard(cardName: "Test Card", cardNumber: "1234567890123456", expiryDate: "12/25", cvvCode: "123", cardColor: nil, isFavorited: false, pin: "1234")) { success in
             XCTAssertTrue(success)
             expectation.fulfill()
         }
@@ -83,7 +84,9 @@ class AppActionManagerTests: XCTestCase {
 
     func testChangeCardColor_ShouldUpdateColor() {
         let card = addTestCardToContext()
-        let newColor = "Red"
+        let newColor = ColorEntity(context: mockContext)
+        newColor.hexValue = Color.red.toHex()
+        newColor.isDefault = true
         try? mockContext.save()
 
         let expectation = self.expectation(description: "Card color changed")
@@ -119,12 +122,15 @@ class AppActionManagerTests: XCTestCase {
 
 
     private func addTestCardToContext() -> Card {
+        let cardColor = ColorEntity(context: mockContext)
+        cardColor.hexValue = Color.black.toHex()
+        cardColor.isDefault = true
         let card = Card(context: mockContext)
         card.cardName = "Test Card"
         card.cardNumber = "1234567890123456"
         card.expiryDate = "12/25"
         card.cvvCode = "123"
-        card.cardColor = "Blue"
+        card.cardColor = cardColor
         card.isFavorited = false
         card.pin = "1234"
         return card
