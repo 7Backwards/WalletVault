@@ -6,13 +6,20 @@
 //
 
 import UIKit
+import SwiftUI
 
 extension UIColor {
     @objc static let appIconBackgroundColor: UIColor = .palette(named: "\(#keyPath(UIColor.appIconBackgroundColor))")
 }
 
-private extension UIColor {
+extension UIColor {
     
+    convenience init(hex: String) {
+        let color = Color(hex: hex)
+        
+        self.init(color)
+    }
+
     static func palette(named colorName: String) -> UIColor {
         guard let color = UIColor(named: colorName) else {
             let message = "UIColor \(colorName) not found in application bundle"
@@ -20,5 +27,16 @@ private extension UIColor {
         }
         
         return color
+    }
+    
+    var hsbComponents: (hue: Double, saturation: Double, brightness: Double) {
+        var hue: CGFloat = 0
+        var saturation: CGFloat = 0
+        var brightness: CGFloat = 0
+        var alpha: CGFloat = 0
+
+        self.getHue(&hue, saturation: &saturation, brightness: &brightness, alpha: &alpha)
+
+        return (Double(hue), Double(saturation), Double(brightness))
     }
 }

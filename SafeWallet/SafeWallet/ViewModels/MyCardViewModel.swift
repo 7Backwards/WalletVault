@@ -68,7 +68,7 @@ class MyCardViewModel: AddOrEditMyCardViewModel, ViewModelProtocol {
         appManager.actionManager.doAction(action: .removeCard(id), completion: completion)
     }
     
-    func updateCardColor(cardColor: String) {
+    func updateCardColor(cardColor: ColorEntity) {
         guard let id = cardObject.id else {
             Logger.log("Error getting card on method \(#function)", level: .error)
             return

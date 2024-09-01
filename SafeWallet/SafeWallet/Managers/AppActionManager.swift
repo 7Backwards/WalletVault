@@ -12,12 +12,15 @@ protocol AppActionManagerProtocol {
 }
 
 enum AppAction {
-    case addCard(cardName: String, cardNumber: String, expiryDate: String, cvvCode: String, cardColor: String, isFavorited: Bool, pin: String)
-    case editCard(id: NSManagedObjectID, cardName: String, cardNumber: String, expiryDate: String, cvvCode: String, cardColor: String, isFavorited: Bool, pin: String)
+    case addCard(cardName: String, cardNumber: String, expiryDate: String, cvvCode: String, cardColor: ColorEntity?, isFavorited: Bool, pin: String)
+    case editCard(id: NSManagedObjectID, cardName: String, cardNumber: String, expiryDate: String, cvvCode: String, cardColor: ColorEntity?, isFavorited: Bool, pin: String)
     case removeCard(NSManagedObjectID)
     case removeCards([NSManagedObjectID])
-    case changeCardColor(NSManagedObjectID, String)
+    case changeCardColor(NSManagedObjectID, ColorEntity)
     case setIsFavorited(id: NSManagedObjectID, Bool)
+    case insertNewColor(hexValue: String, isDefault: Bool)
+    case removeColor(hexValue: String)
+    case getColor(hexValue: String, completion: (ColorEntity?) -> Void)
 }
 
 class AppActionManager: AppActionManagerProtocol {
@@ -133,6 +136,89 @@ class AppActionManager: AppActionManagerProtocol {
             }
             card.isFavorited = isFavorited
             saveWithCompletion()
+        case .insertNewColor(let hexValue, let isDefault):
+            Logger.log("Inserting new color with hexValue: \(hexValue)")
+            
+            let color = ColorEntity(context: context)
+            color.hexValue = hexValue
+            color.isDefault = isDefault
+            
+            saveWithCompletion()
+        case .removeColor(let hexValue):
+            Logger.log("Attempting to remove color with hexValue: \(hexValue)")
+
+            // Fetch the color by hex value
+            let fetchRequest: NSFetchRequest<ColorEntity> = ColorEntity.fetchRequest()
+            fetchRequest.predicate = NSPredicate(format: "hexValue == %@", hexValue)
+            
+            do {
+                let colors = try context.fetch(fetchRequest)
+                
+                if let color = colors.first {
+                    if color.isDefault {
+                        Logger.log("Cannot remove default color: \(hexValue)", level: .warning)
+                        completion?(false)
+                    } else {
+                        Logger.log("Removing color with hexValue: \(hexValue)")
+                        context.delete(color)
+                        saveWithCompletion()
+                    }
+                } else {
+                    Logger.log("No color found with hexValue: \(hexValue)", level: .error)
+                    completion?(false)
+                }
+            } catch {
+                Logger.log("Failed to fetch color with hexValue: \(hexValue), error: \(error)", level: .error)
+                completion?(false)
+            }
+        case .getColor(let hexValue, let colorCompletion):
+            Logger.log("Fetching color with hexValue: \(hexValue)")
+
+            // Fetch the color by hex value
+            let fetchRequest: NSFetchRequest<ColorEntity> = ColorEntity.fetchRequest()
+            fetchRequest.predicate = NSPredicate(format: "hexValue == %@", hexValue)
+            
+            do {
+                let colors = try context.fetch(fetchRequest)
+                
+                if let color = colors.first {
+                    Logger.log("Found color with hexValue: \(hexValue)")
+                    colorCompletion(color)
+                } else {
+                    Logger.log("No color found with hexValue: \(hexValue)", level: .error)
+                    colorCompletion(nil)
+                }
+            } catch {
+                Logger.log("Failed to fetch color with hexValue: \(hexValue), error: \(error)", level: .error)
+                colorCompletion(nil)
+            }
+        }
+    }
+    
+    func setupDefaultColors(colors: [String]) {
+        Logger.log("Setting up default colors")
+        
+        // Fetch existing colors from Core Data
+        let fetchRequest: NSFetchRequest<ColorEntity> = ColorEntity.fetchRequest()
+        
+        do {
+            let existingColors = try context.fetch(fetchRequest).map { $0.hexValue }
+            let missingColors = colors.filter { !existingColors.contains($0) }
+            
+            guard !missingColors.isEmpty else {
+                Logger.log("All default colors are already in the database.")
+                return
+            }
+            
+            // Insert missing colors
+            for hexValue in missingColors {
+                doAction(action: .insertNewColor(hexValue: hexValue, isDefault: true))
+            }
+            
+            Logger.log("Default colors setup completed successfully.")
+            
+        } catch {
+            Logger.log("Failed to fetch or save colors: \(error)", level: .error)
         }
     }
     
