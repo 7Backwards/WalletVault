@@ -11,6 +11,7 @@ struct MyCardView: View {
     @Environment(\.presentationMode) var presentationMode
     @Environment(\.sizeCategory) var sizeCategory
     @ObservedObject var viewModel: MyCardViewModel
+    @State var isColorPickerPresented = false
     
     init(appManager: AppManager, cardObject: CardObservableObject) {
         self.viewModel = MyCardViewModel(cardObject: cardObject, appManager: appManager)
@@ -18,40 +19,50 @@ struct MyCardView: View {
     
     var body: some View {
         ZStack {
-            VStack {
-                CardDetailsView(appManager: viewModel.appManager, cardObject: viewModel.cardObject, isEditing: $viewModel.isEditable, isUnlocked: true) { isFavorited in
-                    guard let id = viewModel.cardObject.id else { return }
-                    viewModel.appManager.actionManager.doAction(action: .setIsFavorited(id: id, isFavorited)) { result in
-                        if result {
-                            viewModel.cardObject.isFavorited.toggle()
+            if isColorPickerPresented {
+                CustomColorPicker(onCancel: { isColorPickerPresented = false }, onSelect: { newColor in
+                    guard let hex = newColor.toHex() else { return }
+                    viewModel.appManager.actionManager.doAction(action: .insertNewColor(hexValue: hex, isDefault: false))
+                    isColorPickerPresented = false 
+                })
+                .padding()
+            } else {
+                VStack(spacing: 20) {
+                    CardDetailsView(appManager: viewModel.appManager, cardObject: viewModel.cardObject, isEditing: $viewModel.isEditable, isUnlocked: true) { isFavorited in
+                        guard let id = viewModel.cardObject.id else { return }
+                        viewModel.appManager.actionManager.doAction(action: .setIsFavorited(id: id, isFavorited)) { result in
+                            if result {
+                                viewModel.cardObject.isFavorited.toggle()
+                            }
                         }
                     }
-                }
-                .padding(.leading, 16)
-                
-                if viewModel.isEditable {
-                    ColorCarouselView(cardColor: $viewModel.cardObject.cardColor, appManager: viewModel.appManager)
-                    AddButton(appManager: viewModel.appManager, cardObject: viewModel.cardObject, showAlert: { errorMessage in self.viewModel.activeAlert = .error(errorMessage) }, isEditable: $viewModel.isEditable)
-                }
-                
-                Spacer()
-                
-                MyCardViewActionButtons(viewModel: viewModel)
-                    .actionSheet(isPresented: $viewModel.showingShareSheet) {
-                        ActionSheet(
-                            title: Text("Share Card"),
-                            message: Text("Choose how you would like to share the card"),
-                            buttons: [
-                                .default(Text("Share Inside App")) {
-                                    viewModel.activeShareSheet = .insideShare
-                                },
-                                .default(Text("Share Outside App")) {
-                                    viewModel.activeShareSheet = .outsideShare
-                                },
-                                .cancel()
-                            ]
-                        )
+                    .padding(.horizontal, -16)
+                    
+                    if viewModel.isEditable {
+                        ColorCarouselView(cardColor: $viewModel.cardObject.cardColor, isColorPickerPresented: $isColorPickerPresented, appManager: viewModel.appManager)
+                        AddButton(appManager: viewModel.appManager, cardObject: viewModel.cardObject, showAlert: { errorMessage in self.viewModel.activeAlert = .error(errorMessage) }, isEditable: $viewModel.isEditable)
                     }
+                    
+                    Spacer()
+                    
+                    MyCardViewActionButtons(viewModel: viewModel)
+                        .actionSheet(isPresented: $viewModel.showingShareSheet) {
+                            ActionSheet(
+                                title: Text("Share Card"),
+                                message: Text("Choose how you would like to share the card"),
+                                buttons: [
+                                    .default(Text("Share Inside App")) {
+                                        viewModel.activeShareSheet = .insideShare
+                                    },
+                                    .default(Text("Share Outside App")) {
+                                        viewModel.activeShareSheet = .outsideShare
+                                    },
+                                    .cancel()
+                                ]
+                            )
+                        }
+                }
+                .padding(.horizontal, 16)
             }
         }
         .onAppear {
@@ -59,14 +70,15 @@ struct MyCardView: View {
         }
         .onDisappear {
             viewModel.invalidateAutoLockTimer()
-            viewModel.updateCardColor(cardColor: viewModel.cardObject.cardColor)
+            if let cardColor = viewModel.cardObject.cardColor { 
+                viewModel.updateCardColor(cardColor: cardColor)
+            }
         }
         .onChange(of: viewModel.shouldDismissView) { _, shouldDismiss in
             if shouldDismiss {
                 presentationMode.wrappedValue.dismiss()
             }
         }
-        
         .navigationBarTitle(viewModel.cardObject.cardName, displayMode: .inline)
         .alert(item: $viewModel.activeAlert) { activeAlert in
             switch activeAlert {
@@ -140,7 +152,7 @@ struct MyCardView: View {
                 .background(Color(UIColor.systemBackground))
                 .cornerRadius(12)
                 .shadow(radius: 10)
-                .presentationDetents([.large])
+                .presentationDetents([.height(560)])
                 .presentationDragIndicator(.visible)
                 .padding(.horizontal)
             case .outsideShare:

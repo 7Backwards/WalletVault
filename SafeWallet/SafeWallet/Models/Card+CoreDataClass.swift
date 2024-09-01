@@ -2,7 +2,7 @@
 //  Card+CoreDataClass.swift
 //  SafeWallet
 //
-//  Created by Gonçalo on 21/12/2023.
+//  Created by Gonçalo on 31/08/2024.
 //
 //
 
@@ -10,7 +10,9 @@ import Foundation
 import CoreData
 
 @objc(Card)
-public class Card: NSManagedObject {}
+public class Card: NSManagedObject {
+
+}
 
 extension NSManagedObjectContext {
     func fetchCard(withID id: NSManagedObjectID) -> Card? {

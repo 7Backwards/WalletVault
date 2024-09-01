@@ -52,6 +52,7 @@ class AppUtils {
             cardNumber: cardNumber,
             expiryDate: expiryDate,
             cvvCode: cvvCode,
+            cardColor: nil,
             pin: pin
         )
     }

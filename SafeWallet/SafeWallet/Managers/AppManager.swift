@@ -20,6 +20,7 @@ class AppManager: ObservableObject {
         self.constants = AppConstants()
         self.utils = AppUtils()
         self.notificationHandler = NotificationHandler(context: context)
+        actionManager.setupDefaultColors(colors: constants.defaultColors)
     }
 }
 
