@@ -31,7 +31,7 @@ struct CardListView: View {
                     } else {
                         ForEach(cards.filter {
                             viewModel.searchText.isEmpty ||
-                            $0.cardNumber.contains(viewModel.searchText) || $0.cardName.contains(viewModel.searchText)
+                            $0.cardNumber.contains(viewModel.searchText) || $0.cardName.capitalized.contains(viewModel.searchText.capitalized)
                         }, id: \.self) { card in
                             Button {
                                 viewModel.authenticate { result in
