@@ -6,6 +6,7 @@ SafeWallet is a secure and user-friendly offline card management app that simpli
 
 - **Completely Offline**: Ensures all data is stored on-device for maximum security.
 - **Card Management**: Add details such as card name, card number, expiry date, CVV, and card PIN.
+- **Color Costumizability**: Costumize your cards with the color that you want.
 - **QR Code Sharing**: Securely share card details through a QR code.
 - **Quick Actions**: Tap on fields to copy or share information quickly.
 - **Privacy Screen**: Display a privacy view when the app is in the background to mask sensitive information.
@@ -21,27 +22,46 @@ SafeWallet is built using the Model-View-ViewModel (MVVM) architecture to ensure
 
 ## Screenshots
 
-Take a look at SafeWallet in both light and dark modes:
-
 ### Card List
 
 <p float="left">
-  <img src="screenshots/CardList_darkMode.png" width="250" alt="Card List Dark" style="margin-right: 100px;" />
-  <img src="screenshots/CardList_whiteMode.png" width="250" alt="Card List Light" />
+  <img src="screenshots/CardList.png" width="250" alt="Card List" style="margin-right: 100px;" />
 </p>
 
-### Card Details
+### Add Card
 
 <p float="left">
-  <img src="screenshots/CardDetails_darkMode.png" width="250" alt="Card Details Dark" style="margin-right: 100px;" />
-  <img src="screenshots/CardDetails_whiteMode.png" width="250" alt="Card Details Light" />
+  <img src="screenshots/AddCard.png" width="250" alt="Card Details" style="margin-right: 100px;" />
 </p>
 
-### QR Code Sharing
+### Add New Colors
 
 <p float="left">
-  <img src="screenshots/CardQRCodeSharing_darkMode.png" width="250" alt="QR Code Sharing Dark" style="margin-right: 100px;" />
-  <img src="screenshots/CardQRCodeSharing_whiteMode.png" width="250" alt="QR Code Sharing Light" />
+  <img src="screenshots/Add new colors.png" width="250" alt="Add New Colors" style="margin-right: 100px;" />
+</p>
+
+### Edit Card
+
+<p float="left">
+  <img src="screenshots/EditCard.png" width="250" alt="Edit Card" style="margin-right: 100px;" />
+</p>
+
+### Share Card Outside App
+
+<p float="left">
+  <img src="screenshots/ShareCardOutsideApp.png" width="250" alt="QR Code Sharing" style="margin-right: 100px;" />
+</p>
+
+### Share Card Inside App
+
+<p float="left">
+  <img src="screenshots/ShareCardInsideApp.png" width="250" alt="Share Card Inside" style="margin-right: 100px;" />
+</p>
+
+### Add Card With QR Code
+
+<p float="left">
+  <img src="screenshots/AddWithQRCode.png" width="250" alt="Add Card With QR Code" style="margin-right: 100px;" />
 </p>
 
 ## App Store
