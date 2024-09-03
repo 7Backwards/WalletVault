@@ -1,9 +1,8 @@
 {
     "name": "SevenBackwards Source",
     "subtitle": "All my apps in one place.",
+    "iconURL": "https://raw.githubusercontent.com/7Backwards/SafeWallet/develop/AltStore/Source_icon.png",
     "description": "Welcome to my source! Here you'll find all of my apps.",
-    "iconURL": "",
-    "headerURL": "",
     "website": "https://www.github.com/7backwards",
     "tintColor": "#4185A9",
     "featuredApps": [
@@ -16,28 +15,25 @@
             "developerName": "SevenBackwards",
             "subtitle": "Your cards safely at your fingertips",
             "localizedDescription": "SafeWallet is a secure and user-friendly offline card management app",
-            "iconURL": "https://github.com/7Backwards/SafeWallet/blob/Add-AltStore-Support/AltStore/Source_icon.png",
+            "iconURL": "https://raw.githubusercontent.com/7Backwards/SafeWallet/develop/AltStore/AppIcon.png",
             "tintColor": "#5CA399",
+            "marketplaceID": "6480020421",
             "screenshots": [
-                "https://github.com/7Backwards/SafeWallet/blob/develop/screenshots/CardList.png",
-                "https://github.com/7Backwards/SafeWallet/blob/develop/screenshots/EditCard.png",
-                "https://github.com/7Backwards/SafeWallet/blob/develop/screenshots/AddCard.png",
-                "https://github.com/7Backwards/SafeWallet/blob/develop/screenshots/Add%20new%20colors.png",
-                "https://github.com/7Backwards/SafeWallet/blob/develop/screenshots/ShareCardInsideApp.png",
-                "https://github.com/7Backwards/SafeWallet/blob/develop/screenshots/ShareCardOutsideApp.png",
-                "https://github.com/7Backwards/SafeWallet/blob/develop/screenshots/AddWithQRCode.png",
-                {
-                    "imageURL": "https://github.com/7Backwards/SafeWallet/blob/develop/AltStore/App_thumbnail.png",
-                    "width": 2556,
-                    "height": 1179
-                }
+                "https://raw.githubusercontent.com/7Backwards/SafeWallet/develop/screenshots/CardList.png",
+                "https://raw.githubusercontent.com/7Backwards/SafeWallet/develop/screenshots/EditCard.png",
+                "https://raw.githubusercontent.com/7Backwards/SafeWallet/develop/screenshots/AddCard.png",
+                "https://raw.githubusercontent.com/7Backwards/SafeWallet/develop/screenshots/Add%20new%20colors.png",
+                "https://raw.githubusercontent.com/7Backwards/SafeWallet/develop/screenshots/ShareCardInsideApp.png",
+                "https://raw.githubusercontent.com/7Backwards/SafeWallet/develop/screenshots/ShareCardOutsideApp.png",
+                "https://raw.githubusercontent.com/7Backwards/SafeWallet/develop/screenshots/AddWithQRCode.png"
             ],
             "versions": [
                 {
                     "version": "1.1",
+                    "buildVersion": "1",
                     "date": "2024-09-03T09:00:00-08:00",
                     "size": 20000000,
-                    "downloadURL": "https://github.com/7Backwards/SafeWallet/blob/develop/IPAS/SafeWalletV1.1/SafeWallet.ipa",
+                    "downloadURL": "https://raw.githubusercontent.com/7Backwards/SafeWallet/develop/IPAS/SafeWalletV1.1/SafeWallet.ipa",
                     "localizedDescription": "App launch",
                     "minOSVersion": "17.0"
                 }
