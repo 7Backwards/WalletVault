@@ -1,0 +1,60 @@
+{
+    "name": "SevenBackwards Source",
+    "subtitle": "All my apps in one place.",
+    "description": "Welcome to my source! Here you'll find all of my apps.",
+    "iconURL": "",
+    "headerURL": "",
+    "website": "https://www.github.com/7backwards",
+    "tintColor": "#4185A9",
+    "featuredApps": [
+        "SevenBackwards.SafeWallet"
+    ],
+    "apps": [
+        {
+            "name": "SafeWallet",
+            "bundleIdentifier": "SevenBackwards.SafeWallet",
+            "developerName": "SevenBackwards",
+            "subtitle": "Your cards safely at your fingertips",
+            "localizedDescription": "SafeWallet is a secure and user-friendly offline card management app",
+            "iconURL": "https://github.com/7Backwards/SafeWallet/blob/Add-AltStore-Support/AltStore/Source_icon.png",
+            "tintColor": "#5CA399",
+            "screenshots": [
+                "https://github.com/7Backwards/SafeWallet/blob/develop/screenshots/CardList.png",
+                "https://github.com/7Backwards/SafeWallet/blob/develop/screenshots/EditCard.png",
+                "https://github.com/7Backwards/SafeWallet/blob/develop/screenshots/AddCard.png",
+                "https://github.com/7Backwards/SafeWallet/blob/develop/screenshots/Add%20new%20colors.png",
+                "https://github.com/7Backwards/SafeWallet/blob/develop/screenshots/ShareCardInsideApp.png",
+                "https://github.com/7Backwards/SafeWallet/blob/develop/screenshots/ShareCardOutsideApp.png",
+                "https://github.com/7Backwards/SafeWallet/blob/develop/screenshots/AddWithQRCode.png",
+                {
+                    "imageURL": "https://github.com/7Backwards/SafeWallet/blob/develop/AltStore/App_thumbnail.png",
+                    "width": 2556,
+                    "height": 1179
+                }
+            ],
+            "versions": [
+                {
+                    "version": "1.1",
+                    "date": "2024-09-03T09:00:00-08:00",
+                    "size": 20000000,
+                    "downloadURL": "https://github.com/7Backwards/SafeWallet/blob/develop/IPAS/SafeWalletV1.1/SafeWallet.ipa",
+                    "localizedDescription": "App launch",
+                    "minOSVersion": "17.0"
+                }
+            ],
+            "appPermissions": {
+                "entitlements": [
+                    "com.apple.security.application-groups",
+                    "com.apple.developer.siri"
+                ],
+                "privacy": {
+                    "NSFaceIDUsageDescription": "This app uses Face ID for secure authentication.",
+                    "NSCameraUsageDescription": "This app requires camera access to take photos.",
+                    "NSPhotoLibraryAdditionsUsageDescription": "This app needs access to your photo library to save images."
+                }
+            }
+        }
+    ],
+    "news": [
+    ]
+}
