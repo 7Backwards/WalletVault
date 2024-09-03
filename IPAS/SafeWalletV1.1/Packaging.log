@@ -1,0 +1,206 @@
+2024-09-03 15:18:11 +0000  Initial pipeline context: <IDEDistributionProcessingPipelineContext: 0x533ff2700; archive(resolved)="<IDEArchive: 0x600174c9e9a0>", distributionTask(resolved)="2", distributionDestination(resolved)="2", distributionMethod(resolved)="<IDEDistributionMethodiOSAppStoreDistribution: 0x600062b8d8d0>", team(resolved)="<IDEProvisioningDisambiguatableBasicTeam: 0x6000074b84c0; teamID='NA22RJ3PJ8', teamName='Gonçalo Neves', teamType='Individual', username='neves.goncaloscp9@gmail.com', isFreeProvisioningTeam='0'>">
+	Chain (18, self inclusive):
+	<IDEDistributionProcessingPipelineContext: 0x533ff2700; archive = "<IDEArchive: 0x600174c9e9a0>", distributionMethod="<IDEDistributionMethodiOSAppStoreDistribution: 0x600062b8d8d0>", team="<IDEProvisioningDisambiguatableBasicTeam: 0x6000074b84c0; teamID='NA22RJ3PJ8', teamName='Gonçalo Neves', teamType='Individual', username='neves.goncaloscp9@gmail.com', isFreeProvisioningTeam='0'>">
+	<IDEDistributionProcessingPipelineContext: 0x533faa5c0; archive = "<IDEArchive: 0x600174c9e9a0>", distributionMethod="<IDEDistributionMethodiOSAppStoreDistribution: 0x600062b8d8d0>", team="<IDEProvisioningDisambiguatableBasicTeam: 0x6000074b84c0; teamID='NA22RJ3PJ8', teamName='Gonçalo Neves', teamType='Individual', username='neves.goncaloscp9@gmail.com', isFreeProvisioningTeam='0'>">
+	<IDEDistributionContext: 0x533faa390; archive = "<IDEArchive: 0x600174c9e9a0>", distributionMethod="<IDEDistributionMethodiOSAppStoreDistribution: 0x600062b8d8d0>", team="<IDEProvisioningDisambiguatableBasicTeam: 0x6000074b84c0; teamID='NA22RJ3PJ8', teamName='Gonçalo Neves', teamType='Individual', username='neves.goncaloscp9@gmail.com', isFreeProvisioningTeam='0'>">
+	<IDEDistributionContext: 0x450acf000; archive = "<IDEArchive: 0x600174c9e9a0>", distributionMethod="<IDEDistributionMethodiOSAppStoreDistribution: 0x600062b8d8d0>", team="<IDEProvisioningDisambiguatableBasicTeam: 0x6000074b84c0; teamID='NA22RJ3PJ8', teamName='Gonçalo Neves', teamType='Individual', username='neves.goncaloscp9@gmail.com', isFreeProvisioningTeam='0'>">
+	<IDEDistributionContext: 0x534c86db0; archive = "<IDEArchive: 0x600174c9e9a0>", distributionMethod="<IDEDistributionMethodiOSAppStoreDistribution: 0x600062b8d8d0>", team="<IDEProvisioningDisambiguatableBasicTeam: 0x6000074b84c0; teamID='NA22RJ3PJ8', teamName='Gonçalo Neves', teamType='Individual', username='neves.goncaloscp9@gmail.com', isFreeProvisioningTeam='0'>">
+	<IDEDistributionContext: 0x54b8abdb0; archive = "<IDEArchive: 0x600174c9e9a0>", distributionMethod="<IDEDistributionMethodiOSAppStoreDistribution: 0x600062b8d8d0>", team="<IDEProvisioningDisambiguatableBasicTeam: 0x6000074b84c0; teamID='NA22RJ3PJ8', teamName='Gonçalo Neves', teamType='Individual', username='neves.goncaloscp9@gmail.com', isFreeProvisioningTeam='0'>">
+	<IDEDistributionContext: 0x5403e9400; archive = "<IDEArchive: 0x600174c9e9a0>", distributionMethod="<IDEDistributionMethodiOSAppStoreDistribution: 0x600062b8d8d0>", team="<IDEProvisioningDisambiguatableBasicTeam: 0x6000074b84c0; teamID='NA22RJ3PJ8', teamName='Gonçalo Neves', teamType='Individual', username='neves.goncaloscp9@gmail.com', isFreeProvisioningTeam='0'>">
+	<IDEDistributionContext: 0x44fa4be70; archive = "<IDEArchive: 0x600174c9e9a0>", distributionMethod="<IDEDistributionMethodiOSAppStoreDistribution: 0x600062b8d8d0>", team="<IDEProvisioningDisambiguatableBasicTeam: 0x6000074b84c0; teamID='NA22RJ3PJ8', teamName='Gonçalo Neves', teamType='Individual', username='neves.goncaloscp9@gmail.com', isFreeProvisioningTeam='0'>">
+	<IDEDistributionContext: 0x5483b1d00; archive = "<IDEArchive: 0x600174c9e9a0>", distributionMethod="<IDEDistributionMethodiOSAppStoreDistribution: 0x600062b8d8d0>", team="<IDEProvisioningDisambiguatableBasicTeam: 0x6000074b84c0; teamID='NA22RJ3PJ8', teamName='Gonçalo Neves', teamType='Individual', username='neves.goncaloscp9@gmail.com', isFreeProvisioningTeam='0'>">
+	<IDEDistributionContext: 0x2883e09c0; archive = "<IDEArchive: 0x600174c9e9a0>", distributionMethod="<IDEDistributionMethodiOSAppStoreDistribution: 0x600062b8d8d0>", team="<IDEProvisioningDisambiguatableBasicTeam: 0x6000074b84c0; teamID='NA22RJ3PJ8', teamName='Gonçalo Neves', teamType='Individual', username='neves.goncaloscp9@gmail.com', isFreeProvisioningTeam='0'>">
+	<IDEDistributionContext: 0x533fa2060; archive = "<IDEArchive: 0x600174c9e9a0>", distributionMethod="<IDEDistributionMethodiOSAppStoreDistribution: 0x600062b8d8d0>", team="<IDEProvisioningDisambiguatableBasicTeam: 0x6000074b84c0; teamID='NA22RJ3PJ8', teamName='Gonçalo Neves', teamType='Individual', username='neves.goncaloscp9@gmail.com', isFreeProvisioningTeam='0'>">
+	<IDEDistributionContext: 0x533f1dff0; archive = "<IDEArchive: 0x600174c9e9a0>", distributionMethod="<IDEDistributionMethodiOSAppStoreDistribution: 0x600062b8d8d0>", team="<IDEProvisioningDisambiguatableBasicTeam: 0x6000074b84c0; teamID='NA22RJ3PJ8', teamName='Gonçalo Neves', teamType='Individual', username='neves.goncaloscp9@gmail.com', isFreeProvisioningTeam='0'>">
+	<IDEDistributionContext: 0x533f21420; archive = "<IDEArchive: 0x600174c9e9a0>", distributionMethod="<IDEDistributionMethodiOSAppStoreDistribution: 0x600062b8d8d0>", team="<IDEProvisioningDisambiguatableBasicTeam: 0x6000074b84c0; teamID='NA22RJ3PJ8', teamName='Gonçalo Neves', teamType='Individual', username='neves.goncaloscp9@gmail.com', isFreeProvisioningTeam='0'>">
+	<IDEDistributionContext: 0x54b83f020; archive = "<IDEArchive: 0x600174c9e9a0>", distributionMethod="<IDEDistributionMethodiOSAppStoreDistribution: 0x600062b8d8d0>", team="(null)">
+	<IDEDistributionContext: 0x534c807d0; archive = "<IDEArchive: 0x600174c9e9a0>", distributionMethod="<IDEDistributionMethodiOSAppStoreDistribution: 0x600062b8d8d0>", team="(null)">
+	<IDEDistributionContext: 0x54b5b0e20; archive = "<IDEArchive: 0x600174c9e9a0>", distributionMethod="(null)", team="(null)">
+	<IDEDistributionContext: 0x4f290bd40; archive = "<IDEArchive: 0x600174c9e9a0>", distributionMethod="(null)", team="(null)">
+	<IDEDistributionContext: 0x54ebf56b0; archive = "<IDEArchive: 0x600174c9e9a0>", distributionMethod="(null)", team="(null)">
+</IDEDistributionProcessingPipelineContext: 0x533ff2700>
+2024-09-03 15:18:11 +0000  Processing step: IDEDistributionCreateDestRootStep
+2024-09-03 15:18:11 +0000  Processing step: IDEDistributionCopyItemStep
+2024-09-03 15:18:11 +0000  Running /usr/bin/ditto '-V' '/Users/gneves/Library/Developer/Xcode/Archives/2024-09-03/SafeWallet 03-09-2024, 16.16.xcarchive/Products/Applications/SafeWallet.app' '/var/folders/rd/1p1xlk597bj1wyrd221tprmm0000gp/T/XcodeDistPipeline.~~~Bw7Jua/Root/Payload/SafeWallet.app'
+2024-09-03 15:18:11 +0000  >>> Copying /Users/gneves/Library/Developer/Xcode/Archives/2024-09-03/SafeWallet 03-09-2024, 16.16.xcarchive/Products/Applications/SafeWallet.app 
+2024-09-03 15:18:11 +0000  copying file ./de.lproj/Localizable.strings ... 
+2024-09-03 15:18:11 +0000  2521 bytes for ./de.lproj/Localizable.strings
+2024-09-03 15:18:11 +0000  copying file ./_CodeSignature/CodeResources ... 
+2024-09-03 15:18:11 +0000  5286 bytes for ./_CodeSignature/CodeResources
+2024-09-03 15:18:11 +0000  copying file ./SafeWallet.momd/SafeWallet.mom ... 
+2024-09-03 15:18:11 +0000  3019 bytes for ./SafeWallet.momd/SafeWallet.mom
+2024-09-03 15:18:11 +0000  copying file ./SafeWallet.momd/VersionInfo.plist ... 
+2024-09-03 15:18:11 +0000  420 bytes for ./SafeWallet.momd/VersionInfo.plist
+2024-09-03 15:18:11 +0000  copying file ./SafeWallet.momd/SafeWallet.omo ... 
+2024-09-03 15:18:11 +0000  5840 bytes for ./SafeWallet.momd/SafeWallet.omo
+2024-09-03 15:18:11 +0000  copying file ./SafeWallet ... 
+2024-09-03 15:18:11 +0000  1120576 bytes for ./SafeWallet
+2024-09-03 15:18:11 +0000  copying file ./es.lproj/Localizable.strings ... 
+2024-09-03 15:18:11 +0000  2817 bytes for ./es.lproj/Localizable.strings
+2024-09-03 15:18:11 +0000  copying file ./AppIcon60x60@2x.png ... 
+2024-09-03 15:18:11 +0000  12107 bytes for ./AppIcon60x60@2x.png
+2024-09-03 15:18:11 +0000  copying file ./Assets.car ... 
+2024-09-03 15:18:11 +0000  557328 bytes for ./Assets.car
+2024-09-03 15:18:11 +0000  copying file ./AppIcon76x76@2x~ipad.png ... 
+2024-09-03 15:18:11 +0000  17311 bytes for ./AppIcon76x76@2x~ipad.png
+2024-09-03 15:18:11 +0000  copying file ./pt-BR.lproj/Localizable.strings ... 
+2024-09-03 15:18:11 +0000  2731 bytes for ./pt-BR.lproj/Localizable.strings
+2024-09-03 15:18:11 +0000  copying file ./fr.lproj/Localizable.strings ... 
+2024-09-03 15:18:11 +0000  2685 bytes for ./fr.lproj/Localizable.strings
+2024-09-03 15:18:11 +0000  copying file ./pt-PT.lproj/Localizable.strings ... 
+2024-09-03 15:18:11 +0000  2826 bytes for ./pt-PT.lproj/Localizable.strings
+2024-09-03 15:18:11 +0000  copying file ./embedded.mobileprovision ... 
+2024-09-03 15:18:11 +0000  16730 bytes for ./embedded.mobileprovision
+2024-09-03 15:18:11 +0000  copying file ./Info.plist ... 
+2024-09-03 15:18:11 +0000  1893 bytes for ./Info.plist
+2024-09-03 15:18:11 +0000  copying file ./PkgInfo ... 
+2024-09-03 15:18:11 +0000  8 bytes for ./PkgInfo
+2024-09-03 15:18:11 +0000  /usr/bin/ditto exited with 0
+2024-09-03 15:18:11 +0000  Processing step: IDEDistributionEmbedProfileStep
+2024-09-03 15:18:11 +0000  Processing step: IDEDistributionInfoPlistStep
+2024-09-03 15:18:11 +0000  Skipping setting DTXcodeBuildDistribution because toolsBuildVersionName was nil.
+2024-09-03 15:18:11 +0000  Processing step: IDEDistributionItemRemovalStep
+2024-09-03 15:18:11 +0000  Processing step: IDEDistributionAppThinningPlistStep
+2024-09-03 15:18:11 +0000  Skipping step: IDEDistributionAppThinningPlistStep because it said so
+2024-09-03 15:18:11 +0000  Processing step: IDEDistributionCompileBitcodeStep
+2024-09-03 15:18:11 +0000  Skipping step: IDEDistributionCompileBitcodeStep because it said so
+2024-09-03 15:18:11 +0000  Processing step: IDEDistributionCodeSlimmingStep
+2024-09-03 15:18:11 +0000  Processing step: IDEDistributionCopyBCSymbolMapsStep
+2024-09-03 15:18:11 +0000  Processing step: IDEDistributionSymbolsStep
+2024-09-03 15:18:11 +0000  Processing symbols for SafeWallet.app
+2024-09-03 15:18:11 +0000  Running /usr/bin/rsync '-8aPhhE' '/var/folders/rd/1p1xlk597bj1wyrd221tprmm0000gp/T/XcodeDistPipeline.~~~Bw7Jua/Root/Payload/SafeWallet.app' '--link-dest' '/var/folders/rd/1p1xlk597bj1wyrd221tprmm0000gp/T/XcodeDistPipeline.~~~Bw7Jua/Root/Payload' '/var/folders/rd/1p1xlk597bj1wyrd221tprmm0000gp/T/XcodeDistPipeline.~~~Bw7Jua'
+2024-09-03 15:18:11 +0000  building file list ... 
+2024-09-03 15:18:11 +0000   0 files...2024-09-03 15:18:11 +0000  24 files to consider
+2024-09-03 15:18:11 +0000  SafeWallet.app/
+2024-09-03 15:18:11 +0000  SafeWallet.app/SafeWallet.momd/
+SafeWallet.app/_CodeSignature/
+2024-09-03 15:18:11 +0000  SafeWallet.app/de.lproj/
+SafeWallet.app/es.lproj/
+SafeWallet.app/fr.lproj/
+SafeWallet.app/pt-BR.lproj/
+SafeWallet.app/pt-PT.lproj/
+2024-09-03 15:18:11 +0000  
+sent 778 bytes  received 68 bytes  1.65K bytes/sec
+total size is 1.67M  speedup is 2072.99
+2024-09-03 15:18:11 +0000  /usr/bin/rsync exited with 0
+2024-09-03 15:18:11 +0000  Running /usr/bin/rsync '-8aPhhE' '/Users/gneves/Library/Developer/Xcode/Archives/2024-09-03/SafeWallet 03-09-2024, 16.16.xcarchive/dSYMs/' '--link-dest' '/Users/gneves/Library/Developer/Xcode/Archives/2024-09-03/SafeWallet 03-09-2024, 16.16.xcarchive/dSYMs/' '/var/folders/rd/1p1xlk597bj1wyrd221tprmm0000gp/T/XcodeDistPipeline.~~~Bw7Jua'
+2024-09-03 15:18:11 +0000  building file list ... 
+2024-09-03 15:18:11 +0000   0 files...2024-09-03 15:18:11 +0000  10 files to consider
+2024-09-03 15:18:11 +0000  ./
+2024-09-03 15:18:11 +0000  SafeWallet.app.dSYM/
+SafeWallet.app.dSYM/Contents/
+2024-09-03 15:18:11 +0000  SafeWallet.app.dSYM/Contents/Resources/
+SafeWallet.app.dSYM/Contents/Resources/DWARF/
+SafeWallet.app.dSYM/Contents/Resources/Relocations/
+SafeWallet.app.dSYM/Contents/Resources/Relocations/aarch64/
+2024-09-03 15:18:11 +0000  
+sent 323 bytes  received 62 bytes  770.00 bytes/sec
+total size is 4.44M  speedup is 12105.99
+2024-09-03 15:18:11 +0000  /usr/bin/rsync exited with 0
+2024-09-03 15:18:11 +0000  Writing /var/folders/rd/1p1xlk597bj1wyrd221tprmm0000gp/T/XcodeDistPipeline.~~~Bw7Jua/Symbols/803A5D0F-19CF-38B4-B658-FE0ECD9F3F4E.symbols
+2024-09-03 15:18:11 +0000  Processing step: IDEDistributionCopyAppleProvidedContentStep
+2024-09-03 15:18:11 +0000  Processing step: IDEDistributionAppThinningStep
+2024-09-03 15:18:11 +0000  Skipping step: IDEDistributionAppThinningStep because it said so
+2024-09-03 15:18:11 +0000  Processing step: IDEDistributionArchThinningStep
+2024-09-03 15:18:11 +0000  Item /Users/gneves/Library/Developer/Xcode/Archives/2024-09-03/SafeWallet 03-09-2024, 16.16.xcarchive/Products/Applications/SafeWallet.app doesn't have the entitlement com.apple.developer.web-browser-engine.host enabled, returning ["arm64e"]
+2024-09-03 15:18:11 +0000  Archs to thin for item /Users/gneves/Library/Developer/Xcode/Archives/2024-09-03/SafeWallet 03-09-2024, 16.16.xcarchive/Products/Applications/SafeWallet.app are ["arm64e"]
+2024-09-03 15:18:11 +0000  Running /Applications/Xcode_15.4.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/lipo '/var/folders/rd/1p1xlk597bj1wyrd221tprmm0000gp/T/XcodeDistPipeline.~~~Bw7Jua/Root/Payload/SafeWallet.app/SafeWallet' '-verify_arch' 'arm64e'
+2024-09-03 15:18:11 +0000  /Applications/Xcode_15.4.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/lipo exited with 1
+2024-09-03 15:18:11 +0000  Skipping architecture thinning for item "SafeWallet" because arch "arm64e" wasn't found
+2024-09-03 15:18:11 +0000  Processing step: IDEDistributionODRStep
+2024-09-03 15:18:11 +0000  Processing step: IDEDistributionStripXattrsStep
+2024-09-03 15:18:11 +0000  Skipping stripping extended attributes because the codesign step will strip them.
+2024-09-03 15:18:11 +0000  Processing step: IDEDistributionCodesignStep
+2024-09-03 15:18:11 +0000  Entitlements for <IDEDistributionItem: 0x600174ceb060; bundleID='SevenBackwards.SafeWallet', path='<DVTFilePath:0x6000fc787a00:'/Users/gneves/Library/Developer/Xcode/Archives/2024-09-03/SafeWallet 03-09-2024, 16.16.xcarchive/Products/Applications/SafeWallet.app'>', codeSigningInfo='<_DVTCodeSigningInformation_Path: 0x60017ca7d130; isSigned='1', isAdHocSigned='0', signingCertificate='<DVTSigningCertificate: 0x6000d5c16040; name='Apple Development: neves.goncaloscp9@gmail.com (8S56JPX7NH)', hash='C4A312126A0B3DE71D3D432385EB407451D64936', serialNumber='7C1153E517E4E417DEE43FE21CC0B7EA', certificateKinds='(
+    "1.2.840.113635.100.6.1.12",
+    "1.2.840.113635.100.6.1.2"
+), issueDate='2024-03-25 00:56:37 +0000''>', entitlements='{
+    "application-identifier" = "NA22RJ3PJ8.SevenBackwards.SafeWallet";
+    "com.apple.developer.team-identifier" = NA22RJ3PJ8;
+    "get-task-allow" = 1;
+}', teamID='NA22RJ3PJ8', identifier='SevenBackwards.SafeWallet', executablePath='<DVTFilePath:0x6000e0530000:'/Users/gneves/Library/Developer/Xcode/Archives/2024-09-03/SafeWallet 03-09-2024, 16.16.xcarchive/Products/Applications/SafeWallet.app/SafeWallet'>', hardenedRuntime='1'>'>: {
+    "application-identifier" = "NA22RJ3PJ8.SevenBackwards.SafeWallet";
+    "beta-reports-active" = 1;
+    "com.apple.developer.team-identifier" = NA22RJ3PJ8;
+    "get-task-allow" = 0;
+}
+2024-09-03 15:18:11 +0000  Associated App Clip Identifiers Filter: Skipping because "com.apple.developer.associated-appclip-app-identifiers" is not present
+2024-09-03 15:18:11 +0000  Entitlements for <IDEDistributionItem: 0x600174ceb060; bundleID='SevenBackwards.SafeWallet', path='<DVTFilePath:0x6000fc787a00:'/Users/gneves/Library/Developer/Xcode/Archives/2024-09-03/SafeWallet 03-09-2024, 16.16.xcarchive/Products/Applications/SafeWallet.app'>', codeSigningInfo='<_DVTCodeSigningInformation_Path: 0x60017ca7d130; isSigned='1', isAdHocSigned='0', signingCertificate='<DVTSigningCertificate: 0x6000d5300780; name='Apple Development: neves.goncaloscp9@gmail.com (8S56JPX7NH)', hash='C4A312126A0B3DE71D3D432385EB407451D64936', serialNumber='7C1153E517E4E417DEE43FE21CC0B7EA', certificateKinds='(
+    "1.2.840.113635.100.6.1.12",
+    "1.2.840.113635.100.6.1.2"
+), issueDate='2024-03-25 00:56:37 +0000''>', entitlements='{
+    "application-identifier" = "NA22RJ3PJ8.SevenBackwards.SafeWallet";
+    "com.apple.developer.team-identifier" = NA22RJ3PJ8;
+    "get-task-allow" = 1;
+}', teamID='NA22RJ3PJ8', identifier='SevenBackwards.SafeWallet', executablePath='<DVTFilePath:0x6000e0530000:'/Users/gneves/Library/Developer/Xcode/Archives/2024-09-03/SafeWallet 03-09-2024, 16.16.xcarchive/Products/Applications/SafeWallet.app/SafeWallet'>', hardenedRuntime='1'>'> are: {
+    "application-identifier" = "NA22RJ3PJ8.SevenBackwards.SafeWallet";
+    "beta-reports-active" = 1;
+    "com.apple.developer.team-identifier" = NA22RJ3PJ8;
+    "get-task-allow" = 0;
+}
+2024-09-03 15:18:11 +0000  Writing entitlements for <IDEDistributionItem: 0x600174ceb060; bundleID='SevenBackwards.SafeWallet', path='<DVTFilePath:0x6000fc787a00:'/Users/gneves/Library/Developer/Xcode/Archives/2024-09-03/SafeWallet 03-09-2024, 16.16.xcarchive/Products/Applications/SafeWallet.app'>', codeSigningInfo='<_DVTCodeSigningInformation_Path: 0x60017ca7d130; isSigned='1', isAdHocSigned='0', signingCertificate='<DVTSigningCertificate: 0x6000d1c512c0; name='Apple Development: neves.goncaloscp9@gmail.com (8S56JPX7NH)', hash='C4A312126A0B3DE71D3D432385EB407451D64936', serialNumber='7C1153E517E4E417DEE43FE21CC0B7EA', certificateKinds='(
+    "1.2.840.113635.100.6.1.12",
+    "1.2.840.113635.100.6.1.2"
+), issueDate='2024-03-25 00:56:37 +0000''>', entitlements='{
+    "application-identifier" = "NA22RJ3PJ8.SevenBackwards.SafeWallet";
+    "com.apple.developer.team-identifier" = NA22RJ3PJ8;
+    "get-task-allow" = 1;
+}', teamID='NA22RJ3PJ8', identifier='SevenBackwards.SafeWallet', executablePath='<DVTFilePath:0x6000e0530000:'/Users/gneves/Library/Developer/Xcode/Archives/2024-09-03/SafeWallet 03-09-2024, 16.16.xcarchive/Products/Applications/SafeWallet.app/SafeWallet'>', hardenedRuntime='1'>'> to: /var/folders/rd/1p1xlk597bj1wyrd221tprmm0000gp/T/XcodeDistPipeline.~~~Bw7Jua/entitlements~~~lCE7J2
+2024-09-03 15:18:11 +0000  Running /usr/bin/codesign '-vvv' '--force' '--sign' '3D05F48D54E75B1E3173CFF06F8A94584D558B8B' '--entitlements' '/var/folders/rd/1p1xlk597bj1wyrd221tprmm0000gp/T/XcodeDistPipeline.~~~Bw7Jua/entitlements~~~lCE7J2' '--generate-entitlement-der' '--strip-disallowed-xattrs' '--preserve-metadata=identifier,flags,runtime' '/var/folders/rd/1p1xlk597bj1wyrd221tprmm0000gp/T/XcodeDistPipeline.~~~Bw7Jua/Root/Payload/SafeWallet.app'
+2024-09-03 15:18:11 +0000  /var/folders/rd/1p1xlk597bj1wyrd221tprmm0000gp/T/XcodeDistPipeline.~~~Bw7Jua/Root/Payload/SafeWallet.app: replacing existing signature
+2024-09-03 15:18:11 +0000  /var/folders/rd/1p1xlk597bj1wyrd221tprmm0000gp/T/XcodeDistPipeline.~~~Bw7Jua/Root/Payload/SafeWallet.app: signed app bundle with Mach-O thin (arm64) [SevenBackwards.SafeWallet]
+2024-09-03 15:18:11 +0000  /usr/bin/codesign exited with 0
+2024-09-03 15:18:11 +0000  Processing step: IDEDistributionZipODRItemStep
+2024-09-03 15:18:11 +0000  Skipping step: IDEDistributionZipODRItemStep because it said so
+2024-09-03 15:18:11 +0000  Processing step: IDEDistributionCreateIPAStep
+2024-09-03 15:18:11 +0000  Running /usr/bin/rsync '-8aPhhE' '/var/folders/rd/1p1xlk597bj1wyrd221tprmm0000gp/T/XcodeDistPipeline.~~~Bw7Jua/Symbols' '--link-dest' '/var/folders/rd/1p1xlk597bj1wyrd221tprmm0000gp/T/XcodeDistPipeline.~~~Bw7Jua' '/var/folders/rd/1p1xlk597bj1wyrd221tprmm0000gp/T/XcodeDistPipeline.~~~Bw7Jua/Root'
+2024-09-03 15:18:11 +0000  building file list ... 
+2024-09-03 15:18:11 +0000   0 files...2024-09-03 15:18:11 +0000  2 files to consider
+2024-09-03 15:18:11 +0000  Symbols/
+2024-09-03 15:18:11 +0000  
+sent 143 bytes  received 26 bytes  338.00 bytes/sec
+2024-09-03 15:18:11 +0000  total size is 1.33M  speedup is 8262.18
+2024-09-03 15:18:11 +0000  /usr/bin/rsync exited with 0
+2024-09-03 15:18:11 +0000  Running /usr/bin/ditto '-V' '-c' '-k' '--norsrc' '/var/folders/rd/1p1xlk597bj1wyrd221tprmm0000gp/T/XcodeDistPipeline.~~~Bw7Jua/Root' '/var/folders/rd/1p1xlk597bj1wyrd221tprmm0000gp/T/XcodeDistPipeline.~~~Bw7Jua/Packages/SafeWallet.ipa'
+2024-09-03 15:18:11 +0000  >>> Copying /var/folders/rd/1p1xlk597bj1wyrd221tprmm0000gp/T/XcodeDistPipeline.~~~Bw7Jua/Root 
+2024-09-03 15:18:11 +0000  copying file ./Payload/SafeWallet.app/de.lproj/Localizable.strings ... 
+2024-09-03 15:18:11 +0000  2521 bytes for ./Payload/SafeWallet.app/de.lproj/Localizable.strings
+2024-09-03 15:18:11 +0000  copying file ./Payload/SafeWallet.app/_CodeSignature/CodeResources ... 
+2024-09-03 15:18:11 +0000  5286 bytes for ./Payload/SafeWallet.app/_CodeSignature/CodeResources
+2024-09-03 15:18:11 +0000  copying file ./Payload/SafeWallet.app/SafeWallet.momd/SafeWallet.mom ... 
+2024-09-03 15:18:11 +0000  3019 bytes for ./Payload/SafeWallet.app/SafeWallet.momd/SafeWallet.mom
+2024-09-03 15:18:11 +0000  copying file ./Payload/SafeWallet.app/SafeWallet.momd/VersionInfo.plist ... 
+2024-09-03 15:18:11 +0000  420 bytes for ./Payload/SafeWallet.app/SafeWallet.momd/VersionInfo.plist
+2024-09-03 15:18:11 +0000  copying file ./Payload/SafeWallet.app/SafeWallet.momd/SafeWallet.omo ... 
+2024-09-03 15:18:11 +0000  5840 bytes for ./Payload/SafeWallet.app/SafeWallet.momd/SafeWallet.omo
+2024-09-03 15:18:11 +0000  copying file ./Payload/SafeWallet.app/SafeWallet ... 
+2024-09-03 15:18:11 +0000  1120640 bytes for ./Payload/SafeWallet.app/SafeWallet
+2024-09-03 15:18:11 +0000  copying file ./Payload/SafeWallet.app/es.lproj/Localizable.strings ... 
+2024-09-03 15:18:11 +0000  2817 bytes for ./Payload/SafeWallet.app/es.lproj/Localizable.strings
+2024-09-03 15:18:11 +0000  copying file ./Payload/SafeWallet.app/AppIcon60x60@2x.png ... 
+2024-09-03 15:18:11 +0000  12107 bytes for ./Payload/SafeWallet.app/AppIcon60x60@2x.png
+2024-09-03 15:18:11 +0000  copying file ./Payload/SafeWallet.app/Assets.car ... 
+2024-09-03 15:18:11 +0000  557328 bytes for ./Payload/SafeWallet.app/Assets.car
+2024-09-03 15:18:11 +0000  copying file ./Payload/SafeWallet.app/AppIcon76x76@2x~ipad.png ... 
+2024-09-03 15:18:11 +0000  17311 bytes for ./Payload/SafeWallet.app/AppIcon76x76@2x~ipad.png
+2024-09-03 15:18:11 +0000  copying file ./Payload/SafeWallet.app/pt-BR.lproj/Localizable.strings ... 
+2024-09-03 15:18:11 +0000  2731 bytes for ./Payload/SafeWallet.app/pt-BR.lproj/Localizable.strings
+2024-09-03 15:18:11 +0000  copying file ./Payload/SafeWallet.app/fr.lproj/Localizable.strings ... 
+2024-09-03 15:18:11 +0000  2685 bytes for ./Payload/SafeWallet.app/fr.lproj/Localizable.strings
+2024-09-03 15:18:11 +0000  copying file ./Payload/SafeWallet.app/pt-PT.lproj/Localizable.strings ... 
+2024-09-03 15:18:11 +0000  2826 bytes for ./Payload/SafeWallet.app/pt-PT.lproj/Localizable.strings
+2024-09-03 15:18:11 +0000  copying file ./Payload/SafeWallet.app/embedded.mobileprovision ... 
+2024-09-03 15:18:11 +0000  16378 bytes for ./Payload/SafeWallet.app/embedded.mobileprovision
+2024-09-03 15:18:11 +0000  copying file ./Payload/SafeWallet.app/Info.plist ... 
+2024-09-03 15:18:11 +0000  1893 bytes for ./Payload/SafeWallet.app/Info.plist
+2024-09-03 15:18:11 +0000  copying file ./Payload/SafeWallet.app/PkgInfo ... 
+2024-09-03 15:18:11 +0000  8 bytes for ./Payload/SafeWallet.app/PkgInfo
+2024-09-03 15:18:11 +0000  copying file ./Symbols/803A5D0F-19CF-38B4-B658-FE0ECD9F3F4E.symbols ... 
+2024-09-03 15:18:11 +0000  1396308 bytes for ./Symbols/803A5D0F-19CF-38B4-B658-FE0ECD9F3F4E.symbols
+2024-09-03 15:18:11 +0000  /usr/bin/ditto exited with 0
+2024-09-03 15:18:11 +0000  Processing step: IDEDistributionAppStoreInformationStep
+2024-09-03 15:18:11 +0000  Skipping step: IDEDistributionAppStoreInformationStep because it said so
+2024-09-03 15:18:11 +0000  Processing step: IDEDistributionGenerateProcessedDistributionItems
+2024-09-03 15:18:11 +0000  IDEDistributionItem init <DVTFilePath:0x6000e06c4d00:'/var/folders/rd/1p1xlk597bj1wyrd221tprmm0000gp/T/XcodeDistPipeline.~~~Bw7Jua/Root/Payload/SafeWallet.app'>
+2024-09-03 15:18:11 +0000  Processing step: IDEDistributionCreateManifestStep
+2024-09-03 15:18:11 +0000  Skipping step: IDEDistributionCreateManifestStep because it said so
