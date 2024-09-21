@@ -1,5 +1,7 @@
 {
     "name": "SevenBackwards Source",
+    "identifier":"com.SevenBackwards.mysource",
+    "sourceURL": "https://raw.githubusercontent.com/7Backwards/SafeWallet/refs/heads/develop/AltStore/AltStoreSource.json",
     "subtitle": "All my apps in one place.",
     "iconURL": "https://raw.githubusercontent.com/7Backwards/SafeWallet/develop/AltStore/Source_icon.png",
     "description": "Welcome to my source! Here you'll find all of my apps.",
