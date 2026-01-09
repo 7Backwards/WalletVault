@@ -114,20 +114,26 @@ fileprivate struct CardDetailsNameAndNumberView: View {
                     .onChange(of: cardName) { _, newValue in
                         self.cardName = String(cardName.prefix(20)).uppercased()
                     }
+                    .fontWeight(.bold)
                     .dynamicTypeSize(.xSmall ... .xxxLarge)
+                    .font(.headline)
+                    .foregroundStyle(Color.secondary)
             } else {
                 MenuTextView(content: cardName.uppercased(), isEditable: $isEditable, isUnlocked: isUnlocked, view: Text(cardName.uppercased()))
                     .font(.headline)
                     .dynamicTypeSize(.xSmall ... .xxxLarge)
                     .fontWeight(.bold)
                     .foregroundStyle(Color.inverseSystemBackground)
+                    .padding(.top, 1)
                 
             }
             if isEditable {
                 TextField("Number", text: $cardNumber)
-                    .font(cardNumber.isEmpty ? .body : .title3)
+                    .font(.title3)
                     .keyboardType(.numberPad)
+                    .fontWeight(.bold)
                     .dynamicTypeSize(.xSmall ... .xxxLarge)
+                    .foregroundStyle(Color.secondary)
                     .onChange(of: cardNumber, initial: true) { _, newValue in
                         self.cardNumber = self.viewModel.formatCardNumber(newValue)
                     }
@@ -150,6 +156,7 @@ fileprivate struct CardDetailsNameAndNumberView: View {
                 .lineLimit(1)
                 .layoutPriority(1)
                 .textSelection(.enabled)
+                .padding(.top, 1.75)
             }
         }
     }
@@ -160,17 +167,21 @@ fileprivate struct CardDetailsCVVView: View {
     @Binding var isEditable: Bool
     var isUnlocked: Bool
     var viewModel: CardDetailsViewModel
-    
+
     var body: some View {
         VStack(alignment: .leading) {
-            Text(cvvCode.count == 3 ? "CVV" : "")
+            Text(isEditable || cvvCode.count == 3 ? "CVV" : "")
                 .font(.caption)
                 .dynamicTypeSize(.xSmall ... .xxxLarge)
                 .fontWeight(.semibold)
+                .padding(.top, isEditable ? 0 : 0.5)
             if isEditable {
                 TextField("CVV", text: $cvvCode)
+                    .font(.headline)
+                    .fontWeight(.bold)
                     .keyboardType(.numberPad)
                     .dynamicTypeSize(.xSmall ... .xxxLarge)
+                    .foregroundStyle(Color.secondary)
                     .onChange(of: cvvCode, initial: true) { _, newValue in
                         self.cvvCode = String(newValue.prefix(3))
                     }
@@ -182,6 +193,7 @@ fileprivate struct CardDetailsCVVView: View {
                     .fontWeight(.bold)
                     .redacted(reason: isUnlocked ? [] : .placeholder)
                     .foregroundStyle(Color.inverseSystemBackground)
+                    .padding(.top, 0.8)
             }
         }
         .frame(maxWidth: .infinity, alignment: .leading)
@@ -193,18 +205,22 @@ fileprivate struct CardDetailsPinView: View {
     @Binding var isEditable: Bool
     var isUnlocked: Bool
     var viewModel: CardDetailsViewModel
-    
+
     var body: some View {
         VStack(alignment: .center) {
-            Text(pin.count == 4 ? "Pin" : "")
+            Text(isEditable || pin.count == 4 ? "Pin" : "")
                 .font(.caption)
                 .dynamicTypeSize(.xSmall ... .xxxLarge)
                 .fontWeight(.semibold)
+                .padding(.top, isEditable ? 0 : 0.5)
             if isEditable {
                 TextField("Pin", text: $pin)
+                    .font(.headline)
+                    .fontWeight(.bold)
                     .multilineTextAlignment(.center)
                     .keyboardType(.numberPad)
                     .dynamicTypeSize(.xSmall ... .xxxLarge)
+                    .foregroundStyle(Color.secondary)
                     .onChange(of: pin, initial: true) { _, newValue in
                         self.pin = String(newValue.prefix(4))
                     }
@@ -216,6 +232,7 @@ fileprivate struct CardDetailsPinView: View {
                     .dynamicTypeSize(.xSmall ... .xxxLarge)
                     .redacted(reason: isUnlocked ? [] : .placeholder)
                     .foregroundStyle(Color.inverseSystemBackground)
+                    .padding(.top, 0.8)
             }
         }
     }
@@ -226,19 +243,21 @@ fileprivate struct CardDetailsExpiryDateView: View {
     @Binding var isEditable: Bool
     var viewModel: CardDetailsViewModel
     var isUnlocked: Bool
-    
+
     var body: some View {
         VStack(alignment: .trailing) {
-            Text(expiryDate.count == 5 ? "Expires on" : "")
+            Text(isEditable || expiryDate.count == 5 ? "Expires on" : "")
                 .font(.caption)
                 .lineLimit(1)
                 .dynamicTypeSize(.xSmall ... .xxxLarge)
                 .fontWeight(.semibold)
+                .padding(.top, isEditable ? 0 : 0.5)
             if isEditable {
                 ExpiryDateTextField(expiryDate: $expiryDate)
                     .font(.headline)
                     .dynamicTypeSize(.xSmall ... .xxxLarge)
-                    .fontWeight(.regular)
+                    .fontWeight(.bold)
+                    .foregroundStyle(Color.secondary)
                     .multilineTextAlignment(.trailing)
             } else {
                 MenuTextView(content: expiryDate, isEditable: $isEditable, isUnlocked: isUnlocked, view: Text(expiryDate))
@@ -247,6 +266,7 @@ fileprivate struct CardDetailsExpiryDateView: View {
                     .fontWeight(.bold)
                     .redacted(reason: isUnlocked ? [] : .placeholder)
                     .foregroundStyle(Color.inverseSystemBackground)
+                    .padding(.top, 0.8)
             }
         }
         .frame(maxWidth: .infinity, alignment: .trailing)
