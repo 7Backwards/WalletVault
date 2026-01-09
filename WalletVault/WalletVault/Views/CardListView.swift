@@ -17,7 +17,16 @@ struct CardListView: View {
         sortDescriptors: [NSSortDescriptor(keyPath: \Card.isFavorited, ascending: false)],
         animation: .default)
     var cards: FetchedResults<Card>
-    
+
+    /// Filtered cards based on search text
+    private var filteredCards: [Card] {
+        cards.filter {
+            viewModel.searchText.isEmpty ||
+            $0.cardNumber.contains(viewModel.searchText) ||
+            $0.cardName.capitalized.contains(viewModel.searchText.capitalized)
+        }
+    }
+
     var body: some View {
         NavigationStack(path: $path) {
             ZStack {
@@ -32,81 +41,93 @@ struct CardListView: View {
                 )
                 .ignoresSafeArea()
 
-                ScrollView {
-                    VStack(spacing: 16) {
-                        SearchBar(text: $viewModel.searchText)
-                            .dynamicTypeSize(.xSmall ... .xxxLarge)
-                            .padding()
-                            .padding(.top, 8)
-
-                        if cards.isEmpty {
-                            NoContentView()
-                        } else {
-                            ForEach(cards.filter {
-                                viewModel.searchText.isEmpty ||
-                                $0.cardNumber.contains(viewModel.searchText) || $0.cardName.capitalized.contains(viewModel.searchText.capitalized)
-                            }, id: \.self) { card in
-                                Button {
-                                    viewModel.authenticate { result in
-                                        if result {
-                                            Logger.log("User did tap on card \(card)")
-                                            path.append(card)
-                                        }
-                                    }
-                                } label: {
-                                    CardRow(cardObject: viewModel.getCardObservableObject(for: card), appManager: viewModel.appManager, activeAlert: $viewModel.activeAlert)
+                cardListContent
+            }
+            .onTapGesture {
+                // Dismiss keyboard when tapping outside search bar
+                UIApplication.shared.sendAction(#selector(UIResponder.resignFirstResponder), to: nil, from: nil, for: nil)
+            }
+            .navigationDestination(for: Card.self) { card in
+                MyCardView(appManager: viewModel.appManager, cardObject: viewModel.getCardObservableObject(for: card))
+            }
+            .onAppear {
+                viewModel.appManager.utils.requestNotificationPermission()
+            }
+            .navigationBarTitle("WalletVault", displayMode: .automatic)
+            .toolbar {
+                ToolbarItem(placement: .topBarTrailing) {
+                    if !ProcessInfo.processInfo.isiOSAppOnMac {
+                        Button {
+                            viewModel.requestCameraPermission {
+                                if $0 {
+                                    viewModel.activeShareSheet = .scanQRCode
                                 }
-                                .foregroundColor(.inverseSystemBackground)
-                                .transition(.opacity.combined(with: .move(edge: .bottom)))
                             }
+                        } label: {
+                            Image(systemName: "qrcode.viewfinder")
+                                .foregroundStyle(.secondary)
                         }
                     }
-                    .padding(.horizontal)
-                    .padding(.bottom, 20)
                 }
-                .navigationDestination(for: Card.self) { card in
-                    MyCardView(appManager: viewModel.appManager, cardObject: viewModel.getCardObservableObject(for: card))
-                }
-                .onAppear {
-                    viewModel.appManager.utils.requestNotificationPermission()
-                }
-                .scrollIndicators(.hidden)
-                .listStyle(.plain)
-                .scrollContentBackground(.hidden)
-                .navigationBarTitle("WalletVault", displayMode: .automatic)
-                .navigationBarItems(trailing: TrailingNavigationItems(viewModel: viewModel))
-                .alert(item: $viewModel.activeAlert) { activeAlert in
-                    switch activeAlert {
-                    case .cardAdded:
-                        return viewModel.appManager.utils.requestCardAddedAlert()
-                    case .removeCard(let id):
-                        return viewModel.appManager.utils.requestRemoveCardAlert {
-                            viewModel.activeAlert = nil
-                        } deleteAction: {
-                            withAnimation {
-                                viewModel.deleteCard(id: id, from: cards)
-                            }
-                            viewModel.activeAlert = nil
-                        }
+            }
+            .toolbarBackgroundVisibility(.hidden, for: .bottomBar)
+            .safeAreaInset(edge: .bottom) {
+                // Bottom bar with Search bar and Add button (iOS 26 liquid glass style)
+                HStack(spacing: 12) {
+                    // Search bar on the left
+                    HStack {
+                        Image(systemName: "magnifyingglass")
+                            .foregroundStyle(.secondary)
+                        TextField("Search cards", text: $viewModel.searchText)
+                    }
+                    .padding(10)
+                    .glassEffect()
 
-                    case .error:
-                        return viewModel.appManager.utils.requestDefaultErrorAlert()
-                    case .requestCameraPermission:
-                        return viewModel.appManager.utils.requestCameraPermissionAlert()
+                    // Add button on the right
+                    Button {
+                        viewModel.activeShareSheet = .addCard
+                    } label: {
+                        Image(systemName: "widget.small.badge.plus")
+                            .tint(.secondary)
+                            .font(.title2)
+                            .fontWeight(.semibold)
+                            .padding(10)
                     }
+                    .glassEffect()
                 }
-                .sheet(item: $viewModel.activeShareSheet) { activeSheet in
-                    switch activeSheet {
-                    case .addCard:
-                        AddCardView(appManager: viewModel.appManager)
-                            .presentationDetents([.height(380)])
-                            .presentationDragIndicator(.visible)
-                    case .scanQRCode:
-                        QRCodeScannerView(viewModel: viewModel)
-                            .presentationDetents([.height(560)])
-                            .presentationDragIndicator(.visible)
+                .padding(.horizontal)
+                .padding(.bottom, 8)
+            }
+        }
+        .alert(item: $viewModel.activeAlert) { activeAlert in
+            switch activeAlert {
+            case .cardAdded:
+                return viewModel.appManager.utils.requestCardAddedAlert()
+            case .removeCard(let id):
+                return viewModel.appManager.utils.requestRemoveCardAlert {
+                    viewModel.activeAlert = nil
+                } deleteAction: {
+                    withAnimation {
+                        viewModel.deleteCard(id: id, from: cards)
                     }
+                    viewModel.activeAlert = nil
                 }
+            case .error:
+                return viewModel.appManager.utils.requestDefaultErrorAlert()
+            case .requestCameraPermission:
+                return viewModel.appManager.utils.requestCameraPermissionAlert()
+            }
+        }
+        .sheet(item: $viewModel.activeShareSheet) { activeSheet in
+            switch activeSheet {
+            case .addCard:
+                AddCardView(appManager: viewModel.appManager)
+                    .presentationDetents([.height(380)])
+                    .presentationDragIndicator(.visible)
+            case .scanQRCode:
+                QRCodeScannerView(viewModel: viewModel)
+                    .presentationDetents([.height(560)])
+                    .presentationDragIndicator(.visible)
             }
         }
         .onReceive(viewModel.appManager.notificationHandler.$selectedCardID) { selectedCardID in
@@ -116,33 +137,58 @@ struct CardListView: View {
             }
         }
     }
-}
 
-struct TrailingNavigationItems: View {
-    @StateObject var viewModel: CardListViewModel
-    var body: some View {
-        HStack {
-            if !ProcessInfo.processInfo.isiOSAppOnMac {
-                Button(action: {
-                    viewModel.requestCameraPermission {
-                        if $0 {
-                            viewModel.activeShareSheet = .scanQRCode
+    /// Shared card list content view
+    @ViewBuilder
+    private var cardListContent: some View {
+        ScrollView {
+            VStack(spacing: 16) {
+                if cards.isEmpty {
+                    NoContentView()
+                } else if filteredCards.isEmpty {
+                    NoSearchResultsView()
+                } else {
+                    ForEach(filteredCards, id: \.self) { card in
+                        Button {
+                            viewModel.authenticate { result in
+                                if result {
+                                    Logger.log("User did tap on card \(card)")
+                                    path.append(card)
+                                }
+                            }
+                        } label: {
+                            CardRow(cardObject: viewModel.getCardObservableObject(for: card), appManager: viewModel.appManager, activeAlert: $viewModel.activeAlert)
                         }
+                        .foregroundColor(.inverseSystemBackground)
+                        .transition(.opacity.combined(with: .move(edge: .bottom)))
                     }
-                        
-                }) {
-                    Image(systemName: "qrcode.viewfinder")
-                        .foregroundStyle(.inverseSystemBackground)
                 }
             }
-            
-            Button(action: {
-                viewModel.activeShareSheet = .addCard
-            }) {
-                Image(systemName: "plus")
-                    .foregroundStyle(.inverseSystemBackground)
-            }
+            .padding(.vertical, 20)
         }
+        .scrollIndicators(.hidden)
+    }
+}
+
+struct NoSearchResultsView: View {
+    var body: some View {
+        VStack(spacing: 20) {
+            Spacer()
+            Image(systemName: "magnifyingglass")
+                .resizable()
+                .scaledToFit()
+                .frame(width: 60, height: 60)
+                .foregroundColor(.secondary)
+            Text("No cards found")
+                .font(.title2)
+                .fontWeight(.medium)
+                .foregroundColor(.secondary)
+            Text("Try a different search term")
+                .font(.subheadline)
+                .foregroundColor(.secondary.opacity(0.8))
+            Spacer()
+        }
+        .padding()
     }
 }
 
@@ -155,51 +201,17 @@ struct NoContentView: View {
                 .scaledToFit()
                 .frame(width: 100, height: 60)
                 .foregroundColor(.secondary)
-            Text("Tap + to add your first card!")
-                .font(.largeTitle)
-                .fontWeight(.thin)
-                .multilineTextAlignment(.center)
+            Text("No cards yet")
+                .font(.title)
+                .fontWeight(.medium)
                 .foregroundColor(.secondary)
+            Text("Tap the + button to add your first card")
+                .font(.subheadline)
+                .multilineTextAlignment(.center)
+                .foregroundColor(.secondary.opacity(0.8))
             Spacer()
         }
         .padding()
-    }
-}
-
-
-struct SearchBar: View {
-    @Binding var text: String
-
-    var body: some View {
-        HStack {
-            TextField("Search", text: $text)
-                .padding(10)
-                .padding(.horizontal, 30)
-                .background(
-                    Color.white.opacity(0.1)
-                )
-                .cornerRadius(10)
-                .overlay(
-                    HStack {
-                        Image(systemName: "magnifyingglass")
-                            .foregroundColor(.gray.opacity(0.7))
-                            .frame(minWidth: 0, maxWidth: .infinity, alignment: .leading)
-                            .padding(.leading, 12)
-
-                        if !text.isEmpty {
-                            Button(action: {
-                                withAnimation(.easeInOut(duration: 0.2)) {
-                                    self.text = ""
-                                }
-                            }) {
-                                Image(systemName: "multiply.circle.fill")
-                                    .foregroundColor(.gray.opacity(0.6))
-                                    .padding(.trailing, 12)
-                            }
-                        }
-                    }
-                )
-        }
     }
 }
 

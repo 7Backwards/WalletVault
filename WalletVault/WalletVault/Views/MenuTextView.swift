@@ -26,6 +26,7 @@ struct MenuTextView<V: View>: View {
                     }) {
                         Label("Copy", systemImage: "doc.on.doc")
                     }
+                    .glassEffect()
                 }
                 if showShare {
                     Button(action: {
@@ -33,6 +34,7 @@ struct MenuTextView<V: View>: View {
                     }) {
                         Label("Share", systemImage: "square.and.arrow.up")
                     }
+                    .glassEffect()
                 }
                 if showEdit {
                     Button(action: {
@@ -40,6 +42,7 @@ struct MenuTextView<V: View>: View {
                     }) {
                         Label("Edit", systemImage: "pencil")
                     }
+                    .glassEffect()
                 }
             } label: {
                 view

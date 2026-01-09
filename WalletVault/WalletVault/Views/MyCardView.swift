@@ -200,13 +200,13 @@ struct MyCardViewActionButtons: View {
                     self.viewModel.showingShareSheet = true
                 }
             }) {
-                Image(systemName: "square.and.arrow.up.circle.fill")
+                Image(systemName: "square.and.arrow.up")
                     .resizable()
                     .aspectRatio(contentMode: .fit)
-                    .frame(width: 50, height: 50)
-                    .foregroundStyle(Color.inverseSystemBackground)
+                    .frame(width: 30, height: 30)
+                    .padding(5)
             }
-            .buttonStyle(ModernRoundedButtonStyle())
+            .buttonStyle(.glass)
 
             Button(action: {
                 withAnimation(.spring(response: 0.3, dampingFraction: 0.6)) {
@@ -219,25 +219,25 @@ struct MyCardViewActionButtons: View {
                 }
             }) {
 
-                Image(systemName: viewModel.isEditable ? "arrow.uturn.backward.circle.fill" : "pencil.circle.fill")
+                Image(systemName: viewModel.isEditable ? "arrow.uturn.backward" : "pencil")
                     .resizable()
                     .aspectRatio(contentMode: .fit)
-                    .frame(width: 50, height: 50)
-                    .foregroundStyle(Color.inverseSystemBackground)
+                    .frame(width: 30, height: 30)
+                    .padding(5)
 
             }
-            .buttonStyle(ModernRoundedButtonStyle())
+            .buttonStyle(.glass)
 
             Button(action: {
                 viewModel.activeAlert = .deleteConfirmation
             }) {
-                Image(systemName: "trash.circle.fill")
+                Image(systemName: "trash")
                     .resizable()
                     .aspectRatio(contentMode: .fit)
-                    .frame(width: 50, height: 50)
-                    .foregroundStyle(Color.inverseSystemBackground)
+                    .frame(width: 30, height: 30)
+                    .padding(5)
             }
-            .buttonStyle(ModernRoundedButtonStyle())
+            .buttonStyle(.glass)
         }
         .padding(.horizontal, 20)
     }
