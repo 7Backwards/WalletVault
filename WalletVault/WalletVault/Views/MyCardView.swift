@@ -19,13 +19,25 @@ struct MyCardView: View {
     
     var body: some View {
         ZStack {
+            // Subtle background gradient
+            LinearGradient(
+                gradient: Gradient(colors: [
+                    Color.systemBackground,
+                    Color.systemBackground.opacity(0.98)
+                ]),
+                startPoint: .topLeading,
+                endPoint: .bottomTrailing
+            )
+            .ignoresSafeArea()
+
             if isColorPickerPresented {
                 CustomColorPicker(onCancel: { isColorPickerPresented = false }, onSelect: { newColor in
                     guard let hex = newColor.toHex() else { return }
                     viewModel.appManager.actionManager.doAction(action: .insertNewColor(hexValue: hex, isDefault: false))
-                    isColorPickerPresented = false 
+                    isColorPickerPresented = false
                 })
                 .padding()
+                .transition(.opacity.combined(with: .scale))
             } else {
                 VStack(spacing: 20) {
                     CardDetailsView(appManager: viewModel.appManager, cardObject: viewModel.cardObject, isEditing: $viewModel.isEditable, isUnlocked: true) { isFavorited in
@@ -37,15 +49,19 @@ struct MyCardView: View {
                         }
                     }
                     .padding(.horizontal, -16)
-                    
+                    .transition(.opacity.combined(with: .move(edge: .top)))
+
                     if viewModel.isEditable {
                         ColorCarouselView(cardColor: $viewModel.cardObject.cardColor, isColorPickerPresented: $isColorPickerPresented, appManager: viewModel.appManager)
+                            .transition(.opacity)
                         AddButton(appManager: viewModel.appManager, cardObject: viewModel.cardObject, showAlert: { errorMessage in self.viewModel.activeAlert = .error(errorMessage) }, isEditable: $viewModel.isEditable)
+                            .transition(.opacity)
                     }
-                    
+
                     Spacer()
-                    
+
                     MyCardViewActionButtons(viewModel: viewModel)
+                        .scaleEffect(1.0)
                         .actionSheet(isPresented: $viewModel.showingShareSheet) {
                             ActionSheet(
                                 title: Text("Share Card"),
@@ -63,6 +79,7 @@ struct MyCardView: View {
                         }
                 }
                 .padding(.horizontal, 16)
+                .transition(.opacity)
             }
         }
         .onAppear {
@@ -70,7 +87,7 @@ struct MyCardView: View {
         }
         .onDisappear {
             viewModel.invalidateAutoLockTimer()
-            if let cardColor = viewModel.cardObject.cardColor { 
+            if let cardColor = viewModel.cardObject.cardColor {
                 viewModel.updateCardColor(cardColor: cardColor)
             }
         }
@@ -83,10 +100,10 @@ struct MyCardView: View {
         .alert(item: $viewModel.activeAlert) { activeAlert in
             switch activeAlert {
             case .deleteConfirmation:
-                viewModel.appManager.utils.requestRemoveCardAlert { 
+                viewModel.appManager.utils.requestRemoveCardAlert {
                     self.viewModel.activeAlert = nil
-                } deleteAction: { 
-                    withAnimation {
+                } deleteAction: {
+                    withAnimation(.spring(response: 0.3, dampingFraction: 0.7)) {
                         viewModel.delete { result in
                             if result {
                                 viewModel.shouldDismissView = true
@@ -111,17 +128,17 @@ struct MyCardView: View {
                         .multilineTextAlignment(.center)
                         .padding(.horizontal)
                         .lineLimit(2)
-                    
+
                     if let code = viewModel.appManager.utils.getShareCardCode(card: viewModel.cardObject.getCardInfo(), key: viewModel.appManager.constants.encryptionKey) {
                         QRCodeView(qrCodeImage: viewModel.appManager.utils.generateCardQRCode(from: code))
                             .frame(height: viewModel.appManager.constants.qrCodeSize.height)
                             .padding()
-                        
+
                         VStack(spacing: 10) {
                             Text("Or use this code:")
                                 .font(.subheadline)
                                 .foregroundColor(.secondary)
-                            
+
                             HStack {
                                 Text(code)
                                     .font(.body)
@@ -129,7 +146,7 @@ struct MyCardView: View {
                                     .lineLimit(1)
                                     .truncationMode(.middle)
                                     .padding(.trailing, 5)
-                                
+
                                 Button(action: {
                                     UIPasteboard.general.string = code
                                     print("Code copied to clipboard")
@@ -151,7 +168,7 @@ struct MyCardView: View {
                 .padding()
                 .background(Color(UIColor.systemBackground))
                 .cornerRadius(12)
-                .shadow(radius: 10)
+                .shadow(color: Color.black.opacity(0.1), radius: 12, x: 0, y: 6)
                 .presentationDetents([.height(560)])
                 .presentationDragIndicator(.visible)
                 .padding(.horizontal)
@@ -177,9 +194,11 @@ struct MyCardViewActionButtons: View {
 
     var body: some View {
         HStack(spacing: 30) {
-            
+
             Button(action: {
-                self.viewModel.showingShareSheet = true
+                withAnimation(.spring(response: 0.3, dampingFraction: 0.6)) {
+                    self.viewModel.showingShareSheet = true
+                }
             }) {
                 Image(systemName: "square.and.arrow.up.circle.fill")
                     .resizable()
@@ -187,26 +206,28 @@ struct MyCardViewActionButtons: View {
                     .frame(width: 50, height: 50)
                     .foregroundStyle(Color.inverseSystemBackground)
             }
-            .buttonStyle(RoundedButtonStyle())
-            
+            .buttonStyle(ModernRoundedButtonStyle())
+
             Button(action: {
-                if viewModel.isEditable {
-                    viewModel.undo()
-                } else {
-                    viewModel.saveCurrentCard()
+                withAnimation(.spring(response: 0.3, dampingFraction: 0.6)) {
+                    if viewModel.isEditable {
+                        viewModel.undo()
+                    } else {
+                        viewModel.saveCurrentCard()
+                    }
+                    viewModel.isEditable.toggle()
                 }
-                viewModel.isEditable.toggle()
             }) {
-                
+
                 Image(systemName: viewModel.isEditable ? "arrow.uturn.backward.circle.fill" : "pencil.circle.fill")
                     .resizable()
                     .aspectRatio(contentMode: .fit)
                     .frame(width: 50, height: 50)
                     .foregroundStyle(Color.inverseSystemBackground)
-                
+
             }
-            .buttonStyle(RoundedButtonStyle())
-            
+            .buttonStyle(ModernRoundedButtonStyle())
+
             Button(action: {
                 viewModel.activeAlert = .deleteConfirmation
             }) {
@@ -216,9 +237,18 @@ struct MyCardViewActionButtons: View {
                     .frame(width: 50, height: 50)
                     .foregroundStyle(Color.inverseSystemBackground)
             }
-            .buttonStyle(RoundedButtonStyle())
+            .buttonStyle(ModernRoundedButtonStyle())
         }
         .padding(.horizontal, 20)
+    }
+}
+
+struct ModernRoundedButtonStyle: ButtonStyle {
+    func makeBody(configuration: Self.Configuration) -> some View {
+        configuration.label
+            .foregroundColor(configuration.isPressed ? Color.black.opacity(0.4) : Color.black.opacity(0.8))
+            .scaleEffect(configuration.isPressed ? 0.85 : 1.0)
+            .brightness(configuration.isPressed ? 0.1 : 0)
     }
 }
 

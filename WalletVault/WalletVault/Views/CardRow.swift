@@ -27,9 +27,11 @@ struct CardRow: View {
                     }
                 }
             }
-            .cornerRadius(10)
-            .shadow(radius: 5)
+            .cornerRadius(12)
+            .shadow(color: Color.black.opacity(0.1), radius: 8, x: 0, y: 4)
             .offset(x: dragOffset.width + gestureDragOffset.width)
+            .scaleEffect(gestureDragOffset.width < -20 ? 0.98 : 1.0)
+            .opacity(gestureDragOffset.width < -50 ? 0.8 : 1.0)
             .gesture(
                 DragGesture(minimumDistance: 30)
                     .updating($gestureDragOffset, body: { (value, state, _) in
@@ -41,7 +43,7 @@ struct CardRow: View {
                     .onEnded { value in
                         if value.translation.width < 0 {
                             if value.translation.width <= -50 {
-                                withAnimation {
+                                withAnimation(.spring(response: 0.3, dampingFraction: 0.7)) {
                                     dragOffset = .zero
                                     guard let id = viewModel.cardObject.id else {
                                         return
@@ -52,7 +54,7 @@ struct CardRow: View {
                         }
                     }
             )
-            
+
             if gestureDragOffset.width < -10 {
                 HStack {
                     Spacer()
@@ -63,5 +65,6 @@ struct CardRow: View {
                 }
             }
         }
+        .transition(.opacity.combined(with: .scale))
     }
 }

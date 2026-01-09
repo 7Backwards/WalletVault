@@ -19,7 +19,7 @@ struct AddButton: View {
     }
     
     var body: some View {
-        Button("Save Card") {
+        Button(action: {
             var alertMessage = ""
             viewModel.addOrEdit(cardObject: viewModel.cardObject) { result in
                 switch result {
@@ -41,12 +41,26 @@ struct AddButton: View {
                     viewModel.showAlert(alertMessage)
                 }
             }
+        }) {
+            Text("Save Card")
+                .fontWeight(.semibold)
+                .frame(maxWidth: .infinity)
         }
         .padding()
-        .frame(maxWidth: .infinity, maxHeight: 50)
+        .frame(maxHeight: 50)
         .dynamicTypeSize(.xSmall ... .xxxLarge)
-        .background(.blue)
+        .background(
+            LinearGradient(
+                gradient: Gradient(colors: [
+                    Color.blue.opacity(0.8),
+                    Color.blue.opacity(0.6)
+                ]),
+                startPoint: .topLeading,
+                endPoint: .bottomTrailing
+            )
+        )
         .foregroundColor(Color(.systemBackground))
-        .cornerRadius(10)
+        .cornerRadius(12)
+        .shadow(color: Color.blue.opacity(0.3), radius: 6, x: 0, y: 3)
     }
 }

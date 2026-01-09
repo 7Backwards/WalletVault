@@ -20,79 +20,94 @@ struct CardListView: View {
     
     var body: some View {
         NavigationStack(path: $path) {
-            ScrollView {
-                VStack {
-                    SearchBar(text: $viewModel.searchText)
-                        .background(Color(UIColor.systemBackground))
-                        .dynamicTypeSize(.xSmall ... .xxxLarge)
-                        .padding()
-                    if cards.isEmpty {
-                        NoContentView()
-                    } else {
-                        ForEach(cards.filter {
-                            viewModel.searchText.isEmpty ||
-                            $0.cardNumber.contains(viewModel.searchText) || $0.cardName.capitalized.contains(viewModel.searchText.capitalized)
-                        }, id: \.self) { card in
-                            Button {
-                                viewModel.authenticate { result in
-                                    if result {
-                                        Logger.log("User did tap on card \(card)")
-                                        path.append(card)
-                                    }
-                                }
-                            } label: {
-                                CardRow(cardObject: viewModel.getCardObservableObject(for: card), appManager: viewModel.appManager, activeAlert: $viewModel.activeAlert)
-                            }
-                            .foregroundColor(.inverseSystemBackground)
-                        }
-                    }
-                }
-                .padding(.vertical)
-            }
-            .navigationDestination(for: Card.self) { card in
-                MyCardView(appManager: viewModel.appManager, cardObject: viewModel.getCardObservableObject(for: card))
-            }
-            .onAppear {
-                viewModel.appManager.utils.requestNotificationPermission()
-            }
-            .scrollIndicators(.hidden)
-            .listStyle(.plain)
-            .scrollContentBackground(.hidden)
-            .navigationBarTitle("WalletVault", displayMode: .automatic)
-            .navigationBarItems(trailing: TrailingNavigationItems(viewModel: viewModel))
-            .alert(item: $viewModel.activeAlert) { activeAlert in
-                switch activeAlert {
-                case .cardAdded:
-                    return viewModel.appManager.utils.requestCardAddedAlert()
-                case .removeCard(let id):
-                    return viewModel.appManager.utils.requestRemoveCardAlert { 
-                        viewModel.activeAlert = nil
-                    } deleteAction: { 
-                        withAnimation {
-                            viewModel.deleteCard(id: id, from: cards)
-                        }
-                        viewModel.activeAlert = nil
-                    }
+            ZStack {
+                // Modern gradient background
+                LinearGradient(
+                    gradient: Gradient(colors: [
+                        Color.systemBackground,
+                        Color.systemBackground.opacity(0.95)
+                    ]),
+                    startPoint: .topLeading,
+                    endPoint: .bottomTrailing
+                )
+                .ignoresSafeArea()
 
-                case .error:
-                    return viewModel.appManager.utils.requestDefaultErrorAlert()
-                case .requestCameraPermission:
-                    return viewModel.appManager.utils.requestCameraPermissionAlert()
+                ScrollView {
+                    VStack(spacing: 16) {
+                        SearchBar(text: $viewModel.searchText)
+                            .dynamicTypeSize(.xSmall ... .xxxLarge)
+                            .padding()
+                            .padding(.top, 8)
+
+                        if cards.isEmpty {
+                            NoContentView()
+                        } else {
+                            ForEach(cards.filter {
+                                viewModel.searchText.isEmpty ||
+                                $0.cardNumber.contains(viewModel.searchText) || $0.cardName.capitalized.contains(viewModel.searchText.capitalized)
+                            }, id: \.self) { card in
+                                Button {
+                                    viewModel.authenticate { result in
+                                        if result {
+                                            Logger.log("User did tap on card \(card)")
+                                            path.append(card)
+                                        }
+                                    }
+                                } label: {
+                                    CardRow(cardObject: viewModel.getCardObservableObject(for: card), appManager: viewModel.appManager, activeAlert: $viewModel.activeAlert)
+                                }
+                                .foregroundColor(.inverseSystemBackground)
+                                .transition(.opacity.combined(with: .move(edge: .bottom)))
+                            }
+                        }
+                    }
+                    .padding(.horizontal)
+                    .padding(.bottom, 20)
+                }
+                .navigationDestination(for: Card.self) { card in
+                    MyCardView(appManager: viewModel.appManager, cardObject: viewModel.getCardObservableObject(for: card))
+                }
+                .onAppear {
+                    viewModel.appManager.utils.requestNotificationPermission()
+                }
+                .scrollIndicators(.hidden)
+                .listStyle(.plain)
+                .scrollContentBackground(.hidden)
+                .navigationBarTitle("WalletVault", displayMode: .automatic)
+                .navigationBarItems(trailing: TrailingNavigationItems(viewModel: viewModel))
+                .alert(item: $viewModel.activeAlert) { activeAlert in
+                    switch activeAlert {
+                    case .cardAdded:
+                        return viewModel.appManager.utils.requestCardAddedAlert()
+                    case .removeCard(let id):
+                        return viewModel.appManager.utils.requestRemoveCardAlert {
+                            viewModel.activeAlert = nil
+                        } deleteAction: {
+                            withAnimation {
+                                viewModel.deleteCard(id: id, from: cards)
+                            }
+                            viewModel.activeAlert = nil
+                        }
+
+                    case .error:
+                        return viewModel.appManager.utils.requestDefaultErrorAlert()
+                    case .requestCameraPermission:
+                        return viewModel.appManager.utils.requestCameraPermissionAlert()
+                    }
+                }
+                .sheet(item: $viewModel.activeShareSheet) { activeSheet in
+                    switch activeSheet {
+                    case .addCard:
+                        AddCardView(appManager: viewModel.appManager)
+                            .presentationDetents([.height(380)])
+                            .presentationDragIndicator(.visible)
+                    case .scanQRCode:
+                        QRCodeScannerView(viewModel: viewModel)
+                            .presentationDetents([.height(560)])
+                            .presentationDragIndicator(.visible)
+                    }
                 }
             }
-            .sheet(item: $viewModel.activeShareSheet) { activeSheet in
-                switch activeSheet {
-                case .addCard:
-                    AddCardView(appManager: viewModel.appManager)
-                        .presentationDetents([.height(380)])
-                        .presentationDragIndicator(.visible)
-                case .scanQRCode:
-                    QRCodeScannerView(viewModel: viewModel)
-                        .presentationDetents([.height(560)])
-                        .presentationDragIndicator(.visible)
-                }
-            }
-            .background(Color.systemBackground.edgesIgnoringSafeArea(.all))
         }
         .onReceive(viewModel.appManager.notificationHandler.$selectedCardID) { selectedCardID in
             if let selectedId = selectedCardID, let selectedCard = cards.first(where: { $0.objectID == selectedId}) {
@@ -154,28 +169,32 @@ struct NoContentView: View {
 
 struct SearchBar: View {
     @Binding var text: String
-    
+
     var body: some View {
         HStack {
             TextField("Search", text: $text)
-                .padding(7)
-                .padding(.horizontal, 25)
-                .background(Color(UIColor.secondarySystemBackground))
-                .cornerRadius(8)
+                .padding(10)
+                .padding(.horizontal, 30)
+                .background(
+                    Color.white.opacity(0.1)
+                )
+                .cornerRadius(10)
                 .overlay(
                     HStack {
                         Image(systemName: "magnifyingglass")
-                            .foregroundColor(.gray)
+                            .foregroundColor(.gray.opacity(0.7))
                             .frame(minWidth: 0, maxWidth: .infinity, alignment: .leading)
-                            .padding(.leading, 8)
-                        
+                            .padding(.leading, 12)
+
                         if !text.isEmpty {
                             Button(action: {
-                                self.text = ""
+                                withAnimation(.easeInOut(duration: 0.2)) {
+                                    self.text = ""
+                                }
                             }) {
                                 Image(systemName: "multiply.circle.fill")
-                                    .foregroundColor(.gray)
-                                    .padding(.trailing, 8)
+                                    .foregroundColor(.gray.opacity(0.6))
+                                    .padding(.trailing, 12)
                             }
                         }
                     }

@@ -19,42 +19,59 @@ struct AddCardView: View {
     
     var body: some View {
         NavigationView {
-            VStack(spacing: 20) {
-                ZStack {
-                    if isColorPickerPresented {
-                        CustomColorPicker(onCancel: { isColorPickerPresented = false }, onSelect: { newColor in
-                            guard let hex = newColor.toHex() else { return }
-                            viewModel.appManager.actionManager.doAction(action: .insertNewColor(hexValue: hex, isDefault: false))
-                            isColorPickerPresented = false 
-                        })
-                        .padding(16)
-                    } else {
-                        VStack(spacing: 20) {
-                            CardDetailsView(appManager: viewModel.appManager, cardObject: viewModel.cardObject, isEditing: $viewModel.isEditable, isUnlocked: true) { isFavorited in
-                                guard let id = viewModel.cardObject.id else { return }
-                                viewModel.appManager.actionManager.doAction(action: .setIsFavorited(id: id, isFavorited)) { result in
-                                    if result {
-                                        viewModel.cardObject.isFavorited.toggle()
+            ZStack {
+                // Modern gradient background
+                LinearGradient(
+                    gradient: Gradient(colors: [
+                        Color.systemBackground,
+                        Color.systemBackground.opacity(0.97)
+                    ]),
+                    startPoint: .topLeading,
+                    endPoint: .bottomTrailing
+                )
+                .ignoresSafeArea()
+
+                VStack(spacing: 20) {
+                    ZStack {
+                        if isColorPickerPresented {
+                            CustomColorPicker(onCancel: { isColorPickerPresented = false }, onSelect: { newColor in
+                                guard let hex = newColor.toHex() else { return }
+                                viewModel.appManager.actionManager.doAction(action: .insertNewColor(hexValue: hex, isDefault: false))
+                                isColorPickerPresented = false
+                            })
+                            .padding(16)
+                            .transition(.opacity.combined(with: .scale))
+                        } else {
+                            VStack(spacing: 20) {
+                                CardDetailsView(appManager: viewModel.appManager, cardObject: viewModel.cardObject, isEditing: $viewModel.isEditable, isUnlocked: true) { isFavorited in
+                                    guard let id = viewModel.cardObject.id else { return }
+                                    viewModel.appManager.actionManager.doAction(action: .setIsFavorited(id: id, isFavorited)) { result in
+                                        if result {
+                                            viewModel.cardObject.isFavorited.toggle()
+                                        }
                                     }
                                 }
+                                .padding(.horizontal, -16)
+                                .transition(.opacity)
+
+                                ColorCarouselView(cardColor: $viewModel.cardObject.cardColor, isColorPickerPresented: $isColorPickerPresented, appManager: viewModel.appManager)
+                                    .padding(.horizontal, -8)
+                                    .transition(.opacity)
+
+                                AddButton(appManager: viewModel.appManager, cardObject: viewModel.cardObject, showAlert: { alertMessage in viewModel.activeAlert = .error(alertMessage) }, presentationMode: presentationMode, isEditable: $viewModel.isEditable)
+                                    .transition(.opacity)
                             }
-                            .padding(.horizontal, -16)
-                            
-                            ColorCarouselView(cardColor: $viewModel.cardObject.cardColor, isColorPickerPresented: $isColorPickerPresented, appManager: viewModel.appManager)
-                                .padding(.horizontal, -8)
-                            
-                            AddButton(appManager: viewModel.appManager, cardObject: viewModel.cardObject, showAlert: { alertMessage in viewModel.activeAlert = .error(alertMessage) }, presentationMode: presentationMode, isEditable: $viewModel.isEditable)
+                            .padding(16)
+                            .transition(.opacity)
                         }
-                        .padding(16)
                     }
+                    .background(Color(UIColor.systemBackground))
+                    .cornerRadius(14)
+                    .shadow(color: Color.black.opacity(0.1), radius: 12, x: 0, y: 6)
+                    .padding(16)
                 }
-                .background(Color(UIColor.systemBackground))
-                .cornerRadius(12)
-                .shadow(radius: 10)
-                .padding(16)
             }
         }
-        .background(Color(.systemGroupedBackground).edgesIgnoringSafeArea(.all))
         .alert(item: $viewModel.activeAlert) { alert in
             switch alert {
             case .error(let errorMessage):

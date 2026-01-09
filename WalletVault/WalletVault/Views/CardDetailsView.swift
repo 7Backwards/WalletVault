@@ -52,12 +52,12 @@ struct CardDetailsView: View {
             }
             .padding()
             .background(Color(hex: viewModel.cardObject.cardColor?.hexValue ?? "").opacity(viewModel.getCardBackgroundOpacity()))
-            .cornerRadius(10)
+            .cornerRadius(14)
             .overlay(
-                RoundedRectangle(cornerRadius: 10)
-                    .stroke(Color.secondary, lineWidth: 1)
+                RoundedRectangle(cornerRadius: 14)
+                    .stroke(Color.white.opacity(0.2), lineWidth: 1.5)
             )
-            .shadow(radius: 3)
+            .shadow(color: Color.black.opacity(0.12), radius: 10, x: 0, y: 6)
 
             if let cardIssuerImage = viewModel.getCardIssuerImage(cardNumber: viewModel.cardObject.cardNumber) {
                 cardIssuerImage

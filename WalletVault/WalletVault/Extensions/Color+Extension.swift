@@ -60,18 +60,63 @@ extension Color {
     
     func toHex() -> String? {
         let uiColor = UIColor(self)
-        
+
         var red: CGFloat = 0
         var green: CGFloat = 0
         var blue: CGFloat = 0
         var alpha: CGFloat = 0
-        
+
         uiColor.getRed(&red, green: &green, blue: &blue, alpha: &alpha)
-        
+
         let r = Int(red * 255)
         let g = Int(green * 255)
         let b = Int(blue * 255)
-        
+
         return String(format: "#%02X%02X%02X", r, g, b)
+    }
+
+    // MARK: - Modern Gradient Helpers
+    static var modernPrimaryGradient: LinearGradient {
+        LinearGradient(
+            gradient: Gradient(colors: [
+                Color.blue.opacity(0.6),
+                Color.blue.opacity(0.4)
+            ]),
+            startPoint: .topLeading,
+            endPoint: .bottomTrailing
+        )
+    }
+
+    static var modernAccentGradient: LinearGradient {
+        LinearGradient(
+            gradient: Gradient(colors: [
+                Color.white.opacity(0.1),
+                Color.white.opacity(0.05)
+            ]),
+            startPoint: .topLeading,
+            endPoint: .bottomTrailing
+        )
+    }
+
+    static var cardGlassGradient: LinearGradient {
+        LinearGradient(
+            gradient: Gradient(colors: [
+                Color.white.opacity(0.15),
+                Color.white.opacity(0.08)
+            ]),
+            startPoint: .topLeading,
+            endPoint: .bottomTrailing
+        )
+    }
+
+    static var buttonGradient: LinearGradient {
+        LinearGradient(
+            gradient: Gradient(colors: [
+                Color.blue.opacity(0.7),
+                Color.blue.opacity(0.5)
+            ]),
+            startPoint: .topLeading,
+            endPoint: .bottomTrailing
+        )
     }
 }
