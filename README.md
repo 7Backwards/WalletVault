@@ -1,6 +1,6 @@
-# SafeWallet
+# WalletVault
 
-SafeWallet is a secure and user-friendly offline card management app that simplifies how I store, access, and share my card details. Developed using SwiftUI and CoreData, SafeWallet operates entirely offline, ensuring that all my information is securely kept on my device. It is designed for iPhone and iPad, supporting iOS 17.0 and above for an optimized experience.
+WalletVault is a secure and user-friendly offline card management app that simplifies how I store, access, and share my card details. Developed using SwiftUI and CoreData, SafeWallet operates entirely offline, ensuring that all my information is securely kept on my device. It is designed for iPhone and iPad, supporting iOS 17.0 and above for an optimized experience.
 
 ### Features
 
@@ -18,7 +18,7 @@ SafeWallet is a secure and user-friendly offline card management app that simpli
 
 ## Architecture
 
-SafeWallet is built using the Model-View-ViewModel (MVVM) architecture to ensure the code is clean, maintainable, and scalable. This pattern enhances separation of concerns, allowing for more efficient development and testing.
+WalletVault is built using the Model-View-ViewModel (MVVM) architecture to ensure the code is clean, maintainable, and scalable. This pattern enhances separation of concerns, allowing for more efficient development and testing.
 
 ## Screenshots
 
@@ -66,12 +66,12 @@ SafeWallet is built using the Model-View-ViewModel (MVVM) architecture to ensure
 
 ## App Store
 
-While I am currently unable to publish SafeWallet on the App Store due to policy restrictions regarding individual accounts handling sensitive information, I remain committed to its development and improvement. You can still be a part of SafeWallet's journey by joining the beta through TestFlight: https://testflight.apple.com/join/4wsV2Y7T
+While I am currently unable to publish WalletVault on the App Store due to policy restrictions regarding individual accounts handling sensitive information, I remain committed to its development and improvement. You can still be a part of WalletVault's journey by joining the beta through TestFlight: https://testflight.apple.com/join/4wsV2Y7T
 Let me know if you have some feedback!
 
 ## Installation
 
-To run SafeWallet on your device, clone the repository and open the project in Xcode:
+To run WalletVault on your device, clone the repository and open the project in Xcode:
 
 ```bash
-git clone https://github.com/7Backwards/SafeWallet.git
+git clone https://github.com/7Backwards/WalletVault.git
