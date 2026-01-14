@@ -27,8 +27,19 @@ class AppUtils {
     
     func parseCardInfo(from shareableCode: String, using key: SymmetricKey) -> CardInfo? {
         // Decrypt the shareable code using the provided key
-        guard let decryptedString = decryptString(shareableCode, using: key) else {
-            print("Failed to decrypt the shareable code.")
+        var decryptedString = decryptString(shareableCode, using: key)
+
+        // Fallback: Try with the old SafeWallet encryption key if current key fails
+        if decryptedString == nil {
+            let legacyKey = SymmetricKey(data: "SafeWalletKey123".data(using: .utf8)!)
+            decryptedString = decryptString(shareableCode, using: legacyKey)
+            if decryptedString != nil {
+                print("Successfully decrypted using legacy SafeWallet key")
+            }
+        }
+
+        guard let decryptedString else {
+            print("Failed to decrypt the shareable code with both current and legacy keys.")
             return nil
         }
         

@@ -101,17 +101,38 @@ struct QRCodeScannerView: View {
             Logger.log("Error getting parsed card info", level: .error)
             return
         }
+
+        // Set default grey color if no color is provided
+        if cardInfo.cardColor == nil {
+            // First ensure the grey color exists
+            viewModel.appManager.actionManager.doAction(action: .insertNewColor(hexValue: "#808080", isDefault: false)) { _ in
+                // Then fetch it
+                viewModel.appManager.actionManager.doAction(action: .getColor(hexValue: "#808080") { greyColor in
+                    cardInfo.cardColor = greyColor
+                    let cardObject = CardObservableObject(cardInfo: cardInfo)
+                    viewModel.addOrEdit(cardObject: cardObject) { result in
+                        self.handleCardImportResult(result)
+                    }
+                })
+            }
+            return
+        }
+
         let cardObject = CardObservableObject(cardInfo: cardInfo)
         viewModel.addOrEdit(cardObject: cardObject) { result in
-            switch result {
-            case .success:
-                DispatchQueue.main.asyncAfter(deadline: .now() + 0.1) {
-                    self.viewModel.activeAlert = .cardAdded
-                }
-            case .failure:
-                DispatchQueue.main.asyncAfter(deadline: .now() + 0.1) {
-                    self.viewModel.activeAlert = .error
-                }
+            handleCardImportResult(result)
+        }
+    }
+
+    private func handleCardImportResult(_ result: Result<Void, AddCardErrorType>) {
+        switch result {
+        case .success:
+            DispatchQueue.main.asyncAfter(deadline: .now() + 0.1) {
+                self.viewModel.activeAlert = .cardAdded
+            }
+        case .failure:
+            DispatchQueue.main.asyncAfter(deadline: .now() + 0.1) {
+                self.viewModel.activeAlert = .error
             }
         }
     }

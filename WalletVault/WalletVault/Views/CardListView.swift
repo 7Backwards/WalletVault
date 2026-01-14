@@ -29,20 +29,7 @@ struct CardListView: View {
 
     var body: some View {
         NavigationStack(path: $path) {
-            ZStack {
-                // Modern gradient background
-                LinearGradient(
-                    gradient: Gradient(colors: [
-                        Color.systemBackground,
-                        Color.systemBackground.opacity(0.95)
-                    ]),
-                    startPoint: .topLeading,
-                    endPoint: .bottomTrailing
-                )
-                .ignoresSafeArea()
-
-                cardListContent
-            }
+            cardListContent
             .onTapGesture {
                 // Dismiss keyboard when tapping outside search bar
                 UIApplication.shared.sendAction(#selector(UIResponder.resignFirstResponder), to: nil, from: nil, for: nil)
@@ -72,7 +59,6 @@ struct CardListView: View {
             }
             .toolbarBackgroundVisibility(.hidden, for: .bottomBar)
             .safeAreaInset(edge: .bottom) {
-                // Bottom bar with Search bar and Add button (iOS 26 liquid glass style)
                 HStack(spacing: 12) {
                     // Search bar on the left
                     HStack {
@@ -87,10 +73,8 @@ struct CardListView: View {
                     Button {
                         viewModel.activeShareSheet = .addCard
                     } label: {
-                        Image(systemName: "widget.small.badge.plus")
-                            .tint(.secondary)
-                            .font(.title2)
-                            .fontWeight(.semibold)
+                        Image(systemName: "plus")
+                            .tint(.primary)
                             .padding(10)
                     }
                     .glassEffect()
@@ -167,6 +151,7 @@ struct CardListView: View {
             .padding(.vertical, 20)
         }
         .scrollIndicators(.hidden)
+        .scrollDismissesKeyboard(.interactively)
     }
 }
 
