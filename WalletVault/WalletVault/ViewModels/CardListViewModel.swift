@@ -66,6 +66,13 @@ class CardListViewModel: AddOrEditMyCardViewModel, ViewModelProtocol {
     }
     
     func authenticate(completion: @escaping (Bool) -> Void) {
+        #if DEBUG
+        if ProcessInfo.processInfo.arguments.contains("DISABLE-BIOMETRIC-AUTH") {
+            completion(true)
+            return
+        }
+        #endif
+        
         BiometricManager().authenticateUser { result in
             if let result = try? result.get(), result {
                 completion(true)

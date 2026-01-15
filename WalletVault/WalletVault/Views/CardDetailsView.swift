@@ -90,6 +90,7 @@ struct CardDetailsView: View {
         }
         .frame(width: 30, height: 30)
         .offset(x: 10, y: -10)
+        .accessibilityIdentifier("favoriteButton")
         .onTapGesture {
             if viewModel.cardObject.id != nil {
                 viewModel.setIsFavorited(!viewModel.cardObject.isFavorited)
@@ -111,6 +112,7 @@ fileprivate struct CardDetailsNameAndNumberView: View {
         VStack(alignment: .leading, spacing: 15) {
             if isEditable {
                 TextField("Name", text: $cardName)
+                    .accessibilityIdentifier("cardNameField")
                     .onChange(of: cardName) { _, newValue in
                         self.cardName = String(cardName.prefix(20)).uppercased()
                     }
@@ -129,6 +131,7 @@ fileprivate struct CardDetailsNameAndNumberView: View {
             }
             if isEditable {
                 TextField("Number", text: $cardNumber)
+                    .accessibilityIdentifier("cardNumberField")
                     .font(.title3)
                     .keyboardType(.numberPad)
                     .fontWeight(.bold)
@@ -177,6 +180,7 @@ fileprivate struct CardDetailsCVVView: View {
                 .padding(.top, isEditable ? 0 : 0.5)
             if isEditable {
                 TextField("CVV", text: $cvvCode)
+                    .accessibilityIdentifier("cvvField")
                     .font(.headline)
                     .fontWeight(.bold)
                     .keyboardType(.numberPad)
@@ -215,6 +219,7 @@ fileprivate struct CardDetailsPinView: View {
                 .padding(.top, isEditable ? 0 : 0.5)
             if isEditable {
                 TextField("Pin", text: $pin)
+                    .accessibilityIdentifier("pinField")
                     .font(.headline)
                     .fontWeight(.bold)
                     .multilineTextAlignment(.center)
@@ -279,6 +284,7 @@ struct ExpiryDateTextField: View {
     
     var body: some View {
         TextField("MM/YY", text: $expiryDate)
+            .accessibilityIdentifier("expiryDateField")
             .keyboardType(.numberPad)
             .onChange(of: expiryDate, initial: true) { _, newValue in
                 let filtered = newValue.filter { "0123456789".contains($0) }

@@ -53,4 +53,22 @@ struct PersistenceController {
         })
         container.viewContext.automaticallyMergesChangesFromParent = true
     }
+    
+    func deleteAllData() {
+        let viewContext = container.viewContext
+        let entities = ["Card", "ColorEntity", "Item"]
+        
+        for entity in entities {
+            let fetchRequest: NSFetchRequest<NSFetchRequestResult> = NSFetchRequest(entityName: entity)
+            let deleteRequest = NSBatchDeleteRequest(fetchRequest: fetchRequest)
+            
+            do {
+                try container.persistentStoreCoordinator.execute(deleteRequest, with: viewContext)
+            } catch {
+                print("Error deleting entity \(entity): \(error)")
+            }
+        }
+        
+        viewContext.reset()
+    }
 }

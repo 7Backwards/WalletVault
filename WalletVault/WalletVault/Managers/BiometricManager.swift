@@ -15,6 +15,7 @@ protocol BiometricAuthenticating {
 extension LAContext: BiometricAuthenticating {}
 
 class BiometricManager {
+    static var skipAuthentication: Bool = false
     let context: BiometricAuthenticating
     var loginReason = NSLocalizedString("Protection with Face ID", comment: "")
     
@@ -27,6 +28,12 @@ class BiometricManager {
     }
     
     func authenticateUser(completion: @escaping (Result<Bool, AuthenticationError>) -> Void) {
+        if Self.skipAuthentication {
+            Logger.log("Biometric authentication skipped (UI-TESTING mode)")
+            completion(.success(true))
+            return
+        }
+        
         guard context.canEvaluatePolicy(.deviceOwnerAuthentication, error: nil) else {
             Logger.log("Biometrics unavailable", level: .error)
             completion(.failure(.biometricUnavailable))

@@ -61,6 +61,15 @@
 		B08B1BA92F10809B002315FC /* WalletVaultTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = B08B1BA12F10809B002315FC /* WalletVaultTests.swift */; };
 		B08B1BAD2F1080A1002315FC /* WalletVaultUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = B08B1BAA2F1080A1002315FC /* WalletVaultUITests.swift */; };
 		B08B1BAE2F1080A1002315FC /* WalletVaultUITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = B08B1BAB2F1080A1002315FC /* WalletVaultUITestsLaunchTests.swift */; };
+		B08B1BB02F1080A1002315FC /* CardListUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = B08B1BAF2F1080A1002315FC /* CardListUITests.swift */; };
+		B08B1BB22F1080A1002315FC /* AddCardUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = B08B1BB12F1080A1002315FC /* AddCardUITests.swift */; };
+		B08B1BB42F1080A1002315FC /* SearchUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = B08B1BB32F1080A1002315FC /* SearchUITests.swift */; };
+		B08B1BB62F1080A1002315FC /* CardDetailsUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = B08B1BB52F1080A1002315FC /* CardDetailsUITests.swift */; };
+		B08B1BB82F1080A1002315FC /* CardSharingUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = B08B1BB72F1080A1002315FC /* CardSharingUITests.swift */; };
+		B08B1BBA2F1080A1002315FC /* QRCodeScannerUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = B08B1BB92F1080A1002315FC /* QRCodeScannerUITests.swift */; };
+		B08B1BBC2F1080A1002315FC /* UITestHelpers.swift in Sources */ = {isa = PBXBuildFile; fileRef = B08B1BBB2F1080A1002315FC /* UITestHelpers.swift */; };
+		B08B1BBE2F1080A1002315FC /* TestDataCreator.swift in Sources */ = {isa = PBXBuildFile; fileRef = B08B1BBD2F1080A1002315FC /* TestDataCreator.swift */; };
+
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -140,6 +149,15 @@
 		B08B1BA12F10809B002315FC /* WalletVaultTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WalletVaultTests.swift; sourceTree = "<group>"; };
 		B08B1BAA2F1080A1002315FC /* WalletVaultUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WalletVaultUITests.swift; sourceTree = "<group>"; };
 		B08B1BAB2F1080A1002315FC /* WalletVaultUITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WalletVaultUITestsLaunchTests.swift; sourceTree = "<group>"; };
+		B08B1BAF2F1080A1002315FC /* CardListUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardListUITests.swift; sourceTree = "<group>"; };
+		B08B1BB12F1080A1002315FC /* AddCardUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddCardUITests.swift; sourceTree = "<group>"; };
+		B08B1BB32F1080A1002315FC /* SearchUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchUITests.swift; sourceTree = "<group>"; };
+		B08B1BB52F1080A1002315FC /* CardDetailsUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardDetailsUITests.swift; sourceTree = "<group>"; };
+		B08B1BB72F1080A1002315FC /* CardSharingUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardSharingUITests.swift; sourceTree = "<group>"; };
+		B08B1BB92F1080A1002315FC /* QRCodeScannerUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QRCodeScannerUITests.swift; sourceTree = "<group>"; };
+		B08B1BBB2F1080A1002315FC /* UITestHelpers.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UITestHelpers.swift; sourceTree = "<group>"; };
+		B08B1BBD2F1080A1002315FC /* TestDataCreator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TestDataCreator.swift; sourceTree = "<group>"; };
+
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -362,12 +380,29 @@
 		B08B1BAC2F1080A1002315FC /* WalletVaultUITests */ = {
 			isa = PBXGroup;
 			children = (
+				B08B1BBF2F1080A1002315FC /* Helpers */,
+				B08B1BAF2F1080A1002315FC /* CardListUITests.swift */,
+				B08B1BB12F1080A1002315FC /* AddCardUITests.swift */,
+				B08B1BB32F1080A1002315FC /* SearchUITests.swift */,
+				B08B1BB52F1080A1002315FC /* CardDetailsUITests.swift */,
+				B08B1BB72F1080A1002315FC /* CardSharingUITests.swift */,
+				B08B1BB92F1080A1002315FC /* QRCodeScannerUITests.swift */,
 				B08B1BAA2F1080A1002315FC /* WalletVaultUITests.swift */,
 				B08B1BAB2F1080A1002315FC /* WalletVaultUITestsLaunchTests.swift */,
 			);
 			path = WalletVaultUITests;
 			sourceTree = "<group>";
 		};
+		B08B1BBF2F1080A1002315FC /* Helpers */ = {
+			isa = PBXGroup;
+			children = (
+				B08B1BBB2F1080A1002315FC /* UITestHelpers.swift */,
+				B08B1BBD2F1080A1002315FC /* TestDataCreator.swift */,
+			);
+			path = Helpers;
+			sourceTree = "<group>";
+		};
+
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -567,9 +602,18 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				B08B1BB02F1080A1002315FC /* CardListUITests.swift in Sources */,
+				B08B1BB22F1080A1002315FC /* AddCardUITests.swift in Sources */,
+				B08B1BB42F1080A1002315FC /* SearchUITests.swift in Sources */,
+				B08B1BB62F1080A1002315FC /* CardDetailsUITests.swift in Sources */,
+				B08B1BB82F1080A1002315FC /* CardSharingUITests.swift in Sources */,
+				B08B1BBA2F1080A1002315FC /* QRCodeScannerUITests.swift in Sources */,
+				B08B1BBC2F1080A1002315FC /* UITestHelpers.swift in Sources */,
+				B08B1BBE2F1080A1002315FC /* TestDataCreator.swift in Sources */,
 				B08B1BAD2F1080A1002315FC /* WalletVaultUITests.swift in Sources */,
 				B08B1BAE2F1080A1002315FC /* WalletVaultUITestsLaunchTests.swift in Sources */,
 			);
+
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXSourcesBuildPhase section */
@@ -858,7 +902,7 @@
 				SWIFT_EMIT_LOC_STRINGS = NO;
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
-				TEST_TARGET_NAME = SafeWallet;
+				TEST_TARGET_NAME = WalletVault;
 			};
 			name = Debug;
 		};
@@ -879,7 +923,7 @@
 				SWIFT_EMIT_LOC_STRINGS = NO;
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
-				TEST_TARGET_NAME = SafeWallet;
+				TEST_TARGET_NAME = WalletVault;
 			};
 			name = Release;
 		};

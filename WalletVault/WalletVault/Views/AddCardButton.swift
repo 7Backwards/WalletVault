@@ -36,7 +36,7 @@ struct AddButton: View {
                     case .savingError:
                         alertMessage = "Something went wrong, please try again."
                     case .shortCardNumber:
-                        alertMessage = "Card number is not invalid, please update it."
+                        alertMessage = "Card number is invalid, please update it."
                     }
                     viewModel.showAlert(alertMessage)
                 }
@@ -62,5 +62,6 @@ struct AddButton: View {
         .foregroundColor(Color(.systemBackground))
         .cornerRadius(12)
         .shadow(color: Color.blue.opacity(0.3), radius: 6, x: 0, y: 3)
+        .accessibilityIdentifier("saveButton")
     }
 }

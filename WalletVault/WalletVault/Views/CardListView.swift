@@ -54,6 +54,7 @@ struct CardListView: View {
                             Image(systemName: "qrcode.viewfinder")
                                 .foregroundStyle(.secondary)
                         }
+                        .accessibilityIdentifier("qrScanButton")
                     }
                 }
             }
@@ -65,6 +66,7 @@ struct CardListView: View {
                         Image(systemName: "magnifyingglass")
                             .foregroundStyle(.secondary)
                         TextField("Search cards", text: $viewModel.searchText)
+                            .accessibilityIdentifier("searchField")
                     }
                     .padding(10)
                     .glassEffect()
@@ -77,6 +79,7 @@ struct CardListView: View {
                             .tint(.primary)
                             .padding(10)
                     }
+                    .accessibilityIdentifier("addCardButton")
                     .glassEffect()
                 }
                 .padding(.horizontal)
@@ -145,6 +148,7 @@ struct CardListView: View {
                         }
                         .foregroundColor(.inverseSystemBackground)
                         .transition(.opacity.combined(with: .move(edge: .bottom)))
+                        .accessibilityIdentifier("cardButton_\(card.objectID)")
                     }
                 }
             }
@@ -174,6 +178,7 @@ struct NoSearchResultsView: View {
             Spacer()
         }
         .padding()
+        .accessibilityIdentifier("noSearchResultsView")
     }
 }
 
@@ -190,13 +195,18 @@ struct NoContentView: View {
                 .font(.title)
                 .fontWeight(.medium)
                 .foregroundColor(.secondary)
+                .accessibilityIdentifier("emptyStateTitle")
             Text("Tap the + button to add your first card")
                 .font(.subheadline)
                 .multilineTextAlignment(.center)
                 .foregroundColor(.secondary.opacity(0.8))
+                .accessibilityIdentifier("emptyStateInstruction")
             Spacer()
         }
         .padding()
+        .contentShape(Rectangle())
+        .accessibilityElement(children: .contain)
+        .accessibilityIdentifier("noCardsView")
     }
 }
 

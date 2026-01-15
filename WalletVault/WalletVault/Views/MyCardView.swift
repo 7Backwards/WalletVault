@@ -206,6 +206,7 @@ struct MyCardViewActionButtons: View {
                     .frame(width: 30, height: 30)
                     .padding(5)
             }
+            .accessibilityIdentifier("shareButton")
             .buttonStyle(.glass)
 
             Button(action: {
@@ -226,6 +227,7 @@ struct MyCardViewActionButtons: View {
                     .padding(5)
 
             }
+            .accessibilityIdentifier(viewModel.isEditable ? "undoButton" : "editButton")
             .buttonStyle(.glass)
 
             Button(action: {
@@ -237,6 +239,7 @@ struct MyCardViewActionButtons: View {
                     .frame(width: 30, height: 30)
                     .padding(5)
             }
+            .accessibilityIdentifier("deleteButton")
             .buttonStyle(.glass)
         }
         .padding(.horizontal, 20)

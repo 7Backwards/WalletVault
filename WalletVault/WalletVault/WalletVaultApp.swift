@@ -16,6 +16,18 @@ struct WalletVaultApp: App {
     let viewContext: NSManagedObjectContext
 
     init() {
+        let launchArguments = ProcessInfo.processInfo.arguments
+        
+        if launchArguments.contains("UI-TESTING") {
+            if launchArguments.contains("CLEAR-DATA") {
+                PersistenceController.shared.deleteAllData()
+            }
+            
+            if launchArguments.contains("DISABLE-BIOMETRIC-AUTH") {
+                BiometricManager.skipAuthentication = true
+            }
+        }
+        
         self.viewContext = PersistenceController.shared.container.viewContext
         self.appManager = AppManager(context: viewContext)
     }
