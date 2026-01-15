@@ -28,7 +28,8 @@ struct QRCodeScannerView: View {
             }
             .frame(maxHeight: qrCodeMaxHeight)
             .cornerRadius(12)
-            .shadow(radius: 10)
+            .background(Color(UIColor.secondarySystemBackground))
+            .cornerRadius(12)
             .overlay(
                 RoundedRectangle(cornerRadius: qrCodeAlignmentFrameCornerRadius)
                     .strokeBorder(style: StrokeStyle(lineWidth: 4, dash: [10]))
@@ -91,7 +92,7 @@ struct QRCodeScannerView: View {
         .padding()
         .background(Color(UIColor.systemBackground))
         .cornerRadius(12)
-        .shadow(radius: 10)
+        .shadow(color: Color.black.opacity(0.1), radius: 12, x: 0, y: 6)
         .padding(.horizontal, 16)
     }
 

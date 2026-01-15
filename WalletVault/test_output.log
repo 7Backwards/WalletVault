@@ -1,0 +1,28 @@
+Command line invocation:
+    /Applications/Xcode_26.app/Contents/Developer/usr/bin/xcodebuild test -scheme WalletVault -destination "platform=iOS Simulator,name=iPhone 15" -enableCodeCoverage YES
+
+2026-01-15 00:44:02.816 xcodebuild[47819:11127735] Writing error result bundle to /var/folders/g6/64spfzcs7v1dmpv6d944c7vc0000gn/T/ResultBundle_2026-15-01_00-44-0002.xcresult
+xcodebuild: error: Unable to find a device matching the provided destination specifier:
+		{ platform:iOS Simulator, OS:latest, name:iPhone 15 }
+
+	The requested device could not be found because no available devices matched the request.
+
+	Available destinations for the "WalletVault" scheme:
+		{ platform:macOS, arch:arm64, variant:Designed for [iPad,iPhone], id:00006000-000C49C921FA801E, name:My Mac }
+		{ platform:iOS, arch:arm64, id:00008150-0015689C3C82401C, name:Neves }
+		{ platform:iOS, id:dvtdevice-DVTiPhonePlaceholder-iphoneos:placeholder, name:Any iOS Device }
+		{ platform:iOS Simulator, id:dvtdevice-DVTiOSDeviceSimulatorPlaceholder-iphonesimulator:placeholder, name:Any iOS Simulator Device }
+		{ platform:iOS Simulator, arch:arm64, id:45F72CE6-DC48-4B9B-8532-8D46FAE968EB, OS:26.0, name:iPad (A16) }
+		{ platform:iOS Simulator, arch:arm64, id:97BA7B3C-25A0-44FC-B9D9-B4E792D2FB6C, OS:26.0, name:iPad Air 11-inch (M3) }
+		{ platform:iOS Simulator, arch:arm64, id:E7C5F010-7E8F-4384-A863-F69F380BD42B, OS:26.0, name:iPad Air 13-inch (M3) }
+		{ platform:iOS Simulator, arch:arm64, id:C9744E1F-B7A2-46D3-8C07-19FAF75EA7A9, OS:26.0, name:iPad Pro 11-inch (M4) }
+		{ platform:iOS Simulator, arch:arm64, id:008F1428-5E5B-4B5E-85A0-7DE7B3E34BD6, OS:26.0, name:iPad Pro 13-inch (M4) }
+		{ platform:iOS Simulator, arch:arm64, id:559B44C2-13D0-476F-8CDE-D8D050060912, OS:26.0, name:iPad mini (A17 Pro) }
+		{ platform:iOS Simulator, arch:arm64, id:50352BF0-40BF-4F5B-857E-7510B12D2F6F, OS:26.0, name:iPhone 16e }
+		{ platform:iOS Simulator, arch:arm64, id:20F08002-A1C3-4323-AC77-799E5238C3B6, OS:26.0, name:iPhone 17 }
+		{ platform:iOS Simulator, arch:arm64, id:1A7E96A1-05CE-4420-AF94-01B781F5784E, OS:26.0, name:iPhone 17 Pro }
+		{ platform:iOS Simulator, arch:arm64, id:344B9D00-A23D-4503-A620-EA836FD7132D, OS:26.0, name:iPhone 17 Pro Max }
+		{ platform:iOS Simulator, arch:arm64, id:2BA256FA-CBD1-417E-9E79-1BFA2FE7D8D7, OS:26.0, name:iPhone Air }
+
+	Ineligible destinations for the "WalletVault" scheme:
+		{ platform:iOS, arch:arm64e, id:00008101-001E20693C01001E, name:Gonçalo’s iPhone, error:Gonçalo’s iPhone’s iOS 17.4.1 doesn’t match WalletVault.app’s iOS 26.0 deployment target. Upgrade Gonçalo’s iPhone’s iOS version or lower WalletVault.app’s deployment target. }

@@ -110,7 +110,7 @@ struct CardListView: View {
                     .presentationDragIndicator(.visible)
             case .scanQRCode:
                 QRCodeScannerView(viewModel: viewModel)
-                    .presentationDetents([.height(560)])
+                    .presentationDetents([.height(600)])
                     .presentationDragIndicator(.visible)
             }
         }

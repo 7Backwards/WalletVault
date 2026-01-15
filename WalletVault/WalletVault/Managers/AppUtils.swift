@@ -22,7 +22,7 @@ class AppUtils {
     }
     
     func getShareCardCode(card: CardInfo, key: SymmetricKey) -> String? {
-        encryptString("\(card.cardName),\(card.cardNumber),\(card.expiryDate), \(card.cvvCode), \(card.pin)", using: key)
+        encryptString("\(card.cardName)|;|\(card.cardNumber)|;|\(card.expiryDate)|;|\(card.cvvCode)|;|\(card.pin)", using: key)
     }
     
     func parseCardInfo(from shareableCode: String, using key: SymmetricKey) -> CardInfo? {
@@ -43,10 +43,16 @@ class AppUtils {
             return nil
         }
         
-        // Split the decrypted string into components
-        let components = decryptedString.components(separatedBy: ",")
+        // Try to split with the new delimiter first
+        var components = decryptedString.components(separatedBy: "|;|")
+        
+        // If the new delimiter doesn't work, try the legacy comma delimiter
+        if components.count < 5 {
+            components = decryptedString.components(separatedBy: ",")
+        }
+        
         guard components.count >= 5 else {
-            print("Decrypted string does not contain the correct number of components.")
+            print("Decrypted string does not contain the correct number of components. Found: \(components.count)")
             return nil
         }
         

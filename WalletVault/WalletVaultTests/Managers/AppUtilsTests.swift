@@ -18,20 +18,25 @@ class AppUtilsTests: XCTestCase {
 
     func testGetFormattedShareCardInfo_ShouldReturnFormattedString() {
         let cardInfo = CardInfo(cardName: "Test Card", cardNumber: "1234567890123456", expiryDate: "12/25", cvvCode: "123", pin: "1234")
-        let expectedString = "Card Name: Test Card \nCard Number: 1234567890123456 \nExpiry Date: 12/25 \nCVV: 123 \nCard Pin: 1234"
+        let expectedString = "\(NSLocalizedString("Card Name", comment: "")): Test Card \n\(NSLocalizedString("Card Number", comment: "")): 1234567890123456 \n\(NSLocalizedString("Expiry Date", comment: "")): 12/25 \n\(NSLocalizedString("CVV", comment: "")): 123 \n\(NSLocalizedString("Card Pin", comment: "")): 1234"
         let formattedString = appUtils.getFormattedShareCardInfo(card: cardInfo)
         XCTAssertEqual(formattedString, expectedString)
     }
 
-    func testGetNonFormattedShareCardInfo_ShouldReturnCommaSeparatedString() {
+    func testGetShareCardCode_ShouldReturnEncryptedString() {
         let cardInfo = CardInfo(cardName: "Test Card", cardNumber: "1234567890123456", expiryDate: "12/25", cvvCode: "123", pin: "1234")
-        let expectedString = "Test Card,1234567890123456,12/25, 123, 1234"
-        let nonFormattedString = appUtils.getShareCardCode(card: cardInfo, key: AppConstants().encryptionKey)
-        XCTAssertEqual(nonFormattedString, expectedString)
+        let encryptedString = appUtils.getShareCardCode(card: cardInfo, key: encryptionKey)
+        XCTAssertNotNil(encryptedString)
+        XCTAssertNotEqual(encryptedString, "Test Card|;|1234567890123456|;|12/25|;|123|;|1234")
+        
+        // Verify it can be decrypted back
+        let decryptedInfo = appUtils.parseCardInfo(from: encryptedString!, using: encryptionKey)
+        XCTAssertEqual(decryptedInfo?.cardName, "Test Card")
+        XCTAssertEqual(decryptedInfo?.cardNumber, "1234567890123456")
     }
 
     func testParseCardInfo_WithValidString_ShouldReturnCardInfo() {
-        let shareableString = appUtils.encryptString("Test Card,1234567890123456,12/25,123,1234", using: encryptionKey) ?? ""
+        let shareableString = appUtils.encryptString("Test Card|;|1234567890123456|;|12/25|;|123|;|1234", using: encryptionKey) ?? ""
         let cardInfo = appUtils.parseCardInfo(from: shareableString, using: encryptionKey)
         
         XCTAssertNotNil(cardInfo)

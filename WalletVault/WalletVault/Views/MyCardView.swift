@@ -169,7 +169,7 @@ struct MyCardView: View {
                 .background(Color(UIColor.systemBackground))
                 .cornerRadius(12)
                 .shadow(color: Color.black.opacity(0.1), radius: 12, x: 0, y: 6)
-                .presentationDetents([.height(560)])
+                .presentationDetents([.height(600)])
                 .presentationDragIndicator(.visible)
                 .padding(.horizontal)
             case .outsideShare:

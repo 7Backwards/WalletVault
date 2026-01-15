@@ -38,6 +38,12 @@ class AddOrEditMyCardViewModel {
         dateFormatter.locale = Locale(identifier: "en_US_POSIX")
         dateFormatter.isLenient = false
 
+        // Strict separator check as DateFormatter can be lenient with separators even when isLenient = false
+        guard expiryDate.contains("/") else {
+            completion(.failure(.invalidDate))
+            return
+        }
+
         if let date = dateFormatter.date(from: expiryDate) {
             if Calendar.current.compare(date, to: Date(), toGranularity: .month) == .orderedDescending {
                 if let id {

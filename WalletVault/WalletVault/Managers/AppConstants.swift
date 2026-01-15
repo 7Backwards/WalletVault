@@ -21,6 +21,6 @@ class AppConstants: ObservableObject {
     @Published var cardVerticalMarginSpacing: CGFloat = 20
     @Published var qrCodeSize: CGSize = CGSize(width: 300, height: 300)
     @Published var autoLockTimer: TimeInterval = 30 // Seconds
-    let encryptionKey = SymmetricKey(data: "WalletVaultKey123".data(using: .utf8)!)
+    let encryptionKey = SymmetricKey(data: "WalletVault_Encryption_Key_2024!".data(using: .utf8)!)
     var defaultColors: [String] = [Color.black.toHex()!, Color.purple.toHex()!, Color.red.toHex()!, Color.green.toHex()!, Color.blue.toHex()!]
 }
