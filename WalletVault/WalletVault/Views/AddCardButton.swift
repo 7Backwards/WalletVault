@@ -32,11 +32,11 @@ struct AddButton: View {
                 case .failure(let error):
                     switch error {
                     case .invalidDate:
-                        alertMessage = "Invalid expiration date, please update it."
+                        alertMessage = NSLocalizedString("Invalid expiration date, please update it.", comment: "")
                     case .savingError:
-                        alertMessage = "Something went wrong, please try again."
+                        alertMessage = NSLocalizedString("Something went wrong, please try again.", comment: "")
                     case .shortCardNumber:
-                        alertMessage = "Card number is invalid, please update it."
+                        alertMessage = NSLocalizedString("Card number is invalid, please update it.", comment: "")
                     }
                     viewModel.showAlert(alertMessage)
                 }

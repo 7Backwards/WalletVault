@@ -1,1547 +1,1817 @@
 {
-  "sourceLanguage" : "en",
-  "strings" : {
-    "" : {
-
-    },
-    "Are you sure you want to delete this card?" : {
-      "localizations" : {
-        "de" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Sind Sie sicher, dass Sie diese Karte löschen möchten?"
+  "sourceLanguage": "en",
+  "strings": {
+    "": {},
+    "An error has occurred, please try again.": {
+      "localizations": {
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Ein Fehler ist aufgetreten, bitte versuchen Sie es erneut."
           }
         },
-        "es" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "¿Está seguro/a de que desea eliminar esta tarjeta?"
+        "es": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Ha ocurrido un error, por favor inténtelo de nuevo."
           }
         },
-        "fr" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Êtes-vous sûr(e) de vouloir supprimer cette carte ?"
+        "fr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Une erreur est survenue, veuillez réessayer."
           }
         },
-        "pt-BR" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Tem a certeza de que deseja eliminar este cartão?"
+        "pt-BR": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Ocorreu um erro, por favor tente novamente."
           }
         },
-        "pt-PT" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Tem a certeza de que deseja eliminar este cartão?"
+        "pt-PT": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Ocorreu um erro, por favor tente novamente."
           }
         }
       }
     },
-    "Camera Permission Needed" : {
-      "localizations" : {
-        "de" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Kameraerlaubnis erforderlich"
+    "Are you sure you want to delete this card?": {
+      "localizations": {
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Sind Sie sicher, dass Sie diese Karte löschen möchten?"
           }
         },
-        "es" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Se necesita permiso de cámara"
+        "es": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "¿Está seguro/a de que desea eliminar esta tarjeta?"
           }
         },
-        "fr" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Autorisation de caméra nécessaire"
+        "fr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Êtes-vous sûr(e) de vouloir supprimer cette carte ?"
           }
         },
-        "pt-BR" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Permissão de câmera necessária"
+        "pt-BR": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Tem certeza de que deseja excluir este cartão?"
           }
         },
-        "pt-PT" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Permissão de câmera necessária"
-          }
-        }
-      }
-    },
-    "Cancel" : {
-      "localizations" : {
-        "de" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Abbrechen"
-          }
-        },
-        "es" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Cancelar"
-          }
-        },
-        "fr" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Annuler"
-          }
-        },
-        "pt-BR" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Cancelar"
-          }
-        },
-        "pt-PT" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Cancelar"
+        "pt-PT": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Tem a certeza de que deseja eliminar este cartão?"
           }
         }
       }
     },
-    "Card imported successfully." : {
-      "localizations" : {
-        "de" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Karte erfolgreich importiert."
+    "CVV": {
+      "localizations": {
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "CVV"
           }
         },
-        "es" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Tarjeta importada exitosamente."
+        "es": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "CVV"
           }
         },
-        "fr" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Carte importée avec succès."
+        "fr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "CVV"
           }
         },
-        "pt-BR" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Cartão importado com sucesso."
+        "pt-BR": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "CVV"
           }
         },
-        "pt-PT" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Cartão importado com sucesso."
-          }
-        }
-      }
-    },
-    "Card Name" : {
-      "localizations" : {
-        "de" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Kartennamen"
-          }
-        },
-        "es" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Nombre de la Tarjeta"
-          }
-        },
-        "fr" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Nom de la carte"
-          }
-        },
-        "pt-BR" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Nome do Cartão"
-          }
-        },
-        "pt-PT" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Nome do Cartão"
+        "pt-PT": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "CVV"
           }
         }
       }
     },
-    "Card Number" : {
-      "localizations" : {
-        "de" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Kartennummer"
+    "Camera Permission Needed": {
+      "localizations": {
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Kameraerlaubnis erforderlich"
           }
         },
-        "es" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Número de la Tarjeta"
+        "es": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Se necesita permiso de cámara"
           }
         },
-        "fr" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Numéro de la carte"
+        "fr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Autorisation de caméra nécessaire"
           }
         },
-        "pt-BR" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Número do Cartão"
+        "pt-BR": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Permissão de câmera necessária"
           }
         },
-        "pt-PT" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Número do Cartão"
-          }
-        }
-      }
-    },
-    "Card Pin" : {
-      "localizations" : {
-        "de" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Karten-PIN"
-          }
-        },
-        "es" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "PIN de la Tarjeta"
-          }
-        },
-        "fr" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Code PIN de la carte"
-          }
-        },
-        "pt-BR" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "PIN do Cartão"
-          }
-        },
-        "pt-PT" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "PIN do Cartão"
+        "pt-PT": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Permissão de câmera necessária"
           }
         }
       }
     },
-    "Choose how you would like to share the card" : {
-      "localizations" : {
-        "de" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Wählen Sie aus, wie Sie die Karte teilen möchten."
+    "Cancel": {
+      "localizations": {
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Abbrechen"
           }
         },
-        "es" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Elija cómo le gustaría compartir la tarjeta."
+        "es": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Cancelar"
           }
         },
-        "fr" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Choisissez comment vous souhaitez partager la carte"
+        "fr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Annuler"
           }
         },
-        "pt-BR" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Escolha como deseja partilhar o cartão."
+        "pt-BR": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Cancelar"
           }
         },
-        "pt-PT" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Escolha como deseja partilhar o cartão."
-          }
-        }
-      }
-    },
-    "Copy" : {
-      "localizations" : {
-        "de" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Kopieren"
-          }
-        },
-        "es" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Copiar"
-          }
-        },
-        "fr" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Copier"
-          }
-        },
-        "pt-BR" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Copiar"
-          }
-        },
-        "pt-PT" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Copiar"
+        "pt-PT": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Cancelar"
           }
         }
       }
     },
-    "CVV" : {
-      "localizations" : {
-        "de" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "CVV"
+    "Card Expired!": {
+      "localizations": {
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Karte abgelaufen!"
           }
         },
-        "es" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "CVV"
+        "es": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "¡Tarjeta vencida!"
           }
         },
-        "fr" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "CVV"
+        "fr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Carte expirée !"
           }
         },
-        "pt-BR" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "CVV"
+        "pt-BR": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Cartão expirado!"
           }
         },
-        "pt-PT" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "CVV"
-          }
-        }
-      }
-    },
-    "Delete" : {
-      "localizations" : {
-        "de" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Löschen"
-          }
-        },
-        "es" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Borrar"
-          }
-        },
-        "fr" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Supprimer"
-          }
-        },
-        "pt-BR" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Eliminar"
-          }
-        },
-        "pt-PT" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Eliminar"
+        "pt-PT": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Cartão expirado!"
           }
         }
       }
     },
-    "Delete Card" : {
-      "localizations" : {
-        "de" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Karte löschen"
+    "Card Expiry Reminder!": {
+      "localizations": {
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Kartenaublauf-Erinnerung!"
           }
         },
-        "es" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Borrar Tarjeta"
+        "es": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "¡Recordatorio de vencimiento de tarjeta!"
           }
         },
-        "fr" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Supprimer la carte"
+        "fr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Rappel d'expiration de carte !"
           }
         },
-        "pt-BR" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Eliminar Cartão"
+        "pt-BR": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Lembrete de vencimento de cartão!"
           }
         },
-        "pt-PT" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Eliminar Cartão"
-          }
-        }
-      }
-    },
-    "Edit" : {
-      "localizations" : {
-        "de" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Bearbeiten"
-          }
-        },
-        "es" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Editar"
-          }
-        },
-        "fr" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Modifier"
-          }
-        },
-        "pt-BR" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Editar"
-          }
-        },
-        "pt-PT" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Editar"
+        "pt-PT": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Lembrete de validade de cartão!"
           }
         }
       }
     },
-    "Enter Code" : {
-      "localizations" : {
-        "de" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Code eingeben"
+    "Card Name": {
+      "localizations": {
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Kartennamen"
           }
         },
-        "es" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Introducir código"
+        "es": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Nombre de la Tarjeta"
           }
         },
-        "fr" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Entrer le code"
+        "fr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Nom de la carte"
           }
         },
-        "pt-BR" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Inserir código"
+        "pt-BR": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Nome do Cartão"
           }
         },
-        "pt-PT" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Introduzir código"
-          }
-        }
-      }
-    },
-    "Enter Code Manually" : {
-      "localizations" : {
-        "de" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Code manuell eingeben"
-          }
-        },
-        "es" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Ingresar código manualmente"
-          }
-        },
-        "fr" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Entrer le code manuellement"
-          }
-        },
-        "pt-BR" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Inserir código manualmente"
-          }
-        },
-        "pt-PT" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Introduzir código manualmente"
+        "pt-PT": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Nome do Cartão"
           }
         }
       }
     },
-    "Error" : {
-      "localizations" : {
-        "de" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Fehler"
+    "Card Number": {
+      "localizations": {
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Kartennummer"
           }
         },
-        "es" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Error"
+        "es": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Número de la Tarjeta"
           }
         },
-        "fr" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Erreur"
+        "fr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Numéro de la carte"
           }
         },
-        "pt-BR" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Erro"
+        "pt-BR": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Número do Cartão"
           }
         },
-        "pt-PT" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Erro"
-          }
-        }
-      }
-    },
-    "Error generating QR Code" : {
-      "localizations" : {
-        "de" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Fehler beim Generieren des QR-Codes"
-          }
-        },
-        "es" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Error al generar el código QR"
-          }
-        },
-        "fr" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Erreur lors de la génération du QR Code"
-          }
-        },
-        "pt-BR" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Erro ao gerar o QR Code"
-          }
-        },
-        "pt-PT" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Erro ao gerar o QR Code"
+        "pt-PT": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Número do Cartão"
           }
         }
       }
     },
-    "Expires on" : {
-      "localizations" : {
-        "de" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "läuft ab am"
+    "Card Pin": {
+      "localizations": {
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Karten-PIN"
           }
         },
-        "es" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Expira el"
+        "es": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "PIN de la Tarjeta"
           }
         },
-        "fr" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Expire le"
+        "fr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Code PIN de la carte"
           }
         },
-        "pt-BR" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Expira em"
+        "pt-BR": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "PIN do Cartão"
           }
         },
-        "pt-PT" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Expira em"
-          }
-        }
-      }
-    },
-    "Expiry Date" : {
-      "localizations" : {
-        "de" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Ablaufdatum"
-          }
-        },
-        "es" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Fecha de Vencimiento"
-          }
-        },
-        "fr" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Date d'expiration"
-          }
-        },
-        "pt-BR" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Data de Validade"
-          }
-        },
-        "pt-PT" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Data de Validade"
+        "pt-PT": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "PIN do Cartão"
           }
         }
       }
     },
-    "MM/YY" : {
-      "localizations" : {
-        "de" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "MM/YY"
+    "Card imported successfully.": {
+      "localizations": {
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Karte erfolgreich importiert."
           }
         },
-        "es" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "MM/YY"
+        "es": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Tarjeta importada exitosamente."
           }
         },
-        "fr" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "MM/YY"
+        "fr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Carte importée avec succès."
           }
         },
-        "pt-BR" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "MM/YY"
+        "pt-BR": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Cartão importado com sucesso."
           }
         },
-        "pt-PT" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "MM/YY"
-          }
-        }
-      }
-    },
-    "Name" : {
-      "localizations" : {
-        "de" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Name"
-          }
-        },
-        "es" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Nombre"
-          }
-        },
-        "fr" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Nom"
-          }
-        },
-        "pt-BR" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Nome"
-          }
-        },
-        "pt-PT" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Nome"
+        "pt-PT": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Cartão importado com sucesso."
           }
         }
       }
     },
-    "No cards found" : {
-      "comment" : "A message displayed when no cards are found in the search results.",
-      "isCommentAutoGenerated" : true,
-      "localizations" : {
-        "de" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Keine Karten gefunden"
+    "Card number is invalid, please update it.": {
+      "localizations": {
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Die Kartennummer ist ungültig, bitte aktualisieren Sie sie."
           }
         },
-        "es" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "No se encontraron tarjetas"
+        "es": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "El número de tarjeta es inválido, por favor actualízalo."
           }
         },
-        "fr" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Aucune carte trouvée"
+        "fr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Le numéro de carte est invalide, veuillez le mettre à jour."
           }
         },
-        "pt-BR" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Nenhum cartão encontrado"
+        "pt-BR": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "O número do cartão é inválido, por favor atualize-o."
           }
         },
-        "pt-PT" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Nenhum cartão encontrado"
+        "pt-PT": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "O número do cartão é inválido, por favor atualize-o."
           }
         }
       }
     },
-    "No cards yet" : {
-      "comment" : "A description displayed when a user has not added any cards to their wallet.",
-      "isCommentAutoGenerated" : true,
-      "localizations" : {
-        "de" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Noch keine Karten"
+    "Choose how you would like to share the card": {
+      "localizations": {
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Wählen Sie aus, wie Sie die Karte teilen möchten."
           }
         },
-        "es" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Aún no hay tarjetas"
+        "es": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Elija cómo le gustaría compartir la tarjeta."
           }
         },
-        "fr" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Pas encore de cartes"
+        "fr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Choisissez comment vous souhaitez partager la carte"
           }
         },
-        "pt-BR" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Ainda não existem cartões"
+        "pt-BR": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Escolha como deseja compartilhar o cartão."
           }
         },
-        "pt-PT" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Ainda não existem cartões"
+        "pt-PT": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Escolha como deseja partilhar o cartão."
           }
         }
       }
     },
-    "Not Now" : {
-      "localizations" : {
-        "de" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Nicht jetzt"
+    "Copy": {
+      "localizations": {
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Kopieren"
           }
         },
-        "es" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Ahora no"
+        "es": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Copiar"
           }
         },
-        "fr" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Pas maintenant"
+        "fr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Copier"
           }
         },
-        "pt-BR" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Agora não"
+        "pt-BR": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Copiar"
           }
         },
-        "pt-PT" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Agora não"
-          }
-        }
-      }
-    },
-    "Number" : {
-      "localizations" : {
-        "de" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Nummer"
-          }
-        },
-        "es" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Número"
-          }
-        },
-        "fr" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Numéro"
-          }
-        },
-        "pt-BR" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Número"
-          }
-        },
-        "pt-PT" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Número"
+        "pt-PT": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Copiar"
           }
         }
       }
     },
-    "OK" : {
-      "localizations" : {
-        "de" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "OK"
+    "Delete": {
+      "localizations": {
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Löschen"
           }
         },
-        "es" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "OK"
+        "es": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Borrar"
           }
         },
-        "fr" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "OK"
+        "fr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Supprimer"
           }
         },
-        "pt-BR" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "OK"
+        "pt-BR": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Excluir"
           }
         },
-        "pt-PT" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "OK"
-          }
-        }
-      }
-    },
-    "Or use this code:" : {
-      "localizations" : {
-        "de" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Oder diesen Code verwenden:"
-          }
-        },
-        "es" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "O usa este código:"
-          }
-        },
-        "fr" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Ou utilisez ce code :"
-          }
-        },
-        "pt-BR" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Ou use este código:"
-          }
-        },
-        "pt-PT" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Ou use este código:"
+        "pt-PT": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Eliminar"
           }
         }
       }
     },
-    "Pin" : {
-      "localizations" : {
-        "de" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "PIN"
+    "Delete Card": {
+      "localizations": {
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Karte löschen"
           }
         },
-        "es" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Pin"
+        "es": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Borrar Tarjeta"
           }
         },
-        "fr" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "NIP"
+        "fr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Supprimer la carte"
           }
         },
-        "pt-BR" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Pin"
+        "pt-BR": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Excluir Cartão"
           }
         },
-        "pt-PT" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "PIN"
-          }
-        }
-      }
-    },
-    "Please allow camera access in your device settings to use the QR code scanner." : {
-      "localizations" : {
-        "de" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Bitte erlauben Sie den Kamerazugriff in Ihren Geräteeinstellungen, um den QR-Code-Scanner zu verwenden."
-          }
-        },
-        "es" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Por favor, permita el acceso a la cámara en la configuración de su dispositivo para utilizar el escáner de códigos QR."
-          }
-        },
-        "fr" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Veuillez autoriser l'accès à la caméra dans les réglages de votre appareil pour utiliser le scanner de QR code."
-          }
-        },
-        "pt-BR" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Por favor, permita o acesso à câmera nas configurações do seu dispositivo para usar o scanner de QR code."
-          }
-        },
-        "pt-PT" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Por favor, permita o acesso à câmera nas configurações do seu dispositivo para usar o scanner de QR code."
+        "pt-PT": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Eliminar Cartão"
           }
         }
       }
     },
-    "Protection with Face ID" : {
-      "localizations" : {
-        "de" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Schutz mit Face ID"
+    "Edit": {
+      "localizations": {
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Bearbeiten"
           }
         },
-        "es" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Protección con Face ID"
+        "es": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Editar"
           }
         },
-        "fr" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Protection avec Face ID"
+        "fr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Modifier"
           }
         },
-        "pt-BR" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Proteção com Face ID"
+        "pt-BR": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Editar"
           }
         },
-        "pt-PT" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Proteção com Face ID"
-          }
-        }
-      }
-    },
-    "Save Card" : {
-      "localizations" : {
-        "de" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Karte speichern"
-          }
-        },
-        "es" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Guardar Tarjeta"
-          }
-        },
-        "fr" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Enregistrer la carte"
-          }
-        },
-        "pt-BR" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Guardar Cartão"
-          }
-        },
-        "pt-PT" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Guardar Cartão"
+        "pt-PT": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Editar"
           }
         }
       }
     },
-    "Scan the QR Code or Enter the Code Manually" : {
-      "localizations" : {
-        "de" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "QR-Code scannen oder Code manuell eingeben"
+    "Enter Code": {
+      "localizations": {
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Code eingeben"
           }
         },
-        "es" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Escanea el código QR o ingresa el código manualmente"
+        "es": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Introducir código"
           }
         },
-        "fr" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Scannez le QR Code ou entrez le code manuellement"
+        "fr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Entrer le code"
           }
         },
-        "pt-BR" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Escaneie o QR Code ou insira o código manualmente"
+        "pt-BR": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Inserir código"
           }
         },
-        "pt-PT" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Digitalize o QR Code ou introduza o código manualmente"
+        "pt-PT": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Introduzir código"
           }
         }
       }
     },
-    "Scan this QR Code to add a new card" : {
-      "localizations" : {
-        "de" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Scannen Sie diesen QR-Code, um eine neue Karte hinzuzufügen"
+    "Enter Code Manually": {
+      "localizations": {
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Code manuell eingeben"
           }
         },
-        "es" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Escanea este código QR para añadir una nueva tarjeta"
+        "es": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Ingresar código manualmente"
           }
         },
-        "fr" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Scannez ce QR Code pour ajouter une nouvelle carte"
+        "fr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Entrer le code manuellement"
           }
         },
-        "pt-BR" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Escaneie este QR Code para adicionar um novo cartão"
+        "pt-BR": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Inserir código manualmente"
           }
         },
-        "pt-PT" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Digitalize este QR Code para adicionar um novo cartão"
+        "pt-PT": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Introduzir código manualmente"
           }
         }
       }
     },
-    "Search cards" : {
-      "comment" : "A placeholder text for a search bar in the card list view.",
-      "isCommentAutoGenerated" : true,
-      "localizations" : {
-        "de" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Karten suchen"
+    "Error": {
+      "localizations": {
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Fehler"
           }
         },
-        "es" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Buscar tarjetas"
+        "es": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Error"
           }
         },
-        "fr" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Rechercher des cartes"
+        "fr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Erreur"
           }
         },
-        "pt-BR" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Pesquisar cartões"
+        "pt-BR": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Erro"
           }
         },
-        "pt-PT" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Pesquisar cartões"
+        "pt-PT": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Erro"
           }
         }
       }
     },
-    "Select" : {
-      "localizations" : {
-        "de" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Auswählen"
+    "Error generating QR Code": {
+      "localizations": {
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Fehler beim Generieren des QR-Codes"
           }
         },
-        "es" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Seleccionar"
+        "es": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Error al generar el código QR"
           }
         },
-        "fr" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Sélectionner"
+        "fr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Erreur lors de la génération du QR Code"
           }
         },
-        "pt-BR" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Selecionar"
+        "pt-BR": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Erro ao gerar o QR Code"
           }
         },
-        "pt-PT" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Selecionar"
+        "pt-PT": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Erro ao gerar o QR Code"
           }
         }
       }
     },
-    "Settings" : {
-      "localizations" : {
-        "de" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Einstellungen"
+    "Expires on": {
+      "localizations": {
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "läuft ab am"
           }
         },
-        "es" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Ajustes"
+        "es": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Expira el"
           }
         },
-        "fr" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Réglages\" or \"Paramètres"
+        "fr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Expire le"
           }
         },
-        "pt-BR" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Configurações"
+        "pt-BR": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Expira em"
           }
         },
-        "pt-PT" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Configurações"
+        "pt-PT": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Expira em"
           }
         }
       }
     },
-    "Share" : {
-      "localizations" : {
-        "de" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Teilen"
+    "Expiry Date": {
+      "localizations": {
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Ablaufdatum"
           }
         },
-        "es" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Compartir"
+        "es": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Fecha de Vencimiento"
           }
         },
-        "fr" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Partager"
+        "fr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Date d'expiration"
           }
         },
-        "pt-BR" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Partilhar"
+        "pt-BR": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Data de Validade"
           }
         },
-        "pt-PT" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Partilhar"
+        "pt-PT": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Data de Validade"
           }
         }
       }
     },
-    "Share Card" : {
-      "localizations" : {
-        "de" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Karte teilen"
+    "Invalid expiration date, please update it.": {
+      "localizations": {
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Ungültiges Ablaufdatum, bitte aktualisieren Sie es."
           }
         },
-        "es" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Compartir Tarjeta"
+        "es": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Fecha de vencimiento inválida, por favor actualízala."
           }
         },
-        "fr" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Partager la carte"
+        "fr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Date d'expiration invalide, veuillez la mettre à jour."
           }
         },
-        "pt-BR" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Partilhar Cartão"
+        "pt-BR": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Data de validade inválida, por favor atualize-a."
           }
         },
-        "pt-PT" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Partilhar Cartão"
+        "pt-PT": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Data de validade inválida, por favor atualize-a."
           }
         }
       }
     },
-    "Share Inside App" : {
-      "localizations" : {
-        "de" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Im Inneren der App teilen"
+    "MM/YY": {
+      "localizations": {
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "MM/YY"
           }
         },
-        "es" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Compartir Dentro de la Aplicación"
+        "es": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "MM/YY"
           }
         },
-        "fr" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Partager à l'intérieur de l'application"
+        "fr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "MM/YY"
           }
         },
-        "pt-BR" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Partilhar do aplicativo"
+        "pt-BR": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "MM/YY"
           }
         },
-        "pt-PT" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Partilhar dentro da aplicação"
+        "pt-PT": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "MM/YY"
           }
         }
       }
     },
-    "Share Outside App" : {
-      "localizations" : {
-        "de" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Außerhalb der App teilen"
+    "Name": {
+      "localizations": {
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Name"
           }
         },
-        "es" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Compartir Fuera de la Aplicación"
+        "es": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Nombre"
           }
         },
-        "fr" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Partager en dehors de l'application"
+        "fr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Nom"
           }
         },
-        "pt-BR" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Partilhar fora do aplicativo"
+        "pt-BR": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Nome"
           }
         },
-        "pt-PT" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Partilhar fora da aplicação"
+        "pt-PT": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Nome"
           }
         }
       }
     },
-    "Submit Code" : {
-      "localizations" : {
-        "de" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Code senden"
+    "No cards found": {
+      "comment": "A message displayed when no cards are found in the search results.",
+      "isCommentAutoGenerated": true,
+      "localizations": {
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Keine Karten gefunden"
           }
         },
-        "es" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Enviar código"
+        "es": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "No se encontraron tarjetas"
           }
         },
-        "fr" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Soumettre le code"
+        "fr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Aucune carte trouvée"
           }
         },
-        "pt-BR" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Enviar código"
+        "pt-BR": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Nenhum cartão encontrado"
           }
         },
-        "pt-PT" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Enviar código"
+        "pt-PT": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Nenhum cartão encontrado"
           }
         }
       }
     },
-    "Success" : {
-      "localizations" : {
-        "de" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Erfolg"
+    "No cards yet": {
+      "comment": "A description displayed when a user has not added any cards to their wallet.",
+      "isCommentAutoGenerated": true,
+      "localizations": {
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Noch keine Karten"
           }
         },
-        "es" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Éxito"
+        "es": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Aún no hay tarjetas"
           }
         },
-        "fr" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Succès"
+        "fr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Pas encore de cartes"
           }
         },
-        "pt-BR" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Sucesso"
+        "pt-BR": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Ainda não existem cartões"
           }
         },
-        "pt-PT" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Sucesso"
+        "pt-PT": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Ainda não existem cartões"
           }
         }
       }
     },
-    "Tap the + button to add your first card" : {
-      "localizations" : {
-        "de" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Tippen Sie auf die Schaltfläche +, um Ihre erste Karte hinzuzufügen"
+    "Not Now": {
+      "localizations": {
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Nicht jetzt"
           }
         },
-        "es" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Toque el botón + para agregar su primera tarjeta"
+        "es": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Ahora no"
           }
         },
-        "fr" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Appuyez sur le bouton + pour ajouter votre première carte"
+        "fr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Pas maintenant"
           }
         },
-        "pt-BR" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Toque no botão + para adicionar o seu primeiro cartão"
+        "pt-BR": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Agora não"
           }
         },
-        "pt-PT" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Toque no botão + para adicionar o seu primeiro cartão"
+        "pt-PT": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Agora não"
           }
         }
       }
     },
-    "Try a different search term" : {
-      "comment" : "A message encouraging the user to try a different search term.",
-      "isCommentAutoGenerated" : true,
-      "localizations" : {
-        "de" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Versuchen Sie einen anderen Suchbegriff"
+    "Number": {
+      "localizations": {
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Nummer"
           }
         },
-        "es" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Intente con un término de búsqueda diferente"
+        "es": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Número"
           }
         },
-        "fr" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Essayez un autre terme de recherche"
+        "fr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Numéro"
           }
         },
-        "pt-BR" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Tente um termo de pesquisa diferente"
+        "pt-BR": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Número"
           }
         },
-        "pt-PT" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Tente um termo de pesquisa diferente"
+        "pt-PT": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Número"
           }
         }
       }
     },
-    "WalletVault" : {
-      "localizations" : {
-        "de" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "WalletVault"
+    "OK": {
+      "localizations": {
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "OK"
           }
         },
-        "es" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "WalletVault"
+        "es": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "OK"
           }
         },
-        "fr" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "WalletVault"
+        "fr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "OK"
           }
         },
-        "pt-BR" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "WalletVault"
+        "pt-BR": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "OK"
           }
         },
-        "pt-PT" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "WalletVault"
+        "pt-PT": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "OK"
+          }
+        }
+      }
+    },
+    "Or use this code:": {
+      "localizations": {
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Oder diesen Code verwenden:"
+          }
+        },
+        "es": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "O usa este código:"
+          }
+        },
+        "fr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Ou utilisez ce code :"
+          }
+        },
+        "pt-BR": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Ou use este código:"
+          }
+        },
+        "pt-PT": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Ou use este código:"
+          }
+        }
+      }
+    },
+    "Pin": {
+      "localizations": {
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "PIN"
+          }
+        },
+        "es": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Pin"
+          }
+        },
+        "fr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "NIP"
+          }
+        },
+        "pt-BR": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Pin"
+          }
+        },
+        "pt-PT": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "PIN"
+          }
+        }
+      }
+    },
+    "Please allow camera access in your device settings to use the QR code scanner.": {
+      "localizations": {
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Bitte erlauben Sie den Kamerazugriff in Ihren Geräteeinstellungen, um den QR-Code-Scanner zu verwenden."
+          }
+        },
+        "es": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Por favor, permita el acceso a la cámara en la configuración de su dispositivo para utilizar el escáner de códigos QR."
+          }
+        },
+        "fr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Veuillez autoriser l'accès à la caméra dans les réglages de votre appareil pour utiliser le scanner de QR code."
+          }
+        },
+        "pt-BR": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Por favor, permita o acesso à câmera nas configurações do seu dispositivo para usar o scanner de QR code."
+          }
+        },
+        "pt-PT": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Por favor, permita o acesso à câmera nas configurações do seu dispositivo para usar o scanner de QR code."
+          }
+        }
+      }
+    },
+    "Protection with Face ID": {
+      "localizations": {
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Schutz mit Face ID"
+          }
+        },
+        "es": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Protección con Face ID"
+          }
+        },
+        "fr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Protection avec Face ID"
+          }
+        },
+        "pt-BR": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Proteção com Face ID"
+          }
+        },
+        "pt-PT": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Proteção com Face ID"
+          }
+        }
+      }
+    },
+    "Save Card": {
+      "localizations": {
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Karte speichern"
+          }
+        },
+        "es": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Guardar Tarjeta"
+          }
+        },
+        "fr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Enregistrer la carte"
+          }
+        },
+        "pt-BR": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Salvar Cartão"
+          }
+        },
+        "pt-PT": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Guardar Cartão"
+          }
+        }
+      }
+    },
+    "Scan the QR Code or Enter the Code Manually": {
+      "localizations": {
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "QR-Code scannen oder Code manuell eingeben"
+          }
+        },
+        "es": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Escanea el código QR o ingresa el código manualmente"
+          }
+        },
+        "fr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Scannez le QR Code ou entrez le code manuellement"
+          }
+        },
+        "pt-BR": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Escaneie o QR Code ou insira o código manualmente"
+          }
+        },
+        "pt-PT": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Digitalize o QR Code ou introduza o código manualmente"
+          }
+        }
+      }
+    },
+    "Scan this QR Code to add a new card": {
+      "localizations": {
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Scannen Sie diesen QR-Code, um eine neue Karte hinzuzufügen"
+          }
+        },
+        "es": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Escanea este código QR para añadir una nueva tarjeta"
+          }
+        },
+        "fr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Scannez ce QR Code pour ajouter une nouvelle carte"
+          }
+        },
+        "pt-BR": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Escaneie este QR Code para adicionar um novo cartão"
+          }
+        },
+        "pt-PT": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Digitalize este QR Code para adicionar um novo cartão"
+          }
+        }
+      }
+    },
+    "Search cards": {
+      "comment": "A placeholder text for a search bar in the card list view.",
+      "isCommentAutoGenerated": true,
+      "localizations": {
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Karten suchen"
+          }
+        },
+        "es": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Buscar tarjetas"
+          }
+        },
+        "fr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Rechercher des cartes"
+          }
+        },
+        "pt-BR": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Pesquisar cartões"
+          }
+        },
+        "pt-PT": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Pesquisar cartões"
+          }
+        }
+      }
+    },
+    "Select": {
+      "localizations": {
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Auswählen"
+          }
+        },
+        "es": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Seleccionar"
+          }
+        },
+        "fr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Sélectionner"
+          }
+        },
+        "pt-BR": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Selecionar"
+          }
+        },
+        "pt-PT": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Selecionar"
+          }
+        }
+      }
+    },
+    "Settings": {
+      "localizations": {
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Einstellungen"
+          }
+        },
+        "es": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Ajustes"
+          }
+        },
+        "fr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Réglages"
+          }
+        },
+        "pt-BR": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Configurações"
+          }
+        },
+        "pt-PT": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Configurações"
+          }
+        }
+      }
+    },
+    "Share": {
+      "localizations": {
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Teilen"
+          }
+        },
+        "es": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Compartir"
+          }
+        },
+        "fr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Partager"
+          }
+        },
+        "pt-BR": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Comcompartilhar"
+          }
+        },
+        "pt-PT": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Partilhar"
+          }
+        }
+      }
+    },
+    "Share Card": {
+      "localizations": {
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Karte teilen"
+          }
+        },
+        "es": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Compartir Tarjeta"
+          }
+        },
+        "fr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Partager la carte"
+          }
+        },
+        "pt-BR": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Comcompartilhar Cartão"
+          }
+        },
+        "pt-PT": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Partilhar Cartão"
+          }
+        }
+      }
+    },
+    "Share Inside App": {
+      "localizations": {
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Im Inneren der App teilen"
+          }
+        },
+        "es": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Compartir Dentro de la Aplicación"
+          }
+        },
+        "fr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Partager à l'intérieur de l'application"
+          }
+        },
+        "pt-BR": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Comcompartilhar no aplicativo"
+          }
+        },
+        "pt-PT": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Partilhar dentro da aplicação"
+          }
+        }
+      }
+    },
+    "Share Outside App": {
+      "localizations": {
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Außerhalb der App teilen"
+          }
+        },
+        "es": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Compartir Fuera de la Aplicación"
+          }
+        },
+        "fr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Partager en dehors de l'application"
+          }
+        },
+        "pt-BR": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Comcompartilhar fora no aplicativo"
+          }
+        },
+        "pt-PT": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Partilhar fora da aplicação"
+          }
+        }
+      }
+    },
+    "Something went wrong, please try again.": {
+      "localizations": {
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Etwas ist schiefgelaufen, bitte versuchen Sie es erneut."
+          }
+        },
+        "es": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Algo salió mal, por favor inténtelo de nuevo."
+          }
+        },
+        "fr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Quelque chose s'est mal passé, veuillez réessayer."
+          }
+        },
+        "pt-BR": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Algo deu errado, por favor tente novamente."
+          }
+        },
+        "pt-PT": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Algo correu mal, por favor tente novamente."
+          }
+        }
+      }
+    },
+    "Submit Code": {
+      "localizations": {
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Code senden"
+          }
+        },
+        "es": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Enviar código"
+          }
+        },
+        "fr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Soumettre le code"
+          }
+        },
+        "pt-BR": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Enviar código"
+          }
+        },
+        "pt-PT": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Enviar código"
+          }
+        }
+      }
+    },
+    "Success": {
+      "localizations": {
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Erfolg"
+          }
+        },
+        "es": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Éxito"
+          }
+        },
+        "fr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Succès"
+          }
+        },
+        "pt-BR": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Sucesso"
+          }
+        },
+        "pt-PT": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Sucesso"
+          }
+        }
+      }
+    },
+    "Tap the + button to add your first card": {
+      "localizations": {
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Tippen Sie auf die Schaltfläche +, um Ihre erste Karte hinzuzufügen"
+          }
+        },
+        "es": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Toque el botón + para agregar su primera tarjeta"
+          }
+        },
+        "fr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Appuyez sur le bouton + pour ajouter votre première carte"
+          }
+        },
+        "pt-BR": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Toque no botão + para adicionar o seu primeiro cartão"
+          }
+        },
+        "pt-PT": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Toque no botão + para adicionar o seu primeiro cartão"
+          }
+        }
+      }
+    },
+    "Try a different search term": {
+      "comment": "A message encouraging the user to try a different search term.",
+      "isCommentAutoGenerated": true,
+      "localizations": {
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Versuchen Sie einen anderen Suchbegriff"
+          }
+        },
+        "es": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Intente con un término de búsqueda diferente"
+          }
+        },
+        "fr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Essayez un autre terme de recherche"
+          }
+        },
+        "pt-BR": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Tente um termo de pesquisa diferente"
+          }
+        },
+        "pt-PT": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Tente um termo de pesquisa diferente"
+          }
+        }
+      }
+    },
+    "WalletVault": {
+      "localizations": {
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "WalletVault"
+          }
+        },
+        "es": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "WalletVault"
+          }
+        },
+        "fr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "WalletVault"
+          }
+        },
+        "pt-BR": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "WalletVault"
+          }
+        },
+        "pt-PT": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "WalletVault"
+          }
+        }
+      }
+    },
+    "Your %@ has now expired.": {
+      "localizations": {
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Ihr %@ ist nun abgelaufen."
+          }
+        },
+        "es": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Su %@ ha vencido."
+          }
+        },
+        "fr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Votre %@ a maintenant expiré."
+          }
+        },
+        "pt-BR": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Seu %@ já expirou."
+          }
+        },
+        "pt-PT": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "O seu %@ já expirou."
+          }
+        }
+      }
+    },
+    "Your %@ is expiring in 3 months.": {
+      "localizations": {
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Ihr %@ läuft in 3 Monaten ab."
+          }
+        },
+        "es": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Su %@ vence em 3 meses."
+          }
+        },
+        "fr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Votre %@ expire dans 3 mois."
+          }
+        },
+        "pt-BR": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Seu %@ expira em 3 meses."
+          }
+        },
+        "pt-PT": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "O seu %@ expira em 3 meses."
           }
         }
       }
     }
   },
-  "version" : "1.1"
+  "version": "1.1"
 }

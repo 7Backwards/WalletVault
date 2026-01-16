@@ -25,7 +25,7 @@ extension AppUtils {
     func requestDefaultErrorAlert(message: String? = nil) -> Alert {
         Alert(
             title: Text("Error"),
-            message: Text(message ?? "An error has occurred, please try again."),
+            message: message != nil ? Text(LocalizedStringKey(message!)) : Text("An error has occurred, please try again."),
             dismissButton: .default(Text("OK"))
         )
     }

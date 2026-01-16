@@ -32,13 +32,17 @@ func scheduleCardNotifications(cardID: NSManagedObjectID, cardName: String, expi
     guard let threeMonthsBeforeExpiry = calendar.date(byAdding: .month, value: -3, to: lastDayOfMonth) else { return }
     
     // Schedule the 3-months prior notification
-    scheduleNotification(notificationCenter: notificationCenter, cardID: cardID, cardName: cardName, triggerDate: threeMonthsBeforeExpiry, identifierSuffix: "3Months", title: "Card Expiry Reminder!", body: "Your \(cardName) is expiring in 3 months.")
+    let reminderTitle = NSLocalizedString("Card Expiry Reminder!", comment: "")
+    let reminderBody = String.localizedStringWithFormat(NSLocalizedString("Your %@ is expiring in 3 months.", comment: ""), cardName)
+    scheduleNotification(notificationCenter: notificationCenter, cardID: cardID, cardName: cardName, triggerDate: threeMonthsBeforeExpiry, identifierSuffix: "3Months", title: reminderTitle, body: reminderBody)
     
     // Calculate the date for expired notification (one day after the last day of the expiry month)
     let oneDayAfterExpiry = calendar.date(byAdding: .day, value: 1, to: lastDayOfMonth)!
     
     // Schedule the expired notification
-    scheduleNotification(notificationCenter: notificationCenter, cardID: cardID, cardName: cardName, triggerDate: oneDayAfterExpiry, identifierSuffix: "Expired", title: "Card Expired!", body: "Your \(cardName) has now expired.")
+    let expiredTitle = NSLocalizedString("Card Expired!", comment: "")
+    let expiredBody = String.localizedStringWithFormat(NSLocalizedString("Your %@ has now expired.", comment: ""), cardName)
+    scheduleNotification(notificationCenter: notificationCenter, cardID: cardID, cardName: cardName, triggerDate: oneDayAfterExpiry, identifierSuffix: "Expired", title: expiredTitle, body: expiredBody)
 }
 
 func removeCardNotifications(cardID: NSManagedObjectID) {
