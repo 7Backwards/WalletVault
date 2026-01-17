@@ -40,7 +40,7 @@ struct CardListView: View {
             .onAppear {
                 viewModel.appManager.utils.requestNotificationPermission()
             }
-            .navigationBarTitle("WalletVault", displayMode: .automatic)
+            .navigationBarTitle("WalletVault", displayMode: .large)
             .toolbar {
                 ToolbarItem(placement: .topBarTrailing) {
                     if !ProcessInfo.processInfo.isiOSAppOnMac {
@@ -184,29 +184,30 @@ struct NoSearchResultsView: View {
 
 struct NoContentView: View {
     var body: some View {
-        VStack(spacing: 20) {
-            Spacer()
-            Image(systemName: "creditcard.fill")
-                .resizable()
-                .scaledToFit()
-                .frame(width: 100, height: 60)
-                .foregroundColor(.secondary)
-            Text("No cards yet")
-                .font(.title)
-                .fontWeight(.medium)
-                .foregroundColor(.secondary)
-                .accessibilityIdentifier("emptyStateTitle")
-            Text("Tap the + button to add your first card")
-                .font(.subheadline)
-                .multilineTextAlignment(.center)
-                .foregroundColor(.secondary.opacity(0.8))
-                .accessibilityIdentifier("emptyStateInstruction")
-            Spacer()
+        GeometryReader { geometry in
+            VStack(spacing: 20) {
+                Image(systemName: "creditcard.fill")
+                    .resizable()
+                    .scaledToFit()
+                    .frame(width: 100, height: 60)
+                    .foregroundColor(.secondary)
+                Text("No cards yet")
+                    .font(.title)
+                    .fontWeight(.medium)
+                    .foregroundColor(.secondary)
+                    .accessibilityIdentifier("emptyStateTitle")
+                Text("Tap the + button to add your first card")
+                    .font(.subheadline)
+                    .multilineTextAlignment(.center)
+                    .foregroundColor(.secondary.opacity(0.8))
+                    .accessibilityIdentifier("emptyStateInstruction")
+            }
+            .frame(width: geometry.size.width, height: geometry.size.height)
+            .contentShape(Rectangle())
+            .accessibilityElement(children: .contain)
+            .accessibilityIdentifier("noCardsView")
         }
-        .padding()
-        .contentShape(Rectangle())
-        .accessibilityElement(children: .contain)
-        .accessibilityIdentifier("noCardsView")
+        .frame(minHeight: 400)
     }
 }
 
