@@ -30,6 +30,7 @@ struct CardDetailsView: View {
                 HStack(spacing: 15) {
                     CardDetailsCVVView(
                         cvvCode: $viewModel.cardObject.cvvCode,
+                        cardNumber: viewModel.cardObject.cardNumber,
                         isEditable: $viewModel.isEditable,
                         isUnlocked: viewModel.isUnlocked,
                         viewModel: viewModel
@@ -167,19 +168,32 @@ fileprivate struct CardDetailsNameAndNumberView: View {
 
 fileprivate struct CardDetailsCVVView: View {
     @Binding var cvvCode: String
+    var cardNumber: String
     @Binding var isEditable: Bool
     var isUnlocked: Bool
     var viewModel: CardDetailsViewModel
+    
+    private var cardType: CardType {
+        CardType.detect(from: cardNumber)
+    }
+    
+    private var cvvLabel: String {
+        cardType.cvvLabel
+    }
+    
+    private var cvvMaxLength: Int {
+        cardType.cvvLength
+    }
 
     var body: some View {
         VStack(alignment: .leading) {
-            Text(isEditable || cvvCode.count == 3 ? "CVV" : "")
+            Text(isEditable || cvvCode.count == cvvMaxLength ? cvvLabel : "")
                 .font(.caption)
                 .dynamicTypeSize(.xSmall ... .xxxLarge)
                 .fontWeight(.semibold)
                 .padding(.top, isEditable ? 0 : 0.5)
             if isEditable {
-                TextField("CVV", text: $cvvCode)
+                TextField(cvvLabel, text: $cvvCode)
                     .accessibilityIdentifier("cvvField")
                     .font(.headline)
                     .fontWeight(.bold)
@@ -187,7 +201,7 @@ fileprivate struct CardDetailsCVVView: View {
                     .dynamicTypeSize(.xSmall ... .xxxLarge)
                     .foregroundStyle(Color.secondary)
                     .onChange(of: cvvCode, initial: true) { _, newValue in
-                        self.cvvCode = String(newValue.prefix(3))
+                        self.cvvCode = String(newValue.prefix(cvvMaxLength))
                     }
                 
             } else if !cvvCode.isEmpty {
@@ -315,7 +329,7 @@ struct CardDetailsView_Previews: PreviewProvider {
         mockCard.expiryDate = "12/25"
         mockCard.cvvCode = "123"
 
-        let mockCardObservableObject = CardObservableObject(card: mockCard)
+        let mockCardObservableObject = CardObservableObject(card: mockCard, appUtils: AppManager(context: context).utils)
 
         // Make sure you're using a binding to a boolean for isEditing
         // If this is a view that doesn't change the editing state, you can use .constant(false)

@@ -25,9 +25,11 @@ enum AppAction {
 
 class AppActionManager: AppActionManagerProtocol {
     private let context: NSManagedObjectContext
+    weak var appUtils: AppUtils?
     
-    init(context: NSManagedObjectContext) {
+    init(context: NSManagedObjectContext, appUtils: AppUtils? = nil) {
         self.context = context
+        self.appUtils = appUtils
         Logger.log("AppActionManager initialized with context: \(context)")
     }
     
@@ -65,13 +67,24 @@ class AppActionManager: AppActionManagerProtocol {
                 if existingCards.isEmpty {
                     Logger.log("Adding new card with number: \(cardNumber)")
                     let card = Card(context: context)
-                    card.cardNumber = cardNumber
-                    card.expiryDate = expiryDate
-                    card.cvvCode = cvvCode
+                    
+                    // Encrypt sensitive fields before saving
+                    if let appUtils = self.appUtils {
+                        card.cardNumber = appUtils.encryptForStorage(cardNumber) ?? cardNumber
+                        card.cvvCode = appUtils.encryptForStorage(cvvCode) ?? cvvCode
+                        card.pin = appUtils.encryptForStorage(pin) ?? pin
+                    } else {
+                        // Fallback: Store plaintext if encryption unavailable
+                        Logger.log("Warning: AppUtils not available, storing card data in plaintext", level: .error)
+                        card.cardNumber = cardNumber
+                        card.cvvCode = cvvCode
+                        card.pin = pin
+                    }
+                    
                     card.cardName = cardName
+                    card.expiryDate = expiryDate
                     card.cardColor = cardColor
                     card.isFavorited = isFavorited
-                    card.pin = pin
 
                     saveWithCompletion() {
                         scheduleCardNotifications(cardID: card.objectID, cardName: cardName, expiryDate: expiryDate)
@@ -91,13 +104,24 @@ class AppActionManager: AppActionManagerProtocol {
                 if card.expiryDate != expiryDate || card.cardName != cardName {
                     scheduleCardNotifications(cardID: id, cardName: cardName, expiryDate: expiryDate)
                 }
+                
+                // Encrypt sensitive fields before saving
+                if let appUtils = self.appUtils {
+                    card.cardNumber = appUtils.encryptForStorage(cardNumber) ?? cardNumber
+                    card.cvvCode = appUtils.encryptForStorage(cvvCode) ?? cvvCode
+                    card.pin = appUtils.encryptForStorage(pin) ?? pin
+                } else {
+                    // Fallback: Store plaintext if encryption unavailable
+                    Logger.log("Warning: AppUtils not available, storing card data in plaintext", level: .error)
+                    card.cardNumber = cardNumber
+                    card.cvvCode = cvvCode
+                    card.pin = pin
+                }
+                
                 card.cardName = cardName
-                card.cardNumber = cardNumber
                 card.expiryDate = expiryDate
-                card.cvvCode = cvvCode
                 card.cardColor = cardColor
                 card.isFavorited = isFavorited
-                card.pin = pin 
             }
             saveWithCompletion()
         case .removeCard(let id):

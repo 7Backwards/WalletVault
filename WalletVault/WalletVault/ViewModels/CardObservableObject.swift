@@ -19,14 +19,15 @@ class CardObservableObject: ObservableObject {
     @Published var pin: String = ""
     @Published var id: NSManagedObjectID? = nil
     
-    init(card: Card) {
+    init(card: Card, appUtils: AppUtils) {
         cardName = card.cardName
-        cardNumber = card.cardNumber
+        // Decrypt sensitive fields when loading from Core Data
+        cardNumber = appUtils.decryptFromStorage(card.cardNumber) ?? "••••"
         expiryDate = card.expiryDate
-        cvvCode = card.cvvCode
+        cvvCode = appUtils.decryptFromStorage(card.cvvCode) ?? "•••"
         cardColor = card.cardColor
         isFavorited = card.isFavorited
-        pin = card.pin
+        pin = appUtils.decryptFromStorage(card.pin) ?? ""
         id = card.objectID
     }
     

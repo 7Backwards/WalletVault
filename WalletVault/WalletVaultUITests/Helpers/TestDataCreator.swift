@@ -47,9 +47,19 @@ struct TestCardData {
     static func amexCard() -> TestCardData {
         return TestCardData(
             name: "American Express",
-            number: "3782 8224 6310 005",
+            number: "3782 822463 10005",  // 15 digits in 4-6-5 format
             expiry: "06/29",
-            cvv: "1234",
+            cvv: "1234",  // 4-digit CID for Amex
+            pin: nil
+        )
+    }
+    
+    static func discoverCard() -> TestCardData {
+        return TestCardData(
+            name: "Discover Card",
+            number: "6011 1111 1111 1117",
+            expiry: "09/29",
+            cvv: "789",
             pin: nil
         )
     }
@@ -107,21 +117,22 @@ struct TestCardData {
     /// Generate multiple test cards
     static func multipleCards(count: Int = 5) -> [TestCardData] {
         var cards: [TestCardData] = []
-        let names = ["Personal Visa", "Business Card", "Travel Card", "Shopping Card", "Backup Card"]
+        let names = ["Personal Visa", "Business Mastercard", "Travel Visa", "Amex Gold", "Discover It"]
         let numbers = [
-            "4234 5678 9012 3456",
-            "5555 5555 5555 4444",
-            "4111 1111 1111 1111",
-            "3782 8224 6310 005",
-            "6011 1111 1111 1117"
+            "4234 5678 9012 3456",    // Visa (16 digits)
+            "5555 5555 5555 4444",    // Mastercard (16 digits)
+            "4111 1111 1111 1111",    // Visa (16 digits)
+            "3782 822463 10005",      // Amex (15 digits, 4-6-5 format)
+            "6011 1111 1111 1117"     // Discover (16 digits)
         ]
+        let cvvs = ["123", "456", "789", "1234", "321"]  // Amex has 4-digit CVV
         
         for i in 0..<min(count, names.count) {
             cards.append(TestCardData(
                 name: names[i],
                 number: numbers[i],
                 expiry: "12/\(30 + i)",
-                cvv: "\(100 + i * 11)",
+                cvv: cvvs[i],
                 pin: i % 2 == 0 ? "\(1000 + i)" : nil
             ))
         }

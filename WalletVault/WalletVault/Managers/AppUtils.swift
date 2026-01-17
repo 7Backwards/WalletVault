@@ -9,6 +9,7 @@ import SwiftUI
 import CryptoKit
 
 class AppUtils {
+    weak var appManager: AppManager?
     private var protectWindow = PrivacyProtectionWindow()
     
     func getFormattedShareCardInfo(card: CardInfo) -> String {
@@ -86,15 +87,31 @@ class AppUtils {
         // First, filter out any non-numeric characters
         let filtered = number.filter { "0123456789".contains($0) }
         
-        // Then, limit to the first 16 characters
-        let trimmed = String(filtered.prefix(16))
+        // Detect card type to determine formatting
+        let cardType = CardType.detect(from: filtered)
         
-        // Finally, add a space after every 4 digits
-        return stride(from: 0, to: trimmed.count, by: 4).map {
-            let start = trimmed.index(trimmed.startIndex, offsetBy: $0)
-            let end = trimmed.index(start, offsetBy: 4, limitedBy: trimmed.endIndex) ?? trimmed.endIndex
-            return String(trimmed[start..<end])
-        }.joined(separator: " ")
+        switch cardType {
+        case .amex:
+            // Amex: 4-6-5 format, max 15 digits
+            let trimmed = String(filtered.prefix(15))
+            var result = ""
+            for (index, char) in trimmed.enumerated() {
+                if index == 4 || index == 10 {
+                    result.append(" ")
+                }
+                result.append(char)
+            }
+            return result
+            
+        default:
+            // Standard: 4-4-4-4 format, max 16 digits
+            let trimmed = String(filtered.prefix(16))
+            return stride(from: 0, to: trimmed.count, by: 4).map {
+                let start = trimmed.index(trimmed.startIndex, offsetBy: $0)
+                let end = trimmed.index(start, offsetBy: 4, limitedBy: trimmed.endIndex) ?? trimmed.endIndex
+                return String(trimmed[start..<end])
+            }.joined(separator: " ")
+        }
     }
     
     func getCardIssuerImage(cardNumber: String) -> Image? {
@@ -106,6 +123,8 @@ class AppUtils {
             return Image("mastercard")
         } else if formattedNumber.range(of: "^(34|37)", options: .regularExpression) != nil {
             return Image("american-express")
+        } else if formattedNumber.range(of: "^(6011|65|64[4-9])", options: .regularExpression) != nil {
+            return Image("discover")
         } else {
             return nil
         }

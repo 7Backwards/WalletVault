@@ -203,15 +203,19 @@ final class AddCardUITests: XCTestCase {
         }
     }
     
-    func testCVVLimitedToThreeDigits() throws {
+    func testCVVLimitedToThreeDigitsForNonAmex() throws {
         openAddCardSheet()
+        
+        // First enter a Visa card number to ensure non-Amex CVV limit
+        let cardNumberField = app.textFields[UITestIdentifiers.cardNumberField]
+        fillTextField(cardNumberField, with: "4111111111111111")
         
         let cvvField = app.textFields[UITestIdentifiers.cvvField]
         fillTextField(cvvField, with: "12345")
         
-        // CVV should be limited to 3 digits
+        // CVV should be limited to 3 digits for Visa/Mastercard/Discover
         if let value = cvvField.value as? String {
-            XCTAssertLessThanOrEqual(value.count, 3, "CVV should be limited to 3 digits")
+            XCTAssertLessThanOrEqual(value.count, 3, "CVV should be limited to 3 digits for non-Amex cards")
         }
     }
     
@@ -224,6 +228,71 @@ final class AddCardUITests: XCTestCase {
         // PIN should be limited to 4 digits
         if let value = pinField.value as? String {
             XCTAssertLessThanOrEqual(value.count, 4, "PIN should be limited to 4 digits")
+        }
+    }
+    
+    // MARK: - Card Type Specific Tests
+    
+    func testAddAmexCardWith15DigitsAndFourDigitCVV() throws {
+        openAddCardSheet()
+        
+        let amexCard = TestCardData.amexCard()
+        fillCardDetails(amexCard)
+        
+        let saveButton = app.buttons[UITestIdentifiers.saveButton]
+        XCTAssertTrue(saveButton.exists, "Save button should be visible")
+        
+        dismissKeyboard(in: app)
+        saveButton.tap()
+        
+        // Sheet should dismiss after successful save
+        let cardNameField = app.textFields[UITestIdentifiers.cardNameField]
+        if !waitForElementToDisappear(cardNameField, timeout: 10) {
+            logAlerts(in: app)
+            XCTFail("Add card sheet should dismiss after saving Amex card")
+        }
+    }
+    
+    func testAmexCardNumberFormattingTo15Digits() throws {
+        openAddCardSheet()
+        
+        let cardNumberField = app.textFields[UITestIdentifiers.cardNumberField]
+        // Enter an Amex number (starts with 37)
+        fillTextField(cardNumberField, with: "378282246310005")
+        
+        // Amex should be formatted as 4-6-5 (15 digits + 2 spaces = 17 chars)
+        if let value = cardNumberField.value as? String {
+            XCTAssertEqual(value.count, 17, "Amex card number should have 17 characters (15 digits + 2 spaces)")
+            // Verify 4-6-5 format
+            let components = value.split(separator: " ")
+            XCTAssertEqual(components.count, 3, "Amex should have 3 groups")
+            if components.count == 3 {
+                XCTAssertEqual(components[0].count, 4, "First group should have 4 digits")
+                XCTAssertEqual(components[1].count, 6, "Second group should have 6 digits")
+                XCTAssertEqual(components[2].count, 5, "Third group should have 5 digits")
+            }
+        } else {
+            XCTFail("Card number field should have a value")
+        }
+    }
+    
+    func testAddDiscoverCard() throws {
+        openAddCardSheet()
+        
+        let discoverCard = TestCardData.discoverCard()
+        fillCardDetails(discoverCard)
+        
+        let saveButton = app.buttons[UITestIdentifiers.saveButton]
+        XCTAssertTrue(saveButton.exists, "Save button should be visible")
+        
+        dismissKeyboard(in: app)
+        saveButton.tap()
+        
+        // Sheet should dismiss after successful save
+        let cardNameField = app.textFields[UITestIdentifiers.cardNameField]
+        if !waitForElementToDisappear(cardNameField, timeout: 10) {
+            logAlerts(in: app)
+            XCTFail("Add card sheet should dismiss after saving Discover card")
         }
     }
 }

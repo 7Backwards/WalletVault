@@ -28,7 +28,9 @@ class AddOrEditMyCardViewModel {
 
         guard !cardName.isEmpty, !cardNumber.isEmpty, !expiryDate.isEmpty, !cvvCode.isEmpty else { return }
         
-        if cardNumber.count != 19 {
+        // Validate card number length based on card type
+        let cardType = CardType.detect(from: cardNumber)
+        if cardNumber.count != cardType.formattedNumberLength {
             completion(.failure(.shortCardNumber))
             return
         }

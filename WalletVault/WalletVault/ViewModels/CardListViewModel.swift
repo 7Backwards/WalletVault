@@ -86,7 +86,7 @@ class CardListViewModel: AddOrEditMyCardViewModel, ViewModelProtocol {
         if let viewModel = cardsViewModels[card.objectID] {
             return viewModel
         } else {
-            let viewModel = CardObservableObject(card: card)
+            let viewModel = CardObservableObject(card: card, appUtils: appManager.utils)
             cardsViewModels[card.objectID] = viewModel
             return viewModel
         }

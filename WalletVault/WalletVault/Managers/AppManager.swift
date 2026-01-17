@@ -16,11 +16,24 @@ class AppManager: ObservableObject {
     private var cancellables = Set<AnyCancellable>()
     
     init(context: NSManagedObjectContext) {
-        self.actionManager = AppActionManager(context: context)
-        self.constants = AppConstants()
         self.utils = AppUtils()
+        self.actionManager = AppActionManager(context: context, appUtils: self.utils)
+        self.constants = AppConstants()
         self.notificationHandler = NotificationHandler(context: context)
+        
+        // Set reference so utils can access encryption key
+        self.utils.appManager = self
+        // Set reference so actionManager can encrypt/decrypt
+        self.actionManager.appUtils = self.utils
+        
+        // Force encryption key initialization from Keychain
+        _ = constants.encryptionKey
+        Logger.log("Encryption key initialized from Keychain")
+        
         actionManager.setupDefaultColors(colors: constants.defaultColors)
+        
+        // Perform one-time migration to encrypt existing plaintext cards
+        utils.migrateExistingCards(in: context)
     }
 }
 
