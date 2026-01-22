@@ -1,1 +1,40 @@
-# SafeWallet
+# WalletVault
+
+WalletVault is a secure and user-friendly offline card management app that simplifies how I store, access, and share my card details. Developed using SwiftUI and CoreData, SafeWallet operates entirely offline, ensuring that all my information is securely kept on my device. It is designed for iPhone and iPad, supporting iOS 17.0 and above for an optimized experience.
+
+### Features
+
+- **Completely Offline**: Ensures all data is stored on-device for maximum security.
+- **Card Management**: Add details such as card name, card number, expiry date, CVV, and card PIN.
+- **Color Costumizability**: Costumize your cards with the color that you want.
+- **QR Code Sharing**: Securely share card details through a QR code.
+- **Quick Actions**: Tap on fields to copy or share information quickly.
+- **Privacy Screen**: Display a privacy view when the app is in the background to mask sensitive information.
+- **Auto-Dismiss**: Automatically dismiss sensitive information screens after 30 seconds of inactivity.
+- **Edit Mode**: Easily edit card details whenever needed.
+- **Color Differentiation**: Differentiate cards using multiple colors for easy identification.
+- **Dark Mode Support**: Native dark mode support for ease of use in low-light environments.
+- **Font Size Support**: Accommodate both small and large font sizes to enhance accessibility.
+
+## Architecture
+
+WalletVault is built using the Model-View-ViewModel (MVVM) architecture to ensure the code is clean, maintainable, and scalable. This pattern enhances separation of concerns, allowing for more efficient development and testing.
+
+### Screenshots
+
+<p float="left">
+  <img src="screenshots/Card_List.png" width="250" alt="Card List" />
+  <img src="screenshots/Card_Details.png" width="250" alt="Card Details" />
+  <img src="screenshots/Share_Cards.png" width="250" alt="Add New Colors" />
+</p>
+
+## App Store
+
+https://apps.apple.com/pt/app/walletvault-save-cards-safely/id6757608376?l=en-GB
+
+## Installation
+
+To run WalletVault on your device, clone the repository and open the project in Xcode:
+
+```bash
+git clone https://github.com/7Backwards/WalletVault.git

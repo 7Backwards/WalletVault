@@ -1,0 +1,21 @@
+//
+//  Card+CoreDataClass.swift
+//  WalletVault
+//
+//  Created by Gonçalo on 31/08/2024.
+//
+//
+
+import Foundation
+import CoreData
+
+@objc(Card)
+public class Card: NSManagedObject {
+
+}
+
+extension NSManagedObjectContext {
+    func fetchCard(withID id: NSManagedObjectID) -> Card? {
+        return self.object(with: id) as? Card
+    }
+}

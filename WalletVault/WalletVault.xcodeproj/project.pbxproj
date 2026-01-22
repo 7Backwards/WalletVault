@@ -1,0 +1,1009 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 56;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		3AD0D024C9024A0C9CFC2FE72C101606 /* AppUtils+EncryptedStorage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1E7547E268DC4D3893F64F2B6329EF78 /* AppUtils+EncryptedStorage.swift */; };
+		590F25462C834B1E00897180 /* Card+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = 590F25422C834B1E00897180 /* Card+CoreDataClass.swift */; };
+		590F25472C834B1E00897180 /* Card+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 590F25432C834B1E00897180 /* Card+CoreDataProperties.swift */; };
+		5926C5B42B59BBE30065030E /* AppManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5926C5B32B59BBE30065030E /* AppManager.swift */; };
+		5926C5B62B59BCFB0065030E /* AppActionManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5926C5B52B59BCFB0065030E /* AppActionManager.swift */; };
+		5926C5BB2B5C2FE60065030E /* Color+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5926C5BA2B5C2FE60065030E /* Color+Extension.swift */; };
+		5926C5BD2B5C44910065030E /* ColorCarouselView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5926C5BC2B5C44910065030E /* ColorCarouselView.swift */; };
+		5926C5BF2B5C8E8B0065030E /* ColorCarouselViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5926C5BE2B5C8E8B0065030E /* ColorCarouselViewModel.swift */; };
+		5926C5C12B5C921F0065030E /* AppUtils.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5926C5C02B5C921F0065030E /* AppUtils.swift */; };
+		5926C5C32B5C96FE0065030E /* AppConstants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5926C5C22B5C96FE0065030E /* AppConstants.swift */; };
+		593A58FB2B9DF02E00B222FD /* Localizable.xcstrings in Resources */ = {isa = PBXBuildFile; fileRef = 593A58FA2B9DF02E00B222FD /* Localizable.xcstrings */; };
+		5955A8532B94F04700AECF1D /* AppActionManager+Notifications.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5955A8522B94F04700AECF1D /* AppActionManager+Notifications.swift */; };
+		5955A8552B94F8A400AECF1D /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5955A8542B94F8A400AECF1D /* AppDelegate.swift */; };
+		595EFA2A2BB37C59000D0F6F /* AppUtils+Permissions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 595EFA292BB37C59000D0F6F /* AppUtils+Permissions.swift */; };
+		595EFA2C2BB3821E000D0F6F /* AppUtils+Alerts.swift in Sources */ = {isa = PBXBuildFile; fileRef = 595EFA2B2BB3821E000D0F6F /* AppUtils+Alerts.swift */; };
+		59716AA02B8A46C100DDD820 /* ShareUIActivityController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 59716A9F2B8A46C100DDD820 /* ShareUIActivityController.swift */; };
+		59716AA22B8A51A400DDD820 /* AppUtils+QrCode.swift in Sources */ = {isa = PBXBuildFile; fileRef = 59716AA12B8A51A400DDD820 /* AppUtils+QrCode.swift */; };
+		59716AA42B8A7C3500DDD820 /* QRCodeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 59716AA32B8A7C3500DDD820 /* QRCodeView.swift */; };
+		59716AA62B8A8EE300DDD820 /* QRCodeScannerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 59716AA52B8A8EE300DDD820 /* QRCodeScannerView.swift */; };
+		598C2F002B34C66200C291C3 /* WalletVaultApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 598C2EFF2B34C66200C291C3 /* WalletVaultApp.swift */; };
+		598C2F022B34C66200C291C3 /* Persistence.swift in Sources */ = {isa = PBXBuildFile; fileRef = 598C2F012B34C66200C291C3 /* Persistence.swift */; };
+		598C2F052B34C66200C291C3 /* WalletVault.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 598C2F032B34C66200C291C3 /* WalletVault.xcdatamodeld */; };
+		598C2F072B34C66200C291C3 /* CardListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 598C2F062B34C66200C291C3 /* CardListView.swift */; };
+		598C2F092B34C66300C291C3 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 598C2F082B34C66300C291C3 /* Assets.xcassets */; };
+		598C2F0D2B34C66300C291C3 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 598C2F0C2B34C66300C291C3 /* Preview Assets.xcassets */; };
+		598C2F3D2B360DC800C291C3 /* AddCardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 598C2F3C2B360DC800C291C3 /* AddCardView.swift */; };
+		598C2F412B37413900C291C3 /* AddCardViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 598C2F402B37413900C291C3 /* AddCardViewModel.swift */; };
+		598C2F432B37421A00C291C3 /* CardListViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 598C2F422B37421A00C291C3 /* CardListViewModel.swift */; };
+		598C2F452B37BB1C00C291C3 /* CardDetailsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 598C2F442B37BB1C00C291C3 /* CardDetailsView.swift */; };
+		598D18C12B4C72B900D88C08 /* MyCardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 598D18C02B4C72B900D88C08 /* MyCardView.swift */; };
+		598D18C32B4C8E8000D88C08 /* MyCardViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 598D18C22B4C8E8000D88C08 /* MyCardViewModel.swift */; };
+		599178912B9A5D9A00CCB102 /* LogManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 599178902B9A5D9A00CCB102 /* LogManager.swift */; };
+		599B57DF2B8BBEC7002CE497 /* AddCardButtonViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 599B57DE2B8BBEC7002CE497 /* AddCardButtonViewModel.swift */; };
+		599B57E12B8BC54F002CE497 /* CardRowViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 599B57E02B8BC54F002CE497 /* CardRowViewModel.swift */; };
+		59BD328A2B752F9C00DC8F08 /* ViewModelProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 59BD32892B752F9C00DC8F08 /* ViewModelProtocol.swift */; };
+		59BD328C2B79495700DC8F08 /* MenuTextView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 59BD328B2B79495700DC8F08 /* MenuTextView.swift */; };
+		59BD328E2B797A9200DC8F08 /* AddOrEditMyCardViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 59BD328D2B797A9200DC8F08 /* AddOrEditMyCardViewModel.swift */; };
+		59BD32902B797DC500DC8F08 /* AddCardButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 59BD328F2B797DC500DC8F08 /* AddCardButton.swift */; };
+		59BD32942B7C149100DC8F08 /* CardRow.swift in Sources */ = {isa = PBXBuildFile; fileRef = 59BD32932B7C149100DC8F08 /* CardRow.swift */; };
+		59BD32962B7D2C9000DC8F08 /* CardObservableObject.swift in Sources */ = {isa = PBXBuildFile; fileRef = 59BD32952B7D2C9000DC8F08 /* CardObservableObject.swift */; };
+		59BD32A32B80FCE400DC8F08 /* ProtectScreenViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 59BD32A22B80FCE400DC8F08 /* ProtectScreenViewController.swift */; };
+		59BD32A52B80FE5B00DC8F08 /* UIColor+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 59BD32A42B80FE5B00DC8F08 /* UIColor+Extension.swift */; };
+		59DFA19F2B3B6FD000EFD403 /* CardDetailsViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 59DFA19E2B3B6FD000EFD403 /* CardDetailsViewModel.swift */; };
+		59DFA1A12B3DCD5000EFD403 /* BiometricManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 59DFA1A02B3DCD5000EFD403 /* BiometricManager.swift */; };
+		59E8799E2C808F91002BC8D9 /* AppUtils+Crypto.swift in Sources */ = {isa = PBXBuildFile; fileRef = 59E8799D2C808F91002BC8D9 /* AppUtils+Crypto.swift */; };
+		59E879A02C825927002BC8D9 /* CustomColorPicker.swift in Sources */ = {isa = PBXBuildFile; fileRef = 59E8799F2C825927002BC8D9 /* CustomColorPicker.swift */; };
+		B08B1BA32F10809B002315FC /* AppUtilsTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = B08B1B982F10809B002315FC /* AppUtilsTests.swift */; };
+		B08B1BA42F10809B002315FC /* AddOrEditMyCardViewModelTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = B08B1B9F2F10809B002315FC /* AddOrEditMyCardViewModelTests.swift */; };
+		B08B1BA52F10809B002315FC /* AppActionManagerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = B08B1B972F10809B002315FC /* AppActionManagerTests.swift */; };
+		B08B1BA62F10809B002315FC /* BiometricManagerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = B08B1B992F10809B002315FC /* BiometricManagerTests.swift */; };
+		B08B1BA72F10809B002315FC /* TestUtils.swift in Sources */ = {isa = PBXBuildFile; fileRef = B08B1B9D2F10809B002315FC /* TestUtils.swift */; };
+		B08B1BA82F10809B002315FC /* MockBiometricAuth.swift in Sources */ = {isa = PBXBuildFile; fileRef = B08B1B9B2F10809B002315FC /* MockBiometricAuth.swift */; };
+		B08B1BA92F10809B002315FC /* WalletVaultTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = B08B1BA12F10809B002315FC /* WalletVaultTests.swift */; };
+		B08B1BAD2F1080A1002315FC /* WalletVaultUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = B08B1BAA2F1080A1002315FC /* WalletVaultUITests.swift */; };
+		B08B1BAE2F1080A1002315FC /* WalletVaultUITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = B08B1BAB2F1080A1002315FC /* WalletVaultUITestsLaunchTests.swift */; };
+		B08B1BB02F1080A1002315FC /* CardListUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = B08B1BAF2F1080A1002315FC /* CardListUITests.swift */; };
+		B08B1BB22F1080A1002315FC /* AddCardUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = B08B1BB12F1080A1002315FC /* AddCardUITests.swift */; };
+		B08B1BB42F1080A1002315FC /* SearchUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = B08B1BB32F1080A1002315FC /* SearchUITests.swift */; };
+		B08B1BB62F1080A1002315FC /* CardDetailsUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = B08B1BB52F1080A1002315FC /* CardDetailsUITests.swift */; };
+		B08B1BB82F1080A1002315FC /* CardSharingUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = B08B1BB72F1080A1002315FC /* CardSharingUITests.swift */; };
+		B08B1BBA2F1080A1002315FC /* QRCodeScannerUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = B08B1BB92F1080A1002315FC /* QRCodeScannerUITests.swift */; };
+		B08B1BBC2F1080A1002315FC /* UITestHelpers.swift in Sources */ = {isa = PBXBuildFile; fileRef = B08B1BBB2F1080A1002315FC /* UITestHelpers.swift */; };
+		B08B1BBE2F1080A1002315FC /* TestDataCreator.swift in Sources */ = {isa = PBXBuildFile; fileRef = B08B1BBD2F1080A1002315FC /* TestDataCreator.swift */; };
+		B0CT00012F118000002315FC /* CardType.swift in Sources */ = {isa = PBXBuildFile; fileRef = B0CT00002F118000002315FC /* CardType.swift */; };
+		B0CT00032F118000002315FC /* CardTypeTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = B0CT00022F118000002315FC /* CardTypeTests.swift */; };
+		B2EF457D8D5F4522ADD41E0C962A9141 /* AppUtils+Migration.swift in Sources */ = {isa = PBXBuildFile; fileRef = 590A78C93C4E4823A8F1E0CD8A85629F /* AppUtils+Migration.swift */; };
+		EDC711A942B54874B8B888FE90BC8475 /* KeychainService.swift in Sources */ = {isa = PBXBuildFile; fileRef = CCD45C52279C4DF7AB0A3526A098273E /* KeychainService.swift */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		598C2F132B34C66300C291C3 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 598C2EF42B34C66200C291C3 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 598C2EFB2B34C66200C291C3;
+			remoteInfo = SafeWallet;
+		};
+		598C2F1D2B34C66300C291C3 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 598C2EF42B34C66200C291C3 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 598C2EFB2B34C66200C291C3;
+			remoteInfo = SafeWallet;
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXFileReference section */
+		1E7547E268DC4D3893F64F2B6329EF78 /* AppUtils+EncryptedStorage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "AppUtils+EncryptedStorage.swift"; sourceTree = "<group>"; };
+		590A78C93C4E4823A8F1E0CD8A85629F /* AppUtils+Migration.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "AppUtils+Migration.swift"; sourceTree = "<group>"; };
+		590F25422C834B1E00897180 /* Card+CoreDataClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Card+CoreDataClass.swift"; sourceTree = "<group>"; };
+		590F25432C834B1E00897180 /* Card+CoreDataProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Card+CoreDataProperties.swift"; sourceTree = "<group>"; };
+		5926C5B32B59BBE30065030E /* AppManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppManager.swift; sourceTree = "<group>"; };
+		5926C5B52B59BCFB0065030E /* AppActionManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppActionManager.swift; sourceTree = "<group>"; };
+		5926C5BA2B5C2FE60065030E /* Color+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Color+Extension.swift"; sourceTree = "<group>"; };
+		5926C5BC2B5C44910065030E /* ColorCarouselView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ColorCarouselView.swift; sourceTree = "<group>"; };
+		5926C5BE2B5C8E8B0065030E /* ColorCarouselViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ColorCarouselViewModel.swift; sourceTree = "<group>"; };
+		5926C5C02B5C921F0065030E /* AppUtils.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppUtils.swift; sourceTree = "<group>"; };
+		5926C5C22B5C96FE0065030E /* AppConstants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppConstants.swift; sourceTree = "<group>"; };
+		593A58FA2B9DF02E00B222FD /* Localizable.xcstrings */ = {isa = PBXFileReference; lastKnownFileType = text.json.xcstrings; path = Localizable.xcstrings; sourceTree = "<group>"; };
+		5955A8522B94F04700AECF1D /* AppActionManager+Notifications.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "AppActionManager+Notifications.swift"; sourceTree = "<group>"; };
+		5955A8542B94F8A400AECF1D /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
+		595EFA292BB37C59000D0F6F /* AppUtils+Permissions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "AppUtils+Permissions.swift"; sourceTree = "<group>"; };
+		595EFA2B2BB3821E000D0F6F /* AppUtils+Alerts.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "AppUtils+Alerts.swift"; sourceTree = "<group>"; };
+		59716A9F2B8A46C100DDD820 /* ShareUIActivityController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShareUIActivityController.swift; sourceTree = "<group>"; };
+		59716AA12B8A51A400DDD820 /* AppUtils+QrCode.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "AppUtils+QrCode.swift"; sourceTree = "<group>"; };
+		59716AA32B8A7C3500DDD820 /* QRCodeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QRCodeView.swift; sourceTree = "<group>"; };
+		59716AA52B8A8EE300DDD820 /* QRCodeScannerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QRCodeScannerView.swift; sourceTree = "<group>"; };
+		598C2EFC2B34C66200C291C3 /* WalletVault.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = WalletVault.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		598C2EFF2B34C66200C291C3 /* WalletVaultApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WalletVaultApp.swift; sourceTree = "<group>"; };
+		598C2F012B34C66200C291C3 /* Persistence.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Persistence.swift; sourceTree = "<group>"; };
+		598C2F042B34C66200C291C3 /* SafeWallet.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = SafeWallet.xcdatamodel; sourceTree = "<group>"; };
+		598C2F062B34C66200C291C3 /* CardListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardListView.swift; sourceTree = "<group>"; };
+		598C2F082B34C66300C291C3 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		598C2F0A2B34C66300C291C3 /* WalletVault.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = WalletVault.entitlements; sourceTree = "<group>"; };
+		598C2F0C2B34C66300C291C3 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
+		598C2F122B34C66300C291C3 /* WalletVaultTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = WalletVaultTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		598C2F1C2B34C66300C291C3 /* WalletVaultUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = WalletVaultUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		598C2F3C2B360DC800C291C3 /* AddCardView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddCardView.swift; sourceTree = "<group>"; };
+		598C2F402B37413900C291C3 /* AddCardViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddCardViewModel.swift; sourceTree = "<group>"; };
+		598C2F422B37421A00C291C3 /* CardListViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardListViewModel.swift; sourceTree = "<group>"; };
+		598C2F442B37BB1C00C291C3 /* CardDetailsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardDetailsView.swift; sourceTree = "<group>"; };
+		598D18C02B4C72B900D88C08 /* MyCardView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyCardView.swift; sourceTree = "<group>"; };
+		598D18C22B4C8E8000D88C08 /* MyCardViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyCardViewModel.swift; sourceTree = "<group>"; };
+		599178902B9A5D9A00CCB102 /* LogManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LogManager.swift; sourceTree = "<group>"; };
+		599B57DE2B8BBEC7002CE497 /* AddCardButtonViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddCardButtonViewModel.swift; sourceTree = "<group>"; };
+		599B57E02B8BC54F002CE497 /* CardRowViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardRowViewModel.swift; sourceTree = "<group>"; };
+		59BD32892B752F9C00DC8F08 /* ViewModelProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewModelProtocol.swift; sourceTree = "<group>"; };
+		59BD328B2B79495700DC8F08 /* MenuTextView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MenuTextView.swift; sourceTree = "<group>"; };
+		59BD328D2B797A9200DC8F08 /* AddOrEditMyCardViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddOrEditMyCardViewModel.swift; sourceTree = "<group>"; };
+		59BD328F2B797DC500DC8F08 /* AddCardButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddCardButton.swift; sourceTree = "<group>"; };
+		59BD32932B7C149100DC8F08 /* CardRow.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardRow.swift; sourceTree = "<group>"; };
+		59BD32952B7D2C9000DC8F08 /* CardObservableObject.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardObservableObject.swift; sourceTree = "<group>"; };
+		59BD32A22B80FCE400DC8F08 /* ProtectScreenViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProtectScreenViewController.swift; sourceTree = "<group>"; };
+		59BD32A42B80FE5B00DC8F08 /* UIColor+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIColor+Extension.swift"; sourceTree = "<group>"; };
+		59DFA19E2B3B6FD000EFD403 /* CardDetailsViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardDetailsViewModel.swift; sourceTree = "<group>"; };
+		59DFA1A02B3DCD5000EFD403 /* BiometricManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BiometricManager.swift; sourceTree = "<group>"; };
+		59DFA1A22B3DCDB500EFD403 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = Info.plist; sourceTree = "<group>"; };
+		59E8799D2C808F91002BC8D9 /* AppUtils+Crypto.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "AppUtils+Crypto.swift"; sourceTree = "<group>"; };
+		59E8799F2C825927002BC8D9 /* CustomColorPicker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomColorPicker.swift; sourceTree = "<group>"; };
+		B08B1B972F10809B002315FC /* AppActionManagerTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppActionManagerTests.swift; sourceTree = "<group>"; };
+		B08B1B982F10809B002315FC /* AppUtilsTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppUtilsTests.swift; sourceTree = "<group>"; };
+		B08B1B992F10809B002315FC /* BiometricManagerTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BiometricManagerTests.swift; sourceTree = "<group>"; };
+		B08B1B9B2F10809B002315FC /* MockBiometricAuth.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MockBiometricAuth.swift; sourceTree = "<group>"; };
+		B08B1B9D2F10809B002315FC /* TestUtils.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TestUtils.swift; sourceTree = "<group>"; };
+		B08B1B9F2F10809B002315FC /* AddOrEditMyCardViewModelTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddOrEditMyCardViewModelTests.swift; sourceTree = "<group>"; };
+		B08B1BA12F10809B002315FC /* WalletVaultTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WalletVaultTests.swift; sourceTree = "<group>"; };
+		B08B1BAA2F1080A1002315FC /* WalletVaultUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WalletVaultUITests.swift; sourceTree = "<group>"; };
+		B08B1BAB2F1080A1002315FC /* WalletVaultUITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WalletVaultUITestsLaunchTests.swift; sourceTree = "<group>"; };
+		B08B1BAF2F1080A1002315FC /* CardListUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardListUITests.swift; sourceTree = "<group>"; };
+		B08B1BB12F1080A1002315FC /* AddCardUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddCardUITests.swift; sourceTree = "<group>"; };
+		B08B1BB32F1080A1002315FC /* SearchUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchUITests.swift; sourceTree = "<group>"; };
+		B08B1BB52F1080A1002315FC /* CardDetailsUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardDetailsUITests.swift; sourceTree = "<group>"; };
+		B08B1BB72F1080A1002315FC /* CardSharingUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardSharingUITests.swift; sourceTree = "<group>"; };
+		B08B1BB92F1080A1002315FC /* QRCodeScannerUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QRCodeScannerUITests.swift; sourceTree = "<group>"; };
+		B08B1BBB2F1080A1002315FC /* UITestHelpers.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UITestHelpers.swift; sourceTree = "<group>"; };
+		B08B1BBD2F1080A1002315FC /* TestDataCreator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TestDataCreator.swift; sourceTree = "<group>"; };
+		B0CT00002F118000002315FC /* CardType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardType.swift; sourceTree = "<group>"; };
+		B0CT00022F118000002315FC /* CardTypeTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardTypeTests.swift; sourceTree = "<group>"; };
+		CCD45C52279C4DF7AB0A3526A098273E /* KeychainService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KeychainService.swift; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		598C2EF92B34C66200C291C3 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		598C2F0F2B34C66300C291C3 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		598C2F192B34C66300C291C3 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		5926C5B22B59BBD90065030E /* Managers */ = {
+			isa = PBXGroup;
+			children = (
+				CCD45C52279C4DF7AB0A3526A098273E /* KeychainService.swift */,
+				1E7547E268DC4D3893F64F2B6329EF78 /* AppUtils+EncryptedStorage.swift */,
+				590A78C93C4E4823A8F1E0CD8A85629F /* AppUtils+Migration.swift */,
+				5926C5B32B59BBE30065030E /* AppManager.swift */,
+				5926C5B52B59BCFB0065030E /* AppActionManager.swift */,
+				5926C5C02B5C921F0065030E /* AppUtils.swift */,
+				59716AA12B8A51A400DDD820 /* AppUtils+QrCode.swift */,
+				5926C5C22B5C96FE0065030E /* AppConstants.swift */,
+				5955A8522B94F04700AECF1D /* AppActionManager+Notifications.swift */,
+				599178902B9A5D9A00CCB102 /* LogManager.swift */,
+				59DFA1A02B3DCD5000EFD403 /* BiometricManager.swift */,
+				595EFA292BB37C59000D0F6F /* AppUtils+Permissions.swift */,
+				595EFA2B2BB3821E000D0F6F /* AppUtils+Alerts.swift */,
+				59E8799D2C808F91002BC8D9 /* AppUtils+Crypto.swift */,
+			);
+			path = Managers;
+			sourceTree = "<group>";
+		};
+		5926C5B92B5C2FDC0065030E /* Extensions */ = {
+			isa = PBXGroup;
+			children = (
+				5926C5BA2B5C2FE60065030E /* Color+Extension.swift */,
+				59BD32A42B80FE5B00DC8F08 /* UIColor+Extension.swift */,
+			);
+			path = Extensions;
+			sourceTree = "<group>";
+		};
+		593A58F92B9DF01800B222FD /* Localization */ = {
+			isa = PBXGroup;
+			children = (
+				593A58FA2B9DF02E00B222FD /* Localizable.xcstrings */,
+			);
+			path = Localization;
+			sourceTree = "<group>";
+		};
+		59716A9E2B8A46A800DDD820 /* UIViewControllerRepresentables */ = {
+			isa = PBXGroup;
+			children = (
+				59716A9F2B8A46C100DDD820 /* ShareUIActivityController.swift */,
+			);
+			path = UIViewControllerRepresentables;
+			sourceTree = "<group>";
+		};
+		598C2EF32B34C66200C291C3 = {
+			isa = PBXGroup;
+			children = (
+				598C2EFE2B34C66200C291C3 /* WalletVault */,
+				598C2EFD2B34C66200C291C3 /* Products */,
+				B08B1BA22F10809B002315FC /* WalletVaultTests */,
+				B08B1BAC2F1080A1002315FC /* WalletVaultUITests */,
+			);
+			sourceTree = "<group>";
+		};
+		598C2EFD2B34C66200C291C3 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				598C2EFC2B34C66200C291C3 /* WalletVault.app */,
+				598C2F122B34C66300C291C3 /* WalletVaultTests.xctest */,
+				598C2F1C2B34C66300C291C3 /* WalletVaultUITests.xctest */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		598C2EFE2B34C66200C291C3 /* WalletVault */ = {
+			isa = PBXGroup;
+			children = (
+				593A58F92B9DF01800B222FD /* Localization */,
+				59716A9E2B8A46A800DDD820 /* UIViewControllerRepresentables */,
+				59BD32A12B80FCD600DC8F08 /* ViewControllers */,
+				5926C5B92B5C2FDC0065030E /* Extensions */,
+				5926C5B22B59BBD90065030E /* Managers */,
+				59DFA1A22B3DCDB500EFD403 /* Info.plist */,
+				598C2F3F2B37412700C291C3 /* ViewModels */,
+				598C2F3E2B360DD200C291C3 /* Views */,
+				598C2F2F2B34C70700C291C3 /* Models */,
+				598C2EFF2B34C66200C291C3 /* WalletVaultApp.swift */,
+				598C2F012B34C66200C291C3 /* Persistence.swift */,
+				5955A8542B94F8A400AECF1D /* AppDelegate.swift */,
+				598C2F082B34C66300C291C3 /* Assets.xcassets */,
+				598C2F0A2B34C66300C291C3 /* WalletVault.entitlements */,
+				598C2F032B34C66200C291C3 /* WalletVault.xcdatamodeld */,
+				598C2F0B2B34C66300C291C3 /* Preview Content */,
+			);
+			path = WalletVault;
+			sourceTree = "<group>";
+		};
+		598C2F0B2B34C66300C291C3 /* Preview Content */ = {
+			isa = PBXGroup;
+			children = (
+				598C2F0C2B34C66300C291C3 /* Preview Assets.xcassets */,
+			);
+			path = "Preview Content";
+			sourceTree = "<group>";
+		};
+		598C2F2F2B34C70700C291C3 /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				590F25422C834B1E00897180 /* Card+CoreDataClass.swift */,
+				590F25432C834B1E00897180 /* Card+CoreDataProperties.swift */,
+				B0CT00002F118000002315FC /* CardType.swift */,
+			);
+			path = Models;
+			sourceTree = "<group>";
+		};
+		598C2F3E2B360DD200C291C3 /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				598C2F062B34C66200C291C3 /* CardListView.swift */,
+				598C2F3C2B360DC800C291C3 /* AddCardView.swift */,
+				598C2F442B37BB1C00C291C3 /* CardDetailsView.swift */,
+				598D18C02B4C72B900D88C08 /* MyCardView.swift */,
+				5926C5BC2B5C44910065030E /* ColorCarouselView.swift */,
+				59BD328B2B79495700DC8F08 /* MenuTextView.swift */,
+				59BD328F2B797DC500DC8F08 /* AddCardButton.swift */,
+				59BD32932B7C149100DC8F08 /* CardRow.swift */,
+				59716AA32B8A7C3500DDD820 /* QRCodeView.swift */,
+				59716AA52B8A8EE300DDD820 /* QRCodeScannerView.swift */,
+				59E8799F2C825927002BC8D9 /* CustomColorPicker.swift */,
+			);
+			path = Views;
+			sourceTree = "<group>";
+		};
+		598C2F3F2B37412700C291C3 /* ViewModels */ = {
+			isa = PBXGroup;
+			children = (
+				598C2F402B37413900C291C3 /* AddCardViewModel.swift */,
+				598C2F422B37421A00C291C3 /* CardListViewModel.swift */,
+				59DFA19E2B3B6FD000EFD403 /* CardDetailsViewModel.swift */,
+				598D18C22B4C8E8000D88C08 /* MyCardViewModel.swift */,
+				5926C5BE2B5C8E8B0065030E /* ColorCarouselViewModel.swift */,
+				59BD32892B752F9C00DC8F08 /* ViewModelProtocol.swift */,
+				59BD328D2B797A9200DC8F08 /* AddOrEditMyCardViewModel.swift */,
+				59BD32952B7D2C9000DC8F08 /* CardObservableObject.swift */,
+				599B57DE2B8BBEC7002CE497 /* AddCardButtonViewModel.swift */,
+				599B57E02B8BC54F002CE497 /* CardRowViewModel.swift */,
+			);
+			path = ViewModels;
+			sourceTree = "<group>";
+		};
+		59BD32A12B80FCD600DC8F08 /* ViewControllers */ = {
+			isa = PBXGroup;
+			children = (
+				59BD32A22B80FCE400DC8F08 /* ProtectScreenViewController.swift */,
+			);
+			path = ViewControllers;
+			sourceTree = "<group>";
+		};
+		B08B1B9A2F10809B002315FC /* Managers */ = {
+			isa = PBXGroup;
+			children = (
+				B08B1B972F10809B002315FC /* AppActionManagerTests.swift */,
+				B08B1B982F10809B002315FC /* AppUtilsTests.swift */,
+				B08B1B992F10809B002315FC /* BiometricManagerTests.swift */,
+			);
+			path = Managers;
+			sourceTree = "<group>";
+		};
+		B08B1B9C2F10809B002315FC /* Mocks */ = {
+			isa = PBXGroup;
+			children = (
+				B08B1B9B2F10809B002315FC /* MockBiometricAuth.swift */,
+			);
+			path = Mocks;
+			sourceTree = "<group>";
+		};
+		B08B1B9E2F10809B002315FC /* Utils */ = {
+			isa = PBXGroup;
+			children = (
+				B08B1B9D2F10809B002315FC /* TestUtils.swift */,
+			);
+			path = Utils;
+			sourceTree = "<group>";
+		};
+		B08B1BA02F10809B002315FC /* ViewModels */ = {
+			isa = PBXGroup;
+			children = (
+				B08B1B9F2F10809B002315FC /* AddOrEditMyCardViewModelTests.swift */,
+			);
+			path = ViewModels;
+			sourceTree = "<group>";
+		};
+		B08B1BA22F10809B002315FC /* WalletVaultTests */ = {
+			isa = PBXGroup;
+			children = (
+				B08B1B9A2F10809B002315FC /* Managers */,
+				B0CT00042F118000002315FC /* Models */,
+				B08B1B9C2F10809B002315FC /* Mocks */,
+				B08B1B9E2F10809B002315FC /* Utils */,
+				B08B1BA02F10809B002315FC /* ViewModels */,
+				B08B1BA12F10809B002315FC /* WalletVaultTests.swift */,
+			);
+			path = WalletVaultTests;
+			sourceTree = "<group>";
+		};
+		B08B1BAC2F1080A1002315FC /* WalletVaultUITests */ = {
+			isa = PBXGroup;
+			children = (
+				B08B1BBF2F1080A1002315FC /* Helpers */,
+				B08B1BAF2F1080A1002315FC /* CardListUITests.swift */,
+				B08B1BB12F1080A1002315FC /* AddCardUITests.swift */,
+				B08B1BB32F1080A1002315FC /* SearchUITests.swift */,
+				B08B1BB52F1080A1002315FC /* CardDetailsUITests.swift */,
+				B08B1BB72F1080A1002315FC /* CardSharingUITests.swift */,
+				B08B1BB92F1080A1002315FC /* QRCodeScannerUITests.swift */,
+				B08B1BAA2F1080A1002315FC /* WalletVaultUITests.swift */,
+				B08B1BAB2F1080A1002315FC /* WalletVaultUITestsLaunchTests.swift */,
+			);
+			path = WalletVaultUITests;
+			sourceTree = "<group>";
+		};
+		B08B1BBF2F1080A1002315FC /* Helpers */ = {
+			isa = PBXGroup;
+			children = (
+				B08B1BBB2F1080A1002315FC /* UITestHelpers.swift */,
+				B08B1BBD2F1080A1002315FC /* TestDataCreator.swift */,
+			);
+			path = Helpers;
+			sourceTree = "<group>";
+		};
+		B0CT00042F118000002315FC /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				B0CT00022F118000002315FC /* CardTypeTests.swift */,
+			);
+			path = Models;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		598C2EFB2B34C66200C291C3 /* WalletVault */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 598C2F262B34C66300C291C3 /* Build configuration list for PBXNativeTarget "WalletVault" */;
+			buildPhases = (
+				598C2EF82B34C66200C291C3 /* Sources */,
+				598C2EF92B34C66200C291C3 /* Frameworks */,
+				598C2EFA2B34C66200C291C3 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = WalletVault;
+			productName = SafeWallet;
+			productReference = 598C2EFC2B34C66200C291C3 /* WalletVault.app */;
+			productType = "com.apple.product-type.application";
+		};
+		598C2F112B34C66300C291C3 /* WalletVaultTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 598C2F292B34C66300C291C3 /* Build configuration list for PBXNativeTarget "WalletVaultTests" */;
+			buildPhases = (
+				598C2F0E2B34C66300C291C3 /* Sources */,
+				598C2F0F2B34C66300C291C3 /* Frameworks */,
+				598C2F102B34C66300C291C3 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				598C2F142B34C66300C291C3 /* PBXTargetDependency */,
+			);
+			name = WalletVaultTests;
+			productName = SafeWalletTests;
+			productReference = 598C2F122B34C66300C291C3 /* WalletVaultTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
+		598C2F1B2B34C66300C291C3 /* WalletVaultUITests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 598C2F2C2B34C66300C291C3 /* Build configuration list for PBXNativeTarget "WalletVaultUITests" */;
+			buildPhases = (
+				598C2F182B34C66300C291C3 /* Sources */,
+				598C2F192B34C66300C291C3 /* Frameworks */,
+				598C2F1A2B34C66300C291C3 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				598C2F1E2B34C66300C291C3 /* PBXTargetDependency */,
+			);
+			name = WalletVaultUITests;
+			productName = SafeWalletUITests;
+			productReference = 598C2F1C2B34C66300C291C3 /* WalletVaultUITests.xctest */;
+			productType = "com.apple.product-type.bundle.ui-testing";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		598C2EF42B34C66200C291C3 /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				BuildIndependentTargetsInParallel = 1;
+				LastSwiftUpdateCheck = 1510;
+				LastUpgradeCheck = 1510;
+				TargetAttributes = {
+					598C2EFB2B34C66200C291C3 = {
+						CreatedOnToolsVersion = 15.1;
+					};
+					598C2F112B34C66300C291C3 = {
+						CreatedOnToolsVersion = 15.1;
+						TestTargetID = 598C2EFB2B34C66200C291C3;
+					};
+					598C2F1B2B34C66300C291C3 = {
+						CreatedOnToolsVersion = 15.1;
+						TestTargetID = 598C2EFB2B34C66200C291C3;
+					};
+				};
+			};
+			buildConfigurationList = 598C2EF72B34C66200C291C3 /* Build configuration list for PBXProject "WalletVault" */;
+			compatibilityVersion = "Xcode 14.0";
+			developmentRegion = en;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+				Base,
+				"pt-PT",
+				es,
+				fr,
+				de,
+				"pt-BR",
+			);
+			mainGroup = 598C2EF32B34C66200C291C3;
+			productRefGroup = 598C2EFD2B34C66200C291C3 /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				598C2EFB2B34C66200C291C3 /* WalletVault */,
+				598C2F112B34C66300C291C3 /* WalletVaultTests */,
+				598C2F1B2B34C66300C291C3 /* WalletVaultUITests */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		598C2EFA2B34C66200C291C3 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				598C2F0D2B34C66300C291C3 /* Preview Assets.xcassets in Resources */,
+				598C2F092B34C66300C291C3 /* Assets.xcassets in Resources */,
+				593A58FB2B9DF02E00B222FD /* Localizable.xcstrings in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		598C2F102B34C66300C291C3 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		598C2F1A2B34C66300C291C3 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		598C2EF82B34C66200C291C3 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				EDC711A942B54874B8B888FE90BC8475 /* KeychainService.swift in Sources */,
+				3AD0D024C9024A0C9CFC2FE72C101606 /* AppUtils+EncryptedStorage.swift in Sources */,
+				B2EF457D8D5F4522ADD41E0C962A9141 /* AppUtils+Migration.swift in Sources */,
+				59BD32942B7C149100DC8F08 /* CardRow.swift in Sources */,
+				598C2F412B37413900C291C3 /* AddCardViewModel.swift in Sources */,
+				59716AA02B8A46C100DDD820 /* ShareUIActivityController.swift in Sources */,
+				598C2F432B37421A00C291C3 /* CardListViewModel.swift in Sources */,
+				59716AA42B8A7C3500DDD820 /* QRCodeView.swift in Sources */,
+				598C2F002B34C66200C291C3 /* WalletVaultApp.swift in Sources */,
+				599B57DF2B8BBEC7002CE497 /* AddCardButtonViewModel.swift in Sources */,
+				59BD32902B797DC500DC8F08 /* AddCardButton.swift in Sources */,
+				5926C5C32B5C96FE0065030E /* AppConstants.swift in Sources */,
+				5955A8532B94F04700AECF1D /* AppActionManager+Notifications.swift in Sources */,
+				599B57E12B8BC54F002CE497 /* CardRowViewModel.swift in Sources */,
+				598C2F052B34C66200C291C3 /* WalletVault.xcdatamodeld in Sources */,
+				5955A8552B94F8A400AECF1D /* AppDelegate.swift in Sources */,
+				59BD32962B7D2C9000DC8F08 /* CardObservableObject.swift in Sources */,
+				5926C5B42B59BBE30065030E /* AppManager.swift in Sources */,
+				598D18C32B4C8E8000D88C08 /* MyCardViewModel.swift in Sources */,
+				59716AA22B8A51A400DDD820 /* AppUtils+QrCode.swift in Sources */,
+				59BD32A32B80FCE400DC8F08 /* ProtectScreenViewController.swift in Sources */,
+				59E879A02C825927002BC8D9 /* CustomColorPicker.swift in Sources */,
+				59DFA1A12B3DCD5000EFD403 /* BiometricManager.swift in Sources */,
+				59BD328E2B797A9200DC8F08 /* AddOrEditMyCardViewModel.swift in Sources */,
+				5926C5BF2B5C8E8B0065030E /* ColorCarouselViewModel.swift in Sources */,
+				598D18C12B4C72B900D88C08 /* MyCardView.swift in Sources */,
+				59BD328C2B79495700DC8F08 /* MenuTextView.swift in Sources */,
+				5926C5BD2B5C44910065030E /* ColorCarouselView.swift in Sources */,
+				599178912B9A5D9A00CCB102 /* LogManager.swift in Sources */,
+				59BD32A52B80FE5B00DC8F08 /* UIColor+Extension.swift in Sources */,
+				598C2F072B34C66200C291C3 /* CardListView.swift in Sources */,
+				590F25462C834B1E00897180 /* Card+CoreDataClass.swift in Sources */,
+				590F25472C834B1E00897180 /* Card+CoreDataProperties.swift in Sources */,
+				B0CT00012F118000002315FC /* CardType.swift in Sources */,
+				5926C5B62B59BCFB0065030E /* AppActionManager.swift in Sources */,
+				59DFA19F2B3B6FD000EFD403 /* CardDetailsViewModel.swift in Sources */,
+				59716AA62B8A8EE300DDD820 /* QRCodeScannerView.swift in Sources */,
+				595EFA2C2BB3821E000D0F6F /* AppUtils+Alerts.swift in Sources */,
+				595EFA2A2BB37C59000D0F6F /* AppUtils+Permissions.swift in Sources */,
+				5926C5C12B5C921F0065030E /* AppUtils.swift in Sources */,
+				598C2F452B37BB1C00C291C3 /* CardDetailsView.swift in Sources */,
+				59BD328A2B752F9C00DC8F08 /* ViewModelProtocol.swift in Sources */,
+				5926C5BB2B5C2FE60065030E /* Color+Extension.swift in Sources */,
+				59E8799E2C808F91002BC8D9 /* AppUtils+Crypto.swift in Sources */,
+				598C2F022B34C66200C291C3 /* Persistence.swift in Sources */,
+				598C2F3D2B360DC800C291C3 /* AddCardView.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		598C2F0E2B34C66300C291C3 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				B08B1BA32F10809B002315FC /* AppUtilsTests.swift in Sources */,
+				B08B1BA42F10809B002315FC /* AddOrEditMyCardViewModelTests.swift in Sources */,
+				B08B1BA52F10809B002315FC /* AppActionManagerTests.swift in Sources */,
+				B08B1BA62F10809B002315FC /* BiometricManagerTests.swift in Sources */,
+				B08B1BA72F10809B002315FC /* TestUtils.swift in Sources */,
+				B08B1BA82F10809B002315FC /* MockBiometricAuth.swift in Sources */,
+				B08B1BA92F10809B002315FC /* WalletVaultTests.swift in Sources */,
+				B0CT00032F118000002315FC /* CardTypeTests.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		598C2F182B34C66300C291C3 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				B08B1BB02F1080A1002315FC /* CardListUITests.swift in Sources */,
+				B08B1BB22F1080A1002315FC /* AddCardUITests.swift in Sources */,
+				B08B1BB42F1080A1002315FC /* SearchUITests.swift in Sources */,
+				B08B1BB62F1080A1002315FC /* CardDetailsUITests.swift in Sources */,
+				B08B1BB82F1080A1002315FC /* CardSharingUITests.swift in Sources */,
+				B08B1BBA2F1080A1002315FC /* QRCodeScannerUITests.swift in Sources */,
+				B08B1BBC2F1080A1002315FC /* UITestHelpers.swift in Sources */,
+				B08B1BBE2F1080A1002315FC /* TestDataCreator.swift in Sources */,
+				B08B1BAD2F1080A1002315FC /* WalletVaultUITests.swift in Sources */,
+				B08B1BAE2F1080A1002315FC /* WalletVaultUITestsLaunchTests.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		598C2F142B34C66300C291C3 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 598C2EFB2B34C66200C291C3 /* WalletVault */;
+			targetProxy = 598C2F132B34C66300C291C3 /* PBXContainerItemProxy */;
+		};
+		598C2F1E2B34C66300C291C3 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 598C2EFB2B34C66200C291C3 /* WalletVault */;
+			targetProxy = 598C2F1D2B34C66300C291C3 /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
+/* Begin XCBuildConfiguration section */
+		598C2F242B34C66300C291C3 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				ASSETCATALOG_COMPILER_GENERATE_SWIFT_ASSET_SYMBOL_EXTENSIONS = YES;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++20";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				ENABLE_USER_SCRIPT_SANDBOXING = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu17;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				LOCALIZATION_PREFERS_STRING_CATALOGS = YES;
+				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
+				MTL_FAST_MATH = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = "DEBUG $(inherited)";
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+			};
+			name = Debug;
+		};
+		598C2F252B34C66300C291C3 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				ASSETCATALOG_COMPILER_GENERATE_SWIFT_ASSET_SYMBOL_EXTENSIONS = YES;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++20";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_USER_SCRIPT_SANDBOXING = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu17;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				LOCALIZATION_PREFERS_STRING_CATALOGS = YES;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				MTL_FAST_MATH = YES;
+				SWIFT_COMPILATION_MODE = wholemodule;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+			};
+			name = Release;
+		};
+		598C2F272B34C66300C291C3 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_ENTITLEMENTS = WalletVault/WalletVault.entitlements;
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_ASSET_PATHS = "\"WalletVault/Preview Content\"";
+				DEVELOPMENT_TEAM = NA22RJ3PJ8;
+				ENABLE_HARDENED_RUNTIME = YES;
+				ENABLE_PREVIEWS = YES;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = WalletVault/Info.plist;
+				INFOPLIST_KEY_CFBundleDisplayName = WalletVault;
+				INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.utilities";
+				INFOPLIST_KEY_NSCameraUsageDescription = "\"App uses camera access to scan qr code, it needs it for the share card funcionality to work\"";
+				INFOPLIST_KEY_NSFaceIDUsageDescription = "Protect users card's with authentication";
+				INFOPLIST_KEY_NSPhotoLibraryAddUsageDescription = "\"App uses photo library to save the qr code so that card sharing works\"";
+				"INFOPLIST_KEY_UIApplicationSceneManifest_Generation[sdk=iphoneos*]" = YES;
+				"INFOPLIST_KEY_UIApplicationSceneManifest_Generation[sdk=iphonesimulator*]" = YES;
+				"INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents[sdk=iphoneos*]" = YES;
+				"INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents[sdk=iphonesimulator*]" = YES;
+				"INFOPLIST_KEY_UILaunchScreen_Generation[sdk=iphoneos*]" = YES;
+				"INFOPLIST_KEY_UILaunchScreen_Generation[sdk=iphonesimulator*]" = YES;
+				INFOPLIST_KEY_UIStatusBarStyle = UIStatusBarStyleDefault;
+				"INFOPLIST_KEY_UIStatusBarStyle[sdk=iphoneos*]" = UIStatusBarStyleDefault;
+				"INFOPLIST_KEY_UIStatusBarStyle[sdk=iphonesimulator*]" = UIStatusBarStyleDefault;
+				INFOPLIST_KEY_UISupportedInterfaceOrientations = UIInterfaceOrientationPortrait;
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown";
+				IPHONEOS_DEPLOYMENT_TARGET = 26.0;
+				LD_RUNPATH_SEARCH_PATHS = "@executable_path/Frameworks";
+				"LD_RUNPATH_SEARCH_PATHS[sdk=macosx*]" = "@executable_path/../Frameworks";
+				MACOSX_DEPLOYMENT_TARGET = 13.5;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = SevenBackwards.WalletVault;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = auto;
+				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";
+				SUPPORTS_MACCATALYST = NO;
+				SUPPORTS_MAC_DESIGNED_FOR_IPHONE_IPAD = YES;
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		598C2F282B34C66300C291C3 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_ENTITLEMENTS = WalletVault/WalletVault.entitlements;
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_ASSET_PATHS = "\"WalletVault/Preview Content\"";
+				DEVELOPMENT_TEAM = NA22RJ3PJ8;
+				ENABLE_HARDENED_RUNTIME = YES;
+				ENABLE_PREVIEWS = YES;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = WalletVault/Info.plist;
+				INFOPLIST_KEY_CFBundleDisplayName = WalletVault;
+				INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.utilities";
+				INFOPLIST_KEY_NSCameraUsageDescription = "\"App uses camera access to scan qr code, it needs it for the share card funcionality to work\"";
+				INFOPLIST_KEY_NSFaceIDUsageDescription = "Protect users card's with authentication";
+				INFOPLIST_KEY_NSPhotoLibraryAddUsageDescription = "\"App uses photo library to save the qr code so that card sharing works\"";
+				"INFOPLIST_KEY_UIApplicationSceneManifest_Generation[sdk=iphoneos*]" = YES;
+				"INFOPLIST_KEY_UIApplicationSceneManifest_Generation[sdk=iphonesimulator*]" = YES;
+				"INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents[sdk=iphoneos*]" = YES;
+				"INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents[sdk=iphonesimulator*]" = YES;
+				"INFOPLIST_KEY_UILaunchScreen_Generation[sdk=iphoneos*]" = YES;
+				"INFOPLIST_KEY_UILaunchScreen_Generation[sdk=iphonesimulator*]" = YES;
+				INFOPLIST_KEY_UIStatusBarStyle = UIStatusBarStyleDefault;
+				"INFOPLIST_KEY_UIStatusBarStyle[sdk=iphoneos*]" = UIStatusBarStyleDefault;
+				"INFOPLIST_KEY_UIStatusBarStyle[sdk=iphonesimulator*]" = UIStatusBarStyleDefault;
+				INFOPLIST_KEY_UISupportedInterfaceOrientations = UIInterfaceOrientationPortrait;
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown";
+				IPHONEOS_DEPLOYMENT_TARGET = 26.0;
+				LD_RUNPATH_SEARCH_PATHS = "@executable_path/Frameworks";
+				"LD_RUNPATH_SEARCH_PATHS[sdk=macosx*]" = "@executable_path/../Frameworks";
+				MACOSX_DEPLOYMENT_TARGET = 13.5;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = SevenBackwards.WalletVault;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = auto;
+				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";
+				SUPPORTS_MACCATALYST = NO;
+				SUPPORTS_MAC_DESIGNED_FOR_IPHONE_IPAD = YES;
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Release;
+		};
+		598C2F2A2B34C66300C291C3 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = NA22RJ3PJ8;
+				GENERATE_INFOPLIST_FILE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 26.0;
+				MACOSX_DEPLOYMENT_TARGET = 13.5;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = SevenBackwards.WalletVaultTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = auto;
+				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator macosx";
+				SWIFT_EMIT_LOC_STRINGS = NO;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/WalletVault.app/$(BUNDLE_EXECUTABLE_FOLDER_PATH)/WalletVault";
+			};
+			name = Debug;
+		};
+		598C2F2B2B34C66300C291C3 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = NA22RJ3PJ8;
+				GENERATE_INFOPLIST_FILE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 26.0;
+				MACOSX_DEPLOYMENT_TARGET = 13.5;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = SevenBackwards.WalletVaultTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = auto;
+				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator macosx";
+				SWIFT_EMIT_LOC_STRINGS = NO;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/WalletVault.app/$(BUNDLE_EXECUTABLE_FOLDER_PATH)/WalletVault";
+			};
+			name = Release;
+		};
+		598C2F2D2B34C66300C291C3 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = NA22RJ3PJ8;
+				GENERATE_INFOPLIST_FILE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 26.0;
+				MACOSX_DEPLOYMENT_TARGET = 13.5;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = SevenBackwards.WalletVaultUITests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = auto;
+				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator macosx";
+				SWIFT_EMIT_LOC_STRINGS = NO;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_TARGET_NAME = WalletVault;
+			};
+			name = Debug;
+		};
+		598C2F2E2B34C66300C291C3 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = NA22RJ3PJ8;
+				GENERATE_INFOPLIST_FILE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 26.0;
+				MACOSX_DEPLOYMENT_TARGET = 13.5;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = SevenBackwards.WalletVaultUITests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = auto;
+				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator macosx";
+				SWIFT_EMIT_LOC_STRINGS = NO;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_TARGET_NAME = WalletVault;
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		598C2EF72B34C66200C291C3 /* Build configuration list for PBXProject "WalletVault" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				598C2F242B34C66300C291C3 /* Debug */,
+				598C2F252B34C66300C291C3 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Debug;
+		};
+		598C2F262B34C66300C291C3 /* Build configuration list for PBXNativeTarget "WalletVault" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				598C2F272B34C66300C291C3 /* Debug */,
+				598C2F282B34C66300C291C3 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Debug;
+		};
+		598C2F292B34C66300C291C3 /* Build configuration list for PBXNativeTarget "WalletVaultTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				598C2F2A2B34C66300C291C3 /* Debug */,
+				598C2F2B2B34C66300C291C3 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Debug;
+		};
+		598C2F2C2B34C66300C291C3 /* Build configuration list for PBXNativeTarget "WalletVaultUITests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				598C2F2D2B34C66300C291C3 /* Debug */,
+				598C2F2E2B34C66300C291C3 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Debug;
+		};
+/* End XCConfigurationList section */
+
+/* Begin XCVersionGroup section */
+		598C2F032B34C66200C291C3 /* WalletVault.xcdatamodeld */ = {
+			isa = XCVersionGroup;
+			children = (
+				598C2F042B34C66200C291C3 /* SafeWallet.xcdatamodel */,
+			);
+			currentVersion = 598C2F042B34C66200C291C3 /* SafeWallet.xcdatamodel */;
+			path = WalletVault.xcdatamodeld;
+			sourceTree = "<group>";
+			versionGroupType = wrapper.xcdatamodel;
+		};
+/* End XCVersionGroup section */
+	};
+	rootObject = 598C2EF42B34C66200C291C3 /* Project object */;
+}
