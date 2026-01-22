@@ -20,24 +20,12 @@ WalletVault is a secure and user-friendly offline card management app that simpl
 
 WalletVault is built using the Model-View-ViewModel (MVVM) architecture to ensure the code is clean, maintainable, and scalable. This pattern enhances separation of concerns, allowing for more efficient development and testing.
 
-## Screenshots
-
-### Card List
+### Screenshots
 
 <p float="left">
-  <img src="screenshots/Card_List.png" width="250" alt="Card List" style="margin-right: 100px;" />
-</p>
-
-### Add Card
-
-<p float="left">
-  <img src="screenshots/Card_Details.png" width="250" alt="Card Details" style="margin-right: 100px;" />
-</p>
-
-### Add New Colors
-
-<p float="left">
-  <img src="screenshots/Share_Cards.png" width="250" alt="Add New Colors" style="margin-right: 100px;" />
+  <img src="screenshots/Card_List.png" width="250" alt="Card List" />
+  <img src="screenshots/Card_Details.png" width="250" alt="Card Details" />
+  <img src="screenshots/Share_Cards.png" width="250" alt="Add New Colors" />
 </p>
 
 ## App Store
