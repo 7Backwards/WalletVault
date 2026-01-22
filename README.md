@@ -25,43 +25,19 @@ WalletVault is built using the Model-View-ViewModel (MVVM) architecture to ensur
 ### Card List
 
 <p float="left">
-  <img src="screenshots/CardList.png" width="250" alt="Card List" style="margin-right: 100px;" />
+  <img src="screenshots/Card_List.png" width="250" alt="Card List" style="margin-right: 100px;" />
 </p>
 
 ### Add Card
 
 <p float="left">
-  <img src="screenshots/AddCard.png" width="250" alt="Card Details" style="margin-right: 100px;" />
+  <img src="screenshots/Card_Details.png" width="250" alt="Card Details" style="margin-right: 100px;" />
 </p>
 
 ### Add New Colors
 
 <p float="left">
-  <img src="screenshots/Add new colors.png" width="250" alt="Add New Colors" style="margin-right: 100px;" />
-</p>
-
-### Edit Card
-
-<p float="left">
-  <img src="screenshots/EditCard.png" width="250" alt="Edit Card" style="margin-right: 100px;" />
-</p>
-
-### Share Card Outside App
-
-<p float="left">
-  <img src="screenshots/ShareCardOutsideApp.png" width="250" alt="QR Code Sharing" style="margin-right: 100px;" />
-</p>
-
-### Share Card Inside App
-
-<p float="left">
-  <img src="screenshots/ShareCardInsideApp.png" width="250" alt="Share Card Inside" style="margin-right: 100px;" />
-</p>
-
-### Add Card With QR Code
-
-<p float="left">
-  <img src="screenshots/AddWithQRCode.png" width="250" alt="Add Card With QR Code" style="margin-right: 100px;" />
+  <img src="screenshots/Share_Cards.png" width="250" alt="Add New Colors" style="margin-right: 100px;" />
 </p>
 
 ## App Store
