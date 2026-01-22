@@ -30,8 +30,7 @@ WalletVault is built using the Model-View-ViewModel (MVVM) architecture to ensur
 
 ## App Store
 
-While I am currently unable to publish WalletVault on the App Store due to policy restrictions regarding individual accounts handling sensitive information, I remain committed to its development and improvement. You can still be a part of WalletVault's journey by joining the beta through TestFlight: https://testflight.apple.com/join/4wsV2Y7T
-Let me know if you have some feedback!
+https://apps.apple.com/pt/app/walletvault-save-cards-safely/id6757608376?l=en-GB
 
 ## Installation
 
