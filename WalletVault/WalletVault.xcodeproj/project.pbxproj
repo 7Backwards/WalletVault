@@ -7,10 +7,9 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		3AD0D024C9024A0C9CFC2FE72C101606 /* AppUtils+EncryptedStorage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1E7547E268DC4D3893F64F2B6329EF78 /* AppUtils+EncryptedStorage.swift */; };
 		590F25462C834B1E00897180 /* Card+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = 590F25422C834B1E00897180 /* Card+CoreDataClass.swift */; };
 		590F25472C834B1E00897180 /* Card+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 590F25432C834B1E00897180 /* Card+CoreDataProperties.swift */; };
-		B0CT00012F118000002315FC /* CardType.swift in Sources */ = {isa = PBXBuildFile; fileRef = B0CT00002F118000002315FC /* CardType.swift */; };
-		B0CT00032F118000002315FC /* CardTypeTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = B0CT00022F118000002315FC /* CardTypeTests.swift */; };
 		5926C5B42B59BBE30065030E /* AppManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5926C5B32B59BBE30065030E /* AppManager.swift */; };
 		5926C5B62B59BCFB0065030E /* AppActionManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5926C5B52B59BCFB0065030E /* AppActionManager.swift */; };
 		5926C5BB2B5C2FE60065030E /* Color+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5926C5BA2B5C2FE60065030E /* Color+Extension.swift */; };
@@ -71,11 +70,10 @@
 		B08B1BBA2F1080A1002315FC /* QRCodeScannerUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = B08B1BB92F1080A1002315FC /* QRCodeScannerUITests.swift */; };
 		B08B1BBC2F1080A1002315FC /* UITestHelpers.swift in Sources */ = {isa = PBXBuildFile; fileRef = B08B1BBB2F1080A1002315FC /* UITestHelpers.swift */; };
 		B08B1BBE2F1080A1002315FC /* TestDataCreator.swift in Sources */ = {isa = PBXBuildFile; fileRef = B08B1BBD2F1080A1002315FC /* TestDataCreator.swift */; };
-
-
-                EDC711A942B54874B8B888FE90BC8475 /* KeychainService.swift in Sources */ = {isa = PBXBuildFile; fileRef = CCD45C52279C4DF7AB0A3526A098273E /* KeychainService.swift */; };
-                3AD0D024C9024A0C9CFC2FE72C101606 /* AppUtils+EncryptedStorage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1E7547E268DC4D3893F64F2B6329EF78 /* AppUtils+EncryptedStorage.swift */; };
-                B2EF457D8D5F4522ADD41E0C962A9141 /* AppUtils+Migration.swift in Sources */ = {isa = PBXBuildFile; fileRef = 590A78C93C4E4823A8F1E0CD8A85629F /* AppUtils+Migration.swift */; };
+		B0CT00012F118000002315FC /* CardType.swift in Sources */ = {isa = PBXBuildFile; fileRef = B0CT00002F118000002315FC /* CardType.swift */; };
+		B0CT00032F118000002315FC /* CardTypeTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = B0CT00022F118000002315FC /* CardTypeTests.swift */; };
+		B2EF457D8D5F4522ADD41E0C962A9141 /* AppUtils+Migration.swift in Sources */ = {isa = PBXBuildFile; fileRef = 590A78C93C4E4823A8F1E0CD8A85629F /* AppUtils+Migration.swift */; };
+		EDC711A942B54874B8B888FE90BC8475 /* KeychainService.swift in Sources */ = {isa = PBXBuildFile; fileRef = CCD45C52279C4DF7AB0A3526A098273E /* KeychainService.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -96,10 +94,10 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		1E7547E268DC4D3893F64F2B6329EF78 /* AppUtils+EncryptedStorage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "AppUtils+EncryptedStorage.swift"; sourceTree = "<group>"; };
+		590A78C93C4E4823A8F1E0CD8A85629F /* AppUtils+Migration.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "AppUtils+Migration.swift"; sourceTree = "<group>"; };
 		590F25422C834B1E00897180 /* Card+CoreDataClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Card+CoreDataClass.swift"; sourceTree = "<group>"; };
 		590F25432C834B1E00897180 /* Card+CoreDataProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Card+CoreDataProperties.swift"; sourceTree = "<group>"; };
-		B0CT00002F118000002315FC /* CardType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardType.swift; sourceTree = "<group>"; };
-		B0CT00022F118000002315FC /* CardTypeTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardTypeTests.swift; sourceTree = "<group>"; };
 		5926C5B32B59BBE30065030E /* AppManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppManager.swift; sourceTree = "<group>"; };
 		5926C5B52B59BCFB0065030E /* AppActionManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppActionManager.swift; sourceTree = "<group>"; };
 		5926C5BA2B5C2FE60065030E /* Color+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Color+Extension.swift"; sourceTree = "<group>"; };
@@ -165,11 +163,9 @@
 		B08B1BB92F1080A1002315FC /* QRCodeScannerUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QRCodeScannerUITests.swift; sourceTree = "<group>"; };
 		B08B1BBB2F1080A1002315FC /* UITestHelpers.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UITestHelpers.swift; sourceTree = "<group>"; };
 		B08B1BBD2F1080A1002315FC /* TestDataCreator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TestDataCreator.swift; sourceTree = "<group>"; };
-
-
-                CCD45C52279C4DF7AB0A3526A098273E /* KeychainService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KeychainService.swift; sourceTree = "<group>"; };
-                1E7547E268DC4D3893F64F2B6329EF78 /* AppUtils+EncryptedStorage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "AppUtils+EncryptedStorage.swift"; sourceTree = "<group>"; };
-                590A78C93C4E4823A8F1E0CD8A85629F /* AppUtils+Migration.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "AppUtils+Migration.swift"; sourceTree = "<group>"; };
+		B0CT00002F118000002315FC /* CardType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardType.swift; sourceTree = "<group>"; };
+		B0CT00022F118000002315FC /* CardTypeTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardTypeTests.swift; sourceTree = "<group>"; };
+		CCD45C52279C4DF7AB0A3526A098273E /* KeychainService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KeychainService.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -200,9 +196,9 @@
 		5926C5B22B59BBD90065030E /* Managers */ = {
 			isa = PBXGroup;
 			children = (
-                                CCD45C52279C4DF7AB0A3526A098273E /* KeychainService.swift */,
-                                1E7547E268DC4D3893F64F2B6329EF78 /* AppUtils+EncryptedStorage.swift */,
-                                590A78C93C4E4823A8F1E0CD8A85629F /* AppUtils+Migration.swift */,
+				CCD45C52279C4DF7AB0A3526A098273E /* KeychainService.swift */,
+				1E7547E268DC4D3893F64F2B6329EF78 /* AppUtils+EncryptedStorage.swift */,
+				590A78C93C4E4823A8F1E0CD8A85629F /* AppUtils+Migration.swift */,
 				5926C5B32B59BBE30065030E /* AppManager.swift */,
 				5926C5B52B59BCFB0065030E /* AppActionManager.swift */,
 				5926C5C02B5C921F0065030E /* AppUtils.swift */,
@@ -394,14 +390,6 @@
 			path = WalletVaultTests;
 			sourceTree = "<group>";
 		};
-		B0CT00042F118000002315FC /* Models */ = {
-			isa = PBXGroup;
-			children = (
-				B0CT00022F118000002315FC /* CardTypeTests.swift */,
-			);
-			path = Models;
-			sourceTree = "<group>";
-		};
 		B08B1BAC2F1080A1002315FC /* WalletVaultUITests */ = {
 			isa = PBXGroup;
 			children = (
@@ -427,7 +415,14 @@
 			path = Helpers;
 			sourceTree = "<group>";
 		};
-
+		B0CT00042F118000002315FC /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				B0CT00022F118000002315FC /* CardTypeTests.swift */,
+			);
+			path = Models;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -564,9 +559,9 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-                                EDC711A942B54874B8B888FE90BC8475 /* KeychainService.swift in Sources */,
-                                3AD0D024C9024A0C9CFC2FE72C101606 /* AppUtils+EncryptedStorage.swift in Sources */,
-                                B2EF457D8D5F4522ADD41E0C962A9141 /* AppUtils+Migration.swift in Sources */,
+				EDC711A942B54874B8B888FE90BC8475 /* KeychainService.swift in Sources */,
+				3AD0D024C9024A0C9CFC2FE72C101606 /* AppUtils+EncryptedStorage.swift in Sources */,
+				B2EF457D8D5F4522ADD41E0C962A9141 /* AppUtils+Migration.swift in Sources */,
 				59BD32942B7C149100DC8F08 /* CardRow.swift in Sources */,
 				598C2F412B37413900C291C3 /* AddCardViewModel.swift in Sources */,
 				59716AA02B8A46C100DDD820 /* ShareUIActivityController.swift in Sources */,
@@ -643,7 +638,6 @@
 				B08B1BAD2F1080A1002315FC /* WalletVaultUITests.swift in Sources */,
 				B08B1BAE2F1080A1002315FC /* WalletVaultUITestsLaunchTests.swift in Sources */,
 			);
-
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXSourcesBuildPhase section */
@@ -811,7 +805,7 @@
 				LD_RUNPATH_SEARCH_PATHS = "@executable_path/Frameworks";
 				"LD_RUNPATH_SEARCH_PATHS[sdk=macosx*]" = "@executable_path/../Frameworks";
 				MACOSX_DEPLOYMENT_TARGET = 13.5;
-				MARKETING_VERSION = 1.1;
+				MARKETING_VERSION = 1.0;
 				PRODUCT_BUNDLE_IDENTIFIER = SevenBackwards.WalletVault;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SDKROOT = auto;
@@ -858,7 +852,7 @@
 				LD_RUNPATH_SEARCH_PATHS = "@executable_path/Frameworks";
 				"LD_RUNPATH_SEARCH_PATHS[sdk=macosx*]" = "@executable_path/../Frameworks";
 				MACOSX_DEPLOYMENT_TARGET = 13.5;
-				MARKETING_VERSION = 1.1;
+				MARKETING_VERSION = 1.0;
 				PRODUCT_BUNDLE_IDENTIFIER = SevenBackwards.WalletVault;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SDKROOT = auto;

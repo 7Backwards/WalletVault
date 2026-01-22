@@ -73,7 +73,7 @@ class AddOrEditMyCardViewModelTests: XCTestCase {
         card.isFavorited = false
         card.pin = "1234"
         
-        let cardObject = CardObservableObject(card: card)
+        let cardObject = CardObservableObject(card: card, appUtils: appManager.utils)
         cardObject.cardName = "Updated Card Name"
         
         let expectation = XCTestExpectation(description: "Edit should succeed")
